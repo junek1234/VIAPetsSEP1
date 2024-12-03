@@ -5,8 +5,6 @@ public class Date
   private int year;
   private int hour;
 
-  //?hour set and get for each or for Dateinterval?
-
   public Date(int day, int month, int year, int hour)
   {
     this.day = day;
@@ -17,41 +15,49 @@ public class Date
 
   public int getDay()
   {
+
     return day;
   }
 
   public int getMonth()
   {
+
     return month;
   }
 
   public int getYear()
   {
+
     return year;
   }
 
   public int getHour()
   {
+
     return hour;
   }
 
   public void setDay(int day)
   {
+
     this.day = day;
   }
 
   public void setMonth(int month)
   {
+
     this.month = month;
   }
 
   public void setYear(int year)
   {
+
     this.year = year;
   }
 
   public void setHour(int hour)
   {
+
     this.hour = hour;
   }
 
@@ -80,10 +86,11 @@ public class Date
 
   public Date copy()
   {
+
     return new Date(day, month, year, hour);
   }
 
-  public int compareTo(Date other)
+  /*public int compareTo(Date other)
   {
     if (year < other.year)
     {
@@ -118,5 +125,5 @@ public class Date
       return 1;
     }
     return 0;
-  }
+  }*/
 }
