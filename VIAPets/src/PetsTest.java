@@ -11,6 +11,7 @@ public class PetsTest
 
 
     //pene :!!!"·$"%·&%%·/$&$%&$& concha tu madre
+    System.out.println("OMG");
   }
 }
 
