@@ -2,8 +2,7 @@
 {
  private String species;
  private String preferredFood;
-
-//This is a bird
+ 
 
   public Bird(int petID, String name, String color, int age, char gender,
       boolean isInTheShop, String isSold, String species, String preferredFood)
