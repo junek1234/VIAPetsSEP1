@@ -2,13 +2,13 @@ import java.util.ArrayList;
 
 public class PetList
 {
-  private ArrayList<Pet> pets; //fix pet -> pets in Astah
+  private ArrayList<Pet> pets;
   //add constructor in Astah
   public PetList()
   {
     pets = new ArrayList<>();
   }
-  public void add(Pet pet)//change name in Astah
+  public void add(Pet pet)
   {
     pets.add(pet);
   }

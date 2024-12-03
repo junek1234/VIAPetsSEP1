@@ -8,7 +8,7 @@ public abstract class Pet
   protected String comment;
   protected boolean isInTheShop;
   protected String isSold;
-  //Change in Astah private to protected
+
 
   public Pet(int petID, String name, String color, int age, char gender, boolean isInTheShop, String isSold)
   {
@@ -37,7 +37,7 @@ public abstract class Pet
   public abstract void setIsInTheShop(boolean isInTheShop);
   public abstract void setIsSold(String isSold);
 
-  public boolean equals(Object obj)//need to change the name in Astah
+  public boolean equals(Object obj)
   {
     if(obj==null || obj.getClass()!=getClass())
     {
