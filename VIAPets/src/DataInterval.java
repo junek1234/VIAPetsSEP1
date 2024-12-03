@@ -1,16 +1,16 @@
 import javax.xml.crypto.Data;
 
-public class DataInterval extends Data
+public class DataInterval
 {
-  Date leaveDate;
-  Date pickupDate;
+  private Date startDate;
+  private Date endDate;
 
-  public DataInterval(Date leaveDate, Date pickupDate)
+  public DataInterval(Date startDate, Date endDate)
   {
-    this.leaveDate = leaveDate;
-    this.pickupDate = pickupDate;
+    this.startDate = startDate;
+    this.endDate =endDate;
   }
-  public equals(Object obj)
+  public boolean equals(Object obj)
   {
     if (obj == null)
     {
@@ -25,28 +25,51 @@ public class DataInterval extends Data
       return false;
     }
     DataInterval other = (DataInterval) obj;
-    return leaveDate.equals(other.leaveDate) && pickupDate.equals(other.pickupDate);
+    return startDate.equals(other.startDate) &&endDate.equals(other.endDate);
   }
-  public Date getLeaveDate()
+  public Date getstartDate()
   {
-    return leaveDate;
+    return startDate;
   }
-  public Date getPickupDate()
+  public Date geendDate()
   {
-    return pickupDate;
+    return endDate;
   }
-  public calculateInterval()
+  public void setStartDate(Date startDate)
   {
-    return pickupDate.day - leaveDate.day;
+    this.startDate = startDate;
+  }
+  public void setEndDate(Date endDate)
+  {
+    this.endDate = endDate;
+  }
+
+ //check if this is correct - calculateInterval
+  public int calculateInterval()
+  {
+    int startTotalHours = convertToHours(startDate);
+    int endTotalHours = convertToHours(endDate);
+    return endTotalHours - startTotalHours;
+  }
+
+  private int convertToHours(Date date)
+  {
+    int daysInYear = 365;
+    int daysInMonth = 30;
+    return date.getYear() * daysInYear * 24 +
+        date.getMonth() * daysInMonth * 24 +
+        date.getDay() * 24 +
+        date.getHour();
+  }
+
+  public DataInterval getDataInterval()
+  {
+    return this;
   }
 
   public String toString()
   {
-    return "DataInterval{" + "leaveDate=" + leaveDate + ", pickupDate=" + pickupDate + '}';
+    return "DataInterval{" + "startDate=" + startDate + ",endDate=" +endDate + '}';
   }
 
-  public getDataInterval()
-  {
-    return this;
-  }
 }
