@@ -9,10 +9,8 @@ public class PetsTest
     list1.add(fish1);
     System.out.println(list1);
 
-    //Working?
-    //YES:)
 
-    //try sth
+    //pene :!!!"·$"%·&%%·/$&$%&$& concha tu madre
   }
 }
 
