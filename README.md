@@ -1,5 +1,5 @@
 # VIAPetsSEP1
-to push on our own: \n
+to push on our own:
 git add .
 git commit -m 'nameOfTheChange'
 git push origin main
