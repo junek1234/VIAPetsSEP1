@@ -5,6 +5,8 @@ public class Date
   private int year;
   private int hour;
 
+  //?hour set and get for each or for Dateinterval?
+
   public Date(int day, int month, int year, int hour)
   {
     this.day = day;
