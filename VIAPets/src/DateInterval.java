@@ -10,15 +10,11 @@ public class DateInterval
   }
   public boolean equals(Object obj)
   {
-    if (obj == null)
-    {
-      return false;
-    }
     if (obj == this)
     {
       return true;
     }
-    if (obj.getClass() != this.getClass())
+    if (obj == null || obj.getClass() != this.getClass())
     {
       return false;
     }
