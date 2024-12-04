@@ -29,7 +29,7 @@ public class DateInterval
   {
     return startDate;
   }
-  public Date geendDate()
+  public Date getendDate()
   {
     return endDate;
   }
@@ -60,14 +60,14 @@ public class DateInterval
         date.getHour();
   }
 
-  public DateInterval getDataInterval()
+  public DateInterval getDateInterval()
   {
     return this;
   }
 
   public String toString()
   {
-    return "DataInterval{" + "startDate=" + startDate + ",endDate=" +endDate + '}';
+    return "DateInterval{" + "startDate=" + startDate + ",endDate=" +endDate + '}';
   }
 
 }
