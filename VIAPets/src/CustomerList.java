@@ -14,13 +14,12 @@ public class CustomerList {
   }
 
   // Edit an existing customer !!!!!this is wrong
-  public void editCustomer(int customerID, String newName, int newPhoneNumber, String newEmail) {
-    for (Customer customer : customers) {
-      if (customer.getCustomerID() == customerID) {
+  public void editCustomer(Customer customer, int customerID, String newName, int newPhoneNumber, String newEmail) {
+    {
+        customer.setCustomerID(customerID);
         customer.setName(newName);
         customer.setPhoneNumber(newPhoneNumber);
         customer.setEmail(newEmail);
-        break;
       }
     }
   }

@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class PetList
 {
   private ArrayList<Pet> pets;
-  //add constructor in Astah
   public PetList()
   {
     pets = new ArrayList<>();
