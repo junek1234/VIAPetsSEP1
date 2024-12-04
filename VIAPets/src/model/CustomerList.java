@@ -22,7 +22,7 @@ public class CustomerList {
         customer.setName(newName);
         customer.setPhoneNumber(newPhoneNumber);
         customer.setEmail(newEmail);
-      }
+    }
 
 
 
