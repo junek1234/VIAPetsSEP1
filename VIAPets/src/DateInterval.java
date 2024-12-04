@@ -1,11 +1,9 @@
-import javax.xml.crypto.Data;
-
-public class DataInterval
+public class DateInterval
 {
   private Date startDate;
   private Date endDate;
 
-  public DataInterval(Date startDate, Date endDate)
+  public DateInterval(Date startDate, Date endDate)
   {
     this.startDate = startDate;
     this.endDate =endDate;
@@ -24,7 +22,7 @@ public class DataInterval
     {
       return false;
     }
-    DataInterval other = (DataInterval) obj;
+    DateInterval other = (DateInterval) obj;
     return startDate.equals(other.startDate) &&endDate.equals(other.endDate);
   }
   public Date getstartDate()
@@ -62,7 +60,7 @@ public class DataInterval
         date.getHour();
   }
 
-  public DataInterval getDataInterval()
+  public DateInterval getDataInterval()
   {
     return this;
   }
