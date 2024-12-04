@@ -13,7 +13,7 @@ public class CustomerList {
     customers.add(customer);
   }
 
-  // Edit an existing customer
+  // Edit an existing customer !!!!!this is wrong
   public void editCustomer(int customerID, String newName, int newPhoneNumber, String newEmail) {
     for (Customer customer : customers) {
       if (customer.getCustomerID() == customerID) {
