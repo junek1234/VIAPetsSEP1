@@ -22,9 +22,7 @@ public class CustomerList {
         customer.setName(newName);
         customer.setPhoneNumber(newPhoneNumber);
         customer.setEmail(newEmail);
-      }
-
-
+    }
 
   // Remove a customer by ID
   public void removeCustomer(Customer customer) {
