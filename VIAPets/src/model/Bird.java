@@ -1,27 +1,17 @@
-public class Fish extends Pet
-{
-  private boolean saltwater;
-  private String species;
-  private boolean predator;
+package model;
 
-  public Fish(int petID, String name, String color, int age, char gender,
-      boolean isInTheShop, String isSold, boolean saltwater, String species,
-      boolean predator)
+public class Bird extends Pet
+{
+ private String species;
+ private String preferredFood;
+ 
+
+  public Bird(int petID, String name, String color, int age, char gender,
+      boolean isInTheShop, String isSold, String species, String preferredFood)
   {
     super(petID, name, color, age, gender, isInTheShop, isSold);
-    this.saltwater = saltwater;
     this.species = species;
-    this.predator = predator;
-  }
-
-  public boolean isSaltwater()
-  {
-    return saltwater;
-  }
-
-  public void setSaltwater(boolean saltwater)
-  {
-    this.saltwater = saltwater;
+    this.preferredFood = preferredFood;
   }
 
   public String getSpecies()
@@ -34,16 +24,15 @@ public class Fish extends Pet
     this.species = species;
   }
 
-  public boolean isPredator()
+  public String getPreferredFood()
   {
-    return predator;
+    return preferredFood;
   }
 
-  public void setPredator(boolean predator)
+  public void setPreferredFood(String preferredFood)
   {
-    this.predator = predator;
+    this.preferredFood = preferredFood;
   }
-
   public int getPetID()
   {
     return super.petID;
@@ -120,14 +109,14 @@ public class Fish extends Pet
     {
       return false;
     }
-    Fish fish = (Fish) obj;
-    return super.equals(fish) && fish.saltwater==saltwater && fish.species.equals(species) && fish.predator==predator;
+    Bird bird = (Bird) obj;
+    return super.equals(bird) && bird.species.equals(species) && bird.preferredFood.equals(preferredFood);
 
   }
 
   public String toString()
   {
-    return "Fish{" + "saltwater=" + saltwater + ", species='" + species + '\''
-        + ", predator=" + predator + '}'+super.toString();
+    return "Bird{" + "species='" + species + '\'' + ", preferredFood='"
+        + preferredFood + '\'' + '}'+super.toString();
   }
 }

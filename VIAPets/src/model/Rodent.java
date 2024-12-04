@@ -1,8 +1,10 @@
-public class Various extends Pet
+package model;
+
+public class Rodent extends Pet
 {
   private String species;
 
-  public Various(int petID, String name, String color, int age, char gender,
+  public Rodent(int petID, String name, String color, int age, char gender,
       boolean isInTheShop, String isSold, String species)
   {
     super(petID, name, color, age, gender, isInTheShop, isSold);
@@ -94,8 +96,13 @@ public class Various extends Pet
     {
       return false;
     }
-    Various various = (Various) obj;
-    return super.equals(various) && various.species.equals(species);
+    Rodent rodent = (Rodent) obj;
+    return super.equals(rodent) && rodent.species.equals(species);
 
+  }
+
+  public String toString()
+  {
+    return "Rodent{" + "species='" + species + '\'' + '}'+super.toString();
   }
 }

@@ -1,3 +1,5 @@
+package model;
+
 public class DateInterval
 {
   private Date startDate;

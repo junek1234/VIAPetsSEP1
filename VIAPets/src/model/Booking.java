@@ -1,3 +1,5 @@
+package model;
+
 public class Booking {
   private int bookingID;
   private Pet pet;
