@@ -24,8 +24,6 @@ public class CustomerList {
         customer.setEmail(newEmail);
     }
 
-
-
   // Remove a customer by ID
   public void removeCustomer(Customer customer) {
    customers.remove(customer);
