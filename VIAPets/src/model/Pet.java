@@ -1,3 +1,5 @@
+package model;
+
 public abstract class Pet
 {
   protected int petID;

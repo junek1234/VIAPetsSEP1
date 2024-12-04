@@ -1,36 +1,25 @@
-public class Cat extends Pet
-{
-  private String breed;
-  private String breederName;
+package model;
 
-  public Cat(int petID, String name, String color, int age, char gender,
-      boolean isInTheShop, String isSold, String breed, String breederName)
+public class Various extends Pet
+{
+  private String species;
+
+  public Various(int petID, String name, String color, int age, char gender,
+      boolean isInTheShop, String isSold, String species)
   {
     super(petID, name, color, age, gender, isInTheShop, isSold);
-    this.breed = breed;
-    this.breederName = breederName;
+    this.species = species;
   }
 
-  public String getBreed()
+  public String getSpecies()
   {
-    return breed;
+    return species;
   }
 
-  public void setBreed(String breed)
+  public void setSpecies(String species)
   {
-    this.breed = breed;
+    this.species = species;
   }
-
-  public String getBreederName()
-  {
-    return breederName;
-  }
-
-  public void setBreederName(String breederName)
-  {
-    this.breederName = breederName;
-  }
-
   public int getPetID()
   {
     return super.petID;
@@ -107,14 +96,8 @@ public class Cat extends Pet
     {
       return false;
     }
-    Cat cat = (Cat) obj;
-    return super.equals(cat) && cat.breed.equals(breed) && cat.breederName.equals(breederName);
+    Various various = (Various) obj;
+    return super.equals(various) && various.species.equals(species);
 
-  }
-
-  public String toString()
-  {
-    return "Cat{" + "breed='" + breed + '\'' + ", breederName='" + breederName
-        + '\'' + '}' + super.toString();
   }
 }

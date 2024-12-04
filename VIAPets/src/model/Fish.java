@@ -1,12 +1,29 @@
-public class Rodent extends Pet
-{
-  private String species;
+package model;
 
-  public Rodent(int petID, String name, String color, int age, char gender,
-      boolean isInTheShop, String isSold, String species)
+public class Fish extends Pet
+{
+  private boolean saltwater;
+  private String species;
+  private boolean predator;
+
+  public Fish(int petID, String name, String color, int age, char gender,
+      boolean isInTheShop, String isSold, boolean saltwater, String species,
+      boolean predator)
   {
     super(petID, name, color, age, gender, isInTheShop, isSold);
+    this.saltwater = saltwater;
     this.species = species;
+    this.predator = predator;
+  }
+
+  public boolean isSaltwater()
+  {
+    return saltwater;
+  }
+
+  public void setSaltwater(boolean saltwater)
+  {
+    this.saltwater = saltwater;
   }
 
   public String getSpecies()
@@ -18,6 +35,17 @@ public class Rodent extends Pet
   {
     this.species = species;
   }
+
+  public boolean isPredator()
+  {
+    return predator;
+  }
+
+  public void setPredator(boolean predator)
+  {
+    this.predator = predator;
+  }
+
   public int getPetID()
   {
     return super.petID;
@@ -94,13 +122,14 @@ public class Rodent extends Pet
     {
       return false;
     }
-    Rodent rodent = (Rodent) obj;
-    return super.equals(rodent) && rodent.species.equals(species);
+    Fish fish = (Fish) obj;
+    return super.equals(fish) && fish.saltwater==saltwater && fish.species.equals(species) && fish.predator==predator;
 
   }
 
   public String toString()
   {
-    return "Rodent{" + "species='" + species + '\'' + '}'+super.toString();
+    return "Fish{" + "saltwater=" + saltwater + ", species='" + species + '\''
+        + ", predator=" + predator + '}'+super.toString();
   }
 }

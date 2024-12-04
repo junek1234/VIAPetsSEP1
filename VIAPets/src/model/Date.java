@@ -1,3 +1,5 @@
+package model;
+
 public class Date
 {
   private int day;

@@ -1,3 +1,5 @@
+package model;
+
 public class PetsTest
 {
   public static void main(String[] args)

@@ -1,36 +1,38 @@
-  public class Bird extends Pet
-{
- private String species;
- private String preferredFood;
- 
+package model;
 
-  public Bird(int petID, String name, String color, int age, char gender,
-      boolean isInTheShop, String isSold, String species, String preferredFood)
+public class Dog extends Pet
+{
+  private String breed;
+  private String breederName;
+
+  public Dog(int petID, String name, String color, int age, char gender,
+      boolean isInTheShop, String isSold, String breed, String breederName)
   {
     super(petID, name, color, age, gender, isInTheShop, isSold);
-    this.species = species;
-    this.preferredFood = preferredFood;
+    this.breed = breed;
+    this.breederName = breederName;
   }
 
-  public String getSpecies()
+  public String getBreed()
   {
-    return species;
+    return breed;
   }
 
-  public void setSpecies(String species)
+  public void setBreed(String breed)
   {
-    this.species = species;
+    this.breed = breed;
   }
 
-  public String getPreferredFood()
+  public String getBreederName()
   {
-    return preferredFood;
+    return breederName;
   }
 
-  public void setPreferredFood(String preferredFood)
+  public void setBreederName(String breederName)
   {
-    this.preferredFood = preferredFood;
+    this.breederName = breederName;
   }
+
   public int getPetID()
   {
     return super.petID;
@@ -73,7 +75,7 @@
 
   public void setName(String name)
   {
-    super.name=name;
+  super.name=name;
   }
 
   public void setAge(int age)
@@ -107,14 +109,14 @@
     {
       return false;
     }
-    Bird bird = (Bird) obj;
-    return super.equals(bird) && bird.species.equals(species) && bird.preferredFood.equals(preferredFood);
+    Dog dog = (Dog) obj;
+    return super.equals(dog) && dog.breed.equals(breed) && dog.breederName.equals(breederName);
 
   }
 
   public String toString()
   {
-    return "Bird{" + "species='" + species + '\'' + ", preferredFood='"
-        + preferredFood + '\'' + '}'+super.toString();
+    return "Dog{" + "breed='" + breed + '\'' + ", breederName='" + breederName
+        + '\'' + '}'+ super.toString();
   }
 }
