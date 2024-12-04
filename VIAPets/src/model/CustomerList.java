@@ -16,19 +16,19 @@ public class CustomerList {
   }
 
   // Edit an existing customer !!!!!this is wrong
-  public void editCustomer(Customer customer, int customerID, String newName, int newPhoneNumber, String newEmail) {
+  public void editCustomer(Customer customer, int customerID, String newName, int newPhoneNumber, String newEmail)
     {
         customer.setCustomerID(customerID);
         customer.setName(newName);
         customer.setPhoneNumber(newPhoneNumber);
         customer.setEmail(newEmail);
       }
-    }
-  }
+
+
 
   // Remove a customer by ID
-  public void removeCustomer(int customerID) {
-    customers.removeIf(customer -> customer.getCustomerID() == customerID);
+  public void removeCustomer(Customer customer) {
+   customers.remove(customer);
   }
 
   // Get a customer by ID
