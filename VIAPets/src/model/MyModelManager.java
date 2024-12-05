@@ -11,6 +11,7 @@ public class MyModelManager {
     private static final String BOOKING_FILE = "bookings.bin";
     private static final String CUSTOMER_FILE = "customers.bin";
     private static final String SALE_FILE = "sales.bin";
+    private static final String LAST_IDS = "last_ids.txt";
     //needs to be changed in Astah
 
     public MyModelManager()
@@ -21,36 +22,47 @@ public class MyModelManager {
         ArrayList<Customer> customers=new ArrayList<>();
         ArrayList<Sale> sales=new ArrayList<>();
 
-        ArrayList<Object> objects = loadFromFile(PET_FILE);
+
+        ArrayList<Object> objects = loadArrayListFromFile(PET_FILE);
         for (int i = 0; i < objects.size(); i++)
         {
             pets.add((Pet)objects.get(i));
         }
         VIAPets.allPets = new PetList(pets);
 
-        objects = loadFromFile(BOOKING_FILE);
+        objects = loadArrayListFromFile(BOOKING_FILE);
         for (int i = 0; i < objects.size(); i++)
         {
             bookings.add((Booking)objects.get(i));
         }
         VIAPets.allBookings = new BookingList(bookings);
 
-        objects = loadFromFile(CUSTOMER_FILE);
+        objects = loadArrayListFromFile(CUSTOMER_FILE);
         for (int i = 0; i < objects.size(); i++)
         {
             customers.add((Customer) objects.get(i));
         }
         VIAPets.allCustomers = new CustomerList(customers);
 
-        objects = loadFromFile(SALE_FILE);
+        objects = loadArrayListFromFile(SALE_FILE);
         for (int i = 0; i < objects.size(); i++)
         {
             sales.add((Sale) objects.get(i));
         }
         VIAPets.allSales = new SaleList(sales);
+        //Loading last ID from file
+        String[] lastIDs = loadLastIDs(LAST_IDS);
+        //CUSTOMER ID LINE 1 - index is 0
+        VIAPets.lastCustomerID=lastIDs[0];
+        //PET ID LINE 2 - index is 1
+        VIAPets.lastPetID=lastIDs[1];
+        //BOOKING ID LINE 3 - index is 2
+        VIAPets.lastBookingID=lastIDs[2];
+        //SALE ID LINE 4 - index is 3
+        VIAPets.lastSaleID=lastIDs[3];
     }
 
-    private ArrayList<Object> loadFromFile(String fileName) {
+    private ArrayList<Object> loadArrayListFromFile(String fileName) {
         try {
             Object[] array = MyFileHandler.readArrayFromBinaryFile(fileName);
             ArrayList<Object> arrayList = new ArrayList<>();
@@ -66,14 +78,22 @@ public class MyModelManager {
         }
         return new ArrayList<>();
     }
-
-    private void saveToFile(String fileName, Object obj) {
-        try {
-            MyFileHandler.writeToBinaryFile(fileName, obj);
-        } catch (IOException e) {
-            System.err.println("Error saving to file " + fileName + ": " + e.getMessage());
+    private String[] loadLastIDs(String fileName)
+    {
+        try
+        {
+            String[] array = MyFileHandler.readArrayFromTextFile(fileName);
+            return array;
         }
+        catch (FileNotFoundException e)
+        {
+          e.printStackTrace();
+        }
+        String[] array = {"0","0","0","0"};
+        return array;
     }
+
+
     public PetList getAllPets() {
         return VIAPets.allPets;
     }
@@ -85,6 +105,65 @@ public class MyModelManager {
     }
     public SaleList getAllSales() {
         return VIAPets.allSales;
+    }
+
+    public static int createNextCustomerID()
+    {
+        int id=Integer.parseInt(VIAPets.lastCustomerID)+1;
+        try
+        {
+            String[] newLastIDS = {id+"",VIAPets.lastPetID, VIAPets.lastBookingID, VIAPets.lastSaleID};
+            MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
+        }
+        catch (FileNotFoundException e)
+        {
+          throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public static int createNextPetID()
+    {
+        int id=Integer.parseInt(VIAPets.lastPetID)+1;
+        try
+        {
+            String[] newLastIDS = {VIAPets.lastCustomerID,id+"", VIAPets.lastBookingID, VIAPets.lastSaleID};
+            MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
+        }
+        catch (FileNotFoundException e)
+        {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+    public static int createNextBookingID()
+    {
+        int id=Integer.parseInt(VIAPets.lastBookingID)+1;
+        try
+        {
+        String[] newLastIDS = {VIAPets.lastCustomerID,VIAPets.lastPetID, id+"", VIAPets.lastSaleID};
+            MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
+        }
+        catch (FileNotFoundException e)
+        {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public static int createNextSaleID()
+    {
+        int id=Integer.parseInt(VIAPets.lastSaleID)+1;
+        try
+        {
+            String[] newLastIDS = {VIAPets.lastCustomerID,VIAPets.lastPetID,VIAPets.lastBookingID, id+""};
+            MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
+        }
+        catch (FileNotFoundException e)
+        {
+            throw new RuntimeException(e);
+        }
+        return id;
     }
 
 

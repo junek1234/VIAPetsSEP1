@@ -12,6 +12,11 @@ public class VIAPets
   public static SaleList allSales;
   public static PetList allPets;
 
+  //add this too
+  public static String lastCustomerID;
+  public static String lastPetID;
+  public static String lastBookingID;
+  public static String lastSaleID;
 
   //reserved slots should not be here i guess - change the Astah design
   //changing reserved slots to available slots
