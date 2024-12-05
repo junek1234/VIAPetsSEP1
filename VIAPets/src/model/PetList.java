@@ -9,7 +9,12 @@ public class PetList
   {
     pets = new ArrayList<>();
   }
-  public void add(Pet pet)
+  //change in Astah
+  public PetList(ArrayList<Pet> pets)
+  {
+    this.pets = pets;
+  }
+  public void addPet(Pet pet)
   {
     pets.add(pet);
   }
@@ -19,7 +24,7 @@ public class PetList
 //  {
 //
 //  }
-  public void remove(Pet pet)
+  public void removePet(Pet pet)
   {
     pets.remove(pet);
   }

@@ -72,9 +72,25 @@ public class MyFileHandler {
     }
   }
 
+  // Appends a single object to a binary file
+  public static void appendToBinaryFile(String fileName, Object obj) throws FileNotFoundException, IOException {
+    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName, true))) {
+      out.writeObject(obj);
+    }
+  }
+
   // Writes an array of objects to a binary file
   public static void writeArrayToBinaryFile(String fileName, Object[] objs) throws FileNotFoundException, IOException {
     try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
+      for (Object obj : objs) {
+        out.writeObject(obj);
+      }
+    }
+  }
+
+  // Appends an array of objects to a binary file
+  public static void appendArrayToBinaryFile(String fileName, Object[] objs) throws FileNotFoundException, IOException {
+    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName,true))) {
       for (Object obj : objs) {
         out.writeObject(obj);
       }

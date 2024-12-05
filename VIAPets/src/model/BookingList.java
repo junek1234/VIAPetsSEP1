@@ -10,6 +10,11 @@ public class BookingList
     public BookingList() {
         bookings = new ArrayList<>();
     }
+    //change in Astah
+    public BookingList(ArrayList<Booking> bookings)
+    {
+        this.bookings = bookings;
+    }
 
     // Add a new booking
     public void addBooking(Booking booking) {

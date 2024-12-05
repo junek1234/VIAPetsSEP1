@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 
 public class VIAPets
 {
-  private int maxKennelSlots;
-  private int availableSlots;  //change in astah
-  private double bookingPrice;
-  private BookingList allBookings;
-  private CustomerList allCustomers;
-  private SaleList allSales;
-  private PetList allPets;
+  public static int maxKennelSlots;
+  public static int availableSlots;  //change in astah
+  public static double bookingPrice;
+  public static BookingList allBookings;
+  public static CustomerList allCustomers;
+  public static SaleList allSales;
+  public static PetList allPets;
 
 
   //reserved slots should not be here i guess - change the Astah design
@@ -20,10 +20,6 @@ public class VIAPets
     this.maxKennelSlots = maxKennelSlots;
     this.bookingPrice = bookingPrice;
     setAvailableSlots();
-    allBookings = new BookingList();
-    allCustomers = new CustomerList();
-    allSales = new SaleList();
-    allPets = new PetList();
   }
 
   public void setMaxKennelSlots(int maxKennelSlots)

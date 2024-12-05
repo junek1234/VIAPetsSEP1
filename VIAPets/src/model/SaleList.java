@@ -11,6 +11,12 @@ public class SaleList
     saleList = new ArrayList<>();
   }
 
+  //change in Astah
+  public SaleList(ArrayList<Sale> saleList)
+  {
+    this.saleList = saleList;
+  }
+
   public Sale getSaleByID(int id)
   {
     return saleList.get(id);
@@ -29,7 +35,7 @@ public class SaleList
     saleList.add(sale);
   }
 
-  public void editSale(Sale sale, )
+  public void editSale(Sale sale)
   {
 
   }

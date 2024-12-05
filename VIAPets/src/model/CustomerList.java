@@ -9,6 +9,11 @@ public class CustomerList {
   public CustomerList() {
     customers = new ArrayList<>();
   }
+  //change in Astah
+  public CustomerList(ArrayList<Customer> customers)
+  {
+    this.customers = customers;
+  }
 
   // Add a new customer
   public void addCustomer(Customer customer) {
