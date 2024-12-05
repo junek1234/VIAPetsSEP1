@@ -55,18 +55,18 @@ public class Booking {
     this.customer.setCustomerID(newCustomerID);
   }
 
-  public void setStartDate(String newStartDate)
+  public void setStartDate(Date newStartDate)
   {
     this.dateInterval.setStartDate(newStartDate);
   }
 
-  public void setEndDate(String newEndDate)
+  public void setEndDate(Date newEndDate)
   {
     this.dateInterval.setEndDate(newEndDate);
   }
-
-  public void setStatus(String newStatus)
-  {
-    this.dateInterval.setStatus(newStatus);
-  }
+//
+//  public void setStatus(String newStatus)
+//  {
+//    this.dateInterval.setStatus(newStatus);
+//  }
 }

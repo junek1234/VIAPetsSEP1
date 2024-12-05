@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Pet
+import java.io.Serializable;
+
+public abstract class Pet implements Serializable
 {
   protected int petID;
   protected String name;

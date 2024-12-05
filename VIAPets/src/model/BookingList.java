@@ -22,14 +22,14 @@ public class BookingList
     }
 
     // Edit an existing booking
-    public void editBooking(Booking booking, int bookingID, int newPetID, int newCustomerID, String newStartDate, String newEndDate, String newStatus)
+    public void editBooking(Booking booking, int bookingID, int newPetID, int newCustomerID, Date newStartDate, Date newEndDate) //String newStatus
     {
         booking.setBookingID(bookingID);
         booking.setPetID(newPetID);
         booking.setCustomerID(newCustomerID);
         booking.setStartDate(newStartDate);
         booking.setEndDate(newEndDate);
-        booking.setStatus(newStatus);
+//        booking.setStatus(newStatus);
     }
 
     // Remove a booking by ID
