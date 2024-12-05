@@ -42,6 +42,13 @@ public class BookingList
         return null;
     }
 
+    //get bookings
+    //change in Astah
+    public ArrayList<Booking> getBookings()
+    {
+        return bookings;
+    }
+
     // to display the list of bookings
     public String toString() {
         StringBuilder sb = new StringBuilder();

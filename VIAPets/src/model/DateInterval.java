@@ -23,11 +23,11 @@ public class DateInterval
     DateInterval other = (DateInterval) obj;
     return startDate.equals(other.startDate) &&endDate.equals(other.endDate);
   }
-  public Date getstartDate()
+  public Date getStartDate()
   {
     return startDate;
   }
-  public Date getendDate()
+  public Date getEndDate()
   {
     return endDate;
   }

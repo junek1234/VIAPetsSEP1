@@ -85,6 +85,47 @@ public class Date
     Date other = (Date) obj;
     return day == other.day && month == other.month && year == other.year && hour == other.hour;
   }
+  public boolean isGreaterThan(Object obj)
+  {
+    if (obj == null)
+    {
+      return false;
+    }
+    if (obj == this)
+    {
+      return false;
+    }
+    if (obj.getClass() != this.getClass())
+    {
+      return false;
+    }
+    Date other = (Date) obj;
+    if (this.year > other.year)
+    {
+      return true;
+    }
+    else if (this.year == other.year)
+    {
+      if (this.month > other.month)
+      {
+        return true;
+      }
+      else if (this.month == other.month)
+      {
+        if (this.day > other.day)
+        {
+          return true;
+        }
+        else if (this.day == other.day)
+        {
+          return this.hour > other.hour;
+        }
+      }
+
+    }
+    return false;
+  }
+
 
   public Date copy()
   {
