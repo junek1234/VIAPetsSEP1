@@ -33,7 +33,13 @@ public class PetList
     }
     return null;
   }
-//  public void setPet() == edit ???
+  //get pets
+  //change in Astah
+
+  public ArrayList<Pet> getPets()
+  {
+    return pets;
+  }
 
   public String toString()
   {

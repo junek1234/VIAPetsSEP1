@@ -38,6 +38,13 @@ public class CustomerList {
     }
     return null;
   }
+  //get customers
+  //change in Astah
+
+  public ArrayList<Customer> getCustomers()
+  {
+    return customers;
+  }
 
   // toString method to display the list of customers
   @Override

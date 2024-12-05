@@ -11,9 +11,17 @@ public class SaleList
     saleList = new ArrayList<>();
   }
 
-  public void getSale()
+  public Sale getSaleByID(int id)
   {
-    // change void to Sale and set some kind of ID
+    return saleList.get(id);
+  }
+
+  //get sales
+  //change in Astah
+
+  public ArrayList<Sale> getSaleList()
+  {
+    return saleList;
   }
 
   public void addSale(Sale sale)
