@@ -44,4 +44,29 @@ public class Booking {
     Booking booking = (Booking) obj;
     return bookingID == booking.bookingID;
   }
+
+  public void setPetID(int newPetID)
+  {
+    this.pet.setPetID(newPetID);
+  }
+
+  public void setCustomerID(int newCustomerID)
+  {
+    this.customer.setCustomerID(newCustomerID);
+  }
+
+  public void setStartDate(String newStartDate)
+  {
+    this.dateInterval.setStartDate(newStartDate);
+  }
+
+  public void setEndDate(String newEndDate)
+  {
+    this.dateInterval.setEndDate(newEndDate);
+  }
+
+  public void setStatus(String newStatus)
+  {
+    this.dateInterval.setStatus(newStatus);
+  }
 }
