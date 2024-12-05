@@ -48,7 +48,6 @@ public class Customer {
   }
 
   // toString method
-  @Override
   public String toString() {
     return "Customer{" +
         "customerID=" + customerID +
@@ -59,7 +58,6 @@ public class Customer {
   }
 
   // equals method for comparing customers
-  @Override
   public boolean equals(Object obj) {
     if (this == obj) return true;
     if (obj == null || getClass() != obj.getClass()) return false;

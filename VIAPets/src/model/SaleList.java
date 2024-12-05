@@ -29,9 +29,9 @@ public class SaleList
     saleList.add(sale);
   }
 
-  public void editSale()
+  public void editSale(Sale sale, )
   {
-    //something here we need to discuss
+
   }
 
   public void removeSale(Sale sale)
