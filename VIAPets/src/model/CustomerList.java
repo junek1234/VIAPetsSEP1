@@ -20,14 +20,12 @@ public class CustomerList {
     customers.add(customer);
   }
 
-  // Edit an existing customer
-  public void editCustomer(Customer customer, int customerID, String newName, int newPhoneNumber, String newEmail)
-    {
-        customer.setCustomerID(customerID);
-        customer.setName(newName);
-        customer.setPhoneNumber(newPhoneNumber);
-        customer.setEmail(newEmail);
-    }
+
+  // Edit an existing customer (replacing old customer object with a new one changed in the Controller)
+  public void editCustomer(int customerID, Customer newCustomer)
+  {
+    customers.set(customerID, newCustomer);
+  }
 
   // Remove a customer by ID
   public void removeCustomer(Customer customer) {

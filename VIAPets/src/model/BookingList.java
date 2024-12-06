@@ -21,15 +21,10 @@ public class BookingList
         bookings.add(booking);
     }
 
-    // Edit an existing booking
-    public void editBooking(Booking booking, int bookingID, int newPetID, int newCustomerID, Date newStartDate, Date newEndDate) //String newStatus
+    // Edit an existing booking (replacing old booking object with a new one changed in the Controller)
+    public void editBooking(int bookingID, Booking newBooking)
     {
-        booking.setBookingID(bookingID);
-        booking.setPetID(newPetID);
-        booking.setCustomerID(newCustomerID);
-        booking.setStartDate(newStartDate);
-        booking.setEndDate(newEndDate);
-//        booking.setStatus(newStatus);
+      bookings.set(bookingID, newBooking);
     }
 
     // Remove a booking by ID

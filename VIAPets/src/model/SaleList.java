@@ -35,9 +35,10 @@ public class SaleList
     saleList.add(sale);
   }
 
-  public void editSale(Sale sale)
+  // Edit an existing Sale (replacing old Sale object with a new one changed in the Controller)
+  public void editSale(int saleID, Sale newSale)
   {
-
+    saleList.set(saleID, newSale);
   }
 
   public void removeSale(Sale sale)

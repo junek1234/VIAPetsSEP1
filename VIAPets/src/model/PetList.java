@@ -19,11 +19,11 @@ public class PetList
     pets.add(pet);
   }
 
-  //to be done
-//  public void editPet(int id, Pet newPet)
-//  {
-//
-//  }
+  // Edit an existing Pet (replacing old Pet object with a new one changed in the Controller)
+  public void editPet(int petID, Pet newPet)
+  {
+    pets.set(petID, newPet);
+  }
   public void removePet(Pet pet)
   {
     pets.remove(pet);
