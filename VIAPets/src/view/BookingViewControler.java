@@ -81,7 +81,7 @@ public class BookingViewController implements Initializable
       private void handleEditBooking(Booking booking)
       {
         //set field ids in scenebuilder...
-        booking.set("");
+
         bookingTable.refresh();
       }
 
