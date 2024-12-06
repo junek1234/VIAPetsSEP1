@@ -1,6 +1,9 @@
 package model;
 
-public class Booking {
+import java.io.Serializable;
+
+public class Booking implements Serializable
+{
   private int bookingID;
   private Pet pet;
   private Customer customer;

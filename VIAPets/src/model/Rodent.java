@@ -1,6 +1,8 @@
 package model;
 
-public class Rodent extends Pet
+import java.io.Serializable;
+
+public class Rodent extends Pet implements Serializable
 {
   private String species;
 

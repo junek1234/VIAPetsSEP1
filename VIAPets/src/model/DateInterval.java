@@ -1,6 +1,8 @@
 package model;
 
-public class DateInterval
+import java.io.Serializable;
+
+public class DateInterval implements Serializable
 {
   private Date startDate;
   private Date endDate;
