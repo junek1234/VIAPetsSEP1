@@ -74,7 +74,7 @@ public class BookingViewController implements Initializable
       private void handleAddBooking()
       {
         //Pet and customer needs to be done
-        Booking newBooking = new Booking("", "", "");
+        Booking newBooking = new Booking("", "", "", "");
         bookingList.add(newBooking);
       }
 
