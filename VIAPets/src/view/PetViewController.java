@@ -8,6 +8,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.*;
 
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup; // not needed if set in scenebuilder ig
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -15,6 +24,7 @@ import java.util.ResourceBundle;
 public class PetViewController implements Initializable {
 
   MyModelManager petManager = new MyModelManager();
+
   private ObservableList<Pet> petList = FXCollections.observableArrayList();
 
   @FXML
@@ -34,6 +44,32 @@ public class PetViewController implements Initializable {
 
   @FXML
   private TableColumn<Pet, Void> actionColumn;
+
+  //connect ids below in scenebuilder that guillermo has
+  @FXML
+  private TextField nameField;
+
+  @FXML private TextField color;
+
+  @FXML private TextField age;
+
+  @FXML private TextField gender; //isnt gender radiobutton or the checkbox you cant check both. cuz on discord screenpic is as a textfield.
+
+  @FXML private RadioButton shop;
+
+  @FXML private RadioButton kennel;
+
+  @FXML private RadioButton sold;
+
+  @FXML private RadioButton notSold;
+
+  @FXML private RadioButton notFromVIAPets;
+
+  @FXML  private TextField species;
+
+  @FXML  private TextArea comment;
+
+  private ToggleGroup location; // this not needed if the toggle is already set up in scenebuilder
 
   //if I dont put these args, error shows not rrly sure
   public void initialize(URL location, ResourceBundle resources) {
@@ -73,10 +109,31 @@ public class PetViewController implements Initializable {
 
   private void handleEditPet(Pet pet) {
 
-    String petID = petIDField.getText(); //create these ids n connect them in scenebuilder, also connect the whole controller
+    try {
+      // Load the EditPetView FXML file and controller
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/path/to/EditPetView.fxml"));
+      Parent root = loader.load();
+
+      // Get the controller of the EditPetView
+      EditPetViewController controller = loader.getController();
+
+      // Pass the selected pet to the controller
+      controller.setPet(pet);
+
+      // Create a new stage and show the edit window
+      Stage stage = new Stage();
+      stage.setScene(new Scene(root));
+      stage.setTitle("Edit Pet");
+      stage.show();
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    String petID = petManager.getPetById; // how to get pet by ID? isnt there such method in ModelManager
     String name = nameField.getText();
-    boolean isInShop = isInShopCheckBox.isSelected();
-    boolean isSold = isSoldCheckBox.isSelected();
+    boolean isInShop = isInShopCheckBox.isSelected(true);
+    String isSold = isSoldCheckBox.getText();
 
     if (petID.isEmpty() || name.isEmpty()) {
 
