@@ -21,7 +21,7 @@
         <Menu mnemonicParsing="false" text="Bookings">
                <items>
                   <MenuItem fx:id="bookingsListMenu" mnemonicParsing="false" text="View" />
-                  <MenuItem fx:id="bookingsSettingsMenu" mnemonicParsing="false" text="Settings" />
+                  <MenuItem fx:id="bookingsSettingsMenu" mnemonicParsing="false" text="Settings" onAction="#switchScene"/>
                </items></Menu>
             <Menu mnemonicParsing="false" text="Sales">
                <items>

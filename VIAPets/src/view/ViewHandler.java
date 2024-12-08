@@ -17,20 +17,21 @@ public class ViewHandler extends Application {
   @FXML
   private MenuItem customersMenuItem;
   @FXML
-  private MenuItem bookingsSettingsMenuItem;
+  private MenuItem bookingsSettingsMenu;
   @FXML
   private MenuItem bookingsListMenuItem;
   @FXML
   private MenuItem salesMenuItem;
 
-  private Stage stage;
+  private Stage stage;  // Keep a reference to the primaryStage
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    this.stage = primaryStage;
+    // Set the primary stage as the main window
+    stage = primaryStage;
     primaryStage.setTitle("FXMLTEST");
-    switchToScene("fxml/DefaultPetView.fxml");
-    primaryStage.show();
+    switchToScene("fxml/DefaultPetView.fxml");  // Set the initial scene
+    primaryStage.show();  // Make sure the primary stage is shown
   }
 
   @FXML
@@ -38,31 +39,32 @@ public class ViewHandler extends Application {
     Object source = e.getSource();
     String fxmlPath;
 
+    // Handle menu item click event to determine which scene to load
     if (source == petsMenuItem) {
       fxmlPath = "fxml/BirdPetView.fxml";
     } else if (source == customersMenuItem) {
       fxmlPath = "fxml/CustomerView.fxml";
-    } else if (source == bookingsSettingsMenuItem) {
-      fxmlPath = "fxml/BookingsSettingsView.fxml";
+    } else if (source == bookingsSettingsMenu) {
+      fxmlPath = "fxml/BookingSettingsView.fxml";
     } else if (source == bookingsListMenuItem) {
       fxmlPath = "fxml/BookingsListView.fxml";
     } else if (source == salesMenuItem) {
       fxmlPath = "fxml/SalesView.fxml";
     } else {
-      fxmlPath = "fxml/DefaultPetView.fxml"; // Default fallback
+      fxmlPath = "fxml/DefaultPetView.fxml";  // Default fallback scene
     }
 
-    switchToScene(fxmlPath);
+    switchToScene(fxmlPath);  // Switch to the selected scene
   }
 
   private void switchToScene(String fxmlPath) throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-    Scene scene = new Scene(loader.load());
-    stage.setScene(scene);// Update the stage with the new scene
-    stage.show();
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource(fxmlPath));
+    Scene scene = new Scene(loader.load());  // Load the new FXML scene
+    stage.setScene(scene);  // Set the new scene on the primary stage
   }
 
   public static void main(String[] args) {
-    launch(args);
+    Application.launch(ViewHandler.class);  // Launch the JavaFX application
   }
 }
