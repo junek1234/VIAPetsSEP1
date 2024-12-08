@@ -39,7 +39,7 @@ public class VIAPets implements Serializable
     int count=0;
     for (int i = 0; i < allBookings.getBookings().size(); i++)
     {
-      if(allBookings.getBooking(i).getDateInterval().getEndDate().isGreaterThan(getCurrentDate()))
+      if(allBookings.getBookings().get(i).getDateInterval().getEndDate().isGreaterThan(getCurrentDate()))
       {
         count++;
       }

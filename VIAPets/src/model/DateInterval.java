@@ -62,7 +62,7 @@ public class DateInterval implements Serializable
 
   public DateInterval getDateInterval()
   {
-    return this;
+    return new DateInterval(startDate,endDate);
   }
 
   public String toString()

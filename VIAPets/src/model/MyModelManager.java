@@ -202,7 +202,7 @@ public class MyModelManager implements Serializable
 
     public void deleteBooking(int bookingID) throws IOException
     {
-        VIAPets.allBookings.removeBooking(getAllBookings().getBooking(bookingID));
+        VIAPets.allBookings.removeBooking(getAllBookings().getBookingByID(bookingID));
         MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, VIAPets.allBookings.getBookings().toArray(new Booking[0]));
     }
 

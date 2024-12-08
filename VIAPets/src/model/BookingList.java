@@ -34,7 +34,7 @@ public class BookingList implements Serializable
     }
 
     // Get a booking by ID
-    public Booking getBooking(int bookingID) {
+    public Booking getBookingByID(int bookingID) {
         for (Booking booking : bookings) {
             if (booking.getBookingID() == bookingID) {
                 return booking;
