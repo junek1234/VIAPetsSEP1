@@ -4,13 +4,15 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ViewHandler extends Application {
+public class ViewHandler {
 
   @FXML
   private MenuItem petsMenuItem;
@@ -24,15 +26,8 @@ public class ViewHandler extends Application {
   private MenuItem salesMenuItem;
 
   private Stage stage;  // Keep a reference to the primaryStage
+  private Parent root;
 
-  @Override
-  public void start(Stage primaryStage) throws Exception {
-    // Set the primary stage as the main window
-    stage = primaryStage;
-    primaryStage.setTitle("FXMLTEST");
-    switchToScene("fxml/DefaultPetView.fxml");  // Set the initial scene
-    primaryStage.show();  // Make sure the primary stage is shown
-  }
 
   @FXML
   public void switchScene(ActionEvent e) throws IOException {
@@ -53,18 +48,18 @@ public class ViewHandler extends Application {
     } else {
       fxmlPath = "fxml/DefaultPetView.fxml";  // Default fallback scene
     }
-
-    switchToScene(fxmlPath);  // Switch to the selected scene
+    // Switch to the selected scene
+    root = FXMLLoader.load(getClass().getResource(fxmlPath));
+    stage = (Stage) bookingsSettingsMenu.getParentPopup().getOwnerWindow();
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
   }
 
-  private void switchToScene(String fxmlPath) throws IOException {
-    FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource(fxmlPath));
-    Scene scene = new Scene(loader.load());  // Load the new FXML scene
-    stage.setScene(scene);  // Set the new scene on the primary stage
+
+
   }
 
-  public static void main(String[] args) {
-    Application.launch(ViewHandler.class);  // Launch the JavaFX application
-  }
-}
+
+
+
