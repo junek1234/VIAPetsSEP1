@@ -1,4 +1,4 @@
-/*
+
 package view;
 
 import javafx.fxml.FXML;
@@ -7,7 +7,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import model.Pet;
+import model.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,31 +38,40 @@ public class EditPetViewController implements Initializable
     soldRadioButton.setToggleGroup(statusToggleGroup);
     notSoldRadioButton.setToggleGroup(statusToggleGroup);
     notFromVIAPetsRadioButton.setToggleGroup(statusToggleGroup);
-
   }
 
   public void setPet(Pet pet) {
     this.pet = pet;
 
-    //user clicks edit then its already filled
     nameField.setText(pet.getName());
     ageField.setText(String.valueOf(pet.getAge()));
-    speciesField.setText(pet.getClass());
     colorField.setText(pet.getColor());
-    genderField.setText(pet.getGender());
+    genderField.setText(String.valueOf(pet.getGender()));
     commentArea.setText(pet.getComment());
 
-    if (pet.getLocation().equals("Shop")) {
+    if ("Shop".equals(pet.getLocation())) {
       shopRadioButton.setSelected(true);
-    } else if (pet.getLocation().equals("Kennel")) { //change isInTheShop for getLocation and set it as String
+    } else if ("Kennel".equals(pet.getLocation())) {
       kennelRadioButton.setSelected(true);
     }
 
-    if (pet.isSold()) {
+    if ("Sold".equals(pet.getStatus())) {
       soldRadioButton.setSelected(true);
-    } else {
+    } else if ("Not sold".equals(pet.getStatus())) {
       notSoldRadioButton.setSelected(true);
+    } else if ("Not from VIAPets".equals(pet.getStatus())) {
+      notFromVIAPetsRadioButton.setSelected(true);
+
+    if (pet instanceof Dog) {
+      speciesField.setText(Dog.getSpecies());
+
+    } else if (pet instanceof Cat) {
+      speciesField.setText(Cat.getSpecies());
+
+    } else if (pet instanceof Bird) {
+
     }
+  }
   }
 
   public void handleSaveChanges() {
@@ -77,4 +86,3 @@ public class EditPetViewController implements Initializable
 
   }
 }
-*/
