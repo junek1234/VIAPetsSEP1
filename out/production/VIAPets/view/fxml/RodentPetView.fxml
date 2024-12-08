@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox id="searchBar" prefHeight="425.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
   <children>
       <MenuBar>
          <menus>
@@ -48,7 +48,7 @@
             <Button mnemonicParsing="false" text="Edit" />
          </children>
       </HBox>
-      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+      <HBox maxHeight="-Infinity" prefHeight="10.0" prefWidth="640.0">
          <children>
             <Label prefHeight="34.0" prefWidth="60.0" text="Age">
                <HBox.margin>
@@ -67,6 +67,24 @@
          </children>
          <VBox.margin>
             <Insets top="25.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="66.0" text="Location">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Shop" />
+            <RadioButton mnemonicParsing="false" text="Kennel">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </RadioButton>
+         </children>
+         <VBox.margin>
+            <Insets top="35.0" />
          </VBox.margin>
       </HBox>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
@@ -92,76 +110,36 @@
             <Insets />
          </opaqueInsets>
          <VBox.margin>
-            <Insets top="30.0" />
+            <Insets top="35.0" />
          </VBox.margin>
       </HBox>
-      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
-         <children>
-            <Label prefHeight="34.0" prefWidth="60.0" text="Location">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </Label>
-            <RadioButton mnemonicParsing="false" text="Shop" />
-            <RadioButton mnemonicParsing="false" text="Kennel">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </RadioButton>
-            <Label prefHeight="26.0" prefWidth="80.0" text="Predator">
-               <HBox.margin>
-                  <Insets left="95.0" />
-               </HBox.margin>
-            </Label>
-            <TextField prefHeight="0.0" prefWidth="118.0" />
-            <Button mnemonicParsing="false" text="Edit" />
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <VBox.margin>
-            <Insets top="30.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
-         <children>
-            <Label prefHeight="34.0" prefWidth="60.0" text="Salt water">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </Label>
-            <TextField prefHeight="0.0" prefWidth="118.0" />
-            <Button mnemonicParsing="false" text="Edit" />
-            <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Comment" textAlignment="CENTER">
-               <HBox.margin>
-                  <Insets left="105.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-         <VBox.margin>
-            <Insets top="30.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox maxHeight="-Infinity" prefHeight="88.0" prefWidth="640.0">
+      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="118.0" prefWidth="640.0">
          <children>
             <Label prefHeight="34.0" prefWidth="60.0" text="Species">
                <HBox.margin>
-                  <Insets left="50.0" top="20.0" />
+                  <Insets bottom="40.0" left="50.0" />
                </HBox.margin>
             </Label>
             <TextField prefHeight="0.0" prefWidth="118.0">
                <HBox.margin>
-                  <Insets top="20.0" />
-               </HBox.margin></TextField>
+                  <Insets bottom="40.0" />
+               </HBox.margin>
+            </TextField>
             <Button mnemonicParsing="false" text="Edit">
                <HBox.margin>
-                  <Insets top="20.0" />
-               </HBox.margin></Button>
-            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="329.0">
+                  <Insets bottom="40.0" />
+               </HBox.margin>
+            </Button>
+            <VBox alignment="CENTER" prefHeight="118.0" prefWidth="253.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="63.0" prefWidth="273.0">
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="80.0" text="Comment" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets right="35.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="104.0" prefWidth="395.0">
                      <children>
-                        <TextArea prefHeight="78.0" prefWidth="158.0">
+                        <TextArea prefHeight="39.0" prefWidth="157.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -174,15 +152,18 @@
                      </children>
                   </HBox>
                </children>
+               <HBox.margin>
+                  <Insets left="80.0" />
+               </HBox.margin>
             </VBox>
          </children>
          <VBox.margin>
-            <Insets />
+            <Insets top="25.0" />
          </VBox.margin>
       </HBox>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Confirm">
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="80.0" text="Confirm" textAlignment="CENTER">
          <VBox.margin>
-            <Insets bottom="10.0" left="275.0" top="20.0" />
+            <Insets left="280.0" top="15.0" />
          </VBox.margin>
       </Button>
   </children>
