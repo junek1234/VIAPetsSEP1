@@ -7,9 +7,13 @@
 //import javafx.scene.control.*;
 //import javafx.scene.control.cell.PropertyValueFactory;
 //
+//import java.io.IOException;
 //import java.net.URL;
 //import java.util.ResourceBundle;
 //import model.Booking;
+//import model.Customer;
+//import model.MyModelManager;
+//import model.Pet;
 //
 //public class BookingViewController implements Initializable
 //{
@@ -35,6 +39,7 @@
 //
 //  @FXML
 //  private TableColumn<Booking, Void> actionColumn;
+//
 //
 //
 //  public void initialize(URL location, ResourceBundle resources) {
@@ -71,10 +76,20 @@
 //    });
 //  }
 //
-//      private void handleAddBooking()
+//      private void handleAddBooking() throws IOException
 //      {
 //        //Pet and customer needs to be done
-//        Booking newBooking = new Booking("", "", "", "");
+//
+//        MyModelManager modelManager = new MyModelManager();
+////        to be finished
+//        Pet pet = modelManager.getAllPets().getPetByID(???);
+//        Customer customer = modelManager.getAllCustomers().getCustomer(???);
+//
+//
+//        int newBookingID = MyModelManager.createNextBookingID();
+//        Booking newBooking = new Booking(newBookingID,pet,customer,dateinterval);
+//        modelManager.addBooking(newBooking);
+//
 //        bookingList.add(newBooking);
 //      }
 //
