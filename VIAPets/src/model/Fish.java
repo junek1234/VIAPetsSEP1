@@ -9,10 +9,10 @@ public class Fish extends Pet implements Serializable
   private boolean predator;
 
   public Fish(int petID, String name, String color, int age, char gender,
-      boolean isInTheShop, String isSold, boolean saltwater, String species,
+      String location, String status, boolean saltwater, String species,
       boolean predator)
   {
-    super(petID, name, color, age, gender, isInTheShop, isSold);
+    super(petID, name, color, age, gender, location, status);
     this.saltwater = saltwater;
     this.species = species;
     this.predator = predator;
@@ -58,6 +58,11 @@ public class Fish extends Pet implements Serializable
     return super.name;
   }
 
+  public String getColor()
+  {
+    return super.color;
+  }
+
   public int getAge()
   {
     return super.age;
@@ -73,14 +78,14 @@ public class Fish extends Pet implements Serializable
     return super.comment;
   }
 
-  public boolean getIsInTheShop()
+  public String getLocation()
   {
-    return super.isInTheShop;
+    return super.location;
   }
 
-  public String getIsSold()
+  public String getStatus()
   {
-    return super.isSold;
+    return super.status;
   }
 
   public void setPetID(int petID)
@@ -108,14 +113,14 @@ public class Fish extends Pet implements Serializable
     super.comment=comment;
   }
 
-  public void setIsInTheShop(boolean isInTheShop)
+  public void setLocation(String location)
   {
-    super.isInTheShop=isInTheShop;
+    super.location=location;
   }
 
-  public void setIsSold(String isSold)
+  public void setStatus(String status)
   {
-    super.isSold=isSold;
+    super.status=status;
   }
 
   public boolean equals(Object obj)

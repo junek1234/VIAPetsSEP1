@@ -3,7 +3,7 @@ package utils;
 import java.io.*;
 import java.util.ArrayList;
 
-public class MyFileHandler{
+public class MyFileHandler {
 
   // Writes a single string to a text file
   public static void writeToTextFile(String fileName, String str) throws FileNotFoundException {
@@ -72,7 +72,12 @@ public class MyFileHandler{
     }
   }
 
-
+  // Appends a single object to a binary file
+  public static void appendToBinaryFile(String fileName, Object obj) throws FileNotFoundException, IOException {
+    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName, true))) {
+      out.writeObject(obj);
+    }
+  }
 
   // Writes an array of objects to a binary file
   public static void writeArrayToBinaryFile(String fileName, Object[] objs) throws FileNotFoundException, IOException {
@@ -82,7 +87,15 @@ public class MyFileHandler{
       }
     }
   }
-  //use writers instead of appends (binary files) to avoid errors
+
+  // Appends an array of objects to a binary file
+  public static void appendArrayToBinaryFile(String fileName, Object[] objs) throws FileNotFoundException, IOException {
+    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName,true))) {
+      for (Object obj : objs) {
+        out.writeObject(obj);
+      }
+    }
+  }
 
   // Reads a single object from a binary file
   public static Object readFromBinaryFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -94,9 +107,7 @@ public class MyFileHandler{
   // Reads an array of objects from a binary file
   public static Object[] readArrayFromBinaryFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
     ArrayList<Object> objects = new ArrayList<>();
-    try  {
-      FileInputStream FileIn=  new FileInputStream(fileName);
-      ObjectInputStream in = new ObjectInputStream(FileIn);
+    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))) {
       while (true) {
         try {
           objects.add(in.readObject());
@@ -105,10 +116,6 @@ public class MyFileHandler{
         }
       }
     }
-    catch (FileNotFoundException e)
-    {
-      e.printStackTrace();
-    }
-    return objects.toArray();
+    return objects.toArray(new Object[0]);
   }
 }

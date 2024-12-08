@@ -1,9 +1,8 @@
 package model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class VIAPets implements Serializable
+public class VIAPets
 {
   public static int maxKennelSlots;
   public static int availableSlots;  //change in astah
@@ -88,7 +87,7 @@ public class VIAPets implements Serializable
     return allSales;
   }
 
-  public PetList getAllPets2()
+  public PetList getAllPets()
   {
     return allPets;
   }

@@ -4,13 +4,14 @@ import java.io.Serializable;
 
 public class Cat extends Pet implements Serializable
 {
+  private String animal;
   private String breed;
   private String breederName;
 
   public Cat(int petID, String name, String color, int age, char gender,
-      boolean isInTheShop, String isSold, String breed, String breederName)
+      String location, String status, String breed, String breederName)
   {
-    super(petID, name, color, age, gender, isInTheShop, isSold);
+    super(petID, name, color, age, gender, location, status);
     this.breed = breed;
     this.breederName = breederName;
   }
@@ -45,6 +46,11 @@ public class Cat extends Pet implements Serializable
     return super.name;
   }
 
+  public String getColor()
+  {
+    return super.color;
+  }
+
   public int getAge()
   {
     return super.age;
@@ -60,14 +66,14 @@ public class Cat extends Pet implements Serializable
     return super.comment;
   }
 
-  public boolean getIsInTheShop()
+  public String getLocation()
   {
-    return super.isInTheShop;
+    return super.location;
   }
 
-  public String getIsSold()
+  public String getStatus()
   {
-    return super.isSold;
+    return super.status;
   }
 
   public void setPetID(int petID)
@@ -95,14 +101,11 @@ public class Cat extends Pet implements Serializable
     super.comment=comment;
   }
 
-  public void setIsInTheShop(boolean isInTheShop)
-  {
-    super.isInTheShop=isInTheShop;
-  }
+  public void setLocation(String location) {super.location=location;}
 
-  public void setIsSold(String isSold)
+  public void setStatus(String status)
   {
-    super.isSold=isSold;
+    super.status=status;
   }
 
   public boolean equals(Object obj)
@@ -113,7 +116,6 @@ public class Cat extends Pet implements Serializable
     }
     Cat cat = (Cat) obj;
     return super.equals(cat) && cat.breed.equals(breed) && cat.breederName.equals(breederName);
-
   }
 
   public String toString()

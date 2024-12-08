@@ -1,9 +1,8 @@
 package model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BookingList implements Serializable
+public class BookingList
 {
     private ArrayList<Booking> bookings;
 
