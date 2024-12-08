@@ -3,9 +3,11 @@ package model;
 import utils.MyFileHandler;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MyModelManager {
+public class MyModelManager implements Serializable
+{
     //needs to be changed in Astah
     private static final String PET_FILE = "pets.bin";
     private static final String BOOKING_FILE = "bookings.bin";
@@ -29,6 +31,7 @@ public class MyModelManager {
             pets.add((Pet)objects.get(i));
         }
         VIAPets.allPets = new PetList(pets);
+        System.out.println();
 
         objects = loadArrayListFromFile(BOOKING_FILE);
         for (int i = 0; i < objects.size(); i++)
@@ -113,6 +116,7 @@ public class MyModelManager {
         try
         {
             String[] newLastIDS = {id+"",VIAPets.lastPetID, VIAPets.lastBookingID, VIAPets.lastSaleID};
+            VIAPets.lastCustomerID=id+"";
             MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
         }
         catch (FileNotFoundException e)
@@ -128,6 +132,7 @@ public class MyModelManager {
         try
         {
             String[] newLastIDS = {VIAPets.lastCustomerID,id+"", VIAPets.lastBookingID, VIAPets.lastSaleID};
+            VIAPets.lastPetID=id+"";
             MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
         }
         catch (FileNotFoundException e)
@@ -142,6 +147,7 @@ public class MyModelManager {
         try
         {
         String[] newLastIDS = {VIAPets.lastCustomerID,VIAPets.lastPetID, id+"", VIAPets.lastSaleID};
+            VIAPets.lastBookingID=id+"";
             MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
         }
         catch (FileNotFoundException e)
@@ -157,6 +163,7 @@ public class MyModelManager {
         try
         {
             String[] newLastIDS = {VIAPets.lastCustomerID,VIAPets.lastPetID,VIAPets.lastBookingID, id+""};
+            VIAPets.lastSaleID=id+"";
             MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
         }
         catch (FileNotFoundException e)
@@ -170,7 +177,8 @@ public class MyModelManager {
     public void addPet(Pet pet) throws IOException
     {
         VIAPets.allPets.addPet(pet);
-        MyFileHandler.appendToBinaryFile(PET_FILE, pet);
+
+        MyFileHandler.writeArrayToBinaryFile(PET_FILE, VIAPets.allPets.getPets().toArray(new Pet[0]));
     }
 
     public void deletePet(int petID) throws IOException
@@ -179,16 +187,17 @@ public class MyModelManager {
         MyFileHandler.writeArrayToBinaryFile(PET_FILE, VIAPets.allPets.getPets().toArray(new Pet[0]));
     }
 
-    public void editPet(int petID, Pet newPet)
+    public void editPet(int petID, Pet newPet) throws IOException
     {
         VIAPets.allPets.editPet(petID, newPet);
+        MyFileHandler.writeArrayToBinaryFile(PET_FILE, VIAPets.allPets.getPets().toArray(new Pet[0]));
     }
 
 
     public void addBooking(Booking booking) throws IOException
     {
         VIAPets.allBookings.addBooking(booking);
-        MyFileHandler.appendToBinaryFile(BOOKING_FILE, booking);
+        MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, VIAPets.allBookings.getBookings().toArray(new Booking[0]));
     }
 
     public void deleteBooking(int bookingID) throws IOException
@@ -198,14 +207,16 @@ public class MyModelManager {
     }
 
     public void editBooking(int bookingID, Booking newBooking)
+        throws IOException
     {
         VIAPets.allBookings.editBooking(bookingID, newBooking);
+        MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, VIAPets.allBookings.getBookings().toArray(new Booking[0]));
     }
 
     public void addCustomer(Customer customer) throws IOException
     {
         VIAPets.allCustomers.addCustomer(customer);
-        MyFileHandler.appendToBinaryFile(CUSTOMER_FILE, customer);
+        MyFileHandler.writeArrayToBinaryFile(CUSTOMER_FILE, VIAPets.allCustomers.getCustomers().toArray(new Customer[0]));
     }
 
     public void deleteCustomer(int customerID) throws IOException
@@ -215,15 +226,19 @@ public class MyModelManager {
     }
 
     public void editCustomer(int customerID, Customer newCustomer)
+        throws IOException
     {
         VIAPets.allCustomers.editCustomer(customerID, newCustomer);
+        MyFileHandler.writeArrayToBinaryFile(CUSTOMER_FILE, VIAPets.allCustomers.getCustomers().toArray(new Customer[0]));
+
+
     }
 
 
     public void addSale(Sale sale) throws IOException
     {
         VIAPets.allSales.addSale(sale);
-        MyFileHandler.appendToBinaryFile(SALE_FILE, sale);
+        MyFileHandler.writeArrayToBinaryFile(SALE_FILE, VIAPets.allSales.getSaleList().toArray(new Sale[0]));
     }
 
     public void deleteSale(int saleID) throws IOException
@@ -232,9 +247,11 @@ public class MyModelManager {
         MyFileHandler.writeArrayToBinaryFile(SALE_FILE, VIAPets.allSales.getSaleList().toArray(new Sale[0]));
     }
 
-    public void editSale(int saleID, Sale newSale)
+    public void editSale(int saleID, Sale newSale) throws IOException
     {
         VIAPets.allSales.editSale(saleID, newSale);
+        MyFileHandler.writeArrayToBinaryFile(SALE_FILE, VIAPets.allSales.getSaleList().toArray(new Sale[0]));
+
     }
 
 

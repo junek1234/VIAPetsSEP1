@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PetList
+public class PetList implements Serializable
 {
   private ArrayList<Pet> pets;
   public PetList()

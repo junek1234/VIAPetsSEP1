@@ -1,8 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CustomerList {
+public class CustomerList implements Serializable
+{
   private ArrayList<Customer> customers;
 
   // Constructor
