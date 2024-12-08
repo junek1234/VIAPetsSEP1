@@ -93,7 +93,6 @@ public class MyModelManager {
         return array;
     }
 
-
     public PetList getAllPets() {
         return VIAPets.allPets;
     }
@@ -193,7 +192,7 @@ public class MyModelManager {
 
     public void deleteBooking(int bookingID) throws IOException
     {
-        VIAPets.allBookings.removeBooking(getAllBookings().getBooking(bookingID));
+        VIAPets.allBookings.removeBooking(getAllBookings().getBookingByID(bookingID));
         MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, VIAPets.allBookings.getBookings().toArray(new Booking[0]));
     }
 
