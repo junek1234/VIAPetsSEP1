@@ -1,4 +1,4 @@
-package view.fxml;
+package view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ public class ViewHandler extends Application
   {
     window.setTitle("FXMLTEST");
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("Example.fxml"));
+    loader.setLocation(getClass().getResource("fxml/DefaultPetView.fxml"));
     Scene scene = new Scene(loader.load());
     window.setScene(scene);
     window.show();

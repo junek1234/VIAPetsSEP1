@@ -7,9 +7,9 @@ public class Rodent extends Pet implements Serializable
   private String species;
 
   public Rodent(int petID, String name, String color, int age, char gender,
-      boolean isInTheShop, String isSold, String species)
+      String location, String status, String species)
   {
-    super(petID, name, color, age, gender, isInTheShop, isSold);
+    super(petID, name, color, age, gender, location, status);
     this.species = species;
   }
 
