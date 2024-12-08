@@ -107,6 +107,7 @@ public class MyModelManager {
         return VIAPets.allSales;
     }
 
+    //Try to make a method to
     public static int createNextCustomerID()
     {
         int id=Integer.parseInt(VIAPets.lastCustomerID)+1;
@@ -236,11 +237,4 @@ public class MyModelManager {
     {
         VIAPets.allSales.editSale(saleID, newSale);
     }
-
-
-
-
 }
-
-    
-
