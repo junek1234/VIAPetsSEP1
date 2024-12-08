@@ -60,6 +60,7 @@ public class ViewHandler extends Application {
     Scene scene = new Scene(loader.load());
     stage.setScene(scene);// Update the stage with the new scene
     stage.show();
+    
   }
 
   public static void main(String[] args) {
