@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -9,6 +42,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -16,15 +50,27 @@
   <children>
       <MenuBar>
          <menus>
-            <Menu fx:id="petsMenu" mnemonicParsing="false" text="Pets" />
-            <Menu fx:id="customersMenu" mnemonicParsing="false" text="Customers" />
+            <Menu mnemonicParsing="false" text="Pets">
+               <items>
+                  <MenuItem fx:id="petsMenu" mnemonicParsing="false" text="Pet" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Customers">
+               <items>
+                  <MenuItem fx:id="customersMenu" mnemonicParsing="false" text="Customers" />
+               </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Bookings">
                <items>
                   <MenuItem fx:id="bookingsListMenu" mnemonicParsing="false" text="View" />
                   <MenuItem fx:id="bookingsSettingsMenu" mnemonicParsing="false" text="Settings" />
                </items>
             </Menu>
-            <Menu fx:id="salesMenu" mnemonicParsing="false" text="Sales" />
+            <Menu mnemonicParsing="false" text="Sales">
+               <items>
+                  <MenuItem fx:id="salesMenu" mnemonicParsing="false" text="Sales" />
+               </items>
+            </Menu>
          </menus>
       </MenuBar>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
@@ -62,37 +108,19 @@
                   <Insets left="75.0" />
                </HBox.margin>
             </Label>
-            <TextField prefHeight="0.0" prefWidth="118.0" />
-            <Button mnemonicParsing="false" text="Edit" />
+            <ToggleButtonGroup selectionType="SINGLE">
+               <toggles>
+                  <ToggleButton text="Masculine" />
+                  <ToggleButton selected="true" text="Femenine" />
+               </toggles>
+            </ToggleButtonGroup>
+            <Button mnemonicParsing="false" text="Edit">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></Button>
          </children>
          <VBox.margin>
             <Insets top="25.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
-         <children>
-            <Label prefHeight="18.0" prefWidth="65.0" text="Status">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </Label>
-            <RadioButton mnemonicParsing="false" text="Sold" />
-            <RadioButton mnemonicParsing="false" text="Not sold">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Not from VIAPets">
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </RadioButton>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <VBox.margin>
-            <Insets top="30.0" />
          </VBox.margin>
       </HBox>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
@@ -104,6 +132,29 @@
             </Label>
             <RadioButton mnemonicParsing="false" text="Shop" />
             <RadioButton mnemonicParsing="false" text="Kennel">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="No longer in the store">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </RadioButton>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="60.0" text="Sold">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Yes" />
+            <RadioButton mnemonicParsing="false" text="No">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
