@@ -18,6 +18,9 @@ public class VIAPets
   public static String lastBookingID;
   public static String lastSaleID;
 
+  //and this
+  public static String[] xmlLines;
+
   //reserved slots should not be here i guess - change the Astah design
   //changing reserved slots to available slots
   public VIAPets(int maxKennelSlots, double bookingPrice)
