@@ -19,17 +19,25 @@ public class EditPetViewController implements Initializable
   @FXML private TextField speciesField;
   @FXML private TextField colorField;
   @FXML private TextField genderField;
-  @FXML private ToggleGroup location;
+  @FXML private ToggleGroup locationToggleGroup;
   @FXML private RadioButton shopRadioButton;
   @FXML private RadioButton kennelRadioButton;
+  @FXML private ToggleGroup statusToggleGroup;
   @FXML private RadioButton soldRadioButton;
   @FXML private RadioButton notSoldRadioButton;
+  @FXML private RadioButton notFromVIAPetsRadioButton;
   @FXML private TextArea commentArea;
 
   private Pet pet;
 
   public void initialize(URL location, ResourceBundle resources) {
-    // ???
+    shopRadioButton.setToggleGroup(locationToggleGroup);
+    kennelRadioButton.setToggleGroup(locationToggleGroup);
+
+    soldRadioButton.setToggleGroup(statusToggleGroup);
+    notSoldRadioButton.setToggleGroup(statusToggleGroup);
+    notFromVIAPetsRadioButton.setToggleGroup(statusToggleGroup);
+
   }
 
   public void setPet(Pet pet) {
@@ -38,7 +46,7 @@ public class EditPetViewController implements Initializable
     //user clicks edit then its already filled
     nameField.setText(pet.getName());
     ageField.setText(String.valueOf(pet.getAge()));
-    speciesField.setText(pet.getSpecies()); //need to discuss, is species the animal or the species of the animal either way there should be animal in Pet constructor. discuss different animal has different windows
+    speciesField.setText(pet.getClass()); //need to discuss, is species the animal or the species of the animal either way there should be animal in Pet constructor. discuss different animal has different windows
     colorField.setText(pet.getColor());
     genderField.setText(pet.getGender());
     commentArea.setText(pet.getComment());

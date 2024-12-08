@@ -9,9 +9,9 @@ public class Bird extends Pet implements Serializable
  
 
   public Bird(int petID, String name, String color, int age, char gender,
-      boolean isInTheShop, String isSold, String species, String preferredFood)
+      String location, String status, String species, String preferredFood)
   {
-    super(petID, name, color, age, gender, isInTheShop, isSold);
+    super(petID, name, color, age, gender, location, status);
     this.species = species;
     this.preferredFood = preferredFood;
   }
@@ -60,14 +60,14 @@ public class Bird extends Pet implements Serializable
     return super.comment;
   }
 
-  public boolean getIsInTheShop()
+  public boolean getLocation()
   {
-    return super.isInTheShop;
+    return super.location;
   }
 
-  public String getIsSold()
+  public String getStaus()
   {
-    return super.isSold;
+    return super.status;
   }
 
   public void setPetID(int petID)
@@ -95,14 +95,14 @@ public class Bird extends Pet implements Serializable
     super.comment=comment;
   }
 
-  public void setIsInTheShop(boolean isInTheShop)
+  public void setLocation(String location)
   {
-    super.isInTheShop=isInTheShop;
+    super.location=location;
   }
 
-  public void setIsSold(String isSold)
+  public void setStatus(String status)
   {
-    super.isSold=isSold;
+    super.status=status;
   }
 
   public boolean equals(Object obj)

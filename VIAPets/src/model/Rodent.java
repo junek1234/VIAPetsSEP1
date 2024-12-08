@@ -47,14 +47,14 @@ public class Rodent extends Pet implements Serializable
     return super.comment;
   }
 
-  public boolean getIsInTheShop()
+  public boolean getLocation()
   {
-    return super.isInTheShop;
+    return super.location;
   }
 
-  public String getIsSold()
+  public String getStatus()
   {
-    return super.isSold;
+    return super.status;
   }
 
   public void setPetID(int petID)
@@ -82,14 +82,14 @@ public class Rodent extends Pet implements Serializable
     super.comment=comment;
   }
 
-  public void setIsInTheShop(boolean isInTheShop)
+  public void setLocation(String location)
   {
-    super.isInTheShop=isInTheShop;
+    super.location=location;
   }
 
-  public void setIsSold(String isSold)
+  public void setStatus(String status)
   {
-    super.isSold=isSold;
+    super.status=status;
   }
 
   public boolean equals(Object obj)
@@ -100,7 +100,6 @@ public class Rodent extends Pet implements Serializable
     }
     Rodent rodent = (Rodent) obj;
     return super.equals(rodent) && rodent.species.equals(species);
-
   }
 
   public String toString()
