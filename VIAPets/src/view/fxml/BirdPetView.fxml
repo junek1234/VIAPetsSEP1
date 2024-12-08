@@ -81,11 +81,6 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="No longer in the store">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </RadioButton>
          </children>
          <VBox.margin>
             <Insets top="30.0" />
@@ -93,16 +88,21 @@
       </HBox>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
          <children>
-            <Label prefHeight="34.0" prefWidth="60.0" text="Sold">
+            <Label prefHeight="18.0" prefWidth="65.0" text="Status">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Yes" />
-            <RadioButton mnemonicParsing="false" text="No">
+            <RadioButton mnemonicParsing="false" text="Sold" />
+            <RadioButton mnemonicParsing="false" text="Not sold">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Not from VIAPets">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
             </RadioButton>
          </children>
          <opaqueInsets>
