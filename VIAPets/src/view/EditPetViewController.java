@@ -46,7 +46,7 @@ public class EditPetViewController implements Initializable
     //user clicks edit then its already filled
     nameField.setText(pet.getName());
     ageField.setText(String.valueOf(pet.getAge()));
-    speciesField.setText(pet.getClass()); //need to discuss, is species the animal or the species of the animal either way there should be animal in Pet constructor. discuss different animal has different windows
+    speciesField.setText(pet.getClass());
     colorField.setText(pet.getColor());
     genderField.setText(pet.getGender());
     commentArea.setText(pet.getComment());

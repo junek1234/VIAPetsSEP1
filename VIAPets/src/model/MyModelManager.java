@@ -93,7 +93,6 @@ public class MyModelManager {
         return array;
     }
 
-
     public PetList getAllPets() {
         return VIAPets.allPets;
     }
