@@ -1,6 +1,8 @@
 package model;
 
-public class PetsTest
+import java.io.Serializable;
+
+public class PetsTest implements Serializable
 {
   public static void main(String[] args)
   {
