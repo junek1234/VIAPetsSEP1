@@ -47,7 +47,7 @@ public class Rodent extends Pet implements Serializable
     return super.comment;
   }
 
-  public boolean getLocation()
+  public String getLocation()
   {
     return super.location;
   }
@@ -65,6 +65,11 @@ public class Rodent extends Pet implements Serializable
   public void setName(String name)
   {
     super.name=name;
+  }
+
+  public String getColor()
+  {
+    return super.color;
   }
 
   public void setAge(int age)

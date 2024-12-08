@@ -30,7 +30,7 @@ public abstract class Pet implements Serializable
   public abstract int getAge();
   public abstract char getGender();
   public abstract String getComment();
-  public abstract boolean getLocation();
+  public abstract String getLocation();
   public abstract String getStatus();
 
   public abstract void setPetID(int petID);
@@ -38,7 +38,7 @@ public abstract class Pet implements Serializable
   public abstract void setAge(int age);
   public abstract void setGender(char gender);
   public abstract void setComment(String comment);
-  public abstract void setLocation(boolean isInTheShop);
+  public abstract void setLocation(String location);
   public abstract void setStatus(String status);
 
   public boolean equals(Object obj)

@@ -6,7 +6,6 @@ public class Bird extends Pet implements Serializable
 {
  private String species;
  private String preferredFood;
- 
 
   public Bird(int petID, String name, String color, int age, char gender,
       String location, String status, String species, String preferredFood)
@@ -45,6 +44,11 @@ public class Bird extends Pet implements Serializable
     return super.name;
   }
 
+  public String getColor()
+  {
+    return super.color;
+  }
+
   public int getAge()
   {
     return super.age;
@@ -60,7 +64,7 @@ public class Bird extends Pet implements Serializable
     return super.comment;
   }
 
-  public boolean getLocation()
+  public String getLocation()
   {
     return super.location;
   }

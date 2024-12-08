@@ -32,6 +32,11 @@ public class Various extends Pet implements Serializable
     return super.name;
   }
 
+  public String getColor()
+  {
+    return super.color;
+  }
+
   public int getAge()
   {
     return super.age;
@@ -47,12 +52,12 @@ public class Various extends Pet implements Serializable
     return super.comment;
   }
 
-  public boolean getLocation()
+  public String getLocation()
   {
     return super.location;
   }
 
-  public String getIsSold()
+  public String getStatus()
   {
     return super.status;
   }
