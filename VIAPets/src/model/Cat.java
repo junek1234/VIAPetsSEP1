@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Cat extends Pet implements Serializable
 {
-  private String animal;
   private String breed;
   private String breederName;
 

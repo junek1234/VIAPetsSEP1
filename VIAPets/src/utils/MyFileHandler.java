@@ -3,7 +3,7 @@ package utils;
 import java.io.*;
 import java.util.ArrayList;
 
-public class MyFileHandler {
+public class MyFileHandler{
 
   // Writes a single string to a text file
   public static void writeToTextFile(String fileName, String str) throws FileNotFoundException {
@@ -72,12 +72,6 @@ public class MyFileHandler {
     }
   }
 
-  // Appends a single object to a binary file
-  public static void appendToBinaryFile(String fileName, Object obj) throws FileNotFoundException, IOException {
-    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName, true))) {
-      out.writeObject(obj);
-    }
-  }
 
   // Writes an array of objects to a binary file
   public static void writeArrayToBinaryFile(String fileName, Object[] objs) throws FileNotFoundException, IOException {
@@ -88,14 +82,7 @@ public class MyFileHandler {
     }
   }
 
-  // Appends an array of objects to a binary file
-  public static void appendArrayToBinaryFile(String fileName, Object[] objs) throws FileNotFoundException, IOException {
-    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName,true))) {
-      for (Object obj : objs) {
-        out.writeObject(obj);
-      }
-    }
-  }
+
 
   // Reads a single object from a binary file
   public static Object readFromBinaryFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
