@@ -12,14 +12,16 @@ import model.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditPetViewController implements Initializable
+public class EditCatViewController implements Initializable
 {
-
   @FXML private TextField nameField;
   @FXML private TextField ageField;
-  @FXML private TextField speciesField;
+  @FXML private TextField breedField;
+  @FXML private TextField breederNameField;
   @FXML private TextField colorField;
-  @FXML private TextField genderField;
+  @FXML private ToggleGroup genderToggleGroup;
+  @FXML private RadioButton masculineRadioButton;
+  @FXML private RadioButton feminineRadioButton;
   @FXML private ToggleGroup locationToggleGroup;
   @FXML private RadioButton shopRadioButton;
   @FXML private RadioButton kennelRadioButton;
@@ -32,6 +34,9 @@ public class EditPetViewController implements Initializable
   private Pet pet;
 
   public void initialize(URL location, ResourceBundle resources) {
+    feminineRadioButton.setToggleGroup(genderToggleGroup);
+    masculineRadioButton.setToggleGroup(genderToggleGroup);
+
     shopRadioButton.setToggleGroup(locationToggleGroup);
     kennelRadioButton.setToggleGroup(locationToggleGroup);
 
@@ -46,8 +51,13 @@ public class EditPetViewController implements Initializable
     nameField.setText(pet.getName());
     ageField.setText(String.valueOf(pet.getAge()));
     colorField.setText(pet.getColor());
-    genderField.setText(String.valueOf(pet.getGender()));
     commentArea.setText(pet.getComment());
+
+    if ("Feminine".equals(pet.getGender())) {
+      feminineRadioButton.setSelected(true);
+    } else if ("Masculine".equals(pet.getGender())) {
+      masculineRadioButton.setSelected(true);
+    }
 
     if ("Shop".equals(pet.getLocation())) {
       shopRadioButton.setSelected(true);
@@ -60,29 +70,23 @@ public class EditPetViewController implements Initializable
     } else if ("Not sold".equals(pet.getStatus())) {
       notSoldRadioButton.setSelected(true);
     } else if ("Not from VIAPets".equals(pet.getStatus())) {
-      notFromVIAPetsRadioButton.setSelected(true);
+      notFromVIAPetsRadioButton.setSelected(true);}
 
-    if (pet instanceof Dog) {
-      speciesField.setText(Dog.getSpecies());
-
-    } else if (pet instanceof Cat) {
-      speciesField.setText(Cat.getSpecies());
-
-    } else if (pet instanceof Bird) {
-
+    if (pet instanceof Cat) {
+      breedField.setText(((Cat) pet).getBreed());
+      breederNameField.setText(((Cat) pet).getBreederName());
     }
   }
-  }
 
-  public void handleSaveChanges() {
-    pet.setName(nameField.getText());
-    pet.setAge(Integer.parseInt(ageField.getText()));
-    pet.setSpecies(speciesField.getText());
-    pet.setColor(colorField.getText());
-    pet.setGender(genderField.getText());
-    pet.setComment(commentArea.getText());
+  //  public void handleSaveChanges() {
+  //    pet.setName(nameField.getText());
+  //    pet.setAge(Integer.parseInt(ageField.getText()));
+  //    (Rodent) pet.setSpecies(speciesField.getText());
+  //    pet.setColor(colorField.getText());
+  //    pet.setGender(genderField.getText());
+  //    pet.setComment(commentArea.getText());
+  //
+  //    //Add method to save to the file
 
-    //Add method to save to the file
-
-  }
+}
 }
