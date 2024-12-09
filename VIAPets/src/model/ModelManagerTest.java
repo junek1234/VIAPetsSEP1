@@ -11,9 +11,9 @@ public class ModelManagerTest
     MyModelManager test1 = new MyModelManager();
     VIAPets viaPets = new VIAPets(1,2);
     int dogID=MyModelManager.createNextPetID();
-    Dog dog = new Dog(dogID,"Bimbo","Brown",2,'m',"Shop","Sold","No","Idk");
+    Dog dog = new Dog(dogID,"Bimbo","Brown",2,'m',"Shop","Sold","No","Idk", 15);
     int catID=MyModelManager.createNextPetID();
-    Cat cat = new Cat(catID,"Bimbo","Brown",2,'m',"Shop","Sold","No","Idk");
+    Cat cat = new Cat(catID,"Bimbo","Brown",2,'m',"Shop","Sold","No","Idk", 15);
 
 
     int customerID1 = MyModelManager.createNextCustomerID();
