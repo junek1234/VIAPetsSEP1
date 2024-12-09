@@ -1,5 +1,25 @@
 package view;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
+
+import java.io.IOException;
+
 public class DefaultSalesViewController
 {
+  ViewHandler viewHandler = new ViewHandler();
+  @FXML
+  private MenuItem petsMenu;
+
+  @FXML
+  public void handle(ActionEvent e) throws IOException
+  {
+
+  }
+  @FXML
+  public void switchScene(ActionEvent e) throws IOException
+  {
+    viewHandler.switchScene(e);
+  }
 }
