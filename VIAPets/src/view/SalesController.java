@@ -6,7 +6,7 @@ import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
 
-public class DefaultSalesViewController
+public class SalesController
 {
   ViewHandler viewHandler = new ViewHandler();
   @FXML
