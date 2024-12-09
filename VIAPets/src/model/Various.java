@@ -7,9 +7,9 @@ public class Various extends Pet implements Serializable
   private String species;
 
   public Various(int petID, String name, String color, int age, char gender,
-      String location, String status, String species)
+      String location, String status, String species, double basePrice)
   {
-    super(petID, name, color, age, gender, location, status);
+    super(petID, name, color, age, gender, location, status, basePrice);
     this.species = species;
   }
 
