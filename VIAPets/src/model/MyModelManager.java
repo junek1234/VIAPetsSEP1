@@ -14,7 +14,7 @@ public class MyModelManager implements Serializable
     private static final String CUSTOMER_FILE = "customers.bin";
     private static final String SALE_FILE = "sales.bin";
     private static final String LAST_IDS = "last_ids.txt";
-    private static final String PETS_XML = "pets_xml.xml";
+
     //needs to be changed in Astah
 
     public MyModelManager()
