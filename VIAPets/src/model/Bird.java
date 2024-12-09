@@ -8,9 +8,9 @@ public class Bird extends Pet implements Serializable
  private String preferredFood;
 
   public Bird(int petID, String name, String color, int age, char gender,
-      String location, String status, String species, String preferredFood, double basePrice)
+      String location, String status, String species, String preferredFood, double basePrice, String comment)
   {
-    super(petID, name, color, age, gender, location, status, basePrice);
+    super(petID, name, color, age, gender, location, status, basePrice, comment);
     this.species = species;
     this.preferredFood = preferredFood;
   }

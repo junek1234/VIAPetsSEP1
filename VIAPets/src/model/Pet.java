@@ -14,7 +14,22 @@ public abstract class Pet implements Serializable
   protected String status;
   protected double basePrice;
 
-  public Pet(int petID, String name, String color, int age, char gender, String location, String status, double basePrice)
+  public void setColor(String color)
+  {
+    this.color = color;
+  }
+
+  public void setBasePrice(double basePrice)
+  {
+    this.basePrice = basePrice;
+  }
+
+  public double getBasePrice()
+  {
+    return basePrice;
+  }
+
+  public Pet(int petID, String name, String color, int age, char gender, String location, String status, double basePrice, String comment)
   {
     this.petID = petID;
     this.name = name;
@@ -24,6 +39,7 @@ public abstract class Pet implements Serializable
     this.location = location;
     this.status = status;
     this.basePrice=basePrice;
+    this.comment=comment;
   }
 
   public abstract int getPetID();
