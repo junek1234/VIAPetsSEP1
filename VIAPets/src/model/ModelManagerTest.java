@@ -14,7 +14,9 @@ public class ModelManagerTest
     int dogID=MyModelManager.createNextPetID();
     Dog dog = new Dog(dogID,"Bimbo","Brown",2,'m',"Shop","Sold","No","Idk", 15, "bla");
     int catID=MyModelManager.createNextPetID();
-    Cat cat = new Cat(catID,"Bimbo","Brown",2,'m',"Shop","Sold","No","Idk", 15, "bla");
+    Cat cat = new Cat(catID,"Limbo","Brown",2,'m',"Shop","Sold","No","Idk", 15, "bla");
+    int fishID=MyModelManager.createNextPetID();
+    Fish fish = new Fish(fishID,"Wqeqwe","Brown",2,'m',"Shop","Sold",false,"Idk", true, 20, "bla");
 
 
 //    int customerID1 = MyModelManager.createNextCustomerID();
@@ -29,8 +31,9 @@ public class ModelManagerTest
 //    Date date2 = new Date(1,1,2010,1);
 //    DateInterval dateInterval=new DateInterval(date1, date2);
 //    Booking booking1 = new Booking(bookingID, dog, customer1, dateInterval);
-//    test1.addPet(dog);
-//    test1.addPet(cat);
+    test1.addPet(dog);
+    test1.addPet(cat);
+    test1.addPet(fish);
 //    test1.addCustomer(customer1);
 //    test1.addCustomer(customer2);
 //    test1.addSale(sale1);

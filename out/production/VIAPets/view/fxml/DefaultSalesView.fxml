@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DefaultSalesViewController">
+<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SalesController">
   <children>
       <MenuBar>
          <menus>
@@ -45,7 +45,7 @@
                   <HBox maxHeight="-Infinity" prefHeight="28.0" prefWidth="640.0">
                      <children>
                         <TextField prefHeight="26.0" prefWidth="573.0" promptText="Search..." HBox.hgrow="ALWAYS" />
-                        <Button minWidth="-Infinity" mnemonicParsing="false" prefHeight="22.0" prefWidth="60.0" text="Search" HBox.hgrow="NEVER" onAction="#search"/>
+                        <Button minWidth="-Infinity" mnemonicParsing="false" prefHeight="22.0" prefWidth="60.0" text="Search" HBox.hgrow="NEVER" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
