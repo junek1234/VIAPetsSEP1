@@ -13,13 +13,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ViewHandler {
-
   @FXML
   private MenuItem petsMenuItem;
   @FXML
   private MenuItem customersMenuItem;
   @FXML
-  private MenuItem bookingsSettingsMenu;
+  private MenuItem bookingsSettingsMenuItem;
   @FXML
   private MenuItem bookingsListMenuItem;
   @FXML
@@ -33,33 +32,29 @@ public class ViewHandler {
   public void switchScene(ActionEvent e) throws IOException {
     Object source = e.getSource();
     String fxmlPath;
+    System.out.println();
 
     // Handle menu item click event to determine which scene to load
     if (source == petsMenuItem) {
       fxmlPath = "fxml/BirdPetView.fxml";
+      System.out.println(fxmlPath);
     } else if (source == customersMenuItem) {
       fxmlPath = "fxml/CustomerView.fxml";
-    } else if (source == bookingsSettingsMenu) {
+    } else if (source == bookingsSettingsMenuItem) {
       fxmlPath = "fxml/BookingSettingsView.fxml";
     } else if (source == bookingsListMenuItem) {
       fxmlPath = "fxml/BookingsListView.fxml";
     } else if (source == salesMenuItem) {
       fxmlPath = "fxml/SalesView.fxml";
     } else {
-      fxmlPath = "fxml/DefaultPetView.fxml";  // Default fallback scene
+      fxmlPath = "fxml/DefaultView.fxml";  // Default fallback scene
     }
     // Switch to the selected scene
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
-    stage = (Stage) bookingsSettingsMenu.getParentPopup().getOwnerWindow();
+    MenuItem mirrorMenuItem = (MenuItem) source;
+    stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
     Scene scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
   }
-
-
-
   }
-
-
-
-

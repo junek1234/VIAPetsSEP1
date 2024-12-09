@@ -195,9 +195,6 @@ public class MyModelManager implements Serializable
         VIAPets.allPets.addPet(pet);
         MyFileHandler.writeArrayToBinaryFile(PET_FILE, VIAPets.allPets.getPets().toArray(new Pet[0]));
 
-
-
-
     }
 
     public void deletePet(int petID) throws IOException
@@ -270,10 +267,4 @@ public class MyModelManager implements Serializable
         MyFileHandler.writeArrayToBinaryFile(SALE_FILE, VIAPets.allSales.getSaleList().toArray(new Sale[0]));
     }
 
-
-
-
 }
-
-
-

@@ -12,20 +12,20 @@
       <menus>
         <Menu mnemonicParsing="false" text="Pets">
                <items>
-                  <MenuItem fx:id="petsMenu" mnemonicParsing="false" text="Pet" />
+                  <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="Pet" onAction="#switchScene"/>
                </items></Menu>
         <Menu mnemonicParsing="false" text="Customers">
                <items>
-                  <MenuItem fx:id="customersMenu" mnemonicParsing="false" text="Customers" />
+                  <MenuItem fx:id="customersMenuItem" mnemonicParsing="false" text="Customers" onAction="#switchScene"/>
                </items></Menu>
         <Menu mnemonicParsing="false" text="Bookings">
                <items>
-                  <MenuItem fx:id="bookingsListMenu" mnemonicParsing="false" text="View" />
-                  <MenuItem fx:id="bookingsSettingsMenu" mnemonicParsing="false" text="Settings" onAction="#switchScene"/>
+                  <MenuItem fx:id="bookingsListMenuItem" mnemonicParsing="false" text="View" onAction="#switchScene"/>
+                  <MenuItem fx:id="bookingsSettingsMenuItem" mnemonicParsing="false" text="Settings" onAction="#switchScene"/>
                </items></Menu>
             <Menu mnemonicParsing="false" text="Sales">
                <items>
-                  <MenuItem fx:id="salesMenu" mnemonicParsing="false" text="Sales" />
+                  <MenuItem fx:id="salesMenuItem" mnemonicParsing="false" text="Sales" onAction="#switchScene"/>
                </items></Menu>
       </menus>
     </MenuBar>
