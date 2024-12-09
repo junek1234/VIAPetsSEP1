@@ -45,7 +45,7 @@ public class ViewHandler {
     } else if (source == bookingsListMenuItem) {
       fxmlPath = "fxml/BookingsListView.fxml";
     } else if (source == salesMenuItem) {
-      fxmlPath = "fxml/SalesView.fxml";
+      fxmlPath = "fxml/DefaultSalesView.fxml";
     } else {
       fxmlPath = "fxml/DefaultView.fxml";  // Default fallback scene
     }
@@ -57,4 +57,4 @@ public class ViewHandler {
     stage.setScene(scene);
     stage.show();
   }
-  }
+}
