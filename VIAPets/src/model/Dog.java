@@ -8,9 +8,9 @@ public class Dog extends Pet implements Serializable
   private String breederName;
 
   public Dog(int petID, String name, String color, int age, char gender,
-      String location, String status, String breed, String breederName)
+      String location, String status, String breed, String breederName, double basePrice)
   {
-    super(petID, name, color, age, gender, location, status);
+    super(petID, name, color, age, gender, location, status, basePrice);
     this.breed = breed;
     this.breederName = breederName;
   }

@@ -10,9 +10,9 @@ public class Fish extends Pet implements Serializable
 
   public Fish(int petID, String name, String color, int age, char gender,
       String location, String status, boolean saltwater, String species,
-      boolean predator)
+      boolean predator, double basePrice)
   {
-    super(petID, name, color, age, gender, location, status);
+    super(petID, name, color, age, gender, location, status, basePrice);
     this.saltwater = saltwater;
     this.species = species;
     this.predator = predator;
