@@ -13,17 +13,18 @@ public class XMLHandler
   {
     try
     {
+
       ArrayList<Pet> pets = VIAPets.allPets.getPets();
       ArrayList<String> xmlLines = new ArrayList<>();
       //im creating one if for Dog and one for Cat because i need to cast it even if those have the same fields
       xmlLines.add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
       xmlLines.add("<pets>");
-      for (int i = 2; i < pets.size(); i++)
+      for (int i = 2; i < pets.size()+2; i++)
       {
         xmlLines.add("  <pet>");
-        if (pets.get(i) instanceof Dog)
+        if (pets.get(i-2) instanceof Dog)
         {
-          Dog dog = (Dog)pets.get(i);
+          Dog dog = (Dog)pets.get(i-2);
           xmlLines.add("    <id>" + dog.getPetID() + "</id>");
           xmlLines.add("    <type>" + dog.getClass().getSimpleName() + "</type>");
           xmlLines.add("    <name>" + dog.getName() + "</name>");
@@ -37,9 +38,9 @@ public class XMLHandler
           xmlLines.add("    <price>" + dog.getBasePrice() + "</price>");
         }
 
-        if (pets.get(i) instanceof Cat)
+        if (pets.get(i-2) instanceof Cat)
         {
-          Cat cat = (Cat)pets.get(i);
+          Cat cat = (Cat)pets.get(i-2);
           xmlLines.add("    <id>" + cat.getPetID() + "</id>");
           xmlLines.add("    <type>" + cat.getClass().getSimpleName() + "</type>");
           xmlLines.add("    <name>" + cat.getName() + "</name>");
@@ -53,9 +54,9 @@ public class XMLHandler
           xmlLines.add("    <price>" + cat.getBasePrice() + "</price>");
         }
 
-        if (pets.get(i) instanceof Fish)
+        if (pets.get(i-2) instanceof Fish)
         {
-          Fish fish = (Fish) pets.get(i);
+          Fish fish = (Fish) pets.get(i-2);
           xmlLines.add("    <id>" + fish.getPetID() + "</id>");
           xmlLines.add("    <type>" + fish.getClass().getSimpleName() + "</type>");
           xmlLines.add("    <name>" + fish.getName() + "</name>");
@@ -71,9 +72,9 @@ public class XMLHandler
 
         }
 
-        if (pets.get(i) instanceof Bird)
+        if (pets.get(i-2) instanceof Bird)
         {
-          Bird bird = (Bird) pets.get(i);
+          Bird bird = (Bird) pets.get(i-2);
           xmlLines.add("    <id>" + bird.getPetID() + "</id>");
           xmlLines.add("    <type>" + bird.getClass().getSimpleName() + "</type>");
           xmlLines.add("    <name>" + bird.getName() + "</name>");
@@ -88,9 +89,9 @@ public class XMLHandler
 
         }
 
-        if (pets.get(i) instanceof Rodent)
+        if (pets.get(i-2) instanceof Rodent)
         {
-          Rodent rodent = (Rodent) pets.get(i);
+          Rodent rodent = (Rodent) pets.get(i-2);
           xmlLines.add("    <id>" + rodent.getPetID() + "</id>");
           xmlLines.add("    <type>" + rodent.getClass().getSimpleName() + "</type>");
           xmlLines.add("    <name>" + rodent.getName() + "</name>");
@@ -104,9 +105,9 @@ public class XMLHandler
 
         }
 
-        if (pets.get(i) instanceof Various)
+        if (pets.get(i-2) instanceof Various)
         {
-          Various various = (Various) pets.get(i);
+          Various various = (Various) pets.get(i-2);
           xmlLines.add("    <id>" + various.getPetID() + "</id>");
           xmlLines.add("    <type>" + various.getClass().getSimpleName() + "</type>");
           xmlLines.add("    <name>" + various.getName() + "</name>");
@@ -129,11 +130,14 @@ public class XMLHandler
       {
         array[i]=xmlLines.get(i);
       }
+
       MyFileHandler.writeArrayToTextFile(fileName,array);
     }
     catch (FileNotFoundException e)
     {
-      System.out.println("Initializing empty XMLfile: "+fileName);
+      e.printStackTrace();
+      updateXML();
     }
+
   }
 }
