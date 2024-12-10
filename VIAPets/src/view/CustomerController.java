@@ -2,20 +2,15 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class CustomerController {
-
-  private ViewHandler viewHandler;
-
-  public void setViewHandler(ViewHandler viewHandler) {
-    this.viewHandler = viewHandler;
+public class CustomerController
+{
+  public void addTest(ActionEvent e)
+  {
+    System.out.println("works?");
   }
 
-  @FXML
-  public void switchScene(ActionEvent e) throws IOException {
-    // Use the ViewHandler instance to switch scenes
-    viewHandler.switchScene(e);
-  }
 }
