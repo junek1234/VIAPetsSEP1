@@ -96,7 +96,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Add Customer">
+                  <Button mnemonicParsing="false" text="Add Customer" onAction="#addTest">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>

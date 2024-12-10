@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import model.Customer;
 
 import java.io.IOException;
 
@@ -24,6 +25,7 @@ public class ViewHandler {
   @FXML
   private MenuItem salesMenuItem;
 
+  private CustomerController customerController= new CustomerController();
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
   private String fxmlDefPath="fxml/currentlyworking/DefaultView.fxml";
@@ -56,5 +58,10 @@ public class ViewHandler {
     stage.setScene(scene);
     fxmlDefPath=fxmlPath;
     stage.show();
+  }
+
+  public void addTest(ActionEvent e)
+  {
+    customerController.addTest(e);
   }
 }
