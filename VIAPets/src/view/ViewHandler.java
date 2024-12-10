@@ -8,9 +8,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -31,14 +33,36 @@ public class ViewHandler {
   @FXML private MenuItem fishMenuItem;
   @FXML private MenuItem variousMenuItem;
   
-  //customers
+  //customer
   @FXML private MenuItem customersMenuItem;
   @FXML private MenuItem addCustomerMenuItem;
+
+  // default customer view
+  @FXML Button addCustomerButton;
+  @FXML Button editCustomerButton;
+  @FXML Button deleteCustomerButton;
+  @FXML Button searchCustomerButton;
+  @FXML TextField searchBarCustomerTextField;
+
+  // add customer view
+  @FXML TextField customerIDTextField;
+  @FXML TextField nameTextField;
+  @FXML TextField phoneNumberTextField;
+  @FXML TextField emailTextField;
+  @FXML Button saveButton;
+
 
   //bookings
   @FXML private MenuItem bookingsMenuItem;
   @FXML private MenuItem addBookingMenuItem;
   @FXML private MenuItem bookingsSettingsMenuItem;
+
+  // default booking view
+  @FXML Button addBookingButton;
+  @FXML Button editBookingButton;
+  @FXML Button deleteBookingButton;
+  @FXML Button searchBookingButton;
+  @FXML TextField searchBarBookingTextField;
 
   //sales
   @FXML private MenuItem salesMenuItem;
@@ -103,7 +127,7 @@ public class ViewHandler {
     Stage popupStage = new Stage();
 
     String fxmlPath;
-  if (source == dogMenuItem||source==catMenuItem) {
+  if (source == dogMenuItem || source==catMenuItem) {
     fxmlPath = "fxml/pets/DogCatPetView.fxml";
     popupStage.setTitle("Add " + (source == dogMenuItem ? "Dog" : "Cat"));
   } else if (source == birdMenuItem) {
@@ -116,10 +140,10 @@ public class ViewHandler {
     fxmlPath = "fxml/pets/RodentVariousPetView.fxml";
     popupStage.setTitle("Add " + (source == rodentMenuItem ? "Rodent" : "Various"));
 
-  } else if (source == addCustomerMenuItem) {
+  } else if (source == addCustomerMenuItem || source == addCustomerButton) {
     fxmlPath = "fxml/Customers/AddCustomer.fxml";
     popupStage.setTitle("Add Customer");
-  } else if (source == addBookingMenuItem) {
+  } else if (source == addBookingMenuItem || source == addBookingButton) {
     fxmlPath = "fxml/bookings/AddBooking.fxml";
     popupStage.setTitle("Add Booking");
   } else if (source == addSaleMenuItem) {
