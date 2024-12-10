@@ -1,28 +1,35 @@
 package view;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class StartGUI extends Application
 {
 
-
-
-  private Stage stage;  // Keep a reference to the primaryStage
+  private ViewHandler viewHandler;  // Instance of ViewHandler
 
   @Override public void start(Stage primaryStage) throws Exception
   {
-    // Set the primary stage as the main window
-    primaryStage.setTitle("FXMLTEST");
+    // Initialize ViewHandler
+    viewHandler = new ViewHandler();
+
+    // Load the initial scene
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("fxml/currentlyworking/DefaultView.fxml"));
+    loader.setLocation(
+        getClass().getResource("fxml/currentlyworking/DefaultView.fxml"));
     Scene scene = new Scene(loader.load());
-    primaryStage.setScene(scene);  // Set the initial scene
-    primaryStage.show();  // Make sure the primary stage is shown
+
+    // Get the controller and set the ViewHandler
+    Object controller = loader.getController();
+    if (controller instanceof SalesController)
+    {
+      ((SalesController) controller).setViewHandler(viewHandler);
+    }
+
+    primaryStage.setTitle("FXMLTEST");
+    primaryStage.setScene(scene);
+    primaryStage.show();
   }
 }
-

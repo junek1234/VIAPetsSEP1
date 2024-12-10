@@ -4,29 +4,31 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import java.io.IOException;
-
-public class SalesController
-{
-  ViewHandler viewHandler = new ViewHandler();
-  //This line causes that the second click doesn't work I believe
-
+public class SalesController {
 
   @FXML
-  public Button addSaleButton;
+  private Button addSaleButton;
 
-  @FXML
-  public void handleDefault(ActionEvent e) throws IOException
-  {
-    if (e.getSource() == addSaleButton){
-      System.out.println("Add a sale button clicked");
-    }
+  private ViewHandler viewHandler;  // Reference to ViewHandler
 
+  public void setViewHandler(ViewHandler viewHandler) {
+    this.viewHandler = viewHandler;
   }
 
   @FXML
-  public void switchScene(ActionEvent e) throws IOException
-  {
-    viewHandler.switchScene(e);
+  public void handleDefault(ActionEvent e) {
+    // Example usage of ViewHandler
+    if (e.getSource() == addSaleButton) {
+      System.out.println("Add Sale button clicked!");
+    }
+  }
+
+  @FXML
+  public void switchScene(ActionEvent e) {
+    try {
+      viewHandler.switchScene(e); // Use the ViewHandler to switch scenes
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
   }
 }

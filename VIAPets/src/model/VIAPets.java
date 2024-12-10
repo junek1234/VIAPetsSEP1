@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+// dont make it static
 public class VIAPets implements Serializable
 {
   public static int maxKennelSlots=10;
