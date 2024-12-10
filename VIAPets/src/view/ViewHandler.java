@@ -211,7 +211,7 @@ public class ViewHandler {
     fxmlPath = "fxml/bookings/AddBooking.fxml";
     popupStage.setTitle("Add Booking");
   } else if (source == addSaleMenuItem) {
-    fxmlPath = "fxml/bookings/AddBooking.fxml";
+    fxmlPath = "fxml/sales/AddSale.fxml";
     popupStage.setTitle("Add Sale");
   } else{
     fxmlPath = fxmlDefPath;
@@ -246,11 +246,10 @@ public class ViewHandler {
 //  }
   public void initfknlist()
   {
-    ObservableList<Pet> pets = FXCollections.observableArrayList(
-        new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
-            "idk", 150.0, "Friendly"),
-        new Dog(2, "Luna", "Black", 2, 'F', "Boston", "Adopted", "idk", "idk",
-            100.0, "Playful"));
+    MyModelManager manager = new MyModelManager();
+
+    ObservableList<Pet> pets = FXCollections.observableArrayList(manager.getAllPets()
+        .getPets());
 
     // Create TableView
     petTable = new TableView<>(pets);
@@ -286,10 +285,9 @@ public class ViewHandler {
     }  }
 
   public void initCustomerList() {
-    ObservableList<Customer> customers = FXCollections.observableArrayList(
-        new Customer(1, "manuel", 999, "@gmail"),
-        new Customer(2, "gustavo", 99, "@gma")
-    );
+    MyModelManager manager = new MyModelManager();
+
+    ObservableList<Customer> customers = FXCollections.observableArrayList(manager.getAllCustomers().getCustomers());
 
     customerTable = new TableView<>(customers);
 
@@ -319,28 +317,9 @@ public class ViewHandler {
   }
 
   public void initBookingList() {
-    ObservableList<Booking> bookings = FXCollections.observableArrayList(
-        new Booking(
-            1,
-            new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
-                "idk", 150.0, "Friendly"),
-            new Customer(1, "gustavo", 999, "@gmai"),
-            new DateInterval(
-                new Date(1, 5, 4, 1),
-                new Date(2, 7, 4, 3)
-            )
-        ),
-        new Booking(
-            2,
-            new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
-                "idk", 150.0, "Friendly"),
-            new Customer(1, "manuel", 999, "@dd"),
-            new DateInterval(
-                new Date(1, 5, 4, 1),
-                new Date(2, 7, 4, 3)
-            )
-        )
-    );
+    MyModelManager manager = new MyModelManager();
+
+    ObservableList<Booking> bookings = FXCollections.observableArrayList(manager.getAllBookings().getBookings());
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -377,11 +356,10 @@ public class ViewHandler {
   }
 
   public void initSaleList() {
-    ObservableList<Sale> sales = FXCollections.observableArrayList(
-        new Sale(1, new Customer(1, "manuel", 999, "@dd"), new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
-            "idk", 150.0, "Friendly"), 5),
-        new Sale(1, new Customer(1, "manuel", 999, "@dd"), new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
-            "idk", 150.0, "Friendly"), 5));
+    MyModelManager manager = new MyModelManager();
+
+
+    ObservableList<Sale> sales = FXCollections.observableArrayList(manager.getAllSales().getSaleList());
 
 
     saleTable = new TableView<>(sales);

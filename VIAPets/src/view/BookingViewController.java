@@ -92,8 +92,7 @@ public class BookingViewController
     }
 
    MyModelManager manager = new MyModelManager();
-    ArrayList<Pet> petsCopy = manager.getAllPets().getPets();
-    ArrayList<Customer> customersCopy = manager.getAllCustomers().getCustomers();
+
 
     Pet bookingPet=manager.getAllPets().getPetByID(petID);
     Customer bookingCustomer=manager.getAllCustomers().getCustomer(customerID);
