@@ -16,7 +16,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -73,8 +72,9 @@ public class PetViewController implements Initializable {
   private ToggleGroup location; // this not needed if the toggle is already set up in scenebuilder
 
   //if I dont put these args, error shows not rrly sure
-  public void initialize(URL location, ResourceBundle resources, ActionEvent e) {
+  public void initialize(URL location, ResourceBundle resources) {
 
+    if()
     petIDColumn.setCellValueFactory(new PropertyValueFactory<>("petID"));
     nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
     isInShopColumn.setCellValueFactory(new PropertyValueFactory<>("isInShop"));

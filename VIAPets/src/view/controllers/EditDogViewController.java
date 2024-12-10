@@ -1,5 +1,5 @@
 
-package view;
+package view.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -89,4 +89,4 @@ public class EditDogViewController implements Initializable
   //    //Add method to save to the file
 
 }
-}
+

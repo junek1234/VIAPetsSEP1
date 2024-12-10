@@ -3,9 +3,10 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+// dont make it static
 public class VIAPets implements Serializable
 {
-  public static int maxKennelSlots;
+  public static int maxKennelSlots=10;
   public static int availableSlots;  //change in astah
   public static double bookingPrice;
   public static BookingList allBookings;
@@ -47,7 +48,7 @@ public class VIAPets implements Serializable
         count++;
       }
     }
-    this.availableSlots=count;
+    availableSlots=maxKennelSlots-count;
   }
 
   public void setBookingPrice(double bookingPrice)

@@ -10,13 +10,19 @@ public class ModelManagerTest
   public static void main(String[] args) throws IOException
   {
     MyModelManager test1 = new MyModelManager();
-    VIAPets viaPets = new VIAPets(1,2);
+    VIAPets viaPets = new VIAPets(10,20);
     int dogID=MyModelManager.createNextPetID();
-    Dog dog = new Dog(dogID,"Bimbo","Brown",2,'m',"Shop","Sold","No","Idk", 15, "bla");
+    Dog dog = new Dog(dogID,"Bimbo","Brown",2,'m',"Shop","Not sold","No","Idk", 15, "bla");
     int catID=MyModelManager.createNextPetID();
-    Cat cat = new Cat(catID,"Bimbo","Brown",2,'m',"Shop","Sold","No","Idk", 15, "bla");
-
-
+    Cat cat = new Cat(catID,"Limbo","Brown",2,'m',"Shop","Sold","No","Idk", 15, "bla");
+    int fishID=MyModelManager.createNextPetID();
+    Fish fish = new Fish(fishID,"Wqeqwe","Brown",2,'m',"Shop","Not sold",false,"Idk", true, 20, "bla");
+    int birdID = MyModelManager.createNextPetID();
+    Bird bird = new Bird(birdID,"Birdasdads","yellow",2,'m',"Shop","Sold","parrot","Idk", 12, "bla");
+    int rodentID =MyModelManager.createNextPetID();
+    Rodent rodent = new Rodent(rodentID,"rodent1","black",23,'w',"Kennel","Not from VIAPets","idk",28,"blabla");
+    int variousID = MyModelManager.createNextPetID();
+    Various various = new Various(variousID,"turtle","purple",23,'w',"Kennel","Sold","idk",28,"blabla");
 //    int customerID1 = MyModelManager.createNextCustomerID();
 //    Customer customer1 = new Customer(customerID1,"Adam",1234,"wdadawdawd.com");
 //    customerID1 = MyModelManager.createNextCustomerID();
@@ -31,22 +37,27 @@ public class ModelManagerTest
 //    Booking booking1 = new Booking(bookingID, dog, customer1, dateInterval);
     test1.addPet(dog);
     test1.addPet(cat);
+    test1.addPet(fish);
+    test1.addPet(bird);
+    test1.addPet(rodent);
+    test1.addPet(various);
+
 //    test1.addCustomer(customer1);
 //    test1.addCustomer(customer2);
 //    test1.addSale(sale1);
 //    test1.addBooking(booking1);
 //   System.out.println(test1.getAllPets().getPets().size());
-//    ArrayList<Pet> testArrayListPets = test1.getAllPets().getPets();
+    ArrayList<Pet> testArrayListPets = test1.getAllPets().getPets();
 //    ArrayList<Customer> testArrayListCustomers = test1.getAllCustomers().getCustomers();
 //    ArrayList<Sale> testArrayListSales = test1.getAllSales().getSaleList();
 //    ArrayList<Booking> testArrayListBookings = test1.getAllBookings().getBookings();
 
 
-//    System.out.println(testArrayListPets);
+    System.out.println(testArrayListPets);
 //    System.out.println(testArrayListCustomers);
 //    System.out.println(testArrayListSales);
 //    System.out.println(testArrayListBookings);
-//      test1.deletePet(6);
+      test1.deletePet(3);
 
     XMLHandler.updateXML();
   }
