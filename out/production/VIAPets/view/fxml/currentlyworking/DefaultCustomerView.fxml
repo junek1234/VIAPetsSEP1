@@ -81,9 +81,9 @@
             </Menu>
          </menus>
       </MenuBar>
-      <VBox prefHeight="377.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <VBox prefHeight="377.0" prefWidth="640.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="79.0" prefWidth="640.0">
+            <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="640.0">
                <children>
                   <HBox maxHeight="-Infinity" prefHeight="28.0" prefWidth="640.0">
                      <children>
