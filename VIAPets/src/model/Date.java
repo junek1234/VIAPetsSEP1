@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Date implements Serializable
 {
@@ -63,6 +65,14 @@ public class Date implements Serializable
   {
 
     this.hour = hour;
+  }
+//add two methods below in astah if they work
+  public LocalDate toLocalDate() {
+    return LocalDate.of(year, month, day);
+  }
+
+  public String format(DateTimeFormatter formatter) {
+    return toLocalDate().format(formatter);
   }
 
   public String toString()

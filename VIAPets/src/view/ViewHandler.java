@@ -1,6 +1,7 @@
 package view;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -19,7 +20,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
 
+
+import javafx.scene.control.TableColumn;
+
+
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 public class ViewHandler {
   public static String lastPopupSource;
@@ -106,15 +112,15 @@ public class ViewHandler {
   @FXML private TableView<Booking> bookingTable;
   @FXML private TableColumn<Booking, Number> bookingIDView;
   @FXML private TableColumn<Booking, String> petNameBookingView;
-  @FXML private TableColumn<Booking, Number> customerNameBookingView;
+  @FXML private TableColumn<Booking, String> customerNameBookingView;
   @FXML private TableColumn<Booking, String> startDateBookingView;
   @FXML private TableColumn<Booking, String> endDateBookingView;
 
   @FXML private TableView<Sale> saleTable;
   @FXML private TableColumn<Sale, Number> saleIDView;
   @FXML private TableColumn<Sale, String> petNameSaleView;
-  @FXML private TableColumn<Sale, Number> customerNameSaleView;
-  @FXML private TableColumn<Sale, Number> priceSaleView;
+  @FXML private TableColumn<Sale, String> customerNameSaleView;
+  @FXML private TableColumn<Sale, String> priceSaleView;
 
   private CustomerController customerController = new CustomerController();
   private Stage stage;  // Keep a reference to the primaryStage
@@ -128,16 +134,18 @@ public class ViewHandler {
 
     if (source == petsMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultPetView.fxml";
-      initfknlist(); // Initialize pet table
+      initfknlist();
     } else if (source == customersMenuItem) {
       fxmlPath = "fxml/Customers/DefaultCustomerView.fxml";
-      initCustomerList(); // Initialize customer table
+      initCustomerList();
     } else if (source == bookingsSettingsMenuItem) {
       fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
     } else if (source == bookingsMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultBookingsView.fxml";
+      initBookingList();
     } else if (source == salesMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultSalesView.fxml";
+      initSaleList();
     } else {
       fxmlPath = fxmlDefPath;
     }
@@ -308,6 +316,97 @@ public class ViewHandler {
     customerTable.refresh();
   }
 
+  public void initBookingList() {
+    ObservableList<Booking> bookings = FXCollections.observableArrayList(
+        new Booking(
+            1,
+            new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
+                "idk", 150.0, "Friendly"),
+            new Customer(1, "gustavo", 999, "@gmai"),
+            new DateInterval(
+                new Date(1, 5, 4, 1),
+                new Date(2, 7, 4, 3)
+            )
+        ),
+        new Booking(
+            2,
+            new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
+                "idk", 150.0, "Friendly"),
+            new Customer(1, "manuel", 999, "@dd"),
+            new DateInterval(
+                new Date(1, 5, 4, 1),
+                new Date(2, 7, 4, 3)
+            )
+        )
+    );
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    bookingTable = new TableView<>(bookings);
+
+    bookingIDView = new TableColumn<>("Booking ID");
+    bookingIDView.setCellValueFactory(
+        cellData -> new SimpleIntegerProperty(cellData.getValue().getBookingID())
+    );
+
+    petNameBookingView = new TableColumn<>("Pet Name");
+    petNameBookingView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getPet().getName())
+    );
+
+    customerNameBookingView = new TableColumn<>("Customer Name");
+    customerNameBookingView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName())
+    );
+
+    startDateBookingView = new TableColumn<>("Start Date");
+    startDateBookingView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getDateInterval().getStartDate().format(formatter))
+    );
+
+    endDateBookingView = new TableColumn<>("End Date");
+    endDateBookingView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getDateInterval().getEndDate().format(formatter))
+    );
+
+    bookingTable.getColumns().addAll(bookingIDView, petNameBookingView, customerNameBookingView, startDateBookingView, endDateBookingView);
+
+    bookingTable.refresh();
+  }
+
+  public void initSaleList() {
+    ObservableList<Sale> sales = FXCollections.observableArrayList(
+        new Sale(1, new Customer(1, "manuel", 999, "@dd"), new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
+            "idk", 150.0, "Friendly"), 5),
+        new Sale(1, new Customer(1, "manuel", 999, "@dd"), new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
+            "idk", 150.0, "Friendly"), 5));
+
+
+    saleTable = new TableView<>(sales);
+
+    saleIDView = new TableColumn<>("Sale ID");
+    saleIDView.setCellValueFactory(
+        cellData -> new SimpleIntegerProperty(cellData.getValue().getSaleID())
+    );
+
+    petNameSaleView = new TableColumn<>("Pet Name");
+    petNameSaleView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getPet().getName())
+    );
+
+    customerNameSaleView = new TableColumn<>("Customer Name");
+    customerNameSaleView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName())
+    );
+
+    priceSaleView = new TableColumn<>("Price");
+    priceSaleView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(String.format("%.2f",cellData.getValue().getSalePrice())));
+
+    saleTable.getColumns().addAll(saleIDView, petNameSaleView, customerNameSaleView, priceSaleView);
+
+    saleTable.refresh();
+  }
 
 
 //  public void initBookingList() {
