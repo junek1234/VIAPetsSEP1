@@ -56,6 +56,8 @@ public class ViewHandler {
       fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
     } else if (source == bookingsListMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultBookingsView.fxml";
+    } else if (source == petsMenuItem) {
+      fxmlPath = "fxml/currentlyworking/DefaultPetView.fxml";
     } else if (source == dogMenuItem||source==catMenuItem) {
       fxmlPath = "fxml/pets/DogCatPetView.fxml";
     } else if (source == birdMenuItem) {
@@ -69,12 +71,15 @@ public class ViewHandler {
     }
     // Switch to the selected scene
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
+
     MenuItem mirrorMenuItem = (MenuItem) source;
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
+
     Scene scene = new Scene(root);
     stage.setScene(scene);
     fxmlDefPath=fxmlPath;
     stage.show();
+
   }
 
   public void addTest(ActionEvent e)
