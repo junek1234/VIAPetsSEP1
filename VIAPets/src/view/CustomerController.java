@@ -5,30 +5,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import model.Pet;
 
 import java.io.IOException;
 
 public class CustomerController
 {
-  // default customer view
-  @FXML Button addCustomerButton;
-  @FXML Button editCustomerButton;
-  @FXML Button deleteCustomerButton;
-  @FXML Button searchButton;
-  @FXML TextField searchBarTextField;
-
-  // add customer view
-  @FXML TextField CustomerIDTextField;
-  @FXML TextField nameTextField;
-  @FXML TextField PhoneNumberTextField;
-  @FXML TextField emailTextField;
-  @FXML Button addButton;
 
   public void addTest(ActionEvent e)
   {
     System.out.println("works?");
   }
 }
+
 /**
   @FXML
   private void handleSaveButton() {
