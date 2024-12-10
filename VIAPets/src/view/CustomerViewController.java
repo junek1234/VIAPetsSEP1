@@ -60,7 +60,6 @@ public class CustomerViewController
       throw new RuntimeException(e);
     }
 
-    clearFields();
     XMLHandler.updateXML();
 
 
