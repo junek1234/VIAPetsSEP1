@@ -51,7 +51,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Add sale">
+                  <Button mnemonicParsing="false" text="Add pet">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
@@ -62,7 +62,7 @@
       </VBox>
       <TableView prefHeight="566.0" prefWidth="640.0">
         <columns>
-          <TableColumn minWidth="85.0" prefWidth="130.0" text="Sale ID" />
+          <TableColumn minWidth="85.0" prefWidth="130.0" text="PetID" />
           <TableColumn minWidth="85.0" prefWidth="130.0" text="Pet Name" />
             <TableColumn minWidth="85.0" prefWidth="130.0" text="Customer Name" />
             <TableColumn minWidth="85.0" prefWidth="130.0" text="Sales Prices" />
