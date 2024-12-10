@@ -107,8 +107,8 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Yes" />
-            <RadioButton mnemonicParsing="false" text="No">
+            <RadioButton fx:id="petSaltWaterYesRadioButton" mnemonicParsing="false" text="Yes" />
+            <RadioButton fx:id="petSaltWaterNoRadioButton" mnemonicParsing="false" text="No">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>

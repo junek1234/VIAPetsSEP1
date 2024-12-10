@@ -5,8 +5,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,7 +15,7 @@
           <menus>
               <Menu mnemonicParsing="false" text="Pets">
                   <items>
-                      <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" onAction="#switchScene"/>
+                      <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Pets" />
                       <Menu mnemonicParsing="false" text="Add Pet">
                           <items>
                               <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Dog" />
@@ -51,9 +49,9 @@
               </Menu>
           </menus>
       </MenuBar>
-      <VBox prefHeight="377.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <VBox minHeight="-Infinity" prefHeight="127.0" prefWidth="640.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="TOP_CENTER" prefHeight="84.0" prefWidth="640.0">
                <children>
                   <HBox maxHeight="-Infinity" prefHeight="28.0" prefWidth="640.0">
                      <children>
@@ -73,14 +71,5 @@
             </VBox>
          </children>
       </VBox>
-      <TableView prefHeight="566.0" prefWidth="640.0">
-        <columns>
-          <TableColumn minWidth="85.0" prefWidth="120.0" text="Sale ID" />
-          <TableColumn minWidth="85.0" prefWidth="120.0" text="Pet Name" />
-            <TableColumn minWidth="85.0" prefWidth="120.0" text="Color" />
-            <TableColumn minWidth="85.0" prefWidth="120.0" text="Gender" />
-            <TableColumn minWidth="85.0" prefWidth="120.0" text="Actions" />
-        </columns>
-      </TableView>
   </children>
 </VBox>
