@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
+<VBox id="searchBar" prefHeight="116.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
   <children>
       <MenuBar>
          <menus>
@@ -81,9 +81,9 @@
             </Menu>
          </menus>
       </MenuBar>
-      <VBox prefHeight="377.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <VBox prefHeight="125.0" prefWidth="640.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="79.0" prefWidth="640.0">
+            <VBox alignment="TOP_CENTER" prefHeight="93.0" prefWidth="640.0">
                <children>
                   <HBox maxHeight="-Infinity" prefHeight="28.0" prefWidth="640.0">
                      <children>
