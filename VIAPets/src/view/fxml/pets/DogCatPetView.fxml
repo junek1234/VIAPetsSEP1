@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
+<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DogPetViewController">
   <children>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
          <VBox.margin>
@@ -153,7 +153,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </HBox>
-      <Button fx:id="petSaveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Save">
+      <Button fx:id="petSaveButton" alignment="CENTER" onAction="#saveAddPet" contentDisplay="CENTER" mnemonicParsing="false" text="Save">
          <VBox.margin>
             <Insets bottom="10.0" left="275.0" />
          </VBox.margin>

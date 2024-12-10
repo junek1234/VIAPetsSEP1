@@ -22,6 +22,31 @@ import model.*;
 import java.io.IOException;
 
 public class ViewHandler {
+  public static String lastPopupSource;
+  //for PetViewController
+  @FXML private TextField petNameTextField;
+  @FXML private TextField petColorTextField;
+  @FXML private TextField petAgeTextField;
+  @FXML private TextField petPriceTextField;
+  @FXML private TextField petBreedTextField;
+  @FXML private TextField petBreederNameTextField;
+  @FXML private TextArea petCommentTextField;
+  @FXML private TextField petSpeciesTextField;
+  @FXML private TextField petFoodTextField;
+
+  @FXML private RadioButton petGenderMaleRadioButton;
+  @FXML private RadioButton petGenderFemaleRadioButton;
+  @FXML private RadioButton petLocationShopRadioButton;
+  @FXML private RadioButton petLocationKennelRadioButton;
+  @FXML private RadioButton petStatusSoldRadioButton;
+  @FXML private RadioButton petStatusNotSoldRadioButton;
+  @FXML private RadioButton petStatusNotFromViaRadioButton;
+  @FXML private RadioButton petSaltWaterYesRadioButton;
+  @FXML private RadioButton petSaltWaterNoRadioButton;
+  @FXML private RadioButton petPredatorYesRadioButton;
+  @FXML private RadioButton petPredatprNoRadioButton;
+
+  @FXML private Button petSaveButton;
   //related to pets
   @FXML private MenuItem petsMenuItem;
   @FXML private MenuItem dogMenuItem;
@@ -147,8 +172,10 @@ public class ViewHandler {
 
 
   // Create a separate method for popup handling
-  @FXML private void showPopup(ActionEvent e) throws IOException
+  @FXML public void showPopup(ActionEvent e) throws IOException
   {
+
+
     Object source = e.getSource();
     // Create a new stage for the popup
     Stage popupStage = new Stage();
@@ -179,6 +206,8 @@ public class ViewHandler {
   } else{
     fxmlPath = fxmlDefPath;
   }
+  MenuItem sourceCasted = (MenuItem) source;
+    lastPopupSource=sourceCasted.getId();
     // Set the modality of the popup (optional)
     popupStage.initModality(Modality.APPLICATION_MODAL); // Makes the popup modal (blocks other windows)
 
@@ -188,10 +217,15 @@ public class ViewHandler {
     popupStage.setScene(popupScene);
 
     // Show the popup window
-    popupStage.showAndWait();  // This will block the main window until the popup is closed
+    popupStage.showAndWait();// This will block the main window until the popup is closed
+
+
+
   }
   public void save(){
   }
+
+
 
 //  public void addTest(ActionEvent e) {
 //    customerController.addTest(e);
@@ -273,6 +307,8 @@ public class ViewHandler {
 
     customerTable.refresh();
   }
+
+
 
 //  public void initBookingList() {
 //    ObservableList<Booking> bookings = FXCollections.observableArrayList(
