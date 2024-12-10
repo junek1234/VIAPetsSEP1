@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -10,6 +11,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -19,36 +21,23 @@
          <menus>
             <Menu mnemonicParsing="false" text="Pets">
                <items>
-                  <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" />
-                  <Menu mnemonicParsing="false" text="Add Pet">
-                     <items>
-                        <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Dog" />
-                        <MenuItem fx:id="catMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Cat" />
-                        <MenuItem fx:id="birdMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Bird" />
-                        <MenuItem fx:id="fishMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Fish" />
-                        <MenuItem fx:id="rodentMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Rodent" />
-                        <MenuItem fx:id="variousMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Various" />
-                     </items>
-                  </Menu>
+                  <MenuItem fx:id="petsMenu" mnemonicParsing="false" text="Pet" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Customers">
                <items>
-                  <MenuItem fx:id="customersMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Customers" />
-                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Customers" />
+                  <MenuItem fx:id="customersMenu" mnemonicParsing="false" text="Customers" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Bookings">
                <items>
-                  <MenuItem fx:id="bookingsListMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Bookings" />
-                  <MenuItem fx:id="bookingsListMenu1" mnemonicParsing="false" onAction="#switchScene" text="Add Booking" />
-                  <MenuItem fx:id="bookingsSettingsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Settings" />
+                  <MenuItem fx:id="bookingsListMenu" mnemonicParsing="false" text="View" />
+                  <MenuItem fx:id="bookingsSettingsMenu" mnemonicParsing="false" text="Settings" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Sales">
                <items>
-                  <MenuItem fx:id="salesMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Sales" />
-                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Sales" />
+                  <MenuItem fx:id="salesMenu" mnemonicParsing="false" text="Sales" />
                </items>
             </Menu>
          </menus>
@@ -64,12 +53,14 @@
                </HBox.margin>
             </Label>
             <TextField prefHeight="0.0" prefWidth="118.0" />
+            <Button mnemonicParsing="false" text="Edit" />
             <Label prefHeight="34.0" prefWidth="60.0" text="Color">
                <HBox.margin>
                   <Insets left="75.0" />
                </HBox.margin>
             </Label>
             <TextField prefHeight="0.0" prefWidth="118.0" />
+            <Button mnemonicParsing="false" text="Edit" />
          </children>
       </HBox>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
@@ -80,18 +71,22 @@
                </HBox.margin>
             </Label>
             <TextField prefHeight="0.0" prefWidth="118.0" />
-            <ToggleButtonGroup selectionType="SINGLE" />
+            <Button mnemonicParsing="false" text="Edit" />
             <Label prefHeight="34.0" prefWidth="60.0" text="Gender">
                <HBox.margin>
-                  <Insets left="70.0" />
+                  <Insets left="75.0" />
                </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Male" />
-            <RadioButton mnemonicParsing="false" text="Female">
+            <ToggleButtonGroup selectionType="SINGLE">
+               <toggles>
+                  <ToggleButton text="Masculine" />
+                  <ToggleButton selected="true" text="Femenine" />
+               </toggles>
+            </ToggleButtonGroup>
+            <Button mnemonicParsing="false" text="Edit">
                <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
-            </RadioButton>
+                  <Insets left="5.0" />
+               </HBox.margin></Button>
          </children>
          <VBox.margin>
             <Insets top="25.0" />
@@ -110,12 +105,11 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </RadioButton>
-            <Label prefHeight="34.0" prefWidth="60.0" text="Price">
+            <RadioButton mnemonicParsing="false" text="No longer in the store">
                <HBox.margin>
-                  <Insets left="70.0" />
+                  <Insets left="50.0" />
                </HBox.margin>
-            </Label>
-            <TextField prefHeight="0.0" prefWidth="118.0" />
+            </RadioButton>
          </children>
          <VBox.margin>
             <Insets top="30.0" />
@@ -123,18 +117,24 @@
       </HBox>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
          <children>
-            <Label prefHeight="18.0" prefWidth="65.0" text="Status">
+            <Label prefHeight="34.0" prefWidth="60.0" text="Sold">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="74.0" text="Sold" />
-            <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="98.0" text="Not sold">
+            <RadioButton mnemonicParsing="false" text="Yes" />
+            <RadioButton mnemonicParsing="false" text="No">
                <HBox.margin>
-                  <Insets left="10.0" />
+                  <Insets left="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="187.0" text="Not from VIAPets" />
+            <Label prefHeight="26.0" prefWidth="80.0" text="Predator">
+               <HBox.margin>
+                  <Insets left="95.0" />
+               </HBox.margin>
+            </Label>
+            <TextField prefHeight="0.0" prefWidth="118.0" />
+            <Button mnemonicParsing="false" text="Edit" />
          </children>
          <opaqueInsets>
             <Insets />
@@ -150,23 +150,13 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Yes" />
-            <RadioButton mnemonicParsing="false" text="No">
+            <TextField prefHeight="0.0" prefWidth="118.0" />
+            <Button mnemonicParsing="false" text="Edit" />
+            <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Comment" textAlignment="CENTER">
                <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
-            </RadioButton>
-            <Label prefHeight="26.0" prefWidth="80.0" text="Predator">
-               <HBox.margin>
-                  <Insets left="100.0" />
+                  <Insets left="105.0" />
                </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Yes" />
-            <RadioButton mnemonicParsing="false" text="No">
-               <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
-            </RadioButton>
          </children>
          <VBox.margin>
             <Insets top="30.0" />
@@ -183,20 +173,24 @@
                <HBox.margin>
                   <Insets top="20.0" />
                </HBox.margin></TextField>
+            <Button mnemonicParsing="false" text="Edit">
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin></Button>
             <VBox alignment="CENTER" prefHeight="90.0" prefWidth="329.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="63.0" prefWidth="273.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Comment" textAlignment="CENTER">
-                           <HBox.margin>
-                              <Insets left="105.0" />
-                           </HBox.margin>
-                        </Label>
                         <TextArea prefHeight="78.0" prefWidth="158.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </TextArea>
+                        <Button mnemonicParsing="false" text="Edit">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                </children>
@@ -206,7 +200,7 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Save">
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Confirm">
          <VBox.margin>
             <Insets bottom="10.0" left="275.0" top="20.0" />
          </VBox.margin>
