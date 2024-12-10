@@ -36,6 +36,7 @@ public class ViewHandler {
   private MenuItem variousMenuItem;
 
   private CustomerController customerController= new CustomerController();
+
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
   private String fxmlDefPath="fxml/currentlyworking/DefaultView.fxml";
@@ -50,7 +51,7 @@ public class ViewHandler {
       fxmlPath = "fxml/BirdPetView.fxml";
       System.out.println(fxmlPath);
     } else if (source == customersMenuItem) {
-      fxmlPath = "fxml/currentlyworking/DefaultCustomerView.fxml";
+      fxmlPath = "fxml/Customers/DefaultCustomerView.fxml";
     } else if (source == bookingsSettingsMenuItem) {
       fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
     } else if (source == bookingsListMenuItem) {
