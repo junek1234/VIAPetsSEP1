@@ -18,7 +18,7 @@
          <menus>
             <Menu mnemonicParsing="false" text="Pets">
                <items>
-                  <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" />
+                  <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Pets" />
                   <Menu mnemonicParsing="false" text="Add Pet">
                      <items>
                         <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Dog" />
@@ -79,7 +79,6 @@
                </HBox.margin>
             </Label>
             <TextField prefHeight="0.0" prefWidth="118.0" />
-            <ToggleButtonGroup selectionType="SINGLE" />
             <Label prefHeight="34.0" prefWidth="60.0" text="Gender">
                <HBox.margin>
                   <Insets left="70.0" />

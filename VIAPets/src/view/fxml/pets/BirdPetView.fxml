@@ -188,7 +188,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </HBox>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Save">
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Save" onAction="#save">
          <VBox.margin>
             <Insets bottom="10.0" left="275.0" top="10.0" />
          </VBox.margin>
