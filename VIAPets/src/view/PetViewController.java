@@ -74,7 +74,6 @@ public class PetViewController implements Initializable {
   //if I dont put these args, error shows not rrly sure
   public void initialize(URL location, ResourceBundle resources) {
 
-    if()
     petIDColumn.setCellValueFactory(new PropertyValueFactory<>("petID"));
     nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
     isInShopColumn.setCellValueFactory(new PropertyValueFactory<>("isInShop"));
@@ -168,6 +167,6 @@ public class PetViewController implements Initializable {
     petManager.deletePet(pet.getPetID()); //deletes from the file, handle exception
   }
 
-  private void search()
+
 
 }
