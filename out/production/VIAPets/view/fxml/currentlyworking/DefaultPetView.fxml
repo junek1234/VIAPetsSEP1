@@ -17,23 +17,36 @@
          <menus>
             <Menu mnemonicParsing="false" text="Pets">
                <items>
-                  <MenuItem fx:id="petsMenu" mnemonicParsing="false" onAction="#switchScene" text="Pet" />
+                  <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" />
+                  <Menu mnemonicParsing="false" text="Add Pet">
+                     <items>
+                        <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Dog" />
+                        <MenuItem fx:id="catMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Cat" />
+                        <MenuItem fx:id="birdMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Bird" />
+                        <MenuItem fx:id="fishMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Fish" />
+                        <MenuItem fx:id="rodentMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Rodent" />
+                        <MenuItem fx:id="variousMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Various" />
+                     </items>
+                  </Menu>
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Customers">
                <items>
-                  <MenuItem fx:id="customersMenu" mnemonicParsing="false" onAction="#switchScene" text="Customers" />
+                  <MenuItem fx:id="customersMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Customers" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Customers" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Bookings">
                <items>
-                  <MenuItem fx:id="bookingsListMenu" mnemonicParsing="false" onAction="#switchScene" text="View" />
-                  <MenuItem fx:id="bookingsSettingsMenu" mnemonicParsing="false" onAction="#switchScene" text="Settings" />
+                  <MenuItem fx:id="bookingsListMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Bookings" />
+                  <MenuItem fx:id="bookingsListMenu1" mnemonicParsing="false" onAction="#switchScene" text="Add Booking" />
+                  <MenuItem fx:id="bookingsSettingsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Settings" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Sales">
                <items>
-                  <MenuItem fx:id="salesMenu" mnemonicParsing="false" onAction="#switchScene" text="Sales" />
+                  <MenuItem fx:id="salesMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Sales" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Sales" />
                </items>
             </Menu>
          </menus>
@@ -62,11 +75,12 @@
       </VBox>
       <TableView prefHeight="566.0" prefWidth="640.0">
         <columns>
-          <TableColumn minWidth="85.0" prefWidth="130.0" text="PetID" />
-          <TableColumn minWidth="85.0" prefWidth="130.0" text="Pet Name" />
-            <TableColumn minWidth="85.0" prefWidth="130.0" text="Customer Name" />
-            <TableColumn minWidth="85.0" prefWidth="130.0" text="Sales Prices" />
-            <TableColumn minWidth="85.0" prefWidth="130.0" text="Actions" />
+          <TableColumn minWidth="85.0" prefWidth="105.0" text="PetID" />
+          <TableColumn minWidth="85.0" prefWidth="105.0" text="Pet Name" />
+            <TableColumn minWidth="85.0" prefWidth="105.0" text="Color" />
+            <TableColumn minWidth="85.0" prefWidth="105.0" text="Color" />
+            <TableColumn minWidth="85.0" prefWidth="105.0" text="Price" />
+            <TableColumn minWidth="85.0" prefWidth="105.0" text="Actions" />
         </columns>
       </TableView>
   </children>
