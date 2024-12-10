@@ -17,15 +17,15 @@
          <menus>
             <Menu mnemonicParsing="false" text="Pets">
                <items>
-                  <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" onAction="#switchScene"/>
+                  <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Pets" />
                   <Menu mnemonicParsing="false" text="Add Pet">
                      <items>
-                        <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Dog" />
-                        <MenuItem fx:id="catMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Cat" />
-                        <MenuItem fx:id="birdMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Bird" />
-                        <MenuItem fx:id="fishMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Fish" />
-                        <MenuItem fx:id="rodentMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Rodent" />
-                        <MenuItem fx:id="variousMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Various" />
+                        <MenuItem fx:id="dogMenuItem" mnemonicParsing="false"  text="Dog" />
+                        <MenuItem fx:id="catMenuItem" mnemonicParsing="false"  text="Cat" />
+                        <MenuItem fx:id="birdMenuItem" mnemonicParsing="false"  text="Bird" />
+                        <MenuItem fx:id="fishMenuItem" mnemonicParsing="false" text="Fish" />
+                        <MenuItem fx:id="rodentMenuItem" mnemonicParsing="false"text="Rodent" />
+                        <MenuItem fx:id="variousMenuItem" mnemonicParsing="false" text="Various" />
                      </items>
                   </Menu>
                </items>
@@ -53,7 +53,7 @@
       </MenuBar>
       <VBox prefHeight="377.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox fx:id="vBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <HBox maxHeight="-Infinity" prefHeight="28.0" prefWidth="640.0">
                      <children>
@@ -73,14 +73,14 @@
             </VBox>
          </children>
       </VBox>
-      <TableView prefHeight="566.0" prefWidth="640.0">
+      <TableView fx:id="petTable" prefHeight="566.0" prefWidth="640.0">
         <columns>
-          <TableColumn minWidth="85.0" prefWidth="105.0" text="PetID" />
-          <TableColumn minWidth="85.0" prefWidth="105.0" text="Pet Name" />
-            <TableColumn minWidth="85.0" prefWidth="105.0" text="Color" />
-            <TableColumn minWidth="85.0" prefWidth="105.0" text="Gender" />
-            <TableColumn minWidth="85.0" prefWidth="105.0" text="Price" />
-            <TableColumn minWidth="85.0" prefWidth="105.0" text="Actions" />
+          <TableColumn fx:id="petIDColumn" minWidth="85.0" prefWidth="105.0" text="PetID" />
+          <TableColumn fx:id="petNameColumn" minWidth="85.0" prefWidth="105.0" text="Pet Name" />
+            <TableColumn fx:id="petColorColumn" minWidth="85.0" prefWidth="105.0" text="Color" />
+            <TableColumn fx:id="petGenderColumn" minWidth="85.0" prefWidth="105.0" text="Gender" />
+            <TableColumn fx:id="petPriceColumn" minWidth="85.0" prefWidth="105.0" text="Price" />
+            <TableColumn fx:id="petActionColumn" minWidth="85.0" prefWidth="105.0" text="Actions" />
         </columns>
       </TableView>
   </children>

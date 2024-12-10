@@ -45,7 +45,7 @@ public class ViewHandler {
   private MenuItem variousMenuItem;
 
   private CustomerController customerController= new CustomerController();
-
+//  private PetViewController petViewController = new PetViewController();
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
   private String fxmlDefPath="fxml/currentlyworking/DefaultView.fxml";
@@ -58,6 +58,7 @@ public class ViewHandler {
     // Handle menu item click event to determine which scene to load
     if (source == petsMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultPetView.fxml";
+//      petViewController.initialize();
     } else if (source == dogMenuItem||source==catMenuItem) {
       fxmlPath = "fxml/pets/DogCatPetView.fxml";
     } else if (source == birdMenuItem) {
@@ -78,8 +79,10 @@ public class ViewHandler {
       fxmlPath = fxmlDefPath;  // Default fallback scene
     }
     // Switch to the selected scene
+
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
     MenuItem mirrorMenuItem = (MenuItem) source;
+//    petViewController.initialize();
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
     Scene scene = new Scene(root);
     stage.setScene(scene);
