@@ -1,14 +1,11 @@
 //package view;
 //
-//import javafx.beans.property.SimpleIntegerProperty;
-//import javafx.beans.property.SimpleStringProperty;
 //import javafx.collections.FXCollections;
 //import javafx.collections.ObservableList;
 //import javafx.fxml.FXML;
 //import javafx.fxml.Initializable;
 //import javafx.scene.control.*;
 //import javafx.scene.control.cell.PropertyValueFactory;
-//import javafx.scene.layout.VBox;
 //import model.*;
 //
 //import javafx.scene.control.RadioButton;
@@ -24,27 +21,33 @@
 //import java.util.ArrayList;
 //import java.util.ResourceBundle;
 //
-//public class PetViewController
-//{
+//public class PetViewController implements Initializable {
 //
-//  @FXML private TableView<Pet> petTable = new TableView<>();
+//  MyModelManager petManager = new MyModelManager();
 //
-//  @FXML private TableColumn<Pet, Number> petIDColumn = new TableColumn<>(
-//      "petID");
-//  @FXML private VBox vBox;
+//  private ObservableList<Pet> petList = FXCollections.observableArrayList();
 //
-//  @FXML private TableColumn<Pet, String> petNameColumn;
+//  @FXML
+//  private TableView<Pet> petTable;
 //
-//  @FXML private TableColumn<Pet, String> petColorColumn;
+//  @FXML
+//  private TableColumn<Pet, String> petIDColumn;
 //
-//  @FXML private TableColumn<Pet, String> petGenderColumn;
+//  @FXML
+//  private TableColumn<Pet, String> nameColumn;
 //
-//  @FXML private TableColumn<Pet, String> petPriceColumn;
+//  @FXML
+//  private TableColumn<Pet, Boolean> isInShopColumn;
 //
-//  @FXML private TableColumn<Pet, Void> petActionColumn;
+//  @FXML
+//  private TableColumn<Pet, String> isSoldColumn;
+//
+//  @FXML
+//  private TableColumn<Pet, Void> actionColumn;
 //
 //  //connect ids below in scenebuilder that guillermo has
-//  @FXML private TextField nameField;
+//  @FXML
+//  private TextField nameField;
 //
 //  @FXML private TextField color;
 //
@@ -62,51 +65,108 @@
 //
 //  @FXML private RadioButton notFromVIAPets;
 //
-//  @FXML private TextField species;
+//  @FXML  private TextField species;
 //
-//  @FXML private TextArea comment;
+//  @FXML  private TextArea comment;
 //
-//  private ObservableList<Pet> petList;
-//
-//  MyModelManager petManager = new MyModelManager();
+//  private ToggleGroup location; // this not needed if the toggle is already set up in scenebuilder
 //
 //  //if I dont put these args, error shows not rrly sure
-//  public void initialize()
-//  {
-//    petList = FXCollections.observableArrayList(
-//        petManager.getAllPets().getPets());
-//    ObservableList<Pet> pets = FXCollections.observableArrayList(
-//        new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
-//            "idk", 150.0, "Friendly"),
-//        new Dog(2, "Luna", "Black", 2, 'F', "Boston", "Adopted", "idk", "idk",
-//            100.0, "Playful"));
+//  public void initialize(URL location, ResourceBundle resources) {
 //
+//    petIDColumn.setCellValueFactory(new PropertyValueFactory<>("petID"));
+//    nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+//    isInShopColumn.setCellValueFactory(new PropertyValueFactory<>("isInShop"));
+//    isSoldColumn.setCellValueFactory(new PropertyValueFactory<>("isSold"));
 //
-//    petTable.setItems(pets);
+//    PetList pets = petManager.getAllPets(); //PetList --> ArrayList<Pet> pets
 //
-//    // Create columns for each field in the Pet class
-//   petIDColumn = new TableColumn<>("Pet ID");
-//    petIDColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getPetID()));
+//    petList.addAll(pets.getPets());
 //
-//    petNameColumn = new TableColumn<>("Pet Name");
-//    petNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+//    addActionButtons();
 //
-//    petColorColumn = new TableColumn<>("Color");
-//    petColorColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getColor()));
-//
-//    petGenderColumn = new TableColumn<>("Gender");
-//    petGenderColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getGender())));
-//
-//    petPriceColumn = new TableColumn<>("Price");
-//    petPriceColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getBasePrice())));
-//
-//    petActionColumn = new TableColumn<>("Actions");
-////    petGenderColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getGender())));
-//    // Add columns to the table
-//    petTable.getColumns().addAll(petIDColumn, petNameColumn, petColorColumn, petGenderColumn);
-//
-//
-//
-//
+//    petTable.setItems(petList);
 //  }
+//
+//  private void addActionButtons() {
+//    actionColumn.setCellFactory(param -> new TableCell<>() {
+//      private final Button editButton = new Button("Edit");
+//      private final Button deleteButton = new Button("Delete");
+//
+//      {
+//        editButton.setOnAction(event -> {
+//          Pet pet = getTableView().getItems().get(getIndex());
+//          handleEditPet(pet);
+//        });
+//
+//        deleteButton.setOnAction(event -> {
+//          Pet pet = getTableView().getItems().get(getIndex());
+//          handleDeletePet(pet);
+//        });
+//      }
+//
+//    });
+//  }
+//
+//  private void handleEditPet(Pet pet) {
+//
+//    try {
+//      // Load the EditPetView FXML file and controller
+//      FXMLLoader loader = new FXMLLoader(getClass().getResource("/path/to/EditPetView.fxml"));
+//      Parent root = loader.load();
+//
+//      // Get the controller of the EditPetView
+//      EditPetViewController controller = loader.getController();
+//
+//      // Pass the selected pet to the controller
+//      controller.setPet(pet);
+//
+//      // Create a new stage and show the edit window
+//      Stage stage = new Stage();
+//      stage.setScene(new Scene(root));
+//      stage.setTitle("Edit Pet");
+//      stage.show();
+//
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
+//
+//    String petID = petManager.getPetById; // how to get pet by ID? isnt there such method in ModelManager
+//    String name = nameField.getText();
+//    boolean isInShop = isInShopCheckBox.isSelected(true);
+//    String isSold = isSoldCheckBox.getText();
+//
+//    if (petID.isEmpty() || name.isEmpty()) {
+//
+//      Alert alert = new Alert(Alert.AlertType.ERROR);
+//      alert.setTitle("Error");
+//      alert.setHeaderText("Invalid Input");
+//      alert.setContentText("Please fill in all required fields.");
+//      alert.showAndWait();
+//      return;
+//  }
+//
+//    Pet newPet = new Pet(petID, name, isInShop, isSold);
+//
+//    MyModelManager.addPet(newPet);
+//
+//    petList.add(newPet);
+//
+//    clearFields();
+//  }
+//
+//  private void clearFields() {
+//    petIDField.clear();
+//    nameField.clear();
+//    isInShopCheckBox.setSelected(false);
+//    isSoldCheckBox.setSelected(false);
+//  }
+//
+//  private void handleDeletePet(Pet pet) {
+//    //petList.remove(pet); not correct cuz deleting only form the table and the table will get it back when reading the binary file
+//    petManager.deletePet(pet.getPetID()); //deletes from the file, handle exception
+//  }
+//
+//  private void search()
+//
 //}
