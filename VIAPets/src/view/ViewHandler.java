@@ -14,16 +14,23 @@ import model.Customer;
 import java.io.IOException;
 
 public class ViewHandler {
-  @FXML
-  private MenuItem petsMenuItem;
+
   @FXML
   private MenuItem customersMenuItem;
+
+  //bookings
   @FXML
   private MenuItem bookingsSettingsMenuItem;
   @FXML
   private MenuItem bookingsListMenuItem;
+
+  //sales
   @FXML
   private MenuItem salesMenuItem;
+
+  //related to pets
+  @FXML
+  private MenuItem petsMenuItem;
   @FXML
   private MenuItem dogMenuItem;
   @FXML
@@ -32,6 +39,8 @@ public class ViewHandler {
   private MenuItem birdMenuItem;
   @FXML
   private MenuItem rodentMenuItem;
+  @FXML
+  private MenuItem fishMenuItem;
   @FXML
   private MenuItem variousMenuItem;
 
@@ -48,22 +57,21 @@ public class ViewHandler {
 
     // Handle menu item click event to determine which scene to load
     if (source == petsMenuItem) {
-      fxmlPath = "fxml/BirdPetView.fxml";
-      System.out.println(fxmlPath);
+      fxmlPath = "fxml/currentlyworking/DefaultPetView.fxml";
+    } else if (source == dogMenuItem||source==catMenuItem) {
+      fxmlPath = "fxml/pets/DogCatPetView.fxml";
+    } else if (source == birdMenuItem) {
+      fxmlPath = "fxml/pets/BirdPetView.fxml";
+    } else if (source == fishMenuItem) {
+      fxmlPath = "fxml/pets/FishPetView.fxml";
+    }else if (source == rodentMenuItem || source == variousMenuItem) {
+      fxmlPath = "fxml/pets/RodentVariousPetView.fxml";
     } else if (source == customersMenuItem) {
       fxmlPath = "fxml/Customers/DefaultCustomerView.fxml";
     } else if (source == bookingsSettingsMenuItem) {
       fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
     } else if (source == bookingsListMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultBookingsView.fxml";
-    } else if (source == petsMenuItem) {
-      fxmlPath = "fxml/currentlyworking/DefaultPetView.fxml";
-    } else if (source == dogMenuItem||source==catMenuItem) {
-      fxmlPath = "fxml/pets/DogCatPetView.fxml";
-    } else if (source == birdMenuItem) {
-      fxmlPath = "fxml/pets/BirdPetView.fxml";
-    } else if (source == rodentMenuItem || source == variousMenuItem) {
-      fxmlPath = "fxml/pets/RodentVariousPetView.fxml";
     }  else if (source == salesMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultSalesView.fxml";
     } else {
@@ -71,15 +79,12 @@ public class ViewHandler {
     }
     // Switch to the selected scene
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
-
     MenuItem mirrorMenuItem = (MenuItem) source;
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
-
     Scene scene = new Scene(root);
     stage.setScene(scene);
     fxmlDefPath=fxmlPath;
     stage.show();
-
   }
 
   public void addTest(ActionEvent e)
