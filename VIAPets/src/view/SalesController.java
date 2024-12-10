@@ -13,7 +13,7 @@ public class SalesController
   private MenuItem petsMenu;
 
   @FXML
-  public void handle(ActionEvent e) throws IOException
+  public void handlelist(ActionEvent e) throws IOException
   {
 
   }
