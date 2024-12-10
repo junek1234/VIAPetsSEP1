@@ -78,7 +78,7 @@
           <TableColumn minWidth="85.0" prefWidth="105.0" text="PetID" />
           <TableColumn minWidth="85.0" prefWidth="105.0" text="Pet Name" />
             <TableColumn minWidth="85.0" prefWidth="105.0" text="Color" />
-            <TableColumn minWidth="85.0" prefWidth="105.0" text="Color" />
+            <TableColumn minWidth="85.0" prefWidth="105.0" text="Gender" />
             <TableColumn minWidth="85.0" prefWidth="105.0" text="Price" />
             <TableColumn minWidth="85.0" prefWidth="105.0" text="Actions" />
         </columns>
