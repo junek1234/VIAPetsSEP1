@@ -24,6 +24,16 @@ public class ViewHandler {
   private MenuItem bookingsListMenuItem;
   @FXML
   private MenuItem salesMenuItem;
+  @FXML
+  private MenuItem dogMenuItem;
+  @FXML
+  private MenuItem catMenuItem;
+  @FXML
+  private MenuItem birdMenuItem;
+  @FXML
+  private MenuItem rodentMenuItem;
+  @FXML
+  private MenuItem variousMenuItem;
 
   private CustomerController customerController= new CustomerController();
   private Stage stage;  // Keep a reference to the primaryStage
@@ -45,7 +55,13 @@ public class ViewHandler {
       fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
     } else if (source == bookingsListMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultBookingsView.fxml";
-    } else if (source == salesMenuItem) {
+    } else if (source == dogMenuItem||source==catMenuItem) {
+      fxmlPath = "fxml/pets/DogCatPetView.fxml";
+    } else if (source == birdMenuItem) {
+      fxmlPath = "fxml/pets/BirdPetView.fxml";
+    } else if (source == rodentMenuItem || source == variousMenuItem) {
+      fxmlPath = "fxml/pets/RodentVariousPetView.fxml";
+    }  else if (source == salesMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultSalesView.fxml";
     } else {
       fxmlPath = fxmlDefPath;  // Default fallback scene
