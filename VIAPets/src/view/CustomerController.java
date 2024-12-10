@@ -9,6 +9,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.MyModelManager;
 import model.Customer;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import model.Pet;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,6 +57,24 @@ public class CustomerController implements Initializable
   @FXML TextField emailTextField;
   @FXML Button addButton;
 
+  public void addTest(ActionEvent e)
+  {
+    System.out.println("works?");
+  }
+}
+
+/**
+  @FXML
+  private void handleSaveButton() {
+    // Example fields
+    String name = nameField.getText();
+    String age = ageField.getText();
+    String species = speciesField.getText();
+    String color = colorField.getText();
+    String gender = genderField.getText();
+    String comment = commentArea.getText();
+    String location = shopRadioButton.isSelected() ? "Shop" : "Kennel"; // Example for radio buttons
+    boolean isSold = soldRadioButton.isSelected();
 
 
   }
