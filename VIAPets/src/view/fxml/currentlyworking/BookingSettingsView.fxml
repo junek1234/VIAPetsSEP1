@@ -19,12 +19,12 @@
                   <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" onAction="#switchScene"/>
                   <Menu mnemonicParsing="false" text="Add Pet">
                      <items>
-                        <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Dog" />
-                        <MenuItem fx:id="catMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Cat" />
-                        <MenuItem fx:id="birdMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Bird" />
-                        <MenuItem fx:id="fishMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Fish" />
-                        <MenuItem fx:id="rodentMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Rodent" />
-                        <MenuItem fx:id="variousMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Various" />
+                        <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Dog" />
+                        <MenuItem fx:id="catMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Cat" />
+                        <MenuItem fx:id="birdMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Bird" />
+                        <MenuItem fx:id="fishMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Fish" />
+                        <MenuItem fx:id="rodentMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Rodent" />
+                        <MenuItem fx:id="variousMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Various" />
                      </items>
                   </Menu>
                </items>
@@ -32,20 +32,20 @@
             <Menu mnemonicParsing="false" text="Customers">
                <items>
                   <MenuItem fx:id="customersMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Customers" />
-                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Customers" />
+                  <MenuItem fx:id="addCustomerMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Add Customer" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Bookings">
                <items>
-                  <MenuItem fx:id="bookingsListMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Bookings" />
-                  <MenuItem fx:id="bookingsListMenu1" mnemonicParsing="false" onAction="#switchScene" text="Add Booking" />
+                  <MenuItem fx:id="bookingsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Bookings" />
+                  <MenuItem fx:id="addBookingMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Add Booking" />
                   <MenuItem fx:id="bookingsSettingsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Settings" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Sales">
                <items>
                   <MenuItem fx:id="salesMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Sales" />
-                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Sales" />
+                  <MenuItem fx:id="addSaleMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Add Sales" />
                </items>
             </Menu>
          </menus>

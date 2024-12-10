@@ -14,31 +14,6 @@
 
 <VBox id="searchBar" prefHeight="425.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-      <MenuBar>
-         <menus>
-            <Menu mnemonicParsing="false" text="Pets">
-               <items>
-                  <MenuItem fx:id="petsMenu" mnemonicParsing="false" text="Pet" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Customers">
-               <items>
-                  <MenuItem fx:id="customersMenu" mnemonicParsing="false" text="Customers" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Bookings">
-               <items>
-                  <MenuItem fx:id="bookingsListMenu" mnemonicParsing="false" text="View" />
-                  <MenuItem fx:id="bookingsSettingsMenu" mnemonicParsing="false" text="Settings" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Sales">
-               <items>
-                  <MenuItem fx:id="salesMenu" mnemonicParsing="false" text="Sales" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
          <VBox.margin>
             <Insets top="15.0" />
