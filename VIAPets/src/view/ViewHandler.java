@@ -1,19 +1,23 @@
 package view;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SortEvent;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Customer;
+import model.Dog;
+import model.Pet;
 
 import java.io.IOException;
 
@@ -39,7 +43,11 @@ public class ViewHandler {
   //sales
   @FXML private MenuItem salesMenuItem;
   @FXML private MenuItem addSaleMenuItem;
-
+  @FXML private TableView<Pet> petTable;
+  @FXML private TableColumn<Pet, Number> petIDPetView;
+  @FXML private TableColumn<Pet, String> petNamePetView;
+  @FXML private TableColumn<Pet, String> petColorPetView;
+  @FXML private TableColumn<Pet, String> petGenderPetView;
 
   private CustomerController customerController = new CustomerController();
   private Stage stage;  // Keep a reference to the primaryStage
@@ -69,10 +77,20 @@ public class ViewHandler {
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
     MenuItem mirrorMenuItem = (MenuItem) source;
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
-    Scene scene = new Scene(root);
+    VBox vbox = new VBox();
+    initfknlist();
+    vbox.getChildren().add(root);
+    vbox.getChildren().add(petTable);
+    Scene scene = new Scene(vbox);
+
+
+
+
+
     stage.setScene(scene);
     fxmlDefPath = fxmlPath;
     stage.show();
+
   }
 
   // Create a separate method for popup handling
@@ -129,5 +147,44 @@ public class ViewHandler {
 //  public void addPet(Object source) {
 //    petController.addPet(source);
 //  }
+  public void initfknlist()
+  {
+    ObservableList<Pet> pets = FXCollections.observableArrayList(
+        new Dog(1, "Buddy", "Brown", 4, 'M', "New York", "Available", "idk",
+            "idk", 150.0, "Friendly"),
+        new Dog(2, "Luna", "Black", 2, 'F', "Boston", "Adopted", "idk", "idk",
+            100.0, "Playful"));
 
+    // Create TableView
+    petTable = new TableView<>(pets);
+//    petTable.setItems(pets);
+
+    // Create columns for each field in the Pet class
+    petIDPetView = new TableColumn<>("Pet ID");
+    petIDPetView.setCellValueFactory(
+        cellData -> new SimpleIntegerProperty(cellData.getValue().getPetID()));
+
+    petNamePetView = new TableColumn<>("Name");
+    petNamePetView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+
+    petColorPetView = new TableColumn<>("Color");
+    petColorPetView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getColor()));
+
+    petGenderPetView = new TableColumn<>("Gender");
+    petGenderPetView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        String.valueOf(cellData.getValue().getGender())));
+
+
+    // Add columns to the table
+    petTable.getColumns()
+        .addAll(petIDPetView, petNamePetView, petColorPetView, petGenderPetView);
+    petTable.refresh();
+    System.out.println(petTable.getColumns().toString());
+//    System.out.println(petTable.getColumns().get(1).getText());
+    for (Pet pet : petTable.getItems()) {
+      // Assuming your second column is for "Pet Name"
+      System.out.println("Pet Name from table: " + petTable.getColumns().get(1).getCellData(pet));
+    }  }
 }

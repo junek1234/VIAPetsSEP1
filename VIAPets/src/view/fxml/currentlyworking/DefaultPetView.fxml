@@ -17,7 +17,7 @@
           <menus>
               <Menu mnemonicParsing="false" text="Pets">
                   <items>
-                      <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" onAction="#switchScene"/>
+                      <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Pets" />
                       <Menu mnemonicParsing="false" text="Add Pet">
                           <items>
                               <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Dog" />
@@ -73,14 +73,14 @@
             </VBox>
          </children>
       </VBox>
-      <TableView prefHeight="566.0" prefWidth="640.0">
+      <TableView fx:id="petTable" prefHeight="566.0" prefWidth="640.0">
         <columns>
-          <TableColumn minWidth="85.0" prefWidth="105.0" text="PetID" />
-          <TableColumn minWidth="85.0" prefWidth="105.0" text="Pet Name" />
-            <TableColumn minWidth="85.0" prefWidth="105.0" text="Color" />
-            <TableColumn minWidth="85.0" prefWidth="105.0" text="Gender" />
-            <TableColumn minWidth="85.0" prefWidth="105.0" text="Price" />
-            <TableColumn minWidth="85.0" prefWidth="105.0" text="Actions" />
+          <TableColumn fx:id="petIDPetView" minWidth="85.0" prefWidth="105.0" text="PetID" />
+          <TableColumn fx:id="petNamePetView" minWidth="85.0" prefWidth="105.0" text="Pet Name" />
+            <TableColumn fx:id="petColorPetView" minWidth="85.0" prefWidth="105.0" text="Color" />
+            <TableColumn fx:id="petGenderPetView" minWidth="85.0" prefWidth="105.0" text="Gender" />
+            <TableColumn fx:id="petPricePetView" minWidth="85.0" prefWidth="105.0" text="Price" />
+            <TableColumn fx:id="petActionsPetView" minWidth="85.0" prefWidth="105.0" text="Actions" />
         </columns>
       </TableView>
   </children>
