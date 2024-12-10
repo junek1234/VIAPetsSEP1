@@ -63,7 +63,7 @@ public class CustomerController implements Initializable
   }
 }
 
-/**
+/*
   @FXML
   private void handleSaveButton() {
     // Example fields
@@ -77,5 +77,5 @@ public class CustomerController implements Initializable
     boolean isSold = soldRadioButton.isSelected();
 
 
-  }
+  }*/
 
