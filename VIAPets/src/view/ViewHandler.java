@@ -26,7 +26,7 @@ public class ViewHandler {
 
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
-
+  private String fxmlDefPath="fxml/currentlyworking/DefaultView.fxml";
 
   @FXML
   public void switchScene(ActionEvent e) throws IOException {
@@ -46,7 +46,7 @@ public class ViewHandler {
     } else if (source == salesMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultSalesView.fxml";
     } else {
-      fxmlPath = "fxml/currentlyworking/DefaultView.fxml";  // Default fallback scene
+      fxmlPath = fxmlDefPath;  // Default fallback scene
     }
     // Switch to the selected scene
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
@@ -54,6 +54,7 @@ public class ViewHandler {
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
     Scene scene = new Scene(root);
     stage.setScene(scene);
+    fxmlDefPath=fxmlPath;
     stage.show();
   }
 }
