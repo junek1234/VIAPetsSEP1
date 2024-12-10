@@ -17,6 +17,7 @@ public class SalesController
   {
 
   }
+
   @FXML
   public void switchScene(ActionEvent e) throws IOException
   {
