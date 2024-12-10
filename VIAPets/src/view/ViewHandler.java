@@ -122,10 +122,12 @@ public class ViewHandler {
   @FXML private TableColumn<Sale, String> customerNameSaleView;
   @FXML private TableColumn<Sale, String> priceSaleView;
 
-  private CustomerController customerController = new CustomerController();
+
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
   private String fxmlDefPath = "fxml/currentlyworking/DefaultView.fxml";
+  VIAPets viaPets = new VIAPets();
+  MyModelManager myModelManager = new MyModelManager();
 
   @FXML
   public void switchScene(ActionEvent e) throws IOException {

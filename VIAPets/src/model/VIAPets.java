@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 // dont make it static
 public class VIAPets implements Serializable
 {
-  public static int maxKennelSlots=10;
+  public static int maxKennelSlots;
   public static int availableSlots;  //change in astah
   public static double bookingPrice;
   public static BookingList allBookings;
@@ -25,11 +25,12 @@ public class VIAPets implements Serializable
 
   //reserved slots should not be here i guess - change the Astah design
   //changing reserved slots to available slots
-  public VIAPets(int maxKennelSlots, double bookingPrice)
+  public VIAPets()
   {
-    this.maxKennelSlots = maxKennelSlots;
-    this.bookingPrice = bookingPrice;
-    setAvailableSlots();
+    maxKennelSlots = 10; //needs to be changed!!!!
+    bookingPrice = 10;//needs to be changed!!!!
+    availableSlots=10;//needs to be changed!!!!
+
   }
 
   public void setMaxKennelSlots(int maxKennelSlots)
