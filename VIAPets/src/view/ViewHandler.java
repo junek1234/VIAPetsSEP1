@@ -32,22 +32,21 @@ public class ViewHandler {
   public void switchScene(ActionEvent e) throws IOException {
     Object source = e.getSource();
     String fxmlPath;
-    System.out.println();
 
     // Handle menu item click event to determine which scene to load
     if (source == petsMenuItem) {
       fxmlPath = "fxml/BirdPetView.fxml";
       System.out.println(fxmlPath);
     } else if (source == customersMenuItem) {
-      fxmlPath = "fxml/CustomerView.fxml";
+      fxmlPath = "fxml/currentlyworking/DefaultCustomerView.fxml";
     } else if (source == bookingsSettingsMenuItem) {
-      fxmlPath = "fxml/BookingSettingsView.fxml";
+      fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
     } else if (source == bookingsListMenuItem) {
-      fxmlPath = "fxml/BookingsListView.fxml";
+      fxmlPath = "fxml/currentlyworking/DefaultBookingsView.fxml";
     } else if (source == salesMenuItem) {
-      fxmlPath = "fxml/DefaultSalesView.fxml";
+      fxmlPath = "fxml/currentlyworking/DefaultSalesView.fxml";
     } else {
-      fxmlPath = "fxml/DefaultView.fxml";  // Default fallback scene
+      fxmlPath = "fxml/currentlyworking/DefaultView.fxml";  // Default fallback scene
     }
     // Switch to the selected scene
     root = FXMLLoader.load(getClass().getResource(fxmlPath));

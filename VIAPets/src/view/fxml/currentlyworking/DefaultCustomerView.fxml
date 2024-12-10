@@ -43,20 +43,46 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CustomerController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="Pets" />
-        <Menu mnemonicParsing="false" text="Customers" />
-        <Menu mnemonicParsing="false" text="Bookings">
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="Pets">
                <items>
-                  <MenuItem mnemonicParsing="false" text="View" />
-                  <MenuItem mnemonicParsing="false" text="Settings" />
-               </items></Menu>
-            <Menu mnemonicParsing="false" text="Sales" />
-      </menus>
-    </MenuBar>
+                  <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" />
+                  <Menu mnemonicParsing="false" text="Add Pet">
+                     <items>
+                        <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Dog" />
+                        <MenuItem fx:id="catMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Cat" />
+                        <MenuItem fx:id="birdMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Bird" />
+                        <MenuItem fx:id="fishMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Fish" />
+                        <MenuItem fx:id="rodentMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Rodent" />
+                        <MenuItem fx:id="variousMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Various" />
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Customers">
+               <items>
+                  <MenuItem fx:id="customersMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Customers" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Customers" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Bookings">
+               <items>
+                  <MenuItem fx:id="bookingsListMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Bookings" />
+                  <MenuItem fx:id="bookingsListMenu1" mnemonicParsing="false" onAction="#switchScene" text="Add Booking" />
+                  <MenuItem fx:id="bookingsSettingsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Settings" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Sales">
+               <items>
+                  <MenuItem fx:id="salesMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Sales" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Sales" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
       <VBox prefHeight="377.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -70,7 +96,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Add booking">
+                  <Button mnemonicParsing="false" text="Add Customer">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
@@ -81,12 +107,10 @@
       </VBox>
       <TableView prefHeight="566.0" prefWidth="640.0">
         <columns>
-          <TableColumn minWidth="75.0" prefWidth="105.0" text="BookingID" />
-          <TableColumn minWidth="75.0" prefWidth="105.0" text="Pet Name" />
-            <TableColumn minWidth="75.0" prefWidth="105.0" text="Customer Name" />
-            <TableColumn minWidth="75.0" prefWidth="105.0" text="Start Date" />
-            <TableColumn minWidth="75.0" prefWidth="105.0" text="End Date" />
-            <TableColumn minWidth="75.0" prefWidth="115.0" text="Actions" />
+          <TableColumn minWidth="75.0" prefWidth="145.60003662109375" text="CustomerID" />
+          <TableColumn minWidth="64.79998779296875" prefWidth="167.20001220703125" text="Name" />
+            <TableColumn minWidth="20.0" prefWidth="152.79998779296875" text="PhoneNumber" />
+            <TableColumn minWidth="31.20001220703125" prefWidth="172.79998779296875" text="E-mail" />
         </columns>
       </TableView>
   </children>

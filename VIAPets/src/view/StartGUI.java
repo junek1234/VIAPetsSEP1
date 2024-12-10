@@ -19,7 +19,7 @@ public class StartGUI extends Application
     // Set the primary stage as the main window
     primaryStage.setTitle("FXMLTEST");
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("fxml/DefaultSalesView.fxml"));
+    loader.setLocation(getClass().getResource("fxml/currentlyworking/DefaultView.fxml"));
     Scene scene = new Scene(loader.load());
     primaryStage.setScene(scene);  // Set the initial scene
     primaryStage.show();  // Make sure the primary stage is shown

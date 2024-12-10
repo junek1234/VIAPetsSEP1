@@ -1,5 +1,5 @@
 
-package view;
+package view.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,14 +12,16 @@ import model.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditVariousViewController implements Initializable
+public class EditDogViewController implements Initializable
 {
-
   @FXML private TextField nameField;
   @FXML private TextField ageField;
-  @FXML private TextField speciesField;
+  @FXML private TextField breedField;
+  @FXML private TextField breederNameField;
   @FXML private TextField colorField;
-  @FXML private TextField genderField;
+  @FXML private ToggleGroup genderToggleGroup;
+  @FXML private RadioButton masculineRadioButton;
+  @FXML private RadioButton feminineRadioButton;
   @FXML private ToggleGroup locationToggleGroup;
   @FXML private RadioButton shopRadioButton;
   @FXML private RadioButton kennelRadioButton;
@@ -32,6 +34,9 @@ public class EditVariousViewController implements Initializable
   private Pet pet;
 
   public void initialize(URL location, ResourceBundle resources) {
+    feminineRadioButton.setToggleGroup(genderToggleGroup);
+    masculineRadioButton.setToggleGroup(genderToggleGroup);
+
     shopRadioButton.setToggleGroup(locationToggleGroup);
     kennelRadioButton.setToggleGroup(locationToggleGroup);
 
@@ -40,14 +45,19 @@ public class EditVariousViewController implements Initializable
     notFromVIAPetsRadioButton.setToggleGroup(statusToggleGroup);
   }
 
-  public void setPet(Pet pet) {
+  public void handleEditPet(Pet pet) {
     this.pet = pet;
 
     nameField.setText(pet.getName());
     ageField.setText(String.valueOf(pet.getAge()));
     colorField.setText(pet.getColor());
-    genderField.setText(String.valueOf(pet.getGender()));
     commentArea.setText(pet.getComment());
+
+    if ("Feminine".equals(pet.getGender())) {
+      feminineRadioButton.setSelected(true);
+    } else if ("Masculine".equals(pet.getGender())) {
+      masculineRadioButton.setSelected(true);
+    }
 
     if ("Shop".equals(pet.getLocation())) {
       shopRadioButton.setSelected(true);
@@ -62,8 +72,9 @@ public class EditVariousViewController implements Initializable
     } else if ("Not from VIAPets".equals(pet.getStatus())) {
       notFromVIAPetsRadioButton.setSelected(true);}
 
-    if (pet instanceof Various) {
-      speciesField.setText(((Various) pet).getSpecies());
+    if (pet instanceof Dog) {
+      breedField.setText(((Dog) pet).getBreed());
+      breederNameField.setText(((Dog) pet).getBreederName());
     }
   }
 

@@ -11,29 +11,29 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SalesController">
+<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
   <children>
       <MenuBar>
          <menus>
             <Menu mnemonicParsing="false" text="Pets">
                <items>
-                  <MenuItem fx:id="petsMenu" mnemonicParsing="false" text="Pet" onAction="#switchScene"/>
+                  <MenuItem fx:id="petsMenu" mnemonicParsing="false" onAction="#switchScene" text="Pet" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Customers">
                <items>
-                  <MenuItem fx:id="customersMenu" mnemonicParsing="false" text="Customers" onAction="#switchScene"/>
+                  <MenuItem fx:id="customersMenu" mnemonicParsing="false" onAction="#switchScene" text="Customers" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Bookings">
                <items>
-                  <MenuItem fx:id="bookingsListMenu" mnemonicParsing="false" text="View" onAction="#switchScene"/>
-                  <MenuItem fx:id="bookingsSettingsMenu" mnemonicParsing="false" text="Settings" onAction="#switchScene"/>
+                  <MenuItem fx:id="bookingsListMenu" mnemonicParsing="false" onAction="#switchScene" text="View" />
+                  <MenuItem fx:id="bookingsSettingsMenu" mnemonicParsing="false" onAction="#switchScene" text="Settings" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Sales">
                <items>
-                  <MenuItem fx:id="salesMenu" mnemonicParsing="false" text="Sales" onAction="#switchScene"/>
+                  <MenuItem fx:id="salesMenu" mnemonicParsing="false" onAction="#switchScene" text="Sales" />
                </items>
             </Menu>
          </menus>
@@ -51,7 +51,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Add sale">
+                  <Button mnemonicParsing="false" text="Add booking">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
@@ -62,11 +62,12 @@
       </VBox>
       <TableView prefHeight="566.0" prefWidth="640.0">
         <columns>
-          <TableColumn minWidth="85.0" prefWidth="130.0" text="Sale ID" />
-          <TableColumn minWidth="85.0" prefWidth="130.0" text="Pet Name" />
-            <TableColumn minWidth="85.0" prefWidth="130.0" text="Customer Name" />
-            <TableColumn minWidth="85.0" prefWidth="130.0" text="Sales Prices" />
-            <TableColumn minWidth="85.0" prefWidth="130.0" text="Actions" />
+          <TableColumn minWidth="75.0" prefWidth="105.0" text="BookingID" />
+          <TableColumn minWidth="75.0" prefWidth="105.0" text="Pet Name" />
+            <TableColumn minWidth="75.0" prefWidth="105.0" text="Customer Name" />
+            <TableColumn minWidth="75.0" prefWidth="105.0" text="Start Date" />
+            <TableColumn minWidth="75.0" prefWidth="105.0" text="End Date" />
+            <TableColumn minWidth="75.0" prefWidth="115.0" text="Actions" />
         </columns>
       </TableView>
   </children>

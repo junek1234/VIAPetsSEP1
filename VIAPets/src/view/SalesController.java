@@ -2,19 +2,25 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 
 public class SalesController
 {
   ViewHandler viewHandler = new ViewHandler();
-  @FXML
-  private MenuItem petsMenu;
+  //This line causes that the second click doesn't work I believe
+
 
   @FXML
-  public void handlelist(ActionEvent e) throws IOException
+  public Button addSaleButton;
+
+  @FXML
+  public void handleDefault(ActionEvent e) throws IOException
   {
+    if (e.getSource() == addSaleButton){
+      System.out.println("Add a sale button clicked");
+    }
 
   }
 
