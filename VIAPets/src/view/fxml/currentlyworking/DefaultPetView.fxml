@@ -75,11 +75,12 @@
       </VBox>
       <TableView prefHeight="566.0" prefWidth="640.0">
         <columns>
-          <TableColumn minWidth="85.0" prefWidth="130.0" text="PetID" />
-          <TableColumn minWidth="85.0" prefWidth="130.0" text="Pet Name" />
-            <TableColumn minWidth="85.0" prefWidth="130.0" text="Customer Name" />
-            <TableColumn minWidth="85.0" prefWidth="130.0" text="Sales Prices" />
-            <TableColumn minWidth="85.0" prefWidth="130.0" text="Actions" />
+          <TableColumn minWidth="85.0" prefWidth="105.0" text="PetID" />
+          <TableColumn minWidth="85.0" prefWidth="105.0" text="Pet Name" />
+            <TableColumn minWidth="85.0" prefWidth="105.0" text="Color" />
+            <TableColumn minWidth="85.0" prefWidth="105.0" text="Color" />
+            <TableColumn minWidth="85.0" prefWidth="105.0" text="Price" />
+            <TableColumn minWidth="85.0" prefWidth="105.0" text="Actions" />
         </columns>
       </TableView>
   </children>
