@@ -122,9 +122,9 @@ public class ViewHandler {
   public void save(){
   }
 
-  public void addTest(ActionEvent e) {
-    customerController.addTest(e);
-  }
+//  public void addTest(ActionEvent e) {
+//    customerController.addTest(e);
+//  }
 
 //  public void addPet(Object source) {
 //    petController.addPet(source);
