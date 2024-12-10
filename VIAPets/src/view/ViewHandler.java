@@ -17,9 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Customer;
-import model.Dog;
-import model.Pet;
+import model.*;
 
 import java.io.IOException;
 
@@ -67,26 +65,48 @@ public class ViewHandler {
   //sales
   @FXML private MenuItem salesMenuItem;
   @FXML private MenuItem addSaleMenuItem;
+
   @FXML private TableView<Pet> petTable;
   @FXML private TableColumn<Pet, Number> petIDPetView;
   @FXML private TableColumn<Pet, String> petNamePetView;
   @FXML private TableColumn<Pet, String> petColorPetView;
   @FXML private TableColumn<Pet, String> petGenderPetView;
 
+  @FXML private TableView<Customer> customerTable;
+  @FXML private TableColumn<Customer, Number> customerIDView;
+  @FXML private TableColumn<Customer, String> customerNameView;
+  @FXML private TableColumn<Customer, Number> phoneNumberView;
+  @FXML private TableColumn<Customer, String> emailView;
+
+  @FXML private TableView<Booking> bookingTable;
+  @FXML private TableColumn<Booking, Number> bookingIDView;
+  @FXML private TableColumn<Booking, String> petNameBookingView;
+  @FXML private TableColumn<Booking, Number> customerNameBookingView;
+  @FXML private TableColumn<Booking, String> startDateBookingView;
+  @FXML private TableColumn<Booking, String> endDateBookingView;
+
+  @FXML private TableView<Sale> saleTable;
+  @FXML private TableColumn<Sale, Number> saleIDView;
+  @FXML private TableColumn<Sale, String> petNameSaleView;
+  @FXML private TableColumn<Sale, Number> customerNameSaleView;
+  @FXML private TableColumn<Sale, Number> priceSaleView;
+
   private CustomerController customerController = new CustomerController();
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
   private String fxmlDefPath = "fxml/currentlyworking/DefaultView.fxml";
 
-  @FXML public void switchScene(ActionEvent e) throws IOException {
+  @FXML
+  public void switchScene(ActionEvent e) throws IOException {
     Object source = e.getSource();
     String fxmlPath;
 
-    // Handle menu item click event to determine which scene to load
     if (source == petsMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultPetView.fxml";
+      initfknlist(); // Initialize pet table
     } else if (source == customersMenuItem) {
       fxmlPath = "fxml/Customers/DefaultCustomerView.fxml";
+      initCustomerList(); // Initialize customer table
     } else if (source == bookingsSettingsMenuItem) {
       fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
     } else if (source == bookingsMenuItem) {
@@ -94,30 +114,37 @@ public class ViewHandler {
     } else if (source == salesMenuItem) {
       fxmlPath = "fxml/currentlyworking/DefaultSalesView.fxml";
     } else {
-      fxmlPath = fxmlDefPath;  // Default fallback scene
+      fxmlPath = fxmlDefPath;
     }
 
-    // Switch to the selected scene
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
     MenuItem mirrorMenuItem = (MenuItem) source;
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
     VBox vbox = new VBox();
-
-
-    initfknlist();
     vbox.getChildren().add(root);
-    vbox.getChildren().add(petTable);
+
+    if (source == petsMenuItem) {
+      vbox.getChildren().add(petTable);
+    }
+
+    else if (source == customersMenuItem) {
+      vbox.getChildren().add(customerTable);
+    }
+
+    else if (source == bookingsMenuItem) {
+      vbox.getChildren().add(bookingTable);
+    }
+    
+    else if (source == salesMenuItem) {
+      vbox.getChildren().add(saleTable);
+    }
+
     Scene scene = new Scene(vbox);
-
-
-
-
-
     stage.setScene(scene);
     fxmlDefPath = fxmlPath;
     stage.show();
-
   }
+
 
   // Create a separate method for popup handling
   @FXML private void showPopup(ActionEvent e) throws IOException
@@ -213,4 +240,126 @@ public class ViewHandler {
       // Assuming your second column is for "Pet Name"
       System.out.println("Pet Name from table: " + petTable.getColumns().get(1).getCellData(pet));
     }  }
+
+  public void initCustomerList() {
+    ObservableList<Customer> customers = FXCollections.observableArrayList(
+        new Customer(1, "manuel", 999, "@gmail"),
+        new Customer(2, "gustavo", 99, "@gma")
+    );
+
+    customerTable = new TableView<>(customers);
+
+    customerIDView = new TableColumn<>("Customer ID");
+    customerIDView.setCellValueFactory(
+        cellData -> new SimpleIntegerProperty(cellData.getValue().getCustomerID())
+    );
+
+    customerNameView = new TableColumn<>("Name");
+    customerNameView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getName())
+    );
+
+    phoneNumberView = new TableColumn<>("Phone Number");
+    phoneNumberView.setCellValueFactory(
+        cellData -> new SimpleIntegerProperty(cellData.getValue().getPhoneNumber())
+    );
+
+    emailView = new TableColumn<>("Email");
+    emailView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getEmail())
+    );
+
+    customerTable.getColumns().addAll(customerIDView, customerNameView, phoneNumberView, emailView);
+
+    customerTable.refresh();
+  }
+
+//  public void initBookingList() {
+//    ObservableList<Booking> bookings = FXCollections.observableArrayList(
+//        new Booking(
+//            1,
+//            new Dog(1, "goof", "hvid", "3", "M", "cph", "sold", "10", "ola"),
+//            new Customer(1, "gustavo", 999, "@gmai"),
+//            new DateInterval(
+//                new Date(1, 5, 4, 1),
+//                new Date(2, 7, 4, 3)
+//            )
+//        ),
+//        new Booking(
+//            2,
+//            new Dog(1, "goof", "hvid", "3", "M", "cph", "sold", "10", "ola"),
+//            new Customer(1, "manuel", 999, "@dd"),
+//            new DateInterval(
+//                new Date(1, 5, 4, 1),
+//                new Date(2, 7, 4, 3)
+//            )
+//        )
+//    );
+//
+//    bookingTable = new TableView<>(bookings);
+//
+//    bookingIDView = new TableColumn<>("Booking ID");
+//    bookingIDView.setCellValueFactory(
+//        cellData -> new SimpleIntegerProperty(cellData.getValue().getBookingID())
+//    );
+//
+//    petNameBookingView = new TableColumn<>("Pet Name");
+//    petNameBookingView.setCellValueFactory(
+//        cellData -> new SimpleStringProperty(cellData.getValue().getPet().getName())
+//    );
+//
+//    customerNameBookingView = new TableColumn<>("Customer Name");
+//    customerNameBookingView.setCellValueFactory(
+//        cellData -> new SimpleIntegerProperty(cellData.getValue().getCustomer().getName())
+//    );
+//
+//    startDateBookingView = new TableColumn<>("Start Date");
+//    startDateBookingView.setCellValueFactory(
+//        cellData -> new SimpleStringProperty(cellData.getValue().getDateInterval().getStartDate())
+//    );
+//
+//    endDateBookingView = new TableColumn<>("End Date");
+//    endDateBookingView.setCellValueFactory(
+//        cellData -> new SimpleStringProperty(cellData.getValue().getDateInterval().getEndDate())
+//    );
+//
+//    bookingTable.getColumns().addAll(bookingIDView, petNameBookingView, customerNameBookingView, startDateBookingView, endDateBookingView);
+//
+//    bookingTable.refresh();
+//  }
+//
+//  public void initSaleList() {
+//    ObservableList<Sale> sales = FXCollections.observableArrayList(
+//        new Sale(1, new Customer(1, "manuel", 999, "@dd"), new Dog(1, "goof", "hvid","3","M","cph","sold","10","ola"), 5),
+//        new Sale(1, new Customer(1, "manuel", 999, "@dd"), new Dog(1, "goof", "hvid","3","M","cph","sold","10","ola"), 5));
+//
+//
+//    saleTable = new TableView<>(sales);
+//
+//    saleIDView = new TableColumn<>("Sale ID");
+//    saleIDView.setCellValueFactory(
+//        cellData -> new SimpleIntegerProperty(cellData.getValue().getSaleID())
+//    );
+//
+//    petNameSaleView = new TableColumn<>("Pet Name");
+//    petNameSaleView.setCellValueFactory(
+//        cellData -> new SimpleIntegerProperty(cellData.getValue().getPet().getName())
+//    );
+//
+//    customerNameSaleView = new TableColumn<>("Customer Name");
+//    customerNameSaleView.setCellValueFactory(
+//        cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName())
+//    );
+//
+//    priceSaleView = new TableColumn<>("Price");
+//    priceSaleView.setCellValueFactory(
+//        cellData -> new SimpleStringProperty(cellData.getValue().getSalePrice())
+//    );
+//
+//    saleTable.getColumns().addAll(saleIDView, petNameSaleView, customerNameSaleView, priceSaleView);
+//
+//    saleTable.refresh();
+//  }
+
 }
+
