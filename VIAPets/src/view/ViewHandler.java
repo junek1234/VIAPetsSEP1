@@ -35,7 +35,8 @@ public class ViewHandler {
   @FXML
   private MenuItem variousMenuItem;
 
-//  private CustomerController customerController= new CustomerController();
+  private CustomerController customerController= new CustomerController();
+
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
   private String fxmlDefPath="fxml/currentlyworking/DefaultView.fxml";
@@ -76,10 +77,10 @@ public class ViewHandler {
     stage.show();
   }
 
-//  public void addTest(ActionEvent e)
-//  {
-//    customerController.addTest(e);
-//  }
+  public void addTest(ActionEvent e)
+  {
+    customerController.addTest(e);
+  }
 
 
 
