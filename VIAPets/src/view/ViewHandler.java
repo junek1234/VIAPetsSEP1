@@ -102,6 +102,8 @@ public class ViewHandler {
     MenuItem mirrorMenuItem = (MenuItem) source;
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
     VBox vbox = new VBox();
+
+
     initfknlist();
     vbox.getChildren().add(root);
     vbox.getChildren().add(petTable);

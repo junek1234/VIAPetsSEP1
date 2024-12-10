@@ -35,8 +35,7 @@ public class Customer implements Serializable
   }
 
   public int getPhoneNumber() {
-    return phoneNumber;
-  }
+    return phoneNumber;}
 
   public void setPhoneNumber(int phoneNumber) {
     this.phoneNumber = phoneNumber;
