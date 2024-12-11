@@ -26,7 +26,8 @@ public class CustomerList implements Serializable
   // Edit an existing customer (replacing old customer object with a new one changed in the Controller)
   public void editCustomer(int customerID, Customer newCustomer)
   {
-    customers.set(customerID, newCustomer);
+    int index = customers.indexOf(getCustomer(customerID));
+    customers.set(index,newCustomer);
   }
 
   // Remove a customer by ID

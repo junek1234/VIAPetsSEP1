@@ -21,15 +21,7 @@ public class CustomerViewController
 
   public void saveAddCustomer(ActionEvent actionEvent)
   {
-    int number;
-    if(customerPhoneNumberTextField.getText().isEmpty())
-    {
-      number=0;
-    }
-    else
-    {
-      number=Integer.parseInt(customerPhoneNumberTextField.getText());
-    }
+    int number=0;
 
     if(customerNameTextField.getText().isEmpty()||customerEmailTextField.getText().isEmpty()||customerPhoneNumberTextField.getText().isEmpty())
     {
@@ -41,6 +33,21 @@ public class CustomerViewController
     }
     else
     {
+      if(!customerPhoneNumberTextField.getText().isEmpty())
+      {
+        try
+        {
+          number = Integer.parseInt(customerPhoneNumberTextField.getText());
+        }
+        catch (NumberFormatException e)
+        {
+          Alert alert1 = new Alert(Alert.AlertType.ERROR);
+          alert1.setTitle("Error");
+          alert1.setHeaderText(null);
+          alert1.setContentText("Invalid input!");
+          alert1.show();
+          return;//it stops the method when catching exception
+        }
       String name = customerNameTextField.getText();
       String email = customerEmailTextField.getText();
 
@@ -65,16 +72,12 @@ public class CustomerViewController
 
 
 
-      clearFields();
+
     }
 
   }
 
-  @FXML
-  private void clearFields() {
-    customerNameTextField.clear();
-    customerPhoneNumberTextField.clear();
-    customerEmailTextField.clear();
+
 
 
   }
