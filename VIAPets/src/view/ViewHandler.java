@@ -9,12 +9,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -27,7 +29,8 @@ import javafx.scene.control.TableColumn;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
-public class ViewHandler {
+public class ViewHandler
+{
   public static String lastPopupSource;
   //for PetViewController
   @FXML private TextField petNameTextField;
@@ -61,7 +64,7 @@ public class ViewHandler {
   @FXML private MenuItem rodentMenuItem;
   @FXML private MenuItem fishMenuItem;
   @FXML private MenuItem variousMenuItem;
-  
+
   //customer
   @FXML private MenuItem customersMenuItem;
   @FXML private MenuItem addCustomerMenuItem;
@@ -79,7 +82,6 @@ public class ViewHandler {
   @FXML TextField phoneNumberTextField;
   @FXML TextField emailTextField;
   @FXML Button saveButton;
-
 
   //bookings
   @FXML private MenuItem bookingsMenuItem;
@@ -102,12 +104,14 @@ public class ViewHandler {
   @FXML private TableColumn<Pet, String> petNamePetView;
   @FXML private TableColumn<Pet, String> petColorPetView;
   @FXML private TableColumn<Pet, String> petGenderPetView;
+  @FXML private TableColumn<Pet, Void> actionsPetView;
 
   @FXML private TableView<Customer> customerTable;
   @FXML private TableColumn<Customer, Number> customerIDView;
   @FXML private TableColumn<Customer, String> customerNameView;
   @FXML private TableColumn<Customer, Number> phoneNumberView;
   @FXML private TableColumn<Customer, String> emailView;
+  @FXML private TableColumn<Customer, Void> actionsCustomerView;
 
   @FXML private TableView<Booking> bookingTable;
   @FXML private TableColumn<Booking, Number> bookingIDView;
@@ -115,13 +119,14 @@ public class ViewHandler {
   @FXML private TableColumn<Booking, String> customerNameBookingView;
   @FXML private TableColumn<Booking, String> startDateBookingView;
   @FXML private TableColumn<Booking, String> endDateBookingView;
+  @FXML private TableColumn<Booking, Void> actionsBookingView;
 
   @FXML private TableView<Sale> saleTable;
   @FXML private TableColumn<Sale, Number> saleIDView;
   @FXML private TableColumn<Sale, String> petNameSaleView;
   @FXML private TableColumn<Sale, String> customerNameSaleView;
   @FXML private TableColumn<Sale, String> priceSaleView;
-
+  @FXML private TableColumn<Sale, Void> actionsSaleView;
 
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
@@ -129,26 +134,37 @@ public class ViewHandler {
   VIAPets viaPets = new VIAPets();
   MyModelManager myModelManager = new MyModelManager();
 
-  @FXML
-  public void switchScene(ActionEvent e) throws IOException {
+  @FXML public void switchScene(ActionEvent e) throws IOException
+  {
     Object source = e.getSource();
     String fxmlPath;
 
-    if (source == petsMenuItem) {
+    if (source == petsMenuItem)
+    {
       fxmlPath = "fxml/currentlyworking/DefaultPetView.fxml";
-      initfknlist();
-    } else if (source == customersMenuItem) {
+      initPetlist();
+    }
+    else if (source == customersMenuItem)
+    {
       fxmlPath = "fxml/Customers/DefaultCustomerView.fxml";
       initCustomerList();
-    } else if (source == bookingsSettingsMenuItem) {
+    }
+    else if (source == bookingsSettingsMenuItem)
+    {
       fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
-    } else if (source == bookingsMenuItem) {
+    }
+    else if (source == bookingsMenuItem)
+    {
       fxmlPath = "fxml/currentlyworking/DefaultBookingsView.fxml";
       initBookingList();
-    } else if (source == salesMenuItem) {
+    }
+    else if (source == salesMenuItem)
+    {
       fxmlPath = "fxml/currentlyworking/DefaultSalesView.fxml";
       initSaleList();
-    } else {
+    }
+    else
+    {
       fxmlPath = fxmlDefPath;
     }
 
@@ -158,19 +174,23 @@ public class ViewHandler {
     VBox vbox = new VBox();
     vbox.getChildren().add(root);
 
-    if (source == petsMenuItem) {
+    if (source == petsMenuItem)
+    {
       vbox.getChildren().add(petTable);
     }
 
-    else if (source == customersMenuItem) {
+    else if (source == customersMenuItem)
+    {
       vbox.getChildren().add(customerTable);
     }
 
-    else if (source == bookingsMenuItem) {
+    else if (source == bookingsMenuItem)
+    {
       vbox.getChildren().add(bookingTable);
     }
-    
-    else if (source == salesMenuItem) {
+
+    else if (source == salesMenuItem)
+    {
       vbox.getChildren().add(saleTable);
     }
 
@@ -180,46 +200,61 @@ public class ViewHandler {
     stage.show();
   }
 
-
   // Create a separate method for popup handling
   @FXML public void showPopup(ActionEvent e) throws IOException
   {
-
 
     Object source = e.getSource();
     // Create a new stage for the popup
     Stage popupStage = new Stage();
 
     String fxmlPath;
-  if (source == dogMenuItem || source==catMenuItem) {
-    fxmlPath = "fxml/pets/DogCatPetView.fxml";
-    popupStage.setTitle("Add " + (source == dogMenuItem ? "Dog" : "Cat"));
-  } else if (source == birdMenuItem) {
-    fxmlPath = "fxml/pets/BirdPetView.fxml";
-    popupStage.setTitle("Add Bird");
-  } else if (source == fishMenuItem) {
-    fxmlPath = "fxml/pets/FishPetView.fxml";
-    popupStage.setTitle("Add Fish");
-  } else if (source == rodentMenuItem || source == variousMenuItem) {
-    fxmlPath = "fxml/pets/RodentVariousPetView.fxml";
-    popupStage.setTitle("Add " + (source == rodentMenuItem ? "Rodent" : "Various"));
+    if (source == dogMenuItem || source == catMenuItem)
+    {
+      fxmlPath = "fxml/pets/DogCatPetView.fxml";
+      popupStage.setTitle("Add " + (source == dogMenuItem ? "Dog" : "Cat"));
+    }
+    else if (source == birdMenuItem)
+    {
+      fxmlPath = "fxml/pets/BirdPetView.fxml";
+      popupStage.setTitle("Add Bird");
+    }
+    else if (source == fishMenuItem)
+    {
+      fxmlPath = "fxml/pets/FishPetView.fxml";
+      popupStage.setTitle("Add Fish");
+    }
+    else if (source == rodentMenuItem || source == variousMenuItem)
+    {
+      fxmlPath = "fxml/pets/RodentVariousPetView.fxml";
+      popupStage.setTitle(
+          "Add " + (source == rodentMenuItem ? "Rodent" : "Various"));
 
-  } else if (source == addCustomerMenuItem || source == addCustomerButton) {
-    fxmlPath = "fxml/Customers/AddCustomer.fxml";
-    popupStage.setTitle("Add Customer");
-  } else if (source == addBookingMenuItem || source == addBookingButton) {
-    fxmlPath = "fxml/bookings/AddBooking.fxml";
-    popupStage.setTitle("Add Booking");
-  } else if (source == addSaleMenuItem) {
-    fxmlPath = "fxml/sales/AddSale.fxml";
-    popupStage.setTitle("Add Sale");
-  } else{
-    fxmlPath = fxmlDefPath;
-  }
-  MenuItem sourceCasted = (MenuItem) source;
-    lastPopupSource=sourceCasted.getId();
+    }
+    else if (source == addCustomerMenuItem || source == addCustomerButton)
+    {
+      fxmlPath = "fxml/Customers/AddCustomer.fxml";
+      popupStage.setTitle("Add Customer");
+    }
+    else if (source == addBookingMenuItem || source == addBookingButton)
+    {
+      fxmlPath = "fxml/bookings/AddBooking.fxml";
+      popupStage.setTitle("Add Booking");
+    }
+    else if (source == addSaleMenuItem)
+    {
+      fxmlPath = "fxml/sales/AddSale.fxml";
+      popupStage.setTitle("Add Sale");
+    }
+    else
+    {
+      fxmlPath = fxmlDefPath;
+    }
+    MenuItem sourceCasted = (MenuItem) source;
+    lastPopupSource = sourceCasted.getId();
     // Set the modality of the popup (optional)
-    popupStage.initModality(Modality.APPLICATION_MODAL); // Makes the popup modal (blocks other windows)
+    popupStage.initModality(
+        Modality.APPLICATION_MODAL); // Makes the popup modal (blocks other windows)
 
     // Create the scene for the popup window
     Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
@@ -229,31 +264,29 @@ public class ViewHandler {
     // Show the popup window
     popupStage.showAndWait();// This will block the main window until the popup is closed
 
-
-
-  }
-  public void save(){
   }
 
+  public void save()
+  {
+  }
 
+  //  public void addTest(ActionEvent e) {
+  //    customerController.addTest(e);
+  //  }
 
-//  public void addTest(ActionEvent e) {
-//    customerController.addTest(e);
-//  }
-
-//  public void addPet(Object source) {
-//    petController.addPet(source);
-//  }
-  public void initfknlist()
+  //  public void addPet(Object source) {
+  //    petController.addPet(source);
+  //  }
+  public void initPetlist()
   {
     MyModelManager manager = new MyModelManager();
 
-    ObservableList<Pet> pets = FXCollections.observableArrayList(manager.getAllPets()
-        .getPets());
+    ObservableList<Pet> pets = FXCollections.observableArrayList(
+        manager.getAllPets().getPets());
 
     // Create TableView
     petTable = new TableView<>(pets);
-//    petTable.setItems(pets);
+    //    petTable.setItems(pets);
 
     // Create columns for each field in the Pet class
     petIDPetView = new TableColumn<>("Pet ID");
@@ -272,209 +305,285 @@ public class ViewHandler {
     petGenderPetView.setCellValueFactory(cellData -> new SimpleStringProperty(
         String.valueOf(cellData.getValue().getGender())));
 
-
     // Add columns to the table
-    petTable.getColumns()
-        .addAll(petIDPetView, petNamePetView, petColorPetView, petGenderPetView);
+    petTable.getColumns().addAll(petIDPetView, petNamePetView, petColorPetView,
+        petGenderPetView);
     petTable.refresh();
-    System.out.println(petTable.getColumns().toString());
-//    System.out.println(petTable.getColumns().get(1).getText());
-    for (Pet pet : petTable.getItems()) {
-      // Assuming your second column is for "Pet Name"
-      System.out.println("Pet Name from table: " + petTable.getColumns().get(1).getCellData(pet));
-    }  }
 
-  public void initCustomerList() {
+    addActionsPetTable();
+
+  }
+
+  public void initCustomerList()
+  {
     MyModelManager manager = new MyModelManager();
 
-    ObservableList<Customer> customers = FXCollections.observableArrayList(manager.getAllCustomers().getCustomers());
+    ObservableList<Customer> customers = FXCollections.observableArrayList(
+        manager.getAllCustomers().getCustomers());
 
     customerTable = new TableView<>(customers);
 
     customerIDView = new TableColumn<>("Customer ID");
-    customerIDView.setCellValueFactory(
-        cellData -> new SimpleIntegerProperty(cellData.getValue().getCustomerID())
-    );
+    customerIDView.setCellValueFactory(cellData -> new SimpleIntegerProperty(
+        cellData.getValue().getCustomerID()));
 
     customerNameView = new TableColumn<>("Name");
     customerNameView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(cellData.getValue().getName())
-    );
+        cellData -> new SimpleStringProperty(cellData.getValue().getName()));
 
     phoneNumberView = new TableColumn<>("Phone Number");
-    phoneNumberView.setCellValueFactory(
-        cellData -> new SimpleIntegerProperty(cellData.getValue().getPhoneNumber())
-    );
+    phoneNumberView.setCellValueFactory(cellData -> new SimpleIntegerProperty(
+        cellData.getValue().getPhoneNumber()));
 
     emailView = new TableColumn<>("Email");
     emailView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(cellData.getValue().getEmail())
-    );
+        cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
 
-    customerTable.getColumns().addAll(customerIDView, customerNameView, phoneNumberView, emailView);
+    customerTable.getColumns()
+        .addAll(customerIDView, customerNameView, phoneNumberView, emailView);
 
     customerTable.refresh();
+
+    addActionsCustomerTable();
   }
 
-  public void initBookingList() {
+  public void initBookingList()
+  {
     MyModelManager manager = new MyModelManager();
 
-    ObservableList<Booking> bookings = FXCollections.observableArrayList(manager.getAllBookings().getBookings());
+    ObservableList<Booking> bookings = FXCollections.observableArrayList(
+        manager.getAllBookings().getBookings());
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     bookingTable = new TableView<>(bookings);
 
     bookingIDView = new TableColumn<>("Booking ID");
-    bookingIDView.setCellValueFactory(
-        cellData -> new SimpleIntegerProperty(cellData.getValue().getBookingID())
-    );
+    bookingIDView.setCellValueFactory(cellData -> new SimpleIntegerProperty(
+        cellData.getValue().getBookingID()));
 
     petNameBookingView = new TableColumn<>("Pet Name");
-    petNameBookingView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(cellData.getValue().getPet().getName())
-    );
+    petNameBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        cellData.getValue().getPet().getName()));
 
     customerNameBookingView = new TableColumn<>("Customer Name");
     customerNameBookingView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName())
-    );
+        cellData -> new SimpleStringProperty(
+            cellData.getValue().getCustomer().getName()));
 
     startDateBookingView = new TableColumn<>("Start Date");
     startDateBookingView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(cellData.getValue().getDateInterval().getStartDate().format(formatter))
-    );
+        cellData -> new SimpleStringProperty(
+            cellData.getValue().getDateInterval().getStartDate()
+                .format(formatter)));
 
     endDateBookingView = new TableColumn<>("End Date");
-    endDateBookingView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(cellData.getValue().getDateInterval().getEndDate().format(formatter))
-    );
+    endDateBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        cellData.getValue().getDateInterval().getEndDate().format(formatter)));
 
-    bookingTable.getColumns().addAll(bookingIDView, petNameBookingView, customerNameBookingView, startDateBookingView, endDateBookingView);
+    bookingTable.getColumns()
+        .addAll(bookingIDView, petNameBookingView, customerNameBookingView,
+            startDateBookingView, endDateBookingView);
 
     bookingTable.refresh();
+
+    addActionsBookingTable();
   }
 
-  public void initSaleList() {
+  public void initSaleList()
+  {
     MyModelManager manager = new MyModelManager();
 
-
-    ObservableList<Sale> sales = FXCollections.observableArrayList(manager.getAllSales().getSaleList() );
-
+    ObservableList<Sale> sales = FXCollections.observableArrayList(
+        manager.getAllSales().getSaleList());
 
     saleTable = new TableView<>(sales);
 
     saleIDView = new TableColumn<>("Sale ID");
     saleIDView.setCellValueFactory(
-        cellData -> new SimpleIntegerProperty(cellData.getValue().getSaleID())
-    );
+        cellData -> new SimpleIntegerProperty(cellData.getValue().getSaleID()));
 
     petNameSaleView = new TableColumn<>("Pet Name");
-    petNameSaleView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(cellData.getValue().getPet().getName())
-    );
+    petNameSaleView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        cellData.getValue().getPet().getName()));
 
     customerNameSaleView = new TableColumn<>("Customer Name");
     customerNameSaleView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName())
-    );
+        cellData -> new SimpleStringProperty(
+            cellData.getValue().getCustomer().getName()));
 
     priceSaleView = new TableColumn<>("Price");
-    priceSaleView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(String.format("%.2f",cellData.getValue().getSalePrice())));
+    priceSaleView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        String.format("%.2f", cellData.getValue().getSalePrice())));
 
-    saleTable.getColumns().addAll(saleIDView, petNameSaleView, customerNameSaleView, priceSaleView);
+    saleTable.getColumns()
+        .addAll(saleIDView, petNameSaleView, customerNameSaleView,
+            priceSaleView);
 
     saleTable.refresh();
+
+    addActionsSaleTable();
   }
 
+  private void addActionsPetTable()
+  {
+    actionsPetView = new TableColumn<>("Actions");
 
-//  public void initBookingList() {
-//    ObservableList<Booking> bookings = FXCollections.observableArrayList(
-//        new Booking(
-//            1,
-//            new Dog(1, "goof", "hvid", "3", "M", "cph", "sold", "10", "ola"),
-//            new Customer(1, "gustavo", 999, "@gmai"),
-//            new DateInterval(
-//                new Date(1, 5, 4, 1),
-//                new Date(2, 7, 4, 3)
-//            )
-//        ),
-//        new Booking(
-//            2,
-//            new Dog(1, "goof", "hvid", "3", "M", "cph", "sold", "10", "ola"),
-//            new Customer(1, "manuel", 999, "@dd"),
-//            new DateInterval(
-//                new Date(1, 5, 4, 1),
-//                new Date(2, 7, 4, 3)
-//            )
-//        )
-//    );
-//
-//    bookingTable = new TableView<>(bookings);
-//
-//    bookingIDView = new TableColumn<>("Booking ID");
-//    bookingIDView.setCellValueFactory(
-//        cellData -> new SimpleIntegerProperty(cellData.getValue().getBookingID())
-//    );
-//
-//    petNameBookingView = new TableColumn<>("Pet Name");
-//    petNameBookingView.setCellValueFactory(
-//        cellData -> new SimpleStringProperty(cellData.getValue().getPet().getName())
-//    );
-//
-//    customerNameBookingView = new TableColumn<>("Customer Name");
-//    customerNameBookingView.setCellValueFactory(
-//        cellData -> new SimpleIntegerProperty(cellData.getValue().getCustomer().getName())
-//    );
-//
-//    startDateBookingView = new TableColumn<>("Start Date");
-//    startDateBookingView.setCellValueFactory(
-//        cellData -> new SimpleStringProperty(cellData.getValue().getDateInterval().getStartDate())
-//    );
-//
-//    endDateBookingView = new TableColumn<>("End Date");
-//    endDateBookingView.setCellValueFactory(
-//        cellData -> new SimpleStringProperty(cellData.getValue().getDateInterval().getEndDate())
-//    );
-//
-//    bookingTable.getColumns().addAll(bookingIDView, petNameBookingView, customerNameBookingView, startDateBookingView, endDateBookingView);
-//
-//    bookingTable.refresh();
-//  }
-//
-//  public void initSaleList() {
-//    ObservableList<Sale> sales = FXCollections.observableArrayList(
-//        new Sale(1, new Customer(1, "manuel", 999, "@dd"), new Dog(1, "goof", "hvid","3","M","cph","sold","10","ola"), 5),
-//        new Sale(1, new Customer(1, "manuel", 999, "@dd"), new Dog(1, "goof", "hvid","3","M","cph","sold","10","ola"), 5));
-//
-//
-//    saleTable = new TableView<>(sales);
-//
-//    saleIDView = new TableColumn<>("Sale ID");
-//    saleIDView.setCellValueFactory(
-//        cellData -> new SimpleIntegerProperty(cellData.getValue().getSaleID())
-//    );
-//
-//    petNameSaleView = new TableColumn<>("Pet Name");
-//    petNameSaleView.setCellValueFactory(
-//        cellData -> new SimpleIntegerProperty(cellData.getValue().getPet().getName())
-//    );
-//
-//    customerNameSaleView = new TableColumn<>("Customer Name");
-//    customerNameSaleView.setCellValueFactory(
-//        cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName())
-//    );
-//
-//    priceSaleView = new TableColumn<>("Price");
-//    priceSaleView.setCellValueFactory(
-//        cellData -> new SimpleStringProperty(cellData.getValue().getSalePrice())
-//    );
-//
-//    saleTable.getColumns().addAll(saleIDView, petNameSaleView, customerNameSaleView, priceSaleView);
-//
-//    saleTable.refresh();
-//  }
+    actionsPetView.setCellFactory(column -> new TableCell<Pet, Void>()
+    {
+      @Override protected void updateItem(Void item, boolean empty)
+      {
+        super.updateItem(item, empty);
+
+        if (empty)
+        {
+          setGraphic(null);
+        }
+        else
+        {
+          // Buttons are created per cell instance to avoid shared state issues
+          Button editButton = new Button("Edit");
+          Button deleteButton = new Button("Delete");
+          HBox actionButtons = new HBox(10, editButton, deleteButton);
+          actionButtons.setAlignment(Pos.CENTER);
+
+          editButton.setOnAction(event -> {
+            Pet pet = getTableView().getItems().get(getIndex());
+            // handleEditAction(pet); // Replace with your edit logic
+          });
+
+          deleteButton.setOnAction(event -> {
+            Pet pet = getTableView().getItems().get(getIndex());
+            // handleDeleteAction(pet); // Replace with your delete logic
+          });
+
+          setGraphic(actionButtons);
+        }
+      }
+    });
+
+    petTable.getColumns().add(actionsPetView);
+  }
+
+  private void addActionsCustomerTable()
+  {
+    actionsCustomerView = new TableColumn<>("Actions");
+
+    actionsCustomerView.setCellFactory(column -> new TableCell<Customer, Void>()
+    {
+      @Override protected void updateItem(Void item, boolean empty)
+      {
+        super.updateItem(item, empty);
+
+        if (empty)
+        {
+          setGraphic(null);
+        }
+        else
+        {
+          // Buttons are created per cell instance to avoid shared state issues
+          Button editButton = new Button("Edit");
+          Button deleteButton = new Button("Delete");
+          HBox actionButtons = new HBox(10, editButton, deleteButton);
+          actionButtons.setAlignment(Pos.CENTER);
+
+          editButton.setOnAction(event -> {
+            Customer customer = getTableView().getItems().get(getIndex());
+            // handleEditAction(customer); // Replace with your edit logic
+          });
+
+          deleteButton.setOnAction(event -> {
+            Customer customer = getTableView().getItems().get(getIndex());
+            // handleDeleteAction(customer); // Replace with your delete logic
+          });
+
+          setGraphic(actionButtons);
+        }
+      }
+    });
+
+    customerTable.getColumns().add(actionsCustomerView);
+  }
+
+  private void addActionsBookingTable()
+  {
+    actionsBookingView = new TableColumn<>("Actions");
+
+    actionsBookingView.setCellFactory(column -> new TableCell<Booking, Void>()
+    {
+      @Override protected void updateItem(Void item, boolean empty)
+      {
+        super.updateItem(item, empty);
+
+        if (empty)
+        {
+          setGraphic(null);
+        }
+        else
+        {
+          // Buttons are created per cell instance to avoid shared state issues
+          Button editButton = new Button("Edit");
+          Button deleteButton = new Button("Delete");
+          HBox actionButtons = new HBox(10, editButton, deleteButton);
+          actionButtons.setAlignment(Pos.CENTER);
+
+          editButton.setOnAction(event -> {
+            Booking booking = getTableView().getItems().get(getIndex());
+            // handleEditAction(customer); // Replace with your edit logic
+          });
+
+          deleteButton.setOnAction(event -> {
+            Booking booking = getTableView().getItems().get(getIndex());
+            // handleDeleteAction(customer); // Replace with your delete logic
+          });
+
+          setGraphic(actionButtons);
+        }
+      }
+    });
+
+    bookingTable.getColumns().add(actionsBookingView);
+  }
+
+  private void addActionsSaleTable()
+  {
+    actionsSaleView = new TableColumn<>("Actions");
+
+    actionsSaleView.setCellFactory(column -> new TableCell<Sale, Void>()
+    {
+      @Override protected void updateItem(Void item, boolean empty)
+      {
+        super.updateItem(item, empty);
+
+        if (empty)
+        {
+          setGraphic(null);
+        }
+        else
+        {
+          // Buttons are created per cell instance to avoid shared state issues
+          Button editButton = new Button("Edit");
+          Button deleteButton = new Button("Delete");
+          HBox actionButtons = new HBox(10, editButton, deleteButton);
+          actionButtons.setAlignment(Pos.CENTER);
+
+          editButton.setOnAction(event -> {
+            Sale sale = getTableView().getItems().get(getIndex());
+            // handleEditAction(customer); // Replace with your edit logic
+          });
+
+          deleteButton.setOnAction(event -> {
+            Sale sale = getTableView().getItems().get(getIndex());
+            // handleDeleteAction(customer); // Replace with your delete logic
+          });
+
+          setGraphic(actionButtons);
+        }
+      }
+    });
+
+    saleTable.getColumns().add(actionsSaleView);
+  }
 
 }
 
