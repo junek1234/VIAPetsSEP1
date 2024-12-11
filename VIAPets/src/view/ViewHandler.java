@@ -260,9 +260,6 @@ public class ViewHandler {
       System.out.println("Failed to load resource: " + fxmlPath);
     }
 
-    Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-    stage.close();
-
     Scene popupScene = new Scene(root);
     popupStage.setScene(popupScene);
 
