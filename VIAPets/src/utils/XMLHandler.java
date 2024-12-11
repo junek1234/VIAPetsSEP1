@@ -10,6 +10,8 @@ public class XMLHandler
 
   private static final String PETS = "pets_xml.xml";
   private static final String KENNEL = "kennel_xml.xml";
+
+  VIAPets viaPets = new VIAPets();
   public static void updateXML()
   {
     //kennel info part

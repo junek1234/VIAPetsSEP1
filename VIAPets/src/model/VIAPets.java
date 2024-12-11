@@ -9,10 +9,10 @@ public class VIAPets implements Serializable
   public static int maxKennelSlots=10;
   public static int availableSlots=10;  //change in astah
   public static double bookingPrice=10;
-  public static BookingList allBookings;
-  public static CustomerList allCustomers;
-  public static SaleList allSales;
-  public static PetList allPets;
+  private BookingList allBookings;
+  private CustomerList allCustomers;
+  private SaleList allSales;
+  public static PetList allPets;// must be static because of static method updateXML
 
   //add this too
   public static String lastCustomerID;
@@ -57,6 +57,46 @@ public class VIAPets implements Serializable
     this.bookingPrice = bookingPrice;
   }
 
+  public void setLastCustomerID(String lastCustomerID)
+  {
+    this.lastCustomerID = lastCustomerID;
+  }
+
+  public void setLastPetID(String lastPetID)
+  {
+    this.lastPetID = lastPetID;
+  }
+
+  public void setLastBookingID(String lastBookingID)
+  {
+    this.lastBookingID = lastBookingID;
+  }
+
+  public void setLastSaleID(String lastSaleID)
+  {
+    this.lastSaleID = lastSaleID;
+  }
+
+  public void setAllBookings(BookingList allBookings)
+  {
+    this.allBookings = allBookings;
+  }
+
+  public void setAllCustomers(CustomerList allCustomers)
+  {
+    this.allCustomers = allCustomers;
+  }
+
+  public void setAllSales(SaleList allSales)
+  {
+    this.allSales = allSales;
+  }
+
+  public void setAllPets(PetList allPets)
+  {
+    this.allPets = allPets;
+  }
+
   public int getMaxKennelSlots()
   {
     return maxKennelSlots;
@@ -71,12 +111,6 @@ public class VIAPets implements Serializable
   {
     return bookingPrice;
   }
-//remove from design
-//  public int checkAvailability()
-//  {
-//    //For later
-//    return 0;
-//  }
 
   public BookingList getAllBookings()
   {

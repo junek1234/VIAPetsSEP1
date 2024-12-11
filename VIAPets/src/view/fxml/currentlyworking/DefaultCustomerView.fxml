@@ -68,9 +68,9 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Bookings">
                <items>
-                  <MenuItem fx:id="bookingsListMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Bookings" />
-                  <MenuItem fx:id="bookingsListMenu1" mnemonicParsing="false" onAction="#switchScene" text="Add Booking" />
-                  <MenuItem fx:id="bookingsSettingsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Settings" />
+                  <MenuItem fx:id="bookingsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Bookings" />
+                  <MenuItem fx:id="addBookingMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Add Booking" />
+                  <MenuItem fx:id="bookingsSettingsMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Settings" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Sales">

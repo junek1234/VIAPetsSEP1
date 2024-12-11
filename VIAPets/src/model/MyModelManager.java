@@ -15,6 +15,7 @@ public class MyModelManager implements Serializable
     private static final String SALE_FILE = "sales.bin";
     private static final String LAST_IDS = "last_ids.txt";
 
+    VIAPets viaPets = new VIAPets();
     //needs to be changed in Astah
 
     public MyModelManager()
@@ -33,38 +34,38 @@ public class MyModelManager implements Serializable
         {
             pets.add((Pet)objects.get(i));
         }
-        VIAPets.allPets = new PetList(pets);
+        viaPets.setAllPets(new PetList(pets));
 
         objects = loadArrayListFromFile(BOOKING_FILE);
         for (int i = 0; i < objects.size(); i++)
         {
             bookings.add((Booking)objects.get(i));
         }
-        VIAPets.allBookings = new BookingList(bookings);
+        viaPets.setAllBookings(new BookingList(bookings));
 
         objects = loadArrayListFromFile(CUSTOMER_FILE);
         for (int i = 0; i < objects.size(); i++)
         {
             customers.add((Customer) objects.get(i));
         }
-        VIAPets.allCustomers = new CustomerList(customers);
+        viaPets.setAllCustomers(new CustomerList(customers));
 
         objects = loadArrayListFromFile(SALE_FILE);
         for (int i = 0; i < objects.size(); i++)
         {
             sales.add((Sale) objects.get(i));
         }
-        VIAPets.allSales = new SaleList(sales);
+        viaPets.setAllSales(new SaleList(sales));
         //Loading last ID from file
         String[] lastIDs = loadLastIDs(LAST_IDS);
         //CUSTOMER ID LINE 1 - index is 0
-        VIAPets.lastCustomerID=lastIDs[0];
+        viaPets.setLastCustomerID(lastIDs[0]);
         //PET ID LINE 2 - index is 1
-        VIAPets.lastPetID=lastIDs[1];
+        viaPets.setLastPetID(lastIDs[1]);
         //BOOKING ID LINE 3 - index is 2
-        VIAPets.lastBookingID=lastIDs[2];
+        viaPets.setLastBookingID(lastIDs[2]);
         //SALE ID LINE 4 - index is 3
-        VIAPets.lastSaleID=lastIDs[3];
+        viaPets.setLastSaleID(lastIDs[3]);
 
     }
 
@@ -92,7 +93,7 @@ public class MyModelManager implements Serializable
             }
             return arrayList;
         } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + fileName + ", initializing empty list.");
+            System.err.println("File not found: " + fileName);
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error reading file " + fileName + ": " + e.getMessage());
         }
@@ -114,16 +115,16 @@ public class MyModelManager implements Serializable
     }
 
     public PetList getAllPets() {
-        return VIAPets.allPets;
+        return viaPets.getAllPets();
     }
     public BookingList getAllBookings() {
-        return VIAPets.allBookings;
+        return viaPets.getAllBookings();
     }
     public CustomerList getAllCustomers() {
-        return VIAPets.allCustomers;
+        return viaPets.getAllCustomers();
     }
     public SaleList getAllSales() {
-        return VIAPets.allSales;
+        return viaPets.getAllSales();
     }
 
     public static int createNextCustomerID()
@@ -192,79 +193,79 @@ public class MyModelManager implements Serializable
 
     public void addPet(Pet pet) throws IOException
     {
-        VIAPets.allPets.addPet(pet);
-        MyFileHandler.writeArrayToBinaryFile(PET_FILE, VIAPets.allPets.getPets().toArray(new Pet[0]));
+        viaPets.getAllPets().addPet(pet);
+        MyFileHandler.writeArrayToBinaryFile(PET_FILE, viaPets.getAllPets().getPets().toArray(new Pet[0]));
 
     }
 
     public void deletePet(int petID) throws IOException
     {
-        VIAPets.allPets.removePet(getAllPets().getPetByID(petID));
-        MyFileHandler.writeArrayToBinaryFile(PET_FILE, VIAPets.allPets.getPets().toArray(new Pet[0]));
+        viaPets.getAllPets().removePet(getAllPets().getPetByID(petID));
+        MyFileHandler.writeArrayToBinaryFile(PET_FILE, viaPets.getAllPets().getPets().toArray(new Pet[0]));
     }
 
     public void editPet(int petID, Pet newPet) throws IOException
     {
-        VIAPets.allPets.editPet(petID, newPet);
-        MyFileHandler.writeArrayToBinaryFile(PET_FILE, VIAPets.allPets.getPets().toArray(new Pet[0]));
+        viaPets.getAllPets().editPet(petID, newPet);
+        MyFileHandler.writeArrayToBinaryFile(PET_FILE, viaPets.getAllPets().getPets().toArray(new Pet[0]));
     }
 
 
     public void addBooking(Booking booking) throws IOException
     {
-        VIAPets.allBookings.addBooking(booking);
-        MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, VIAPets.allBookings.getBookings().toArray(new Booking[0]));
+        viaPets.getAllBookings().addBooking(booking);
+        MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, viaPets.getAllBookings().getBookings().toArray(new Booking[0]));
     }
 
     public void deleteBooking(int bookingID) throws IOException
     {
-        VIAPets.allBookings.removeBooking(getAllBookings().getBookingByID(bookingID));
-        MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, VIAPets.allBookings.getBookings().toArray(new Booking[0]));
+        viaPets.getAllBookings().removeBooking(getAllBookings().getBookingByID(bookingID));
+        MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, viaPets.getAllBookings().getBookings().toArray(new Booking[0]));
     }
 
     public void editBooking(int bookingID, Booking newBooking)
         throws IOException
     {
-        VIAPets.allBookings.editBooking(bookingID, newBooking);
-        MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, VIAPets.allBookings.getBookings().toArray(new Booking[0]));
+        viaPets.getAllBookings().editBooking(bookingID, newBooking);
+        MyFileHandler.writeArrayToBinaryFile(BOOKING_FILE, viaPets.getAllBookings().getBookings().toArray(new Booking[0]));
     }
 
     public void addCustomer(Customer customer) throws IOException
     {
-        VIAPets.allCustomers.addCustomer(customer);
-        MyFileHandler.writeArrayToBinaryFile(CUSTOMER_FILE, VIAPets.allCustomers.getCustomers().toArray(new Customer[0]));
+        viaPets.getAllCustomers().addCustomer(customer);
+        MyFileHandler.writeArrayToBinaryFile(CUSTOMER_FILE, viaPets.getAllCustomers().getCustomers().toArray(new Customer[0]));
     }
 
     public void deleteCustomer(int customerID) throws IOException
     {
-        VIAPets.allCustomers.removeCustomer(getAllCustomers().getCustomer(customerID));
-        MyFileHandler.writeArrayToBinaryFile(CUSTOMER_FILE, VIAPets.allCustomers.getCustomers().toArray(new Customer[0]));
+        viaPets.getAllCustomers().removeCustomer(getAllCustomers().getCustomer(customerID));
+        MyFileHandler.writeArrayToBinaryFile(CUSTOMER_FILE, viaPets.getAllCustomers().getCustomers().toArray(new Customer[0]));
     }
 
     public void editCustomer(int customerID, Customer newCustomer)
         throws IOException
     {
-        VIAPets.allCustomers.editCustomer(customerID, newCustomer);
-        MyFileHandler.writeArrayToBinaryFile(CUSTOMER_FILE, VIAPets.allCustomers.getCustomers().toArray(new Customer[0]));
+        viaPets.getAllCustomers().editCustomer(customerID, newCustomer);
+        MyFileHandler.writeArrayToBinaryFile(CUSTOMER_FILE, viaPets.getAllCustomers().getCustomers().toArray(new Customer[0]));
     }
 
 
     public void addSale(Sale sale) throws IOException
     {
-        VIAPets.allSales.addSale(sale);
-        MyFileHandler.writeArrayToBinaryFile(SALE_FILE, VIAPets.allSales.getSaleList().toArray(new Sale[0]));
+        viaPets.getAllSales().addSale(sale);
+        MyFileHandler.writeArrayToBinaryFile(SALE_FILE, viaPets.getAllSales().getSaleList().toArray(new Sale[0]));
     }
 
     public void deleteSale(int saleID) throws IOException
     {
-        VIAPets.allSales.removeSale(getAllSales().getSaleByID(saleID));
-        MyFileHandler.writeArrayToBinaryFile(SALE_FILE, VIAPets.allSales.getSaleList().toArray(new Sale[0]));
+        viaPets.getAllSales().removeSale(getAllSales().getSaleByID(saleID));
+        MyFileHandler.writeArrayToBinaryFile(SALE_FILE, viaPets.getAllSales().getSaleList().toArray(new Sale[0]));
     }
 
     public void editSale(int saleID, Sale newSale) throws IOException
     {
-        VIAPets.allSales.editSale(saleID, newSale);
-        MyFileHandler.writeArrayToBinaryFile(SALE_FILE, VIAPets.allSales.getSaleList().toArray(new Sale[0]));
+        viaPets.getAllSales().editSale(saleID, newSale);
+        MyFileHandler.writeArrayToBinaryFile(SALE_FILE, viaPets.getAllSales().getSaleList().toArray(new Sale[0]));
     }
 
 }
