@@ -18,9 +18,14 @@ public class SaleList implements Serializable
     this.saleList = saleList;
   }
 
-  public Sale getSaleByID(int id)
+  public Sale getSaleByID(int saleID)
   {
-    return saleList.get(id);
+    for (Sale sale : saleList) {
+      if (sale.getSaleID() == saleID) {
+        return sale;
+      }
+    }
+    return null;
   }
 
   //get sales
@@ -39,7 +44,8 @@ public class SaleList implements Serializable
   // Edit an existing Sale (replacing old Sale object with a new one changed in the Controller)
   public void editSale(int saleID, Sale newSale)
   {
-    saleList.set(saleID, newSale);
+    int index = saleList.indexOf(getSaleByID(saleID));
+    saleList.set(index,newSale);
   }
 
   public void removeSale(Sale sale)

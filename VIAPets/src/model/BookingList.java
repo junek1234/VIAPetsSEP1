@@ -25,7 +25,8 @@ public class BookingList implements Serializable
     // Edit an existing booking (replacing old booking object with a new one changed in the Controller)
     public void editBooking(int bookingID, Booking newBooking)
     {
-      bookings.set(bookingID, newBooking);
+        int index = bookings.indexOf(getBookingByID(bookingID));
+        bookings.set(index,newBooking);
     }
 
     // Remove a booking by ID
