@@ -26,6 +26,8 @@ public class BookingViewController
 
   @FXML private Button saveAddBooking;
 
+  @FXML public TextField maxKennelSlotsTextField;
+  @FXML public TextField pricePerHourTextField;
 
   public void saveAddBooking(ActionEvent actionEvent)
   {
@@ -35,111 +37,152 @@ public class BookingViewController
     Date startDate = null;
     Date endDate = null;
     LocalDate endDateFromField;
-    int startHour=0;
-    int endHour=0;
-    if(bookingPetIDTextField.getText().isEmpty())
+    int startHour = 0;
+    int endHour = 0;
+    if (bookingPetIDTextField.getText().isEmpty()
+        || bookingCustomerIDTextField.getText().isEmpty()
+        || bookingStartHourTextField.getText().isEmpty()
+        || bookingEndHourTextField.getText().isEmpty()
+        || bookingStartDateDatePicker.getValue() == null
+        || bookingEndDateDatePicker.getValue() == null)
     {
-      System.out.println("Error: Enter pet ID"); //later in exceptions
+      Alert alert1 = new Alert(Alert.AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText("Invalid input!");
+      alert1.show();
+      return;//it stops the method when catching exception
     }
     else
     {
-      petID=Integer.parseInt(bookingPetIDTextField.getText());
+      try
+      {
+        petID = Integer.parseInt(bookingPetIDTextField.getText());
+        customerID = Integer.parseInt(bookingCustomerIDTextField.getText());
+        startHour = Integer.parseInt(bookingStartHourTextField.getText());
+        endHour = Integer.parseInt(bookingEndHourTextField.getText());
+        startDateFromField = bookingStartDateDatePicker.getValue();
+        startDate = new Date(startDateFromField.getDayOfMonth(),
+            startDateFromField.getMonthValue(), startDateFromField.getYear(),
+            startHour);
+        endDateFromField = bookingEndDateDatePicker.getValue();
+        endDate = new Date(endDateFromField.getDayOfMonth(),
+            endDateFromField.getMonthValue(), endDateFromField.getYear(),
+            endHour);
+
+      }
+      catch (NumberFormatException e)
+      {
+        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+        alert1.setTitle("Error");
+        alert1.setHeaderText(null);
+        alert1.setContentText("Invalid input!");
+        alert1.show();
+        return;//it stops the method when catching exception
+      }
+
+      MyModelManager manager = new MyModelManager();
+
+      Pet bookingPet = manager.getAllPets().getPetByID(petID);
+      Customer bookingCustomer = manager.getAllCustomers()
+          .getCustomer(customerID);
+      //errors
+      if (bookingPet == null)
+      {
+        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+        alert1.setTitle("Error");
+        alert1.setHeaderText(null);
+        alert1.setContentText("No pet with ID: " + petID + "!");
+        alert1.show();
+
+      }
+      else if (bookingPet.getStatus().equals("Not Sold"))
+      {
+        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+        alert1.setTitle("Error");
+        alert1.setHeaderText(null);
+        alert1.setContentText("This pet has not been sold yet!");
+        alert1.show();
+      }
+      else if (bookingCustomer == null)
+      {
+        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+        alert1.setTitle("Error");
+        alert1.setHeaderText(null);
+        alert1.setContentText("No customer with ID: " + customerID + "!");
+        alert1.show();
+      }
+      else
+      {
+
+        //if everything is fine
+
+        try
+        {
+          bookingPet.setLocation("Kennel");
+          manager.editPet(petID, bookingPet);
+          DateInterval newDateInterval = new DateInterval(startDate, endDate);
+          Booking newBooking = new Booking(MyModelManager.createNextBookingID(),
+              bookingPet, bookingCustomer, newDateInterval);
+          System.out.println(newBooking);
+
+          manager.addBooking(newBooking);
+          Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene()
+              .getWindow();
+          stage.close();
+
+        }
+        catch (IOException e)
+        {
+          throw new RuntimeException(e);
+        }
+
+        XMLHandler.updateXML();
+
+      }
+
     }
 
-
-    if(bookingCustomerIDTextField.getText().isEmpty())
-    {
-      System.out.println("Error: Enter customer ID"); //later in exceptions
-    }
-    else
-    {
-      customerID=Integer.parseInt(bookingCustomerIDTextField.getText());
-    }
-
-    if(bookingStartHourTextField.getText().isEmpty())
-    {
-      System.out.println("Error: Enter Start Hour"); //later in exceptions
-    }
-    else
-    {
-      startHour=Integer.parseInt(bookingStartHourTextField.getText());
-    }
-    if(bookingEndHourTextField.getText().isEmpty())
-    {
-      System.out.println("Error: Enter End Hour"); //later in exceptions
-    }
-    else
-    {
-      endHour=Integer.parseInt(bookingEndHourTextField.getText());
-    }
-
-  if(bookingStartDateDatePicker.getValue()==null)
-    {
-      System.out.println("Error: Enter Start Date"); //later in exceptions
-    }
-    else
-    {
-      startDateFromField=bookingStartDateDatePicker.getValue();
-      startDate= new Date(startDateFromField.getDayOfMonth(),startDateFromField.getMonthValue(),startDateFromField.getYear(),startHour);
-    }
-    if(bookingEndDateDatePicker.getValue()==null)
-    {
-      System.out.println("Error: Enter End Date"); //later in exceptions
-    }
-    else
-    {
-      endDateFromField=bookingEndDateDatePicker.getValue();
-      endDate= new Date(endDateFromField.getDayOfMonth(),endDateFromField.getMonthValue(),endDateFromField.getYear(),endHour);
-    }
-
-   MyModelManager manager = new MyModelManager();
-
-
-    Pet bookingPet=manager.getAllPets().getPetByID(petID);
-    Customer bookingCustomer=manager.getAllCustomers().getCustomer(customerID);
-
-
-    //if everything is fine
-    DateInterval newDateInterval = new DateInterval(startDate,endDate);
-    Booking newBooking = new Booking(MyModelManager.createNextBookingID(),bookingPet,bookingCustomer,newDateInterval);
-    System.out.println(newBooking);
-    try
-    {
-      manager.addBooking(newBooking);
-      Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-      stage.close();
-
-    }
-    catch (IOException e)
-    {
-      throw new RuntimeException(e);
-    }
-
-
-    XMLHandler.updateXML();
-
-
-
-
-    clearFields();
   }
+//bookings Settings actions
 
-  @FXML
-  private void clearFields() {
-    bookingPetIDTextField.clear();
-    bookingCustomerIDTextField.clear();
-    bookingStartHourTextField.clear();
-    bookingEndHourTextField.clear();
+  //displaying current settings while opening this window
+  public void initialize()
+  {
+    pricePerHourTextField.setText(VIAPets.bookingPrice+"");
+    maxKennelSlotsTextField.setText(VIAPets.maxKennelSlots+"");
+  }
+  public void saveBookingsSettings(ActionEvent actionEvent)
+  {
 
-
-    bookingStartDateDatePicker.setValue(null);
-    bookingEndDateDatePicker.setValue(null);
-
+      if(pricePerHourTextField.getText().isEmpty()||maxKennelSlotsTextField.getText().isEmpty()){
+        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+        alert1.setTitle("Error");
+        alert1.setHeaderText(null);
+        alert1.setContentText("Invalid input!");
+        alert1.show();
+      }
+      else {
+        try
+        {
+          VIAPets.bookingPrice=Double.parseDouble(pricePerHourTextField.getText());
+          VIAPets.maxKennelSlots=Integer.parseInt(maxKennelSlotsTextField.getText());
+        }
+        catch (NumberFormatException e)
+        {
+          Alert alert1 = new Alert(Alert.AlertType.ERROR);
+          alert1.setTitle("Error");
+          alert1.setHeaderText(null);
+          alert1.setContentText("Invalid input!");
+          alert1.show();
+        }
+      }
 
   }
-
-
 }
+
+
+
 
 
 

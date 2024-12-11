@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 // dont make it static
 public class VIAPets implements Serializable
 {
-  public static int maxKennelSlots;
-  public static int availableSlots;  //change in astah
-  public static double bookingPrice;
+  public static int maxKennelSlots=10;
+  public static int availableSlots=10;  //change in astah
+  public static double bookingPrice=10;
   public static BookingList allBookings;
   public static CustomerList allCustomers;
   public static SaleList allSales;

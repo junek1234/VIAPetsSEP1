@@ -26,7 +26,7 @@ import model.*;
 
 import javafx.scene.control.TableColumn;
 
-
+import java.awt.print.Book;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
@@ -117,6 +117,8 @@ public class ViewHandler
   @FXML private TableColumn<Booking, String> customerNameBookingView;
   @FXML private TableColumn<Booking, String> startDateBookingView;
   @FXML private TableColumn<Booking, String> endDateBookingView;
+  @FXML private TableColumn<Booking, String> startHourBookingView;
+  @FXML private TableColumn<Booking, String> endHourBookingView;
   @FXML private TableColumn<Booking, Void> actionsBookingView;
 
   @FXML private TableView<Sale> saleTable;
@@ -148,10 +150,11 @@ public class ViewHandler
       fxmlPath = "fxml/Customers/DefaultCustomerView.fxml";
       initCustomerList();
     }
-    else if (source == bookingsSettingsMenuItem)
-    {
-      fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
-    }
+    // bookings settings changed to popup
+//    else if (source == bookingsSettingsMenuItem)
+//    {
+//      fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
+//    }
     else if (source == bookingsMenuItem)
     {
       fxmlPath = "fxml/currentlyworking/DefaultBookingsView.fxml";
@@ -244,6 +247,11 @@ public class ViewHandler
     {
       fxmlPath = "fxml/sales/AddSale.fxml";
       popupStage.setTitle("Add Sale");
+    }
+    else if (source == bookingsSettingsMenuItem)
+    {
+      fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
+      popupStage.setTitle("Settings");
     }
     else
     {
@@ -434,9 +442,19 @@ public class ViewHandler
         cellData.getValue().getDateInterval().getEndDate().format(formatter)));
     endDateBookingView.setStyle("-fx-alignment: CENTER;");
 
+    startHourBookingView = new TableColumn<>("Start Hour");
+    startHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        cellData.getValue().getDateInterval().getStartDate().getHour()+":00"));
+    startHourBookingView.setStyle("-fx-alignment: CENTER;");
+
+    endHourBookingView = new TableColumn<>("End Hour");
+    endHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        cellData.getValue().getDateInterval().getEndDate().getHour()+":00"));
+    endHourBookingView.setStyle("-fx-alignment: CENTER;");
+
     bookingTable.getColumns()
         .addAll(bookingIDView, petNameBookingView, customerNameBookingView,
-            startDateBookingView, endDateBookingView);
+            startDateBookingView, endDateBookingView, startHourBookingView,endHourBookingView);
 
     bookingTable.refresh();
 
