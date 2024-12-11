@@ -18,6 +18,10 @@ public class Sale implements Serializable
     this.salePrice = salePrice;
   }
 
+  public int getSaleID() {
+    return saleID;
+  }
+
   public Customer getCustomer()
   {
     return customer;

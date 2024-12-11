@@ -5,13 +5,11 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
+<VBox id="searchBar" prefHeight="116.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
   <children>
       <MenuBar>
           <menus>
@@ -51,9 +49,9 @@
               </Menu>
           </menus>
       </MenuBar>
-      <VBox prefHeight="377.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <VBox alignment="TOP_CENTER" prefHeight="89.0" prefWidth="640.0" VBox.vgrow="NEVER">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="TOP_CENTER" prefHeight="82.0" prefWidth="640.0">
                <children>
                   <HBox maxHeight="-Infinity" prefHeight="28.0" prefWidth="640.0">
                      <children>
@@ -64,7 +62,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Add pet">
+                  <Button mnemonicParsing="false" text="Add Pet">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
@@ -73,15 +71,5 @@
             </VBox>
          </children>
       </VBox>
-      <TableView fx:id="petTable" prefHeight="566.0" prefWidth="640.0">
-        <columns>
-          <TableColumn fx:id="petIDPetView" minWidth="85.0" prefWidth="105.0" text="PetID" />
-          <TableColumn fx:id="petNamePetView" minWidth="85.0" prefWidth="105.0" text="Pet Name" />
-            <TableColumn fx:id="petColorPetView" minWidth="85.0" prefWidth="105.0" text="Color" />
-            <TableColumn fx:id="petGenderPetView" minWidth="85.0" prefWidth="105.0" text="Gender" />
-            <TableColumn fx:id="petPricePetView" minWidth="85.0" prefWidth="105.0" text="Price" />
-            <TableColumn fx:id="petActionsPetView" minWidth="85.0" prefWidth="105.0" text="Actions" />
-        </columns>
-      </TableView>
   </children>
 </VBox>

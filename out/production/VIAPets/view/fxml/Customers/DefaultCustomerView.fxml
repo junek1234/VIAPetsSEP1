@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
+<VBox id="searchBar" prefHeight="116.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
   <children>
       <MenuBar>
           <menus>
               <Menu mnemonicParsing="false" text="Pets">
                   <items>
-                      <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" onAction="#switchScene"/>
+                      <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Pets" />
                       <Menu mnemonicParsing="false" text="Add Pet">
                           <items>
                               <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Dog" />
@@ -65,7 +62,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button fx:id="addCustomerButton" mnemonicParsing="false" text="Add Customer" onAction="#showPopup">
+                  <Button fx:id="addCustomerButton" mnemonicParsing="false" onAction="#showPopup" text="Add Customer">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
@@ -74,13 +71,5 @@
             </VBox>
          </children>
       </VBox>
-      <TableView prefHeight="566.0" prefWidth="640.0">
-        <columns>
-          <TableColumn minWidth="75.0" prefWidth="145.60003662109375" text="CustomerID" />
-          <TableColumn minWidth="64.79998779296875" prefWidth="167.20001220703125" text="Name" />
-            <TableColumn minWidth="20.0" prefWidth="152.79998779296875" text="PhoneNumber" />
-            <TableColumn minWidth="31.20001220703125" prefWidth="172.79998779296875" text="E-mail" />
-        </columns>
-      </TableView>
   </children>
 </VBox>

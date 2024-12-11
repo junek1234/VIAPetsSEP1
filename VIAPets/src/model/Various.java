@@ -107,4 +107,5 @@ public class Various extends Pet implements Serializable
     return super.equals(various) && various.species.equals(species);
 
   }
+
 }

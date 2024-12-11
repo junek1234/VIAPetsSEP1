@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
+<VBox id="searchBar" prefHeight="116.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
     <children>
         <MenuBar>
             <menus>
                 <Menu mnemonicParsing="false" text="Pets">
                     <items>
-                        <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" onAction="#switchScene"/>
+                        <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Pets" />
                         <Menu mnemonicParsing="false" text="Add Pet">
                             <items>
                                 <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Dog" />
@@ -54,7 +51,7 @@
         </MenuBar>
         <VBox prefHeight="377.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
             <children>
-                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="640.0">
                     <children>
                         <HBox maxHeight="-Infinity" prefHeight="28.0" prefWidth="640.0">
                             <children>
@@ -65,7 +62,7 @@
                                 <Insets bottom="10.0" />
                             </VBox.margin>
                         </HBox>
-                        <Button fx:id="addBookingButton" mnemonicParsing="false" text="Add booking" onAction="#showPopup">
+                        <Button fx:id="addBookingButton" mnemonicParsing="false" onAction="#showPopup" text="Add booking">
                             <VBox.margin>
                                 <Insets top="8.0" />
                             </VBox.margin>
@@ -74,15 +71,5 @@
                 </VBox>
             </children>
         </VBox>
-        <TableView prefHeight="566.0" prefWidth="640.0">
-            <columns>
-                <TableColumn minWidth="75.0" prefWidth="105.0" text="BookingID" />
-                <TableColumn minWidth="75.0" prefWidth="105.0" text="Pet Name" />
-                <TableColumn minWidth="75.0" prefWidth="105.0" text="Customer Name" />
-                <TableColumn minWidth="75.0" prefWidth="105.0" text="Start Date" />
-                <TableColumn minWidth="75.0" prefWidth="105.0" text="End Date" />
-                <TableColumn minWidth="75.0" prefWidth="115.0" text="Actions" />
-            </columns>
-        </TableView>
     </children>
 </VBox>

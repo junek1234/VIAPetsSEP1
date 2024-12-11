@@ -10,7 +10,7 @@ public class ModelManagerTest
   public static void main(String[] args) throws IOException
   {
     MyModelManager test1 = new MyModelManager();
-    VIAPets viaPets = new VIAPets(10,20);
+    VIAPets viaPets = new VIAPets();
     int dogID=MyModelManager.createNextPetID();
     Dog dog = new Dog(dogID,"Bimbo","Brown",2,'m',"Shop","Not sold","No","Idk", 15, "bla");
     int catID=MyModelManager.createNextPetID();
