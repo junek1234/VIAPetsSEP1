@@ -23,12 +23,6 @@ public class PetList implements Serializable
   // Edit an existing Pet (replacing old Pet object with a new one changed in the Controller)
   public void editPet(int petID, Pet newPet)
   {
-    //NEED TO DO THE SAME IN THE CUSTOMER AND OTHER EDIT METHODS
-    //NEED TO DO THE SAME IN THE CUSTOMER AND OTHER EDIT METHODS
-    //NEED TO DO THE SAME IN THE CUSTOMER AND OTHER EDIT METHODS
-    //NEED TO DO THE SAME IN THE CUSTOMER AND OTHER EDIT METHODS
-    //NEED TO DO THE SAME IN THE CUSTOMER AND OTHER EDIT METHODS
-    //NEED TO DO THE SAME IN THE CUSTOMER AND OTHER EDIT METHODS
     int index = pets.indexOf(getPetByID(petID));
     pets.set(index,newPet);
   }
