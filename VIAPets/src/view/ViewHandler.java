@@ -222,9 +222,6 @@ public class ViewHandler {
   } else if (source == birdMenuItem) {
     fxmlPath = "fxml/pets/BirdPetView.fxml";
     popupStage.setTitle("Add Bird");
-    if (source == birdSaveButton){
-      saveBird(e);
-    }
   } else if (source == fishMenuItem) {
     fxmlPath = "fxml/pets/FishPetView.fxml";
     popupStage.setTitle("Add Fish");
@@ -254,7 +251,7 @@ public class ViewHandler {
 
     // Create the scene for the popup window
     try{
-      Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+      root = FXMLLoader.load(getClass().getResource(fxmlPath));
     } catch (IOException ex) {
       ex.printStackTrace();
       System.out.println("Failed to load resource: " + fxmlPath);
@@ -272,9 +269,6 @@ public class ViewHandler {
   public void save(ActionEvent event){
   }
 
-  public void saveBird(ActionEvent e){
-    birdViewController.saveAddPet();
-  }
 
 //  public void addTest(ActionEvent e) {
 //    customerController.addTest(e);

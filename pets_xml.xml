@@ -14,4 +14,17 @@
     <predator>false</predator>
     <price>0.0</price>
   </pet>
+  <pet>
+    <id>2</id>
+    <type>Bird</type>
+    <name>a</name>
+    <color>a</color>
+    <age>1</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Not Sold</status>
+    <species>a</species>
+    <preferredFood>a</preferredFood>
+    <price>1.0</price>
+  </pet>
 </pets>
