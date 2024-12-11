@@ -3,6 +3,7 @@ package view;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.*;
 import org.w3c.dom.Text;
 import utils.XMLHandler;
@@ -105,6 +106,9 @@ public class BookingViewController
     try
     {
       manager.addBooking(newBooking);
+      Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+      stage.close();
+
     }
     catch (IOException e)
     {
