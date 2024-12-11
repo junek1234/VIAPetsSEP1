@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pets>
+  <pet>
+    <id>1</id>
+    <type>Fish</type>
+    <name></name>
+    <color></color>
+    <age>0</age>
+    <gender>-</gender>
+    <location></location>
+    <status></status>
+    <saltwater>false</saltwater>
+    <species></species>
+    <predator>false</predator>
+    <price>0.0</price>
+  </pet>
+</pets>

@@ -21,8 +21,8 @@ public class BirdViewController
   @FXML private TextField petPriceTextField;
 
   @FXML private TextArea petCommentTextField;
-  @FXML private TextField petSpeciesTextField;
-  @FXML private TextField petFoodTextField;
+  @FXML private TextField birdSpeciesTextField;
+  @FXML private TextField birdFoodTextField;
 
   @FXML private RadioButton petGenderMaleRadioButton;
   @FXML private RadioButton petGenderFemaleRadioButton;
@@ -33,10 +33,10 @@ public class BirdViewController
   @FXML private RadioButton petStatusNotFromViaRadioButton;
 
 
-  @FXML private Button petSaveButton;
+  @FXML private Button birdSaveButton;
 
 
-  public void saveAddPet(ActionEvent actionEvent)
+  public void saveAddPet()
   {
 
     String name = petNameTextField.getText();
@@ -61,8 +61,8 @@ public class BirdViewController
     }
 
     String comment = petCommentTextField.getText();
-    String species = petSpeciesTextField.getText();
-    String food = petFoodTextField.getText();
+    String species = birdSpeciesTextField.getText();
+    String food = birdFoodTextField.getText();
 
 
 
@@ -115,8 +115,8 @@ public class BirdViewController
     petAgeTextField.clear();
     petPriceTextField.clear();
     petCommentTextField.clear();
-    petSpeciesTextField.clear();
-    petFoodTextField.clear();
+    birdSpeciesTextField.clear();
+    birdFoodTextField.clear();
 
   }
 

@@ -30,27 +30,27 @@ import java.time.format.DateTimeFormatter;
 public class ViewHandler {
   public static String lastPopupSource;
   //for PetViewController
-  @FXML private TextField petNameTextField;
-  @FXML private TextField petColorTextField;
-  @FXML private TextField petAgeTextField;
-  @FXML private TextField petPriceTextField;
-  @FXML private TextField petBreedTextField;
-  @FXML private TextField petBreederNameTextField;
-  @FXML private TextArea petCommentTextField;
-  @FXML private TextField petSpeciesTextField;
-  @FXML private TextField petFoodTextField;
-
-  @FXML private RadioButton petGenderMaleRadioButton;
-  @FXML private RadioButton petGenderFemaleRadioButton;
-  @FXML private RadioButton petLocationShopRadioButton;
-  @FXML private RadioButton petLocationKennelRadioButton;
-  @FXML private RadioButton petStatusSoldRadioButton;
-  @FXML private RadioButton petStatusNotSoldRadioButton;
-  @FXML private RadioButton petStatusNotFromViaRadioButton;
-  @FXML private RadioButton petSaltWaterYesRadioButton;
-  @FXML private RadioButton petSaltWaterNoRadioButton;
-  @FXML private RadioButton petPredatorYesRadioButton;
-  @FXML private RadioButton petPredatprNoRadioButton;
+//  @FXML private TextField petNameTextField;
+//  @FXML private TextField petColorTextField;
+//  @FXML private TextField petAgeTextField;
+//  @FXML private TextField petPriceTextField;
+//  @FXML private TextField petBreedTextField;
+//  @FXML private TextField petBreederNameTextField;
+//  @FXML private TextArea petCommentTextField;
+//  @FXML private TextField petSpeciesTextField;
+//  @FXML private TextField petFoodTextField;
+//
+//  @FXML private RadioButton petGenderMaleRadioButton;
+//  @FXML private RadioButton petGenderFemaleRadioButton;
+//  @FXML private RadioButton petLocationShopRadioButton;
+//  @FXML private RadioButton petLocationKennelRadioButton;
+//  @FXML private RadioButton petStatusSoldRadioButton;
+//  @FXML private RadioButton petStatusNotSoldRadioButton;
+//  @FXML private RadioButton petStatusNotFromViaRadioButton;
+//  @FXML private RadioButton petSaltWaterYesRadioButton;
+//  @FXML private RadioButton petSaltWaterNoRadioButton;
+//  @FXML private RadioButton petPredatorYesRadioButton;
+//  @FXML private RadioButton petPredatprNoRadioButton;
 
   @FXML private Button petSaveButton;
   //related to pets
@@ -61,7 +61,30 @@ public class ViewHandler {
   @FXML private MenuItem rodentMenuItem;
   @FXML private MenuItem fishMenuItem;
   @FXML private MenuItem variousMenuItem;
-  
+
+ // General Add - Edit
+  @FXML private TextField petNameTextField;
+  @FXML private TextField petColorTextField;
+  @FXML private TextField petAgeTextField;
+  @FXML private TextField petPriceTextField;
+
+  @FXML private TextArea petCommentTextField;
+
+  @FXML private RadioButton petGenderMaleRadioButton;
+  @FXML private RadioButton petGenderFemaleRadioButton;
+  @FXML private RadioButton petLocationShopRadioButton;
+  @FXML private RadioButton petLocationKennelRadioButton;
+  @FXML private RadioButton petStatusSoldRadioButton;
+  @FXML private RadioButton petStatusNotSoldRadioButton;
+  @FXML private RadioButton petStatusNotFromViaRadioButton;
+
+
+  //bird
+  @FXML private TextField birdSpeciesTextField;
+  @FXML private TextField birdFoodTextField;
+
+  @FXML private Button birdSaveButton;
+
   //customer
   @FXML private MenuItem customersMenuItem;
   @FXML private MenuItem addCustomerMenuItem;
@@ -97,6 +120,7 @@ public class ViewHandler {
   @FXML private MenuItem salesMenuItem;
   @FXML private MenuItem addSaleMenuItem;
 
+  //tables
   @FXML private TableView<Pet> petTable;
   @FXML private TableColumn<Pet, Number> petIDPetView;
   @FXML private TableColumn<Pet, String> petNamePetView;
@@ -128,6 +152,7 @@ public class ViewHandler {
   private String fxmlDefPath = "fxml/currentlyworking/DefaultView.fxml";
   VIAPets viaPets = new VIAPets();
   MyModelManager myModelManager = new MyModelManager();
+  BirdViewController birdViewController = new BirdViewController();
 
   @FXML
   public void switchScene(ActionEvent e) throws IOException {
@@ -197,6 +222,9 @@ public class ViewHandler {
   } else if (source == birdMenuItem) {
     fxmlPath = "fxml/pets/BirdPetView.fxml";
     popupStage.setTitle("Add Bird");
+    if (source == birdSaveButton){
+      saveBird(e);
+    }
   } else if (source == fishMenuItem) {
     fxmlPath = "fxml/pets/FishPetView.fxml";
     popupStage.setTitle("Add Fish");
@@ -216,13 +244,25 @@ public class ViewHandler {
   } else{
     fxmlPath = fxmlDefPath;
   }
-  MenuItem sourceCasted = (MenuItem) source;
-    lastPopupSource=sourceCasted.getId();
+    if (source instanceof MenuItem menuItem) {
+      lastPopupSource = menuItem.getId();
+    } else if (source instanceof Button button) {
+      lastPopupSource = button.getId();
+    }
     // Set the modality of the popup (optional)
     popupStage.initModality(Modality.APPLICATION_MODAL); // Makes the popup modal (blocks other windows)
 
     // Create the scene for the popup window
-    Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+    try{
+      Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+    } catch (IOException ex) {
+      ex.printStackTrace();
+      System.out.println("Failed to load resource: " + fxmlPath);
+    }
+
+    Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+    stage.close();
+
     Scene popupScene = new Scene(root);
     popupStage.setScene(popupScene);
 
@@ -232,10 +272,12 @@ public class ViewHandler {
 
 
   }
-  public void save(){
+  public void save(ActionEvent event){
   }
 
-
+  public void saveBird(ActionEvent e){
+    birdViewController.saveAddPet();
+  }
 
 //  public void addTest(ActionEvent e) {
 //    customerController.addTest(e);

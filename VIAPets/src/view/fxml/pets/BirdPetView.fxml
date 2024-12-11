@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BirdViewController">
+<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
   <children>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
          <VBox.margin>
@@ -111,13 +111,13 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="petSpeciesTextField" prefHeight="0.0" prefWidth="118.0" />
+            <TextField fx:id="birdSpeciesTextField" prefHeight="0.0" prefWidth="118.0" />
             <Label prefHeight="26.0" prefWidth="80.0" text="Preferred food">
                <HBox.margin>
                   <Insets left="75.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="petFoodTextField" prefHeight="0.0" prefWidth="118.0" />
+            <TextField fx:id="birdFoodTextField" prefHeight="0.0" prefWidth="118.0" />
          </children>
          <VBox.margin>
             <Insets top="30.0" />
@@ -147,7 +147,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </HBox>
-      <Button fx:id="petSaveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveAddPet" text="Save">
+      <Button fx:id="birdSaveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveBird" text="Save">
          <VBox.margin>
             <Insets bottom="10.0" left="275.0" top="10.0" />
          </VBox.margin>
