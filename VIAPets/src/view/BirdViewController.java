@@ -8,8 +8,7 @@ import model.*;
 import javafx.scene.control.RadioButton;
 import utils.XMLHandler;
 
-import javax.swing.*;
-import javax.swing.text.View;
+
 import java.io.IOException;
 
 public class BirdViewController
@@ -42,63 +41,94 @@ public class BirdViewController
     String name = petNameTextField.getText();
     String color = petColorTextField.getText();
     int age;
-    if(petAgeTextField.getText().isEmpty())
+    if (petAgeTextField.getText().isEmpty())
     {
-      age=0;
+      age = 0;
     }
     else
     {
-      age=Integer.parseInt(petAgeTextField.getText());
+      age = Integer.parseInt(petAgeTextField.getText());
     }
     double price;
-    if(petPriceTextField.getText().isEmpty())
+    if (petPriceTextField.getText().isEmpty())
     {
-      price=0.0;
+      price = 0.0;
     }
     else
     {
       price = Double.parseDouble(petPriceTextField.getText());
     }
 
-    String comment = petCommentTextField.getText();
-    String species = petSpeciesTextField.getText();
-    String food = petFoodTextField.getText();
 
 
 
+      String comment = petCommentTextField.getText();
+      String species = petSpeciesTextField.getText();
+      String food = petFoodTextField.getText();
 
+      // Get RadioButton values
+      char gender = petGenderMaleRadioButton.isSelected() ?
+          'm' :
+          petGenderFemaleRadioButton.isSelected() ? 'f' : '-';
 
-    // Get RadioButton values
-    char gender = petGenderMaleRadioButton.isSelected() ? 'm' :
-        petGenderFemaleRadioButton.isSelected() ? 'f' : '-';
+      String location = petLocationShopRadioButton.isSelected() ?
+          "Shop" :
+          petLocationKennelRadioButton.isSelected() ? "Kennel" : "";
 
-    String location = petLocationShopRadioButton.isSelected() ? "Shop" :
-        petLocationKennelRadioButton.isSelected() ? "Kennel" : "";
+      String status = petStatusSoldRadioButton.isSelected() ?
+          "Sold" :
+          petStatusNotSoldRadioButton.isSelected() ?
+              "Not Sold" :
+              petStatusNotFromViaRadioButton.isSelected() ? "Not From Via" : "";
+      if (petNameTextField.getText().isEmpty() || petAgeTextField.getText()
+          .isEmpty() || petPriceTextField.getText().isEmpty()
+          || petSpeciesTextField.getText().isEmpty()
+          || petFoodTextField.getText().isEmpty() || gender == '-'
+          || location.isEmpty() || status.isEmpty())
+      {
+        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+        alert1.setTitle("Error");
+        alert1.setHeaderText(null);
+        alert1.setContentText("Invalid input!");
+        alert1.show();
+      }
+      else if ((petGenderMaleRadioButton.isSelected()
+          && petGenderFemaleRadioButton.isSelected()) || (
+          petLocationShopRadioButton.isSelected()
+              && petLocationKennelRadioButton.isSelected()) || (
+          petStatusSoldRadioButton.isSelected()
+              && petStatusNotSoldRadioButton.isSelected()) || (
+          petStatusSoldRadioButton.isSelected()
+              && petStatusNotFromViaRadioButton.isSelected())
+          || petStatusNotSoldRadioButton.isSelected()
+          && petStatusNotFromViaRadioButton.isSelected())
+      {
+        Alert alert2 = new Alert(Alert.AlertType.ERROR);
+        alert2.setTitle("Error");
+        alert2.setHeaderText(null);
+        alert2.setContentText("More Than One Choice Selected!");
+        alert2.show();
+      }
+      else
+      {
+        Bird newPet = new Bird(MyModelManager.createNextPetID(), name, color,
+            age, gender, location, status, species, food, price, comment);
 
-    String status = petStatusSoldRadioButton.isSelected() ? "Sold" :
-        petStatusNotSoldRadioButton.isSelected() ? "Not Sold" :
-            petStatusNotFromViaRadioButton.isSelected() ? "Not From Via" : "";
+        System.out.println(newPet);
+        MyModelManager manager = new MyModelManager();
+        try
+        {
+          manager.addPet(newPet);
 
+        }
+        catch (IOException e)
+        {
+          throw new RuntimeException(e);
+        }
 
+        XMLHandler.updateXML();
+      }
 
-
-    Bird newPet = new Bird(MyModelManager.createNextPetID(),name, color, age, gender,
-        location, status, species, food, price, comment);
-
-    System.out.println(newPet);
-    MyModelManager manager = new MyModelManager();
-    try
-    {
-      manager.addPet(newPet);
-
-    }
-    catch (IOException e)
-    {
-      throw new RuntimeException(e);
-    }
-
-    clearFields();
-    XMLHandler.updateXML();
   }
 
 
@@ -108,17 +138,7 @@ public class BirdViewController
 
 
 
-  @FXML
-  private void clearFields() {
-    petNameTextField.clear();
-    petColorTextField.clear();
-    petAgeTextField.clear();
-    petPriceTextField.clear();
-    petCommentTextField.clear();
-    petSpeciesTextField.clear();
-    petFoodTextField.clear();
 
-  }
 
 
 }

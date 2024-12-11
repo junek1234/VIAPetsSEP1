@@ -2,10 +2,7 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.*;
 import utils.XMLHandler;
 
@@ -33,39 +30,41 @@ public class CustomerViewController
       number=Integer.parseInt(customerPhoneNumberTextField.getText());
     }
 
-    String name = customerNameTextField.getText();
-    String email = customerEmailTextField.getText();
-
-
-
-
-
-
-
-
-
-
-
-   Customer newCustomer = new Customer(MyModelManager.createNextCustomerID(),name,number,email);
-
-    System.out.println(newCustomer);
-    MyModelManager manager = new MyModelManager();
-    try
+    if(customerNameTextField.getText().isEmpty()||customerEmailTextField.getText().isEmpty()||customerPhoneNumberTextField.getText().isEmpty())
     {
-      manager.addCustomer(newCustomer);
-
+      Alert alert1 = new Alert(Alert.AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText("Invalid input!");
+      alert1.show();
     }
-    catch (IOException e)
+    else
     {
-      throw new RuntimeException(e);
+      String name = customerNameTextField.getText();
+      String email = customerEmailTextField.getText();
+
+      Customer newCustomer = new Customer(MyModelManager.createNextCustomerID(),name,number,email);
+
+      System.out.println(newCustomer);
+      MyModelManager manager = new MyModelManager();
+      try
+      {
+        manager.addCustomer(newCustomer);
+
+      }
+      catch (IOException e)
+      {
+        throw new RuntimeException(e);
+      }
+
+      XMLHandler.updateXML();
+
+
+
+
+      clearFields();
     }
 
-    XMLHandler.updateXML();
-
-
-
-
-    clearFields();
   }
 
   @FXML
