@@ -447,21 +447,21 @@ public class ViewHandler
         }
         else
         {
-          // Buttons are created per cell instance to avoid shared state issues
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
           actionButtons.setAlignment(Pos.CENTER);
 
-          editButton.setOnAction(event -> {
-            Pet pet = getTableView().getItems().get(getIndex());
-            // handleEditAction(pet); // Replace with your edit logic
-          });
-
-          deleteButton.setOnAction(event -> {
-            Pet pet = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(pet); // Replace with your delete logic
-          });
+//          editButton.setOnAction(event -> {
+//            Pet selectedPet = getTableView().getItems().get(getIndex());
+//            int petID = selectedPet.getId();
+//
+//          });
+//
+//          deleteButton.setOnAction(event -> {
+//            Pet pet = getTableView().getItems().get(getIndex());
+//            // handleDeleteAction(pet); // Replace with your delete logic
+//          });
 
           setGraphic(actionButtons);
         }
