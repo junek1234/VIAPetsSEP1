@@ -59,7 +59,11 @@ public class SalesViewController
 
     MyModelManager manager = new MyModelManager();
     Pet salePet = manager.getAllPets().getPetByID(petID);
+
+
+
     Customer saleCustomer = manager.getAllCustomers().getCustomer(customerID);
+    System.out.println(salePet.getStatus());
     //errors
     if(salePet==null)
     {
@@ -69,6 +73,22 @@ public class SalesViewController
       alert1.setContentText("No pet with ID: "+petID+"!");
       alert1.show();
 
+    }
+    else if(salePet.getLocation().equals("Kennel"))
+    {
+      Alert alert1 = new Alert(Alert.AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText("This pet is from the kennel!");
+      alert1.show();
+    }
+    else if(!salePet.getStatus().equals("Not Sold"))
+    {
+      Alert alert1 = new Alert(Alert.AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText("This pet is not for sale!");
+      alert1.show();
     }
     else if (saleCustomer==null)
     {
@@ -89,16 +109,19 @@ public class SalesViewController
     {
 
 
-
-
-
       //if everything is fine
 
-      Sale newSale = new Sale(MyModelManager.createNextSaleID(), saleCustomer,
-          salePet, salePrice);
-      System.out.println(newSale);
+
       try
       {
+        salePet.setStatus("Sold");
+        manager.editPet(petID,salePet);
+
+        System.out.println(salePet);
+        Sale newSale = new Sale(MyModelManager.createNextSaleID(), saleCustomer,
+            salePet, salePrice);
+        System.out.println(newSale);
+        System.out.println(newSale.getPet());
         manager.addSale(newSale);
         Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         stage.close();

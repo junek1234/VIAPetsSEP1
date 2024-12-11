@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pets>
+  <pet>
+    <id>1</id>
+    <type>Various</type>
+    <name>vcafwad1</name>
+    <color>123</color>
+    <age>123</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Sold</status>
+    <species>123</species>
+    <price>123.0</price>
+  </pet>
+</pets>
