@@ -49,7 +49,10 @@ public abstract class Pet implements Serializable
   public abstract char getGender();
   public abstract String getComment();
   public abstract String getLocation();
-  public abstract String getStatus();
+  public String getStatus()
+  {
+    return this.status;
+  }
 
   public abstract void setPetID(int petID);
   public abstract void setName(String name);
@@ -57,7 +60,10 @@ public abstract class Pet implements Serializable
   public abstract void setGender(char gender);
   public abstract void setComment(String comment);
   public abstract void setLocation(String location);
-  public abstract void setStatus(String status);
+  public void setStatus(String status)
+  {
+    this.status=status;
+  }
 
   public boolean equals(Object obj)
   {

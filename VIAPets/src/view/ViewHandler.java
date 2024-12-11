@@ -591,5 +591,5 @@ public class ViewHandler
     saleTable.getColumns().add(actionsSaleView);
   }
 
-} //getClass().getSimpleName
+}
 
