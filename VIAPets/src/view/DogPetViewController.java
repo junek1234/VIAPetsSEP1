@@ -3,6 +3,7 @@ package view;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.*;
 import utils.XMLHandler;
 
@@ -110,6 +111,8 @@ public class DogPetViewController
           try
           {
             manager.addPet(newPet);
+            Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            stage.close();
 
           }
           catch (IOException e)
