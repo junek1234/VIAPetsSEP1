@@ -20,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.*;
 
 
@@ -33,29 +34,21 @@ public class ViewHandler
 {
   public static String lastPopupSource;
   //for PetViewController
-  @FXML private TextField petNameTextField;
-  @FXML private TextField petColorTextField;
-  @FXML private TextField petAgeTextField;
-  @FXML private TextField petPriceTextField;
+  //  @FXML private TextField petNameTextField;
+  //  @FXML private TextField petColorTextField;
+  //  @FXML private TextField petAgeTextField;
+  //  @FXML private TextField petPriceTextField;
+  //
+  //  @FXML private TextArea petCommentTextField;
+  //
+  //  @FXML private RadioButton petGenderMaleRadioButton;
+  //  @FXML private RadioButton petGenderFemaleRadioButton;
+  //  @FXML private RadioButton petLocationShopRadioButton;
+  //  @FXML private RadioButton petLocationKennelRadioButton;
+  //  @FXML private RadioButton petStatusSoldRadioButton;
+  //  @FXML private RadioButton petStatusNotSoldRadioButton;
+  //  @FXML private RadioButton petStatusNotFromViaRadioButton;
 
-  @FXML private TextArea petCommentTextField;
-
-  @FXML private RadioButton petGenderMaleRadioButton;
-  @FXML private RadioButton petGenderFemaleRadioButton;
-  @FXML private RadioButton petLocationShopRadioButton;
-  @FXML private RadioButton petLocationKennelRadioButton;
-  @FXML private RadioButton petStatusSoldRadioButton;
-  @FXML private RadioButton petStatusNotSoldRadioButton;
-  @FXML private RadioButton petStatusNotFromViaRadioButton;
-
-
-  //bird
-  @FXML private TextField birdSpeciesTextField;
-  @FXML private TextField birdFoodTextField;
-
-  @FXML private Button birdSaveButton;
-
-  @FXML private Button petSaveButton;
   //related to pets
   @FXML private MenuItem petsMenuItem;
   @FXML private MenuItem dogMenuItem;
@@ -102,9 +95,13 @@ public class ViewHandler
   //tables
   @FXML private TableView<Pet> petTable;
   @FXML private TableColumn<Pet, Number> petIDPetView;
+  @FXML private TableColumn<Pet, String> petTypePetView;
+  @FXML private TableColumn<Pet, String> petLocationPetView;
+  @FXML private TableColumn<Pet, String> petStatusPetView;
   @FXML private TableColumn<Pet, String> petNamePetView;
   @FXML private TableColumn<Pet, String> petColorPetView;
   @FXML private TableColumn<Pet, String> petGenderPetView;
+  @FXML private TableColumn<Pet, String> petCommentPetView;
   @FXML private TableColumn<Pet, Void> actionsPetView;
 
   @FXML private TableView<Customer> customerTable;
@@ -232,21 +229,32 @@ public class ViewHandler
       popupStage.setTitle(
           "Add " + (source == rodentMenuItem ? "Rodent" : "Various"));
 
-  } else if (source == addCustomerMenuItem || source == addCustomerButton) {
-    fxmlPath = "fxml/Customers/AddCustomer.fxml";
-    popupStage.setTitle("Add Customer");
-  } else if (source == addBookingMenuItem || source == addBookingButton) {
-    fxmlPath = "fxml/bookings/AddBooking.fxml";
-    popupStage.setTitle("Add Booking");
-  } else if (source == addSaleMenuItem) {
-    fxmlPath = "fxml/sales/AddSale.fxml";
-    popupStage.setTitle("Add Sale");
-  } else{
-    fxmlPath = fxmlDefPath;
-  }
-    if (source instanceof MenuItem menuItem) {
+    }
+    else if (source == addCustomerMenuItem || source == addCustomerButton)
+    {
+      fxmlPath = "fxml/Customers/AddCustomer.fxml";
+      popupStage.setTitle("Add Customer");
+    }
+    else if (source == addBookingMenuItem || source == addBookingButton)
+    {
+      fxmlPath = "fxml/bookings/AddBooking.fxml";
+      popupStage.setTitle("Add Booking");
+    }
+    else if (source == addSaleMenuItem)
+    {
+      fxmlPath = "fxml/sales/AddSale.fxml";
+      popupStage.setTitle("Add Sale");
+    }
+    else
+    {
+      fxmlPath = fxmlDefPath;
+    }
+    if (source instanceof MenuItem menuItem)
+    {
       lastPopupSource = menuItem.getId();
-    } else if (source instanceof Button button) {
+    }
+    else if (source instanceof Button button)
+    {
       lastPopupSource = button.getId();
     }
     // Set the modality of the popup (optional)
@@ -254,9 +262,12 @@ public class ViewHandler
         Modality.APPLICATION_MODAL); // Makes the popup modal (blocks other windows)
 
     // Create the scene for the popup window
-    try{
+    try
+    {
       root = FXMLLoader.load(getClass().getResource(fxmlPath));
-    } catch (IOException ex) {
+    }
+    catch (IOException ex)
+    {
       ex.printStackTrace();
       System.out.println("Failed to load resource: " + fxmlPath);
     }
@@ -272,9 +283,10 @@ public class ViewHandler
   public void save()
   {
   }
-  public void save(ActionEvent event){
-  }
 
+  public void save(ActionEvent event)
+  {
+  }
 
   //  public void addTest(ActionEvent e) {
   //    customerController.addTest(e);
@@ -298,22 +310,48 @@ public class ViewHandler
     petIDPetView = new TableColumn<>("Pet ID");
     petIDPetView.setCellValueFactory(
         cellData -> new SimpleIntegerProperty(cellData.getValue().getPetID()));
+    petIDPetView.setStyle("-fx-alignment: CENTER;");
+
+    petTypePetView = new TableColumn<>("Type of animal");
+    petTypePetView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        cellData.getValue().getClass().getSimpleName()));
+    petTypePetView.setStyle("-fx-alignment: CENTER;");
+
+    petLocationPetView = new TableColumn<>("Location");
+    petLocationPetView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        cellData.getValue().getLocation()));
+    petLocationPetView.setStyle("-fx-alignment: CENTER;");
+
+    petStatusPetView = new TableColumn<>("Status");
+    petStatusPetView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
+    petStatusPetView.setStyle("-fx-alignment: CENTER;");
 
     petNamePetView = new TableColumn<>("Name");
     petNamePetView.setCellValueFactory(
         cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+    petNamePetView.setStyle("-fx-alignment: CENTER;");
 
     petColorPetView = new TableColumn<>("Color");
     petColorPetView.setCellValueFactory(
         cellData -> new SimpleStringProperty(cellData.getValue().getColor()));
+    petColorPetView.setStyle("-fx-alignment: CENTER;");
 
     petGenderPetView = new TableColumn<>("Gender");
     petGenderPetView.setCellValueFactory(cellData -> new SimpleStringProperty(
         String.valueOf(cellData.getValue().getGender())));
+    petGenderPetView.setStyle("-fx-alignment: CENTER;");
+
+    petCommentPetView = new TableColumn<>("Comment");
+    petCommentPetView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getComment()));
+    petCommentPetView.setStyle("-fx-alignment: CENTER;");
 
     // Add columns to the table
-    petTable.getColumns().addAll(petIDPetView, petNamePetView, petColorPetView,
-        petGenderPetView);
+    petTable.getColumns()
+        .addAll(petIDPetView, petTypePetView, petLocationPetView,
+            petStatusPetView, petNamePetView, petColorPetView, petGenderPetView,
+            petCommentPetView);
     petTable.refresh();
 
     addActionsPetTable();
@@ -332,18 +370,22 @@ public class ViewHandler
     customerIDView = new TableColumn<>("Customer ID");
     customerIDView.setCellValueFactory(cellData -> new SimpleIntegerProperty(
         cellData.getValue().getCustomerID()));
+    customerIDView.setStyle("-fx-alignment: CENTER;");
 
     customerNameView = new TableColumn<>("Name");
     customerNameView.setCellValueFactory(
         cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+    customerNameView.setStyle("-fx-alignment: CENTER;");
 
     phoneNumberView = new TableColumn<>("Phone Number");
     phoneNumberView.setCellValueFactory(cellData -> new SimpleIntegerProperty(
         cellData.getValue().getPhoneNumber()));
+    phoneNumberView.setStyle("-fx-alignment: CENTER;");
 
     emailView = new TableColumn<>("Email");
     emailView.setCellValueFactory(
         cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
+    emailView.setStyle("-fx-alignment: CENTER;");
 
     customerTable.getColumns()
         .addAll(customerIDView, customerNameView, phoneNumberView, emailView);
@@ -367,25 +409,30 @@ public class ViewHandler
     bookingIDView = new TableColumn<>("Booking ID");
     bookingIDView.setCellValueFactory(cellData -> new SimpleIntegerProperty(
         cellData.getValue().getBookingID()));
+    bookingIDView.setStyle("-fx-alignment: CENTER;");
 
     petNameBookingView = new TableColumn<>("Pet Name");
     petNameBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
         cellData.getValue().getPet().getName()));
+    petNameBookingView.setStyle("-fx-alignment: CENTER;");
 
     customerNameBookingView = new TableColumn<>("Customer Name");
     customerNameBookingView.setCellValueFactory(
         cellData -> new SimpleStringProperty(
             cellData.getValue().getCustomer().getName()));
+    customerNameBookingView.setStyle("-fx-alignment: CENTER;");
 
     startDateBookingView = new TableColumn<>("Start Date");
     startDateBookingView.setCellValueFactory(
         cellData -> new SimpleStringProperty(
             cellData.getValue().getDateInterval().getStartDate()
                 .format(formatter)));
+    startDateBookingView.setStyle("-fx-alignment: CENTER;");
 
     endDateBookingView = new TableColumn<>("End Date");
     endDateBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
         cellData.getValue().getDateInterval().getEndDate().format(formatter)));
+    endDateBookingView.setStyle("-fx-alignment: CENTER;");
 
     bookingTable.getColumns()
         .addAll(bookingIDView, petNameBookingView, customerNameBookingView,
@@ -408,19 +455,23 @@ public class ViewHandler
     saleIDView = new TableColumn<>("Sale ID");
     saleIDView.setCellValueFactory(
         cellData -> new SimpleIntegerProperty(cellData.getValue().getSaleID()));
+    saleIDView.setStyle("-fx-alignment: CENTER;");
 
     petNameSaleView = new TableColumn<>("Pet Name");
     petNameSaleView.setCellValueFactory(cellData -> new SimpleStringProperty(
         cellData.getValue().getPet().getName()));
+    petNameSaleView.setStyle("-fx-alignment: CENTER;");
 
     customerNameSaleView = new TableColumn<>("Customer Name");
     customerNameSaleView.setCellValueFactory(
         cellData -> new SimpleStringProperty(
             cellData.getValue().getCustomer().getName()));
+    customerNameSaleView.setStyle("-fx-alignment: CENTER;");
 
     priceSaleView = new TableColumn<>("Price");
     priceSaleView.setCellValueFactory(cellData -> new SimpleStringProperty(
         String.format("%.2f", cellData.getValue().getSalePrice())));
+    priceSaleView.setStyle("-fx-alignment: CENTER;");
 
     saleTable.getColumns()
         .addAll(saleIDView, petNameSaleView, customerNameSaleView,
@@ -591,5 +642,28 @@ public class ViewHandler
     saleTable.getColumns().add(actionsSaleView);
   }
 
+//  // Helper method to apply center alignment
+//  private void applyCenterAlignment(TableColumn<Pet, ?> column) {
+//    column.setCellFactory(new Callback<TableColumn<Pet, ?>, TableCell<Pet, ?>>() {
+//      @Override
+//      public TableCell<Pet, ?> call(TableColumn<Pet, ?> param) {
+//        return new TableCell<Pet, Object>() {  // Use Object to match any type
+//          @Override
+//          protected void updateItem(Object item, boolean empty) {
+//            super.updateItem(item, empty);
+//
+//            if (empty || item == null) {
+//              setText(null);
+//            } else {
+//              setText(item.toString());  // Convert item to String if it's not null
+//              setAlignment(Pos.CENTER); // Center align text
+//            }
+//          }
+//        };
+//      }
+//    });
+  //}
 }
+
+
 

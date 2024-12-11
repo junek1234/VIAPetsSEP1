@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pets>
   <pet>
-    <id>1</id>
-    <type>Various</type>
-    <name>vcafwad1</name>
-    <color>123</color>
-    <age>123</age>
+    <id>3</id>
+    <type>Dog</type>
+    <name>a</name>
+    <color>a</color>
+    <age>1</age>
     <gender>m</gender>
-    <location>Shop</location>
-    <status>Sold</status>
-    <species>123</species>
-    <price>123.0</price>
+    <location>Kennel</location>
+    <status>Not Sold</status>
+    <breed>a</breed>
+    <breederName>a</breederName>
+    <price>1.0</price>
+  </pet>
+  <pet>
+    <id>4</id>
+    <type>Bird</type>
+    <name>a</name>
+    <color>a</color>
+    <age>1</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Not Sold</status>
+    <species>a</species>
+    <preferredFood>a</preferredFood>
+    <price>1.0</price>
+  </pet>
+  <pet>
+    <id>5</id>
+    <type>Dog</type>
+    <name>pepe</name>
+    <color>blue</color>
+    <age>12</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Not Sold</status>
+    <breed>bird</breed>
+    <breederName>cat</breederName>
+    <price>100.0</price>
   </pet>
 </pets>
