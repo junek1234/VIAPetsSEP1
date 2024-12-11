@@ -503,16 +503,16 @@ public class ViewHandler
           HBox actionButtons = new HBox(10, editButton, deleteButton);
           actionButtons.setAlignment(Pos.CENTER);
 
-//          editButton.setOnAction(event -> {
-//            Pet selectedPet = getTableView().getItems().get(getIndex());
+          editButton.setOnAction(event -> {
+            Pet selectedPet = getTableView().getItems().get(getIndex());
 //            int petID = selectedPet.getId();
 //
-//          });
+          });
 //
-//          deleteButton.setOnAction(event -> {
-//            Pet pet = getTableView().getItems().get(getIndex());
-//            // handleDeleteAction(pet); // Replace with your delete logic
-//          });
+          deleteButton.setOnAction(event -> {
+            Pet pet = getTableView().getItems().get(getIndex());
+//            // handleDeleteAction(pet);
+          });
 
           setGraphic(actionButtons);
         }
@@ -546,12 +546,12 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Customer customer = getTableView().getItems().get(getIndex());
-            // handleEditAction(customer); // Replace with your edit logic
+            // handleEditAction(customer);
           });
 
           deleteButton.setOnAction(event -> {
             Customer customer = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(customer); // Replace with your delete logic
+            // handleDeleteAction(customer);
           });
 
           setGraphic(actionButtons);
@@ -586,12 +586,12 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Booking booking = getTableView().getItems().get(getIndex());
-            // handleEditAction(customer); // Replace with your edit logic
+            // handleEditAction(customer);
           });
 
           deleteButton.setOnAction(event -> {
             Booking booking = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(customer); // Replace with your delete logic
+            // handleDeleteAction(customer);
           });
 
           setGraphic(actionButtons);
@@ -626,12 +626,12 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Sale sale = getTableView().getItems().get(getIndex());
-            // handleEditAction(customer); // Replace with your edit logic
+            // handleEditAction(customer);
           });
 
           deleteButton.setOnAction(event -> {
             Sale sale = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(customer); // Replace with your delete logic
+            // handleDeleteAction(customer);
           });
 
           setGraphic(actionButtons);
