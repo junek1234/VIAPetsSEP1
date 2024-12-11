@@ -37,11 +37,8 @@ public class ViewHandler
   @FXML private TextField petColorTextField;
   @FXML private TextField petAgeTextField;
   @FXML private TextField petPriceTextField;
-  @FXML private TextField petBreedTextField;
-  @FXML private TextField petBreederNameTextField;
+
   @FXML private TextArea petCommentTextField;
-  @FXML private TextField petSpeciesTextField;
-  @FXML private TextField petFoodTextField;
 
   @FXML private RadioButton petGenderMaleRadioButton;
   @FXML private RadioButton petGenderFemaleRadioButton;
@@ -50,10 +47,13 @@ public class ViewHandler
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
-  @FXML private RadioButton petSaltWaterYesRadioButton;
-  @FXML private RadioButton petSaltWaterNoRadioButton;
-  @FXML private RadioButton petPredatorYesRadioButton;
-  @FXML private RadioButton petPredatprNoRadioButton;
+
+
+  //bird
+  @FXML private TextField birdSpeciesTextField;
+  @FXML private TextField birdFoodTextField;
+
+  @FXML private Button birdSaveButton;
 
   @FXML private Button petSaveButton;
   //related to pets
@@ -99,6 +99,7 @@ public class ViewHandler
   @FXML private MenuItem salesMenuItem;
   @FXML private MenuItem addSaleMenuItem;
 
+  //tables
   @FXML private TableView<Pet> petTable;
   @FXML private TableColumn<Pet, Number> petIDPetView;
   @FXML private TableColumn<Pet, String> petNamePetView;
@@ -133,6 +134,7 @@ public class ViewHandler
   private String fxmlDefPath = "fxml/currentlyworking/DefaultView.fxml";
   VIAPets viaPets = new VIAPets();
   MyModelManager myModelManager = new MyModelManager();
+  BirdViewController birdViewController = new BirdViewController();
 
   @FXML public void switchScene(ActionEvent e) throws IOException
   {
@@ -230,34 +232,35 @@ public class ViewHandler
       popupStage.setTitle(
           "Add " + (source == rodentMenuItem ? "Rodent" : "Various"));
 
+  } else if (source == addCustomerMenuItem || source == addCustomerButton) {
+    fxmlPath = "fxml/Customers/AddCustomer.fxml";
+    popupStage.setTitle("Add Customer");
+  } else if (source == addBookingMenuItem || source == addBookingButton) {
+    fxmlPath = "fxml/bookings/AddBooking.fxml";
+    popupStage.setTitle("Add Booking");
+  } else if (source == addSaleMenuItem) {
+    fxmlPath = "fxml/sales/AddSale.fxml";
+    popupStage.setTitle("Add Sale");
+  } else{
+    fxmlPath = fxmlDefPath;
+  }
+    if (source instanceof MenuItem menuItem) {
+      lastPopupSource = menuItem.getId();
+    } else if (source instanceof Button button) {
+      lastPopupSource = button.getId();
     }
-    else if (source == addCustomerMenuItem || source == addCustomerButton)
-    {
-      fxmlPath = "fxml/Customers/AddCustomer.fxml";
-      popupStage.setTitle("Add Customer");
-    }
-    else if (source == addBookingMenuItem || source == addBookingButton)
-    {
-      fxmlPath = "fxml/bookings/AddBooking.fxml";
-      popupStage.setTitle("Add Booking");
-    }
-    else if (source == addSaleMenuItem)
-    {
-      fxmlPath = "fxml/sales/AddSale.fxml";
-      popupStage.setTitle("Add Sale");
-    }
-    else
-    {
-      fxmlPath = fxmlDefPath;
-    }
-    MenuItem sourceCasted = (MenuItem) source;
-    lastPopupSource = sourceCasted.getId();
     // Set the modality of the popup (optional)
     popupStage.initModality(
         Modality.APPLICATION_MODAL); // Makes the popup modal (blocks other windows)
 
     // Create the scene for the popup window
-    Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+    try{
+      root = FXMLLoader.load(getClass().getResource(fxmlPath));
+    } catch (IOException ex) {
+      ex.printStackTrace();
+      System.out.println("Failed to load resource: " + fxmlPath);
+    }
+
     Scene popupScene = new Scene(root);
     popupStage.setScene(popupScene);
 
@@ -269,6 +272,9 @@ public class ViewHandler
   public void save()
   {
   }
+  public void save(ActionEvent event){
+  }
+
 
   //  public void addTest(ActionEvent e) {
   //    customerController.addTest(e);

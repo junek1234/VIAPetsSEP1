@@ -3,6 +3,7 @@ package view;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.*;
 
 import utils.XMLHandler;
@@ -25,12 +26,12 @@ public class SalesViewController
 
   public void saveAddSale(ActionEvent actionEvent)
   {
-    int petID = 0;//need to add exception later
-    int customerID = 0;//need to add exception later
+    int petID = 0;
+    int customerID = 0;
     int salePrice=0;
     if(salePetIDTextField.getText().isEmpty())
     {
-      System.out.println("Error: Enter pet ID"); //later in exceptions
+      System.out.println("Error: no pet ID");
     }
     else
     {
@@ -40,7 +41,7 @@ public class SalesViewController
 
     if(saleCustomerIDTextField.getText().isEmpty())
     {
-      System.out.println("Error: Enter customer ID"); //later in exceptions
+      System.out.println("Error: no customer ID");
     }
     else
     {
@@ -49,51 +50,71 @@ public class SalesViewController
 
     if(saleSalePriceTextField.getText().isEmpty())
     {
-      System.out.println("Error: Enter Start Hour"); //later in exceptions
+      System.out.println("Error: no Price");
     }
     else
     {
       salePrice=Integer.parseInt(saleSalePriceTextField.getText());
     }
 
-
     MyModelManager manager = new MyModelManager();
-
-
-    Pet salePet=manager.getAllPets().getPetByID(petID);
-    Customer saleCustomer=manager.getAllCustomers().getCustomer(customerID);
-
-
-    //if everything is fine
-
-   Sale newSale = new Sale(MyModelManager.createNextSaleID(),saleCustomer, salePet, salePrice);
-    System.out.println(newSale);
-    try
+    Pet salePet = manager.getAllPets().getPetByID(petID);
+    Customer saleCustomer = manager.getAllCustomers().getCustomer(customerID);
+    //errors
+    if(salePet==null)
     {
-      manager.addSale(newSale);
+      Alert alert1 = new Alert(Alert.AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText("No pet with ID: "+petID+"!");
+      alert1.show();
+
     }
-    catch (IOException e)
+    else if (saleCustomer==null)
     {
-      throw new RuntimeException(e);
+      Alert alert1 = new Alert(Alert.AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText("No customer with ID: "+customerID+"!");
+      alert1.show();
     }
+    else if(saleSalePriceTextField.getText().isEmpty())
+    {
+      Alert alert1 = new Alert(Alert.AlertType.ERROR);
+      alert1.setTitle("Error");
+      alert1.setHeaderText(null);
+      alert1.setContentText("Enter price!");
+      alert1.show();
+    } else
+    {
 
 
-    XMLHandler.updateXML();
 
 
 
+      //if everything is fine
 
-    clearFields();
+      Sale newSale = new Sale(MyModelManager.createNextSaleID(), saleCustomer,
+          salePet, salePrice);
+      System.out.println(newSale);
+      try
+      {
+        manager.addSale(newSale);
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
+
+      }
+      catch (IOException e)
+      {
+        throw new RuntimeException(e);
+      }
+
+      XMLHandler.updateXML();
+
+    }
   }
 
-  @FXML
-  private void clearFields() {
-    salePetIDTextField.clear();
-    saleCustomerIDTextField.clear();
-    saleSalePriceTextField.clear();
 
-
-  }
 
 
 }
