@@ -359,7 +359,7 @@ public class ViewHandler {
     MyModelManager manager = new MyModelManager();
 
 
-    ObservableList<Sale> sales = FXCollections.observableArrayList(manager.getAllSales().getSaleList());
+    ObservableList<Sale> sales = FXCollections.observableArrayList(manager.getAllSales().getSaleList() );
 
 
     saleTable = new TableView<>(sales);
