@@ -42,24 +42,8 @@ public class FishViewController
     String species = petSpeciesTextField.getText();
     String name = petNameTextField.getText();
     String color = petColorTextField.getText();
-    int age;
-    if (petAgeTextField.getText().isEmpty())
-    {
-      age = 0;
-    }
-    else
-    {
-      age = Integer.parseInt(petAgeTextField.getText());
-    }
-    double price;
-    if (petPriceTextField.getText().isEmpty())
-    {
-      price = 0.0;
-    }
-    else
-    {
-      price = Double.parseDouble(petPriceTextField.getText());
-    }
+    int age=0;
+    double price=0;
 
     String comment = petCommentTextField.getText();
     boolean isSaltWater = petSaltWaterYesRadioButton.isSelected() ?
@@ -105,6 +89,39 @@ public class FishViewController
 
     else
     {
+      if(!petAgeTextField.getText().isEmpty())
+      {
+        try
+        {
+          age = Integer.parseInt(petAgeTextField.getText());
+        }
+        catch (NumberFormatException e)
+        {
+          Alert alert1 = new Alert(Alert.AlertType.ERROR);
+          alert1.setTitle("Error");
+          alert1.setHeaderText(null);
+          alert1.setContentText("Invalid input!");
+          alert1.show();
+          return;//it stops the method when catching exception
+        }
+
+      }
+      if (!petPriceTextField.getText().isEmpty())
+      {
+        try
+        {
+          price = Double.parseDouble(petPriceTextField.getText());
+        }
+        catch (NumberFormatException e)
+        {
+          Alert alert1 = new Alert(Alert.AlertType.ERROR);
+          alert1.setTitle("Error");
+          alert1.setHeaderText(null);
+          alert1.setContentText("Invalid input!");
+          alert1.show();
+          return;//it stops the method when catching exception
+        }
+      }
 
       Fish newPet = new Fish(MyModelManager.createNextPetID(), name, color, age,
           gender, location, status, isSaltWater, species, isPredator, price,
