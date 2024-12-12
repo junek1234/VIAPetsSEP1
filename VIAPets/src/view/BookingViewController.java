@@ -125,14 +125,15 @@ public class BookingViewController
           Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene()
               .getWindow();
           stage.close();
+          MyModelManager managerUpdateLists = new MyModelManager();
+
+          XMLHandler.updateXML();
 
         }
         catch (IOException e)
         {
           throw new RuntimeException(e);
         }
-
-        XMLHandler.updateXML();
 
       }
 
