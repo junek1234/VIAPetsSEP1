@@ -243,6 +243,7 @@ public class ViewHandler
     }
     else if (source == addBookingMenuItem || source == addBookingButton)
     {
+      System.out.println("pene");
       fxmlPath = "fxml/bookings/AddBooking.fxml";
       popupStage.setTitle("Add Booking");
     }

@@ -74,7 +74,7 @@ public class BirdViewController
         alert1.setContentText("Complete all fields!");
         alert1.show();
       }
-     
+
       else if ((petGenderMaleRadioButton.isSelected()
           && petGenderFemaleRadioButton.isSelected()) || (
           petLocationShopRadioButton.isSelected()
