@@ -135,8 +135,6 @@ public class BookingViewController
           throw new RuntimeException(e);
         }
 
-
-
       }
 
     }

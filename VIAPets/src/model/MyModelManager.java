@@ -298,7 +298,7 @@ public class MyModelManager implements Serializable
             VIAPets.maxKennelSlots = Integer.parseInt(settings[0]);
             VIAPets.bookingPrice = Double.parseDouble(settings[1]);
         } catch (FileNotFoundException e) {
-            saveBookingsSettings(10, 0);
+            saveBookingsSettings(10, (20.0));
         }
     }
 

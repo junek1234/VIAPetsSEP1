@@ -133,6 +133,7 @@ public class ViewHandler
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
   private String fxmlDefPath = "fxml/currentlyworking/DefaultView.fxml";
+  private static String fxmlPrevPath="";
   MyModelManager myModelManager = new MyModelManager();
   VIAPets viaPets = new VIAPets();
 
@@ -141,7 +142,7 @@ public class ViewHandler
   @FXML public void switchScene(ActionEvent e) throws IOException
   {
     Object source = e.getSource();
-    String fxmlPath;
+    String fxmlPath = "";
 
     if (source == petsMenuItem)
     {
@@ -170,8 +171,15 @@ public class ViewHandler
     }
     else
     {
-      fxmlPath = fxmlDefPath;
+//      fxmlPath=fxmlPrevPath;
+//      System.out.println(fxmlPrevPath);
+//      System.out.println(fxmlPath);
+//      initCustomerList();
+//      source=(Object)customersMenuItem;
     }
+    fxmlPrevPath=fxmlPath;
+
+
 
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
     MenuItem mirrorMenuItem = (MenuItem) source;
@@ -289,6 +297,7 @@ public class ViewHandler
 
     // Show the popup window
     popupStage.showAndWait();// This will block the main window until the popup is closed
+//    switchScene(e);
 
   }
   
