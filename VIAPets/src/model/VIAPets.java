@@ -1,5 +1,7 @@
 package model;
 
+import utils.XMLHandler;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 

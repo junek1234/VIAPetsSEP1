@@ -131,8 +131,9 @@ public class ViewHandler
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
   private String fxmlDefPath = "fxml/currentlyworking/DefaultView.fxml";
-  VIAPets viaPets = new VIAPets();
   MyModelManager myModelManager = new MyModelManager();
+  VIAPets viaPets = new VIAPets();
+
   BirdViewController birdViewController = new BirdViewController();
 
   @FXML public void switchScene(ActionEvent e) throws IOException
