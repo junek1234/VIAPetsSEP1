@@ -151,10 +151,10 @@ public class ViewHandler
       initCustomerList();
     }
     // bookings settings changed to popup
-//    else if (source == bookingsSettingsMenuItem)
-//    {
-//      fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
-//    }
+    //    else if (source == bookingsSettingsMenuItem)
+    //    {
+    //      fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
+    //    }
     else if (source == bookingsMenuItem)
     {
       fxmlPath = "fxml/currentlyworking/DefaultBookingsView.fxml";
@@ -443,18 +443,21 @@ public class ViewHandler
     endDateBookingView.setStyle("-fx-alignment: CENTER;");
 
     startHourBookingView = new TableColumn<>("Start Hour");
-    startHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
-        cellData.getValue().getDateInterval().getStartDate().getHour()+":00"));
+    startHourBookingView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(
+            cellData.getValue().getDateInterval().getStartDate().getHour()
+                + ":00"));
     startHourBookingView.setStyle("-fx-alignment: CENTER;");
 
     endHourBookingView = new TableColumn<>("End Hour");
     endHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
-        cellData.getValue().getDateInterval().getEndDate().getHour()+":00"));
+        cellData.getValue().getDateInterval().getEndDate().getHour() + ":00"));
     endHourBookingView.setStyle("-fx-alignment: CENTER;");
 
     bookingTable.getColumns()
         .addAll(bookingIDView, petNameBookingView, customerNameBookingView,
-            startDateBookingView, endDateBookingView, startHourBookingView,endHourBookingView);
+            startDateBookingView, endDateBookingView, startHourBookingView,
+            endHourBookingView);
 
     bookingTable.refresh();
 
@@ -522,14 +525,15 @@ public class ViewHandler
           actionButtons.setAlignment(Pos.CENTER);
 
           editButton.setOnAction(event -> {
-            Pet selectedPet = getTableView().getItems().get(getIndex());
-//            int petID = selectedPet.getId();
-//
+            Pet pet = getTableView().getItems().get(getIndex());
+            DogPetViewController controller = new DogPetViewController();
+            controller.handleEditAction(pet);
+            //w
           });
-//
+          //
           deleteButton.setOnAction(event -> {
             Pet pet = getTableView().getItems().get(getIndex());
-//            // handleDeleteAction(pet);
+            //            // handleDeleteAction(pet);
           });
 
           setGraphic(actionButtons);
@@ -556,7 +560,7 @@ public class ViewHandler
         }
         else
         {
-          // Buttons are created per cell instance to avoid shared state issues
+
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -596,7 +600,7 @@ public class ViewHandler
         }
         else
         {
-          // Buttons are created per cell instance to avoid shared state issues
+
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -636,7 +640,7 @@ public class ViewHandler
         }
         else
         {
-          // Buttons are created per cell instance to avoid shared state issues
+
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -658,30 +662,9 @@ public class ViewHandler
     });
 
     saleTable.getColumns().add(actionsSaleView);
+    petTable.refresh();
   }
 
-  //  // Helper method to apply center alignment
-  //  private void applyCenterAlignment(TableColumn<Pet, ?> column) {
-  //    column.setCellFactory(new Callback<TableColumn<Pet, ?>, TableCell<Pet, ?>>() {
-  //      @Override
-  //      public TableCell<Pet, ?> call(TableColumn<Pet, ?> param) {
-  //        return new TableCell<Pet, Object>() {  // Use Object to match any type
-  //          @Override
-  //          protected void updateItem(Object item, boolean empty) {
-  //            super.updateItem(item, empty);
-  //
-  //            if (empty || item == null) {
-  //              setText(null);
-  //            } else {
-  //              setText(item.toString());  // Convert item to String if it's not null
-  //              setAlignment(Pos.CENTER); // Center align text
-  //            }
-  //          }
-  //        };
-  //      }
-  //    });
-  //}
 }
-
 
 

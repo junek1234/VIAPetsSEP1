@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pets>
+  <pet>
+    <id>1</id>
+    <type>Dog</type>
+    <name>gg</name>
+    <color>gg</color>
+    <age>1</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Sold</status>
+    <breed>jj</breed>
+    <breederName>jj</breederName>
+    <price>1.0</price>
+  </pet>
+</pets>
