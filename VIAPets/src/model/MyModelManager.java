@@ -29,7 +29,7 @@ public class MyModelManager implements Serializable
         ArrayList<Customer> customers=new ArrayList<>();
         ArrayList<Sale> sales=new ArrayList<>();
 
-        loadBookingsSettings();
+
 
 
         ArrayList<Object> objects = loadArrayListFromFile(PET_FILE);
@@ -45,7 +45,6 @@ public class MyModelManager implements Serializable
             bookings.add((Booking)objects.get(i));
         }
         viaPets.setAllBookings(new BookingList(bookings));
-
         objects = loadArrayListFromFile(CUSTOMER_FILE);
         for (int i = 0; i < objects.size(); i++)
         {
@@ -70,6 +69,10 @@ public class MyModelManager implements Serializable
         //SALE ID LINE 4 - index is 3
         viaPets.setLastSaleID(lastIDs[3]);
 
+
+        loadBookingsSettings();
+        viaPets.setAvailableSlots();
+        XMLHandler.updateXML();
     }
 
 //    private String[] loadArrayFromXMLFile(String fileName)
@@ -279,6 +282,7 @@ public class MyModelManager implements Serializable
         {
             MyFileHandler.writeToTextFile(BOOKINGS_SETTINGS,VIAPets.maxKennelSlots+"");
             MyFileHandler.appendToTextFile(BOOKINGS_SETTINGS,VIAPets.bookingPrice+"");
+            viaPets.setAvailableSlots();
             XMLHandler.updateXML();
         }
         catch (FileNotFoundException e)
