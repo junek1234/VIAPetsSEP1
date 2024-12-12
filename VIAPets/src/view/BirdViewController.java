@@ -62,7 +62,6 @@ public class BirdViewController
             "Not Sold" :
             petStatusNotFromViaRadioButton.isSelected() ? "Not From Via" : "";
     //check errors and Exceptions
-
      if (petNameTextField.getText().isEmpty() || petAgeTextField.getText()
           .isEmpty() || petPriceTextField.getText().isEmpty()
           || petSpeciesTextField.getText().isEmpty()
@@ -75,6 +74,7 @@ public class BirdViewController
         alert1.setContentText("Complete all fields!");
         alert1.show();
       }
+     
       else if ((petGenderMaleRadioButton.isSelected()
           && petGenderFemaleRadioButton.isSelected()) || (
           petLocationShopRadioButton.isSelected()
