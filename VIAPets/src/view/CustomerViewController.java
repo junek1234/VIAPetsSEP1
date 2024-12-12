@@ -53,7 +53,6 @@ public class CustomerViewController
 
       Customer newCustomer = new Customer(MyModelManager.createNextCustomerID(),name,number,email);
 
-      System.out.println(newCustomer);
       MyModelManager manager = new MyModelManager();
       try
       {

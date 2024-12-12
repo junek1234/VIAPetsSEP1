@@ -120,7 +120,6 @@ public class RodentVariousViewController
         newPet = new Various(MyModelManager.createNextPetID(), name, color, age,
             gender, location, status, species, price, comment);
       }
-      System.out.println(newPet);
       MyModelManager manager = new MyModelManager();
       try
       {

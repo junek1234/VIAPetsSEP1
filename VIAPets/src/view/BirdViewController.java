@@ -33,9 +33,6 @@ public class BirdViewController
   @FXML private RadioButton petStatusNotFromViaRadioButton;
 
 
-  @FXML private Button petSaveButton;
-
-
   public void saveAddPet(ActionEvent actionEvent)
   {
 
@@ -109,32 +106,22 @@ public class BirdViewController
           return;//it stops the method when catching exception
         }
 
-
         Bird newPet = new Bird(MyModelManager.createNextPetID(), name, color,
             age, gender, location, status, species, food, price, comment);
 
-        System.out.println(newPet);
         MyModelManager manager = new MyModelManager();
         try
         {
           manager.addPet(newPet);
           Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
           stage.close();
-
         }
         catch (IOException e)
         {
           throw new RuntimeException(e);
         }
-
         XMLHandler.updateXML();
       }
-
-
   }
-
-
-
-
 }
 

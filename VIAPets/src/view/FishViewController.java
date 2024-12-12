@@ -126,7 +126,6 @@ public class FishViewController
       Fish newPet = new Fish(MyModelManager.createNextPetID(), name, color, age,
           gender, location, status, isSaltWater, species, isPredator, price,
           comment);
-      System.out.println(newPet);
       MyModelManager manager = new MyModelManager();
       try
       {

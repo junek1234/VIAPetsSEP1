@@ -119,7 +119,6 @@ public class BookingViewController
           DateInterval newDateInterval = new DateInterval(startDate, endDate);
           Booking newBooking = new Booking(MyModelManager.createNextBookingID(),
               bookingPet, bookingCustomer, newDateInterval);
-          System.out.println(newBooking);
 
           manager.addBooking(newBooking);
           Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene()

@@ -124,7 +124,6 @@ public class DogPetViewController
             newPet = new Cat(MyModelManager.createNextPetID(), name, color, age,
                 gender, location, status, breed, breederName, price, comment);
           }
-          System.out.println(newPet);
           MyModelManager manager = new MyModelManager();
           try
           {

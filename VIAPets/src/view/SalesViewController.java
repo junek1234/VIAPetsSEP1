@@ -107,11 +107,8 @@ public class SalesViewController
               salePet.setStatus("Sold");
               manager.editPet(petID, salePet);
 
-              System.out.println(salePet);
               Sale newSale = new Sale(MyModelManager.createNextSaleID(),
                   saleCustomer, salePet, salePrice);
-              System.out.println(newSale);
-              System.out.println(newSale.getPet());
               manager.addSale(newSale);
               Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene()
                   .getWindow();
