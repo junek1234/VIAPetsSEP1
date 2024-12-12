@@ -165,8 +165,11 @@ public class BookingViewController
       else {
         try
         {
-          VIAPets.bookingPrice=Double.parseDouble(pricePerHourTextField.getText());
-          VIAPets.maxKennelSlots=Integer.parseInt(maxKennelSlotsTextField.getText());
+          MyModelManager manager = new MyModelManager();
+          manager.saveBookingsSettings(Integer.parseInt(maxKennelSlotsTextField.getText()),Double.parseDouble(pricePerHourTextField.getText()));
+          Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene()
+              .getWindow();
+          stage.close();
         }
         catch (NumberFormatException e)
         {

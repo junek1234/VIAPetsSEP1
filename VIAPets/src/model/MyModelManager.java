@@ -1,6 +1,8 @@
 package model;
 
 import utils.MyFileHandler;
+import utils.XMLHandler;
+
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
@@ -14,6 +16,7 @@ public class MyModelManager implements Serializable
     private static final String CUSTOMER_FILE = "customers.bin";
     private static final String SALE_FILE = "sales.bin";
     private static final String LAST_IDS = "last_ids.txt";
+    private static final String BOOKINGS_SETTINGS = "settings.txt";
 
     VIAPets viaPets = new VIAPets();
     //needs to be changed in Astah
@@ -25,8 +28,8 @@ public class MyModelManager implements Serializable
         ArrayList<Booking> bookings=new ArrayList<>();
         ArrayList<Customer> customers=new ArrayList<>();
         ArrayList<Sale> sales=new ArrayList<>();
-//        VIAPets.xmlLines=loadArrayFromXMLFile(PETS_XML);
 
+        loadBookingsSettings();
 
 
         ArrayList<Object> objects = loadArrayListFromFile(PET_FILE);
@@ -267,5 +270,33 @@ public class MyModelManager implements Serializable
         viaPets.getAllSales().editSale(saleID, newSale);
         MyFileHandler.writeArrayToBinaryFile(SALE_FILE, viaPets.getAllSales().getSaleList().toArray(new Sale[0]));
     }
+
+    public void saveBookingsSettings(int maxKennelSlots, double bookingPrice)
+    {
+        VIAPets.maxKennelSlots=maxKennelSlots;
+        VIAPets.bookingPrice=bookingPrice;
+        try
+        {
+            MyFileHandler.writeToTextFile(BOOKINGS_SETTINGS,VIAPets.maxKennelSlots+"");
+            MyFileHandler.appendToTextFile(BOOKINGS_SETTINGS,VIAPets.bookingPrice+"");
+            XMLHandler.updateXML();
+        }
+        catch (FileNotFoundException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    public void loadBookingsSettings() {
+        try {
+            String[] settings = MyFileHandler.readArrayFromTextFile(BOOKINGS_SETTINGS);
+            VIAPets.maxKennelSlots = Integer.parseInt(settings[0]);
+            VIAPets.bookingPrice = Double.parseDouble(settings[1]);
+        } catch (FileNotFoundException e) {
+            saveBookingsSettings(10, 0);
+        }
+    }
+
 
 }

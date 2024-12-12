@@ -25,6 +25,7 @@ public class XMLHandler
     kennelInfo.add("<kennel>");
     kennelInfo.add("<availableSlots>"+VIAPets.availableSlots+"</availableSlots>");
     kennelInfo.add("<pricePerHour>"+VIAPets.bookingPrice+"</pricePerHour>");
+    kennelInfo.add("<maxKennelSlots>"+VIAPets.maxKennelSlots+"</maxKennelSlots>");
     kennelInfo.add("</kennel>");
 
     String[] kennelArray = new String[kennelInfo.size()];
