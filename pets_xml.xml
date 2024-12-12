@@ -13,4 +13,43 @@
     <preferredFood>a</preferredFood>
     <price>12.0</price>
   </pet>
+  <pet>
+    <id>5</id>
+    <type>Cat</type>
+    <name>asadf</name>
+    <color>as</color>
+    <age>12</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Sold</status>
+    <breed>dds</breed>
+    <breederName>sdf</breederName>
+    <price>32.0</price>
+  </pet>
+  <pet>
+    <id>6</id>
+    <type>Bird</type>
+    <name>zdcs</name>
+    <color></color>
+    <age>2</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Not Sold</status>
+    <species>a</species>
+    <preferredFood>a</preferredFood>
+    <price>13.0</price>
+  </pet>
+  <pet>
+    <id>7</id>
+    <type>Bird</type>
+    <name>a</name>
+    <color>a</color>
+    <age>1</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Sold</status>
+    <species>a</species>
+    <preferredFood>a</preferredFood>
+    <price>11.0</price>
+  </pet>
 </pets>

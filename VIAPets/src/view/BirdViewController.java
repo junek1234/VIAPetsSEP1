@@ -67,7 +67,7 @@ public class BirdViewController
           .isEmpty() || petPriceTextField.getText().isEmpty()
           || petSpeciesTextField.getText().isEmpty()
           || petFoodTextField.getText().isEmpty() || gender == '-'
-          || location.isEmpty() || status.isEmpty())
+          || location.isEmpty() || status.isEmpty() || petColorTextField.getText().isEmpty())
       {
         Alert alert1 = new Alert(Alert.AlertType.ERROR);
         alert1.setTitle("Error");

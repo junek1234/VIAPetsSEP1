@@ -289,22 +289,7 @@ public class ViewHandler
     popupStage.showAndWait();// This will block the main window until the popup is closed
 
   }
-
-  public void save()
-  {
-  }
-
-  public void save(ActionEvent event)
-  {
-  }
-
-  //  public void addTest(ActionEvent e) {
-  //    customerController.addTest(e);
-  //  }
-
-  //  public void addPet(Object source) {
-  //    petController.addPet(source);
-  //  }
+  
   public void initPetlist()
   {
     MyModelManager manager = new MyModelManager();
