@@ -173,6 +173,7 @@ public class ViewHandler
       fxmlPath = fxmlDefPath;
     }
 
+
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
     MenuItem mirrorMenuItem = (MenuItem) source;
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
@@ -517,13 +518,54 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Pet selectedPet = getTableView().getItems().get(getIndex());
-//            int petID = selectedPet.getId();
-//
+            //            int petID = selectedPet.getId();
+
           });
-//
+
           deleteButton.setOnAction(event -> {
-            Pet pet = getTableView().getItems().get(getIndex());
-//            // handleDeleteAction(pet);
+            // Create a Confirmation Alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Confirm your action");
+            alert.setHeaderText(null);
+            alert.setContentText("Do you really want to delete this " + getTableView().getItems().get(getIndex()).getClass().getSimpleName().toLowerCase() + "?");
+
+            // Use default ButtonTypes
+            ButtonType yesButtonType = ButtonType.YES;    // Default "Yes" button
+            ButtonType noButtonType = ButtonType.CANCEL; // Default "No" button
+
+            // Add ButtonTypes to the Alert
+            alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+            // Access DialogPane and get Buttons
+            DialogPane dialogPane = alert.getDialogPane();
+            Button yesButton = (Button) dialogPane.lookupButton(yesButtonType);
+            Button noButton = (Button) dialogPane.lookupButton(noButtonType);
+
+            // Set actions for "Yes" and "No" buttons
+            yesButton.setOnAction(response -> {
+              MyModelManager manager = new MyModelManager();
+              try
+              {
+                // Perform the deletion
+                manager.deletePet(getTableView().getItems().get(getIndex()).getPetID());
+
+                // Optionally, remove the item from the table view
+                getTableView().getItems().remove(getIndex());
+              }
+              catch (IOException e)
+              {
+                throw new RuntimeException(e);
+              }
+              alert.close(); // Close the alert if needed
+            });
+
+            noButton.setOnAction(response -> {
+              alert.close(); // Close the alert if needed
+            });
+
+            // Show the Alert
+            alert.showAndWait();
+
           });
 
           setGraphic(actionButtons);
@@ -550,7 +592,6 @@ public class ViewHandler
         }
         else
         {
-          // Buttons are created per cell instance to avoid shared state issues
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -559,11 +600,53 @@ public class ViewHandler
           editButton.setOnAction(event -> {
             Customer customer = getTableView().getItems().get(getIndex());
             // handleEditAction(customer);
+
           });
 
           deleteButton.setOnAction(event -> {
-            Customer customer = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(customer);
+            // Create a Confirmation Alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Confirm your action");
+            alert.setHeaderText(null);
+            alert.setContentText("Do you really want to delete this " + getTableView().getItems().get(getIndex()).getClass().getSimpleName().toLowerCase() + "?");
+
+            // Use default ButtonTypes
+            ButtonType yesButtonType = ButtonType.YES;    // Default "Yes" button
+            ButtonType noButtonType = ButtonType.CANCEL; // Default "No" button
+
+            // Add ButtonTypes to the Alert
+            alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+            // Access DialogPane and get Buttons
+            DialogPane dialogPane = alert.getDialogPane();
+            Button yesButton = (Button) dialogPane.lookupButton(yesButtonType);
+            Button noButton = (Button) dialogPane.lookupButton(noButtonType);
+
+            // Set actions for "Yes" and "No" buttons
+            yesButton.setOnAction(response -> {
+              MyModelManager manager = new MyModelManager();
+              try
+              {
+                // Perform the deletion
+                manager.deleteCustomer(getTableView().getItems().get(getIndex()).getCustomerID());
+
+                // Optionally, remove the item from the table view
+                getTableView().getItems().remove(getIndex());
+              }
+              catch (IOException e)
+              {
+                throw new RuntimeException(e);
+              }
+              alert.close(); // Close the alert if needed
+            });
+
+            noButton.setOnAction(response -> {
+              alert.close(); // Close the alert if needed
+            });
+
+            // Show the Alert
+            alert.showAndWait();
+
           });
 
           setGraphic(actionButtons);
@@ -590,7 +673,6 @@ public class ViewHandler
         }
         else
         {
-          // Buttons are created per cell instance to avoid shared state issues
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -598,16 +680,59 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Booking booking = getTableView().getItems().get(getIndex());
-            // handleEditAction(customer);
+            // handleEditAction(booking);
+
           });
 
           deleteButton.setOnAction(event -> {
-            Booking booking = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(customer);
+            // Create a Confirmation Alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Confirm your action");
+            alert.setHeaderText(null);
+            alert.setContentText("Do you really want to delete this " + getTableView().getItems().get(getIndex()).getClass().getSimpleName().toLowerCase() + "?");
+
+            // Use default ButtonTypes
+            ButtonType yesButtonType = ButtonType.YES;    // Default "Yes" button
+            ButtonType noButtonType = ButtonType.CANCEL; // Default "No" button
+
+            // Add ButtonTypes to the Alert
+            alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+            // Access DialogPane and get Buttons
+            DialogPane dialogPane = alert.getDialogPane();
+            Button yesButton = (Button) dialogPane.lookupButton(yesButtonType);
+            Button noButton = (Button) dialogPane.lookupButton(noButtonType);
+
+            // Set actions for "Yes" and "No" buttons
+            yesButton.setOnAction(response -> {
+              MyModelManager manager = new MyModelManager();
+              try
+              {
+                // Perform the deletion
+                manager.deleteBooking(getTableView().getItems().get(getIndex()).getBookingID());
+
+                // Remove the item from the table view
+                getTableView().getItems().remove(getIndex());
+              }
+              catch (IOException e)
+              {
+                throw new RuntimeException(e);
+              }
+              alert.close(); // Close the alert if needed
+            });
+
+            noButton.setOnAction(response -> {
+              alert.close(); // Close the alert if needed
+            });
+
+            // Show the Alert
+            alert.showAndWait();
+
           });
 
           setGraphic(actionButtons);
         }
+
       }
     });
 
@@ -630,7 +755,6 @@ public class ViewHandler
         }
         else
         {
-          // Buttons are created per cell instance to avoid shared state issues
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -638,16 +762,59 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Sale sale = getTableView().getItems().get(getIndex());
-            // handleEditAction(customer);
+            // handleEditAction(sale);
+
           });
 
           deleteButton.setOnAction(event -> {
-            Sale sale = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(customer);
+            // Create a Confirmation Alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Confirm your action");
+            alert.setHeaderText(null);
+            alert.setContentText("Do you really want to delete this " + getTableView().getItems().get(getIndex()).getClass().getSimpleName().toLowerCase() + "?");
+
+            // Use default ButtonTypes
+            ButtonType yesButtonType = ButtonType.YES;    // Default "Yes" button
+            ButtonType noButtonType = ButtonType.CANCEL; // Default "No" button
+
+            // Add ButtonTypes to the Alert
+            alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+            // Access DialogPane and get Buttons
+            DialogPane dialogPane = alert.getDialogPane();
+            Button yesButton = (Button) dialogPane.lookupButton(yesButtonType);
+            Button noButton = (Button) dialogPane.lookupButton(noButtonType);
+
+            // Set actions for "Yes" and "No" buttons
+            yesButton.setOnAction(response -> {
+              MyModelManager manager = new MyModelManager();
+              try
+              {
+                // Perform the deletion
+                manager.deleteSale(getTableView().getItems().get(getIndex()).getSaleID());
+
+                // Remove the item from the table view
+                getTableView().getItems().remove(getIndex());
+              }
+              catch (IOException e)
+              {
+                throw new RuntimeException(e);
+              }
+              alert.close(); // Close the alert if needed
+            });
+
+            noButton.setOnAction(response -> {
+              alert.close(); // Close the alert if needed
+            });
+
+            // Show the Alert
+            alert.showAndWait();
+
           });
 
           setGraphic(actionButtons);
         }
+
       }
     });
 

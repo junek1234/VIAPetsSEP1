@@ -1,4 +1,4 @@
-package view.fxml;
+package view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +28,7 @@ public class BookingSettingsViewController
       Alert alert1 = new Alert(Alert.AlertType.ERROR);
       alert1.setTitle("Error");
       alert1.setHeaderText(null);
-      alert1.setContentText("Invalid input!");
+      alert1.setContentText("Input cannot be blank!");
       alert1.show();
     }
     else {
@@ -45,7 +45,7 @@ public class BookingSettingsViewController
         Alert alert1 = new Alert(Alert.AlertType.ERROR);
         alert1.setTitle("Error");
         alert1.setHeaderText(null);
-        alert1.setContentText("Invalid input!");
+        alert1.setContentText("All inputs must be numbers!");
         alert1.show();
       }
     }
