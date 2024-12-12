@@ -666,29 +666,4 @@ public class ViewHandler
 
     saleTable.getColumns().add(actionsSaleView);
   }
-
-  //  // Helper method to apply center alignment
-  //  private void applyCenterAlignment(TableColumn<Pet, ?> column) {
-  //    column.setCellFactory(new Callback<TableColumn<Pet, ?>, TableCell<Pet, ?>>() {
-  //      @Override
-  //      public TableCell<Pet, ?> call(TableColumn<Pet, ?> param) {
-  //        return new TableCell<Pet, Object>() {  // Use Object to match any type
-  //          @Override
-  //          protected void updateItem(Object item, boolean empty) {
-  //            super.updateItem(item, empty);
-  //
-  //            if (empty || item == null) {
-  //              setText(null);
-  //            } else {
-  //              setText(item.toString());  // Convert item to String if it's not null
-  //              setAlignment(Pos.CENTER); // Center align text
-  //            }
-  //          }
-  //        };
-  //      }
-  //    });
-  //}
 }
-
-
-
