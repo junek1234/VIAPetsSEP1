@@ -4,6 +4,7 @@ import utils.XMLHandler;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 // dont make it static
 public class VIAPets implements Serializable
@@ -39,7 +40,7 @@ public class VIAPets implements Serializable
     int count=0;
     for (int i = 0; i < allBookings.getBookings().size(); i++)
     {
-      if(allBookings.getBookings().get(i).getDateInterval().getEndDate().isGreaterThan(getCurrentDate()))
+      if((allBookings.getBookings().get(i).getDateInterval().getEndDate().isGreaterThan(getCurrentDate()))&&(allBookings.getBookings().get(i).getDateInterval().getEndDate().getHour()> LocalTime.now().getHour()))
       {
         count++;
       }

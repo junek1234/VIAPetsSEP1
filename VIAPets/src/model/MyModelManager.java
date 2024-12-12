@@ -75,19 +75,19 @@ public class MyModelManager implements Serializable
         XMLHandler.updateXML();
     }
 
-//    private String[] loadArrayFromXMLFile(String fileName)
-//    {
-//        try{
-//            String[] array = MyFileHandler.readArrayFromTextFile(fileName);
-//            return array;
-//        }
-//        catch (FileNotFoundException e)
-//        {
-//          e.printStackTrace();
-//        }
-//        String[] array = {"<?xml version=\"1.0\" encoding=\"UTF-8\"?>","<pets>","</pets>"};
-//        return array;
-//    }
+    //    private String[] loadArrayFromXMLFile(String fileName)
+    //    {
+    //        try{
+    //            String[] array = MyFileHandler.readArrayFromTextFile(fileName);
+    //            return array;
+    //        }
+    //        catch (FileNotFoundException e)
+    //        {
+    //          e.printStackTrace();
+    //        }
+    //        String[] array = {"<?xml version=\"1.0\" encoding=\"UTF-8\"?>","<pets>","</pets>"};
+    //        return array;
+    //    }
 
     private ArrayList<Object> loadArrayListFromFile(String fileName) {
         try {
@@ -114,7 +114,7 @@ public class MyModelManager implements Serializable
         }
         catch (FileNotFoundException e)
         {
-          e.printStackTrace();
+            e.printStackTrace();
         }
         String[] array = {"0","0","0","0"};
         return array;
@@ -144,7 +144,7 @@ public class MyModelManager implements Serializable
         }
         catch (FileNotFoundException e)
         {
-          throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
         return id;
     }
@@ -170,7 +170,7 @@ public class MyModelManager implements Serializable
         VIAPets.lastBookingID=id+"";
         try
         {
-        String[] newLastIDS = {VIAPets.lastCustomerID,VIAPets.lastPetID, id+"", VIAPets.lastSaleID};
+            String[] newLastIDS = {VIAPets.lastCustomerID,VIAPets.lastPetID, id+"", VIAPets.lastSaleID};
             MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
         }
         catch (FileNotFoundException e)
