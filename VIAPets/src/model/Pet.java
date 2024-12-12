@@ -53,6 +53,11 @@ public abstract class Pet implements Serializable
   {
     return this.status;
   }
+  public double getPrice()
+  {
+    return this.basePrice;
+  }
+
 
   public abstract void setPetID(int petID);
   public abstract void setName(String name);
