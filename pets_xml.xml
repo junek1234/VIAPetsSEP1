@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pets>
+  <pet>
+    <id>4</id>
+    <type>Bird</type>
+    <name>as</name>
+    <color></color>
+    <age>2</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Not From Via</status>
+    <species>a</species>
+    <preferredFood>a</preferredFood>
+    <price>12.0</price>
+  </pet>
+</pets>

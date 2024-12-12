@@ -93,40 +93,42 @@ public class ViewHandler
   @FXML private MenuItem addSaleMenuItem;
 
   //tables
-  @FXML private TableView<Pet> petTable;
-  @FXML private TableColumn<Pet, Number> petIDPetView;
-  @FXML private TableColumn<Pet, String> petTypePetView;
-  @FXML private TableColumn<Pet, String> petLocationPetView;
-  @FXML private TableColumn<Pet, String> petStatusPetView;
-  @FXML private TableColumn<Pet, String> petNamePetView;
-  @FXML private TableColumn<Pet, String> petColorPetView;
-  @FXML private TableColumn<Pet, String> petGenderPetView;
-  @FXML private TableColumn<Pet, String> petCommentPetView;
-  @FXML private TableColumn<Pet, Void> actionsPetView;
+   private TableView<Pet> petTable;
+   private TableColumn<Pet, Number> petIDPetView;
+   private TableColumn<Pet, String> petTypePetView;
+   private TableColumn<Pet, String> petLocationPetView;
+   private TableColumn<Pet, String> petStatusPetView;
+   private TableColumn<Pet, String> petNamePetView;
+   private TableColumn<Pet, String> petColorPetView;
+   private TableColumn<Pet, String> petGenderPetView;
+   private TableColumn<Pet, String> petCommentPetView;
+   private TableColumn<Pet, Void> actionsPetView;
+   private TableColumn<Pet, String> petPricePetView;
 
-  @FXML private TableView<Customer> customerTable;
-  @FXML private TableColumn<Customer, Number> customerIDView;
-  @FXML private TableColumn<Customer, String> customerNameView;
-  @FXML private TableColumn<Customer, Number> phoneNumberView;
-  @FXML private TableColumn<Customer, String> emailView;
-  @FXML private TableColumn<Customer, Void> actionsCustomerView;
 
-  @FXML private TableView<Booking> bookingTable;
-  @FXML private TableColumn<Booking, Number> bookingIDView;
-  @FXML private TableColumn<Booking, String> petNameBookingView;
-  @FXML private TableColumn<Booking, String> customerNameBookingView;
-  @FXML private TableColumn<Booking, String> startDateBookingView;
-  @FXML private TableColumn<Booking, String> endDateBookingView;
-  @FXML private TableColumn<Booking, String> startHourBookingView;
-  @FXML private TableColumn<Booking, String> endHourBookingView;
-  @FXML private TableColumn<Booking, Void> actionsBookingView;
+   private TableView<Customer> customerTable;
+   private TableColumn<Customer, Number> customerIDView;
+   private TableColumn<Customer, String> customerNameView;
+   private TableColumn<Customer, Number> phoneNumberView;
+   private TableColumn<Customer, String> emailView;
+   private TableColumn<Customer, Void> actionsCustomerView;
 
-  @FXML private TableView<Sale> saleTable;
-  @FXML private TableColumn<Sale, Number> saleIDView;
-  @FXML private TableColumn<Sale, String> petNameSaleView;
-  @FXML private TableColumn<Sale, String> customerNameSaleView;
-  @FXML private TableColumn<Sale, String> priceSaleView;
-  @FXML private TableColumn<Sale, Void> actionsSaleView;
+   private TableView<Booking> bookingTable;
+   private TableColumn<Booking, Number> bookingIDView;
+   private TableColumn<Booking, String> petNameBookingView;
+   private TableColumn<Booking, String> customerNameBookingView;
+   private TableColumn<Booking, String> startDateBookingView;
+   private TableColumn<Booking, String> endDateBookingView;
+   private TableColumn<Booking, String> startHourBookingView;
+   private TableColumn<Booking, String> endHourBookingView;
+   private TableColumn<Booking, Void> actionsBookingView;
+
+   private TableView<Sale> saleTable;
+   private TableColumn<Sale, Number> saleIDView;
+   private TableColumn<Sale, String> petNameSaleView;
+   private TableColumn<Sale, String> customerNameSaleView;
+   private TableColumn<Sale, String> priceSaleView;
+   private TableColumn<Sale, Void> actionsSaleView;
 
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
@@ -355,11 +357,16 @@ public class ViewHandler
         cellData -> new SimpleStringProperty(cellData.getValue().getComment()));
     petCommentPetView.setStyle("-fx-alignment: CENTER;");
 
+    petPricePetView = new TableColumn<>("Price");
+    petPricePetView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getPrice() + " kr."));
+    petPricePetView.setStyle("-fx-alignment: CENTER;");
+
     // Add columns to the table
     petTable.getColumns()
         .addAll(petIDPetView, petTypePetView, petLocationPetView,
             petStatusPetView, petNamePetView, petColorPetView, petGenderPetView,
-            petCommentPetView);
+            petCommentPetView, petPricePetView);
     petTable.refresh();
 
     addActionsPetTable();

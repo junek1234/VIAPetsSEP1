@@ -72,7 +72,7 @@ public class BirdViewController
         Alert alert1 = new Alert(Alert.AlertType.ERROR);
         alert1.setTitle("Error");
         alert1.setHeaderText(null);
-        alert1.setContentText("Invalid input!");
+        alert1.setContentText("Complete all fields!");
         alert1.show();
       }
       else if ((petGenderMaleRadioButton.isSelected()
@@ -94,40 +94,22 @@ public class BirdViewController
       }
       else
       {
-        if(!petAgeTextField.getText().isEmpty())
+        try
         {
-          try
-          {
-            age = Integer.parseInt(petAgeTextField.getText());
-          }
-          catch (NumberFormatException e)
-          {
-            Alert alert1 = new Alert(Alert.AlertType.ERROR);
-            alert1.setTitle("Error");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Invalid input!");
-            alert1.show();
-            return;//it stops the method when catching exception
-          }
-
+          age = Integer.parseInt(petAgeTextField.getText());
+          price = Double.parseDouble(petPriceTextField.getText());
         }
-        if (!petPriceTextField.getText().isEmpty())
+        catch (NumberFormatException e)
         {
-          try
-          {
-            price = Double.parseDouble(petPriceTextField.getText());
-          }
-          catch (NumberFormatException e)
-          {
-            Alert alert1 = new Alert(Alert.AlertType.ERROR);
-            alert1.setTitle("Error");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Invalid input!");
-            alert1.show();
-            return;//it stops the method when catching exception
-          }
-
+          Alert alert1 = new Alert(Alert.AlertType.ERROR);
+          alert1.setTitle("Error");
+          alert1.setHeaderText(null);
+          alert1.setContentText("Age and price must be numbers!");
+          alert1.show();
+          return;//it stops the method when catching exception
         }
+
+
         Bird newPet = new Bird(MyModelManager.createNextPetID(), name, color,
             age, gender, location, status, species, food, price, comment);
 
