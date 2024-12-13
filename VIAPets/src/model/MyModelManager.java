@@ -29,7 +29,7 @@ public class MyModelManager implements Serializable
         ArrayList<Customer> customers=new ArrayList<>();
         ArrayList<Sale> sales=new ArrayList<>();
 
-        loadBookingsSettings();
+
 
 
         ArrayList<Object> objects = loadArrayListFromFile(PET_FILE);
@@ -45,7 +45,6 @@ public class MyModelManager implements Serializable
             bookings.add((Booking)objects.get(i));
         }
         viaPets.setAllBookings(new BookingList(bookings));
-
         objects = loadArrayListFromFile(CUSTOMER_FILE);
         for (int i = 0; i < objects.size(); i++)
         {
@@ -70,21 +69,25 @@ public class MyModelManager implements Serializable
         //SALE ID LINE 4 - index is 3
         viaPets.setLastSaleID(lastIDs[3]);
 
+
+        loadBookingsSettings();
+        viaPets.setAvailableSlots();
+        XMLHandler.updateXML();
     }
 
-//    private String[] loadArrayFromXMLFile(String fileName)
-//    {
-//        try{
-//            String[] array = MyFileHandler.readArrayFromTextFile(fileName);
-//            return array;
-//        }
-//        catch (FileNotFoundException e)
-//        {
-//          e.printStackTrace();
-//        }
-//        String[] array = {"<?xml version=\"1.0\" encoding=\"UTF-8\"?>","<pets>","</pets>"};
-//        return array;
-//    }
+    //    private String[] loadArrayFromXMLFile(String fileName)
+    //    {
+    //        try{
+    //            String[] array = MyFileHandler.readArrayFromTextFile(fileName);
+    //            return array;
+    //        }
+    //        catch (FileNotFoundException e)
+    //        {
+    //          e.printStackTrace();
+    //        }
+    //        String[] array = {"<?xml version=\"1.0\" encoding=\"UTF-8\"?>","<pets>","</pets>"};
+    //        return array;
+    //    }
 
     private ArrayList<Object> loadArrayListFromFile(String fileName) {
         try {
@@ -111,7 +114,7 @@ public class MyModelManager implements Serializable
         }
         catch (FileNotFoundException e)
         {
-          e.printStackTrace();
+            e.printStackTrace();
         }
         String[] array = {"0","0","0","0"};
         return array;
@@ -141,7 +144,7 @@ public class MyModelManager implements Serializable
         }
         catch (FileNotFoundException e)
         {
-          throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
         return id;
     }
@@ -167,7 +170,7 @@ public class MyModelManager implements Serializable
         VIAPets.lastBookingID=id+"";
         try
         {
-        String[] newLastIDS = {VIAPets.lastCustomerID,VIAPets.lastPetID, id+"", VIAPets.lastSaleID};
+            String[] newLastIDS = {VIAPets.lastCustomerID,VIAPets.lastPetID, id+"", VIAPets.lastSaleID};
             MyFileHandler.writeArrayToTextFile(LAST_IDS,newLastIDS);
         }
         catch (FileNotFoundException e)
@@ -279,6 +282,7 @@ public class MyModelManager implements Serializable
         {
             MyFileHandler.writeToTextFile(BOOKINGS_SETTINGS,VIAPets.maxKennelSlots+"");
             MyFileHandler.appendToTextFile(BOOKINGS_SETTINGS,VIAPets.bookingPrice+"");
+            viaPets.setAvailableSlots();
             XMLHandler.updateXML();
         }
         catch (FileNotFoundException e)
@@ -294,7 +298,7 @@ public class MyModelManager implements Serializable
             VIAPets.maxKennelSlots = Integer.parseInt(settings[0]);
             VIAPets.bookingPrice = Double.parseDouble(settings[1]);
         } catch (FileNotFoundException e) {
-            saveBookingsSettings(10, 0);
+            saveBookingsSettings(10, (20.0));
         }
     }
 

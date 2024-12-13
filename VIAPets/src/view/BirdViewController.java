@@ -33,9 +33,6 @@ public class BirdViewController
   @FXML private RadioButton petStatusNotFromViaRadioButton;
 
 
-  @FXML private Button petSaveButton;
-
-
   public void saveAddPet(ActionEvent actionEvent)
   {
 
@@ -62,19 +59,19 @@ public class BirdViewController
             "Not Sold" :
             petStatusNotFromViaRadioButton.isSelected() ? "Not From Via" : "";
     //check errors and Exceptions
-
      if (petNameTextField.getText().isEmpty() || petAgeTextField.getText()
           .isEmpty() || petPriceTextField.getText().isEmpty()
           || petSpeciesTextField.getText().isEmpty()
           || petFoodTextField.getText().isEmpty() || gender == '-'
-          || location.isEmpty() || status.isEmpty())
+          || location.isEmpty() || status.isEmpty() || petColorTextField.getText().isEmpty())
       {
         Alert alert1 = new Alert(Alert.AlertType.ERROR);
         alert1.setTitle("Error");
         alert1.setHeaderText(null);
-        alert1.setContentText("Invalid input!");
+        alert1.setContentText("Complete all fields!");
         alert1.show();
       }
+
       else if ((petGenderMaleRadioButton.isSelected()
           && petGenderFemaleRadioButton.isSelected()) || (
           petLocationShopRadioButton.isSelected()
@@ -94,65 +91,37 @@ public class BirdViewController
       }
       else
       {
-        if(!petAgeTextField.getText().isEmpty())
+        try
         {
-          try
-          {
-            age = Integer.parseInt(petAgeTextField.getText());
-          }
-          catch (NumberFormatException e)
-          {
-            Alert alert1 = new Alert(Alert.AlertType.ERROR);
-            alert1.setTitle("Error");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Invalid input!");
-            alert1.show();
-            return;//it stops the method when catching exception
-          }
-
+          age = Integer.parseInt(petAgeTextField.getText());
+          price = Double.parseDouble(petPriceTextField.getText());
         }
-        if (!petPriceTextField.getText().isEmpty())
+        catch (NumberFormatException e)
         {
-          try
-          {
-            price = Double.parseDouble(petPriceTextField.getText());
-          }
-          catch (NumberFormatException e)
-          {
-            Alert alert1 = new Alert(Alert.AlertType.ERROR);
-            alert1.setTitle("Error");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Invalid input!");
-            alert1.show();
-            return;//it stops the method when catching exception
-          }
-
+          Alert alert1 = new Alert(Alert.AlertType.ERROR);
+          alert1.setTitle("Error");
+          alert1.setHeaderText(null);
+          alert1.setContentText("Age and price must be numbers!");
+          alert1.show();
+          return;//it stops the method when catching exception
         }
+
         Bird newPet = new Bird(MyModelManager.createNextPetID(), name, color,
             age, gender, location, status, species, food, price, comment);
 
-        System.out.println(newPet);
         MyModelManager manager = new MyModelManager();
         try
         {
           manager.addPet(newPet);
           Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
           stage.close();
-
         }
         catch (IOException e)
         {
           throw new RuntimeException(e);
         }
-
         XMLHandler.updateXML();
       }
-
-
   }
-
-
-
-
 }
 

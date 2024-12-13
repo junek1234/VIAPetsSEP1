@@ -93,52 +93,56 @@ public class ViewHandler
   @FXML private MenuItem addSaleMenuItem;
 
   //tables
-  @FXML private TableView<Pet> petTable;
-  @FXML private TableColumn<Pet, Number> petIDPetView;
-  @FXML private TableColumn<Pet, String> petTypePetView;
-  @FXML private TableColumn<Pet, String> petLocationPetView;
-  @FXML private TableColumn<Pet, String> petStatusPetView;
-  @FXML private TableColumn<Pet, String> petNamePetView;
-  @FXML private TableColumn<Pet, String> petColorPetView;
-  @FXML private TableColumn<Pet, String> petGenderPetView;
-  @FXML private TableColumn<Pet, String> petCommentPetView;
-  @FXML private TableColumn<Pet, Void> actionsPetView;
+   private TableView<Pet> petTable;
+   private TableColumn<Pet, Number> petIDPetView;
+   private TableColumn<Pet, String> petTypePetView;
+   private TableColumn<Pet, String> petLocationPetView;
+   private TableColumn<Pet, String> petStatusPetView;
+   private TableColumn<Pet, String> petNamePetView;
+   private TableColumn<Pet, String> petColorPetView;
+   private TableColumn<Pet, String> petGenderPetView;
+   private TableColumn<Pet, String> petCommentPetView;
+   private TableColumn<Pet, Void> actionsPetView;
+   private TableColumn<Pet, String> petPricePetView;
 
-  @FXML private TableView<Customer> customerTable;
-  @FXML private TableColumn<Customer, Number> customerIDView;
-  @FXML private TableColumn<Customer, String> customerNameView;
-  @FXML private TableColumn<Customer, Number> phoneNumberView;
-  @FXML private TableColumn<Customer, String> emailView;
-  @FXML private TableColumn<Customer, Void> actionsCustomerView;
 
-  @FXML private TableView<Booking> bookingTable;
-  @FXML private TableColumn<Booking, Number> bookingIDView;
-  @FXML private TableColumn<Booking, String> petNameBookingView;
-  @FXML private TableColumn<Booking, String> customerNameBookingView;
-  @FXML private TableColumn<Booking, String> startDateBookingView;
-  @FXML private TableColumn<Booking, String> endDateBookingView;
-  @FXML private TableColumn<Booking, String> startHourBookingView;
-  @FXML private TableColumn<Booking, String> endHourBookingView;
-  @FXML private TableColumn<Booking, Void> actionsBookingView;
+   private TableView<Customer> customerTable;
+   private TableColumn<Customer, Number> customerIDView;
+   private TableColumn<Customer, String> customerNameView;
+   private TableColumn<Customer, Number> phoneNumberView;
+   private TableColumn<Customer, String> emailView;
+   private TableColumn<Customer, Void> actionsCustomerView;
 
-  @FXML private TableView<Sale> saleTable;
-  @FXML private TableColumn<Sale, Number> saleIDView;
-  @FXML private TableColumn<Sale, String> petNameSaleView;
-  @FXML private TableColumn<Sale, String> customerNameSaleView;
-  @FXML private TableColumn<Sale, String> priceSaleView;
-  @FXML private TableColumn<Sale, Void> actionsSaleView;
+   private TableView<Booking> bookingTable;
+   private TableColumn<Booking, Number> bookingIDView;
+   private TableColumn<Booking, String> petNameBookingView;
+   private TableColumn<Booking, String> customerNameBookingView;
+   private TableColumn<Booking, String> startDateBookingView;
+   private TableColumn<Booking, String> endDateBookingView;
+   private TableColumn<Booking, String> startHourBookingView;
+   private TableColumn<Booking, String> endHourBookingView;
+   private TableColumn<Booking, Void> actionsBookingView;
+
+   private TableView<Sale> saleTable;
+   private TableColumn<Sale, Number> saleIDView;
+   private TableColumn<Sale, String> petNameSaleView;
+   private TableColumn<Sale, String> customerNameSaleView;
+   private TableColumn<Sale, String> priceSaleView;
+   private TableColumn<Sale, Void> actionsSaleView;
 
   private Stage stage;  // Keep a reference to the primaryStage
   private Parent root;
   private String fxmlDefPath = "fxml/currentlyworking/DefaultView.fxml";
-  VIAPets viaPets = new VIAPets();
+  private static String fxmlPrevPath="";
   MyModelManager myModelManager = new MyModelManager();
+  VIAPets viaPets = new VIAPets();
+
   BirdViewController birdViewController = new BirdViewController();
 
   @FXML public void switchScene(ActionEvent e) throws IOException
   {
     Object source = e.getSource();
-    String fxmlPath;
+    String fxmlPath = "";
 
     if (source == petsMenuItem)
     {
@@ -151,10 +155,10 @@ public class ViewHandler
       initCustomerList();
     }
     // bookings settings changed to popup
-    //    else if (source == bookingsSettingsMenuItem)
-    //    {
-    //      fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
-    //    }
+//    else if (source == bookingsSettingsMenuItem)
+//    {
+//      fxmlPath = "fxml/currentlyworking/BookingSettingsView.fxml";
+//    }
     else if (source == bookingsMenuItem)
     {
       fxmlPath = "fxml/currentlyworking/DefaultBookingsView.fxml";
@@ -167,8 +171,16 @@ public class ViewHandler
     }
     else
     {
-      fxmlPath = fxmlDefPath;
+//      fxmlPath=fxmlPrevPath;
+//      System.out.println(fxmlPrevPath);
+//      System.out.println(fxmlPath);
+//      initCustomerList();
+//      source=(Object)customersMenuItem;
     }
+    fxmlPrevPath=fxmlPath;
+
+
+
 
     root = FXMLLoader.load(getClass().getResource(fxmlPath));
     MenuItem mirrorMenuItem = (MenuItem) source;
@@ -285,24 +297,10 @@ public class ViewHandler
 
     // Show the popup window
     popupStage.showAndWait();// This will block the main window until the popup is closed
+//    switchScene(e);
 
   }
-
-  public void save()
-  {
-  }
-
-  public void save(ActionEvent event)
-  {
-  }
-
-  //  public void addTest(ActionEvent e) {
-  //    customerController.addTest(e);
-  //  }
-
-  //  public void addPet(Object source) {
-  //    petController.addPet(source);
-  //  }
+  
   public void initPetlist()
   {
     MyModelManager manager = new MyModelManager();
@@ -355,11 +353,16 @@ public class ViewHandler
         cellData -> new SimpleStringProperty(cellData.getValue().getComment()));
     petCommentPetView.setStyle("-fx-alignment: CENTER;");
 
+    petPricePetView = new TableColumn<>("Price");
+    petPricePetView.setCellValueFactory(
+        cellData -> new SimpleStringProperty(cellData.getValue().getPrice() + " kr."));
+    petPricePetView.setStyle("-fx-alignment: CENTER;");
+
     // Add columns to the table
     petTable.getColumns()
         .addAll(petIDPetView, petTypePetView, petLocationPetView,
             petStatusPetView, petNamePetView, petColorPetView, petGenderPetView,
-            petCommentPetView);
+            petCommentPetView, petPricePetView);
     petTable.refresh();
 
     addActionsPetTable();
@@ -443,21 +446,18 @@ public class ViewHandler
     endDateBookingView.setStyle("-fx-alignment: CENTER;");
 
     startHourBookingView = new TableColumn<>("Start Hour");
-    startHourBookingView.setCellValueFactory(
-        cellData -> new SimpleStringProperty(
-            cellData.getValue().getDateInterval().getStartDate().getHour()
-                + ":00"));
+    startHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
+        cellData.getValue().getDateInterval().getStartDate().getHour()+":00"));
     startHourBookingView.setStyle("-fx-alignment: CENTER;");
 
     endHourBookingView = new TableColumn<>("End Hour");
     endHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
-        cellData.getValue().getDateInterval().getEndDate().getHour() + ":00"));
+        cellData.getValue().getDateInterval().getEndDate().getHour()+":00"));
     endHourBookingView.setStyle("-fx-alignment: CENTER;");
 
     bookingTable.getColumns()
         .addAll(bookingIDView, petNameBookingView, customerNameBookingView,
-            startDateBookingView, endDateBookingView, startHourBookingView,
-            endHourBookingView);
+            startDateBookingView, endDateBookingView, startHourBookingView,endHourBookingView);
 
     bookingTable.refresh();
 
@@ -525,15 +525,55 @@ public class ViewHandler
           actionButtons.setAlignment(Pos.CENTER);
 
           editButton.setOnAction(event -> {
-            Pet pet = getTableView().getItems().get(getIndex());
-            DogPetViewController controller = new DogPetViewController();
-            controller.handleEditAction(pet);
-            //w
+            Pet selectedPet = getTableView().getItems().get(getIndex());
+            //            int petID = selectedPet.getId();
+
           });
-          //
+
           deleteButton.setOnAction(event -> {
-            Pet pet = getTableView().getItems().get(getIndex());
-            //            // handleDeleteAction(pet);
+            // Create a Confirmation Alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Confirm your action");
+            alert.setHeaderText(null);
+            alert.setContentText("Do you really want to delete this " + getTableView().getItems().get(getIndex()).getClass().getSimpleName().toLowerCase() + "?");
+
+            // Use default ButtonTypes
+            ButtonType yesButtonType = ButtonType.YES;    // Default "Yes" button
+            ButtonType noButtonType = ButtonType.CANCEL; // Default "No" button
+
+            // Add ButtonTypes to the Alert
+            alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+            // Access DialogPane and get Buttons
+            DialogPane dialogPane = alert.getDialogPane();
+            Button yesButton = (Button) dialogPane.lookupButton(yesButtonType);
+            Button noButton = (Button) dialogPane.lookupButton(noButtonType);
+
+            // Set actions for "Yes" and "No" buttons
+            yesButton.setOnAction(response -> {
+              MyModelManager manager = new MyModelManager();
+              try
+              {
+                // Perform the deletion
+                manager.deletePet(getTableView().getItems().get(getIndex()).getPetID());
+
+                // Optionally, remove the item from the table view
+                getTableView().getItems().remove(getIndex());
+              }
+              catch (IOException e)
+              {
+                throw new RuntimeException(e);
+              }
+              alert.close(); // Close the alert if needed
+            });
+
+            noButton.setOnAction(response -> {
+              alert.close(); // Close the alert if needed
+            });
+
+            // Show the Alert
+            alert.showAndWait();
+
           });
 
           setGraphic(actionButtons);
@@ -560,7 +600,6 @@ public class ViewHandler
         }
         else
         {
-
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -569,11 +608,53 @@ public class ViewHandler
           editButton.setOnAction(event -> {
             Customer customer = getTableView().getItems().get(getIndex());
             // handleEditAction(customer);
+
           });
 
           deleteButton.setOnAction(event -> {
-            Customer customer = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(customer);
+            // Create a Confirmation Alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Confirm your action");
+            alert.setHeaderText(null);
+            alert.setContentText("Do you really want to delete this " + getTableView().getItems().get(getIndex()).getClass().getSimpleName().toLowerCase() + "?");
+
+            // Use default ButtonTypes
+            ButtonType yesButtonType = ButtonType.YES;    // Default "Yes" button
+            ButtonType noButtonType = ButtonType.CANCEL; // Default "No" button
+
+            // Add ButtonTypes to the Alert
+            alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+            // Access DialogPane and get Buttons
+            DialogPane dialogPane = alert.getDialogPane();
+            Button yesButton = (Button) dialogPane.lookupButton(yesButtonType);
+            Button noButton = (Button) dialogPane.lookupButton(noButtonType);
+
+            // Set actions for "Yes" and "No" buttons
+            yesButton.setOnAction(response -> {
+              MyModelManager manager = new MyModelManager();
+              try
+              {
+                // Perform the deletion
+                manager.deleteCustomer(getTableView().getItems().get(getIndex()).getCustomerID());
+
+                // Optionally, remove the item from the table view
+                getTableView().getItems().remove(getIndex());
+              }
+              catch (IOException e)
+              {
+                throw new RuntimeException(e);
+              }
+              alert.close(); // Close the alert if needed
+            });
+
+            noButton.setOnAction(response -> {
+              alert.close(); // Close the alert if needed
+            });
+
+            // Show the Alert
+            alert.showAndWait();
+
           });
 
           setGraphic(actionButtons);
@@ -600,7 +681,6 @@ public class ViewHandler
         }
         else
         {
-
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -608,16 +688,59 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Booking booking = getTableView().getItems().get(getIndex());
-            // handleEditAction(customer);
+            // handleEditAction(booking);
+
           });
 
           deleteButton.setOnAction(event -> {
-            Booking booking = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(customer);
+            // Create a Confirmation Alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Confirm your action");
+            alert.setHeaderText(null);
+            alert.setContentText("Do you really want to delete this " + getTableView().getItems().get(getIndex()).getClass().getSimpleName().toLowerCase() + "?");
+
+            // Use default ButtonTypes
+            ButtonType yesButtonType = ButtonType.YES;    // Default "Yes" button
+            ButtonType noButtonType = ButtonType.CANCEL; // Default "No" button
+
+            // Add ButtonTypes to the Alert
+            alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+            // Access DialogPane and get Buttons
+            DialogPane dialogPane = alert.getDialogPane();
+            Button yesButton = (Button) dialogPane.lookupButton(yesButtonType);
+            Button noButton = (Button) dialogPane.lookupButton(noButtonType);
+
+            // Set actions for "Yes" and "No" buttons
+            yesButton.setOnAction(response -> {
+              MyModelManager manager = new MyModelManager();
+              try
+              {
+                // Perform the deletion
+                manager.deleteBooking(getTableView().getItems().get(getIndex()).getBookingID());
+
+                // Remove the item from the table view
+                getTableView().getItems().remove(getIndex());
+              }
+              catch (IOException e)
+              {
+                throw new RuntimeException(e);
+              }
+              alert.close(); // Close the alert if needed
+            });
+
+            noButton.setOnAction(response -> {
+              alert.close(); // Close the alert if needed
+            });
+
+            // Show the Alert
+            alert.showAndWait();
+
           });
 
           setGraphic(actionButtons);
         }
+
       }
     });
 
@@ -640,7 +763,6 @@ public class ViewHandler
         }
         else
         {
-
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -648,23 +770,62 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Sale sale = getTableView().getItems().get(getIndex());
-            // handleEditAction(customer);
+            // handleEditAction(sale);
+
           });
 
           deleteButton.setOnAction(event -> {
-            Sale sale = getTableView().getItems().get(getIndex());
-            // handleDeleteAction(customer);
+            // Create a Confirmation Alert
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Confirm your action");
+            alert.setHeaderText(null);
+            alert.setContentText("Do you really want to delete this " + getTableView().getItems().get(getIndex()).getClass().getSimpleName().toLowerCase() + "?");
+
+            // Use default ButtonTypes
+            ButtonType yesButtonType = ButtonType.YES;    // Default "Yes" button
+            ButtonType noButtonType = ButtonType.CANCEL; // Default "No" button
+
+            // Add ButtonTypes to the Alert
+            alert.getButtonTypes().setAll(yesButtonType, noButtonType);
+
+            // Access DialogPane and get Buttons
+            DialogPane dialogPane = alert.getDialogPane();
+            Button yesButton = (Button) dialogPane.lookupButton(yesButtonType);
+            Button noButton = (Button) dialogPane.lookupButton(noButtonType);
+
+            // Set actions for "Yes" and "No" buttons
+            yesButton.setOnAction(response -> {
+              MyModelManager manager = new MyModelManager();
+              try
+              {
+                // Perform the deletion
+                manager.deleteSale(getTableView().getItems().get(getIndex()).getSaleID());
+
+                // Remove the item from the table view
+                getTableView().getItems().remove(getIndex());
+              }
+              catch (IOException e)
+              {
+                throw new RuntimeException(e);
+              }
+              alert.close(); // Close the alert if needed
+            });
+
+            noButton.setOnAction(response -> {
+              alert.close(); // Close the alert if needed
+            });
+
+            // Show the Alert
+            alert.showAndWait();
+
           });
 
           setGraphic(actionButtons);
         }
+
       }
     });
 
     saleTable.getColumns().add(actionsSaleView);
-    petTable.refresh();
   }
-
 }
-
-

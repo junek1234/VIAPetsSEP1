@@ -50,7 +50,7 @@ public class DogPetViewController
   @FXML private RadioButton petStatusNotSoldEditRadioButton;
   @FXML private RadioButton petStatusNotFromViaEditRadioButton;
 
-  @FXML private Button petSaveButton;
+      @FXML private Button petSaveButton;
 
   private Dog dog;
   private Cat cat;
@@ -149,6 +149,23 @@ public class DogPetViewController
         }
       }
 
+          Pet newPet;
+          if (ViewHandler.lastPopupSource.equals("dogMenuItem"))
+          {
+            newPet = new Dog(MyModelManager.createNextPetID(), name, color, age,
+                gender, location, status, breed, breederName, price, comment);
+          }
+          else
+          {
+            newPet = new Cat(MyModelManager.createNextPetID(), name, color, age,
+                gender, location, status, breed, breederName, price, comment);
+          }
+          MyModelManager manager = new MyModelManager();
+          try
+          {
+            manager.addPet(newPet);
+            Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+            stage.close();
       Pet newPet;
       if (ViewHandler.lastPopupSource.equals("dogMenuItem"))
       {

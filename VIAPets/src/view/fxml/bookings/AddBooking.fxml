@@ -77,7 +77,7 @@
             </TextField>
          </children>
       </HBox>
-      <Button fx:id="bookingSaveButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveAddBooking" text="Save">
+      <Button fx:id="saveAddBooking" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveAddBooking" text="Save">
          <VBox.margin>
             <Insets />
          </VBox.margin>

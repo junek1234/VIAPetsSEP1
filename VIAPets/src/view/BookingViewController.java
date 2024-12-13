@@ -24,11 +24,6 @@ public class BookingViewController
   @FXML private TextField bookingStartHourTextField;
   @FXML private TextField bookingEndHourTextField;
 
-  @FXML private Button saveAddBooking;
-
-  @FXML public TextField maxKennelSlotsTextField;
-  @FXML public TextField pricePerHourTextField;
-
   public void saveAddBooking(ActionEvent actionEvent)
   {
     int petID = 0;//need to add exception later
@@ -124,12 +119,14 @@ public class BookingViewController
           DateInterval newDateInterval = new DateInterval(startDate, endDate);
           Booking newBooking = new Booking(MyModelManager.createNextBookingID(),
               bookingPet, bookingCustomer, newDateInterval);
-          System.out.println(newBooking);
 
           manager.addBooking(newBooking);
           Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene()
               .getWindow();
           stage.close();
+          MyModelManager managerUpdateLists = new MyModelManager();
+
+          XMLHandler.updateXML();
 
         }
         catch (IOException e)
@@ -137,51 +134,13 @@ public class BookingViewController
           throw new RuntimeException(e);
         }
 
-        XMLHandler.updateXML();
-
       }
 
     }
 
   }
-//bookings Settings actions
 
-  //displaying current settings while opening this window
-  public void initialize()
-  {
-    pricePerHourTextField.setText(VIAPets.bookingPrice+"");
-    maxKennelSlotsTextField.setText(VIAPets.maxKennelSlots+"");
-  }
-  public void saveBookingsSettings(ActionEvent actionEvent)
-  {
 
-      if(pricePerHourTextField.getText().isEmpty()||maxKennelSlotsTextField.getText().isEmpty()){
-        Alert alert1 = new Alert(Alert.AlertType.ERROR);
-        alert1.setTitle("Error");
-        alert1.setHeaderText(null);
-        alert1.setContentText("Invalid input!");
-        alert1.show();
-      }
-      else {
-        try
-        {
-          MyModelManager manager = new MyModelManager();
-          manager.saveBookingsSettings(Integer.parseInt(maxKennelSlotsTextField.getText()),Double.parseDouble(pricePerHourTextField.getText()));
-          Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene()
-              .getWindow();
-          stage.close();
-        }
-        catch (NumberFormatException e)
-        {
-          Alert alert1 = new Alert(Alert.AlertType.ERROR);
-          alert1.setTitle("Error");
-          alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
-          alert1.show();
-        }
-      }
-
-  }
 }
 
 
