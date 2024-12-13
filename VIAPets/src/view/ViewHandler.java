@@ -33,21 +33,21 @@ import java.time.format.DateTimeFormatter;
 public class ViewHandler
 {
   public static String lastPopupSource;
-  //for PetViewController
-  //  @FXML private TextField petNameTextField;
-  //  @FXML private TextField petColorTextField;
-  //  @FXML private TextField petAgeTextField;
-  //  @FXML private TextField petPriceTextField;
-  //
-  //  @FXML private TextArea petCommentTextField;
-  //
-  //  @FXML private RadioButton petGenderMaleRadioButton;
-  //  @FXML private RadioButton petGenderFemaleRadioButton;
-  //  @FXML private RadioButton petLocationShopRadioButton;
-  //  @FXML private RadioButton petLocationKennelRadioButton;
-  //  @FXML private RadioButton petStatusSoldRadioButton;
-  //  @FXML private RadioButton petStatusNotSoldRadioButton;
-  //  @FXML private RadioButton petStatusNotFromViaRadioButton;
+//  for PetViewController
+    @FXML private TextField petNameTextField;
+    @FXML private TextField petColorTextField;
+    @FXML private TextField petAgeTextField;
+    @FXML private TextField petPriceTextField;
+
+    @FXML private TextArea petCommentTextField;
+
+    @FXML private RadioButton petGenderMaleRadioButton;
+    @FXML private RadioButton petGenderFemaleRadioButton;
+    @FXML private RadioButton petLocationShopRadioButton;
+    @FXML private RadioButton petLocationKennelRadioButton;
+    @FXML private RadioButton petStatusSoldRadioButton;
+    @FXML private RadioButton petStatusNotSoldRadioButton;
+    @FXML private RadioButton petStatusNotFromViaRadioButton;
 
   //related to pets
   @FXML private MenuItem petsMenuItem;
@@ -225,7 +225,7 @@ public class ViewHandler
     String fxmlPath;
     if (source == dogMenuItem || source == catMenuItem)
     {
-      fxmlPath = "fxml/pets/DogCatPetView.fxml";
+      fxmlPath = "fxml/pets/AddDogCatPetView.fxml";
       popupStage.setTitle("Add " + (source == dogMenuItem ? "Dog" : "Cat"));
     }
     else if (source == birdMenuItem)
@@ -526,7 +526,12 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Pet selectedPet = getTableView().getItems().get(getIndex());
-            //            int petID = selectedPet.getId();
+            DogPetViewController controller = new DogPetViewController();
+            controller.handleEditAction(selectedPet);
+
+//            if (selectedPet instanceof Dog) {
+//              controller.saveEditDog((Dog) selectedPet);
+//            }
 
           });
 

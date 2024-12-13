@@ -10,8 +10,6 @@ import javafx.stage.Stage;
 public class StartGUI extends Application
 {
 
-
-
   private Stage stage;  // Keep a reference to the primaryStage
 
   @Override public void start(Stage primaryStage) throws Exception

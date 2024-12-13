@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pets>
   <pet>
-    <id>1</id>
+    <id>2</id>
     <type>Dog</type>
-    <name>gg</name>
-    <color>gg</color>
-    <age>1</age>
+    <name>jjj</name>
+    <color>green</color>
+    <age>7</age>
     <gender>m</gender>
     <location>Shop</location>
     <status>Sold</status>
-    <breed>jj</breed>
+    <breed>hh</breed>
     <breederName>jj</breederName>
-    <price>1.0</price>
+    <price>8.0</price>
+  </pet>
+  <pet>
+    <id>3</id>
+    <type>Dog</type>
+    <name>khjhj</name>
+    <color>green</color>
+    <age>8</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Not Sold</status>
+    <breed>jhsd</breed>
+    <breederName>ka</breederName>
+    <price>7.0</price>
   </pet>
 </pets>
