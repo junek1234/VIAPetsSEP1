@@ -445,19 +445,20 @@ public class ViewHandler
         cellData.getValue().getDateInterval().getEndDate().format(formatter)));
     endDateBookingView.setStyle("-fx-alignment: CENTER;");
 
-    startHourBookingView = new TableColumn<>("Start Hour");
-    startHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
-        cellData.getValue().getDateInterval().getStartDate().getHour()+":00"));
-    startHourBookingView.setStyle("-fx-alignment: CENTER;");
-
-    endHourBookingView = new TableColumn<>("End Hour");
-    endHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
-        cellData.getValue().getDateInterval().getEndDate().getHour()+":00"));
-    endHourBookingView.setStyle("-fx-alignment: CENTER;");
+//WE DON'T NEED THIS ANYMORE
+//    startHourBookingView = new TableColumn<>("Start Hour");
+//    startHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
+//        cellData.getValue().getDateInterval().getStartDate().getHour()+":00"));
+//    startHourBookingView.setStyle("-fx-alignment: CENTER;");
+//
+//    endHourBookingView = new TableColumn<>("End Hour");
+//    endHourBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
+//        cellData.getValue().getDateInterval().getEndDate().getHour()+":00"));
+//    endHourBookingView.setStyle("-fx-alignment: CENTER;");
 
     bookingTable.getColumns()
         .addAll(bookingIDView, petNameBookingView, customerNameBookingView,
-            startDateBookingView, endDateBookingView, startHourBookingView,endHourBookingView);
+            startDateBookingView, endDateBookingView);
 
     bookingTable.refresh();
 

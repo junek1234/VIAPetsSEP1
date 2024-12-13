@@ -22,7 +22,7 @@ public class XMLHandler
     ArrayList<String> kennelInfo=new ArrayList<>();
     kennelInfo.add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
     kennelInfo.add("<kennel>");
-    kennelInfo.add("<availableSlots>"+VIAPets.availableSlots+"</availableSlots>");
+    kennelInfo.add("<availableSlots>"+VIAPets.availableSlotsToday+"</availableSlots>");
     kennelInfo.add("<pricePerHour>"+VIAPets.bookingPrice+"</pricePerHour>");
     kennelInfo.add("<maxKennelSlots>"+VIAPets.maxKennelSlots+"</maxKennelSlots>");
     kennelInfo.add("</kennel>");

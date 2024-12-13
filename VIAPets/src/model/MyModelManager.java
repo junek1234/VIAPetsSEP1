@@ -6,6 +6,7 @@ import utils.XMLHandler;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class MyModelManager implements Serializable
@@ -71,7 +72,7 @@ public class MyModelManager implements Serializable
 
 
         loadBookingsSettings();
-        viaPets.setAvailableSlots();
+        viaPets.setAvailableSlots(VIAPets.getCurrentDate());
         XMLHandler.updateXML();
     }
 
@@ -282,14 +283,13 @@ public class MyModelManager implements Serializable
         {
             MyFileHandler.writeToTextFile(BOOKINGS_SETTINGS,VIAPets.maxKennelSlots+"");
             MyFileHandler.appendToTextFile(BOOKINGS_SETTINGS,VIAPets.bookingPrice+"");
-            viaPets.setAvailableSlots();
+            viaPets.setAvailableSlots(VIAPets.getCurrentDate());
             XMLHandler.updateXML();
         }
         catch (FileNotFoundException e)
         {
             throw new RuntimeException(e);
         }
-
 
     }
     public void loadBookingsSettings() {
@@ -300,6 +300,24 @@ public class MyModelManager implements Serializable
         } catch (FileNotFoundException e) {
             saveBookingsSettings(10, (20.0));
         }
+    }
+
+    public boolean isThisPeriodAvailable(DateInterval dateInterval)
+    {
+        LocalDate startDate = dateInterval.getStartDate().toLocalDate();
+        LocalDate endDate = dateInterval.getEndDate().toLocalDate();
+        Date now;
+        while(startDate.isBefore(endDate) || startDate.isEqual(endDate))
+        {
+            now= new Date(startDate.getDayOfMonth(), startDate.getMonthValue(), startDate.getYear());
+            viaPets.setAvailableSlots(now);
+            if(VIAPets.availableSlotsToday==0)
+            {
+                return false;
+            }
+            startDate=startDate.plusDays(1);
+        }
+        return true;
     }
 
 

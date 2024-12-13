@@ -53,30 +53,6 @@
             <DatePicker fx:id="bookingEndDateDatePicker" />
          </children>
       </HBox>
-      <HBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
-         <children>
-            <Label prefHeight="25.0" prefWidth="64.0" text="Start Hour">
-               <HBox.margin>
-                  <Insets left="-50.0" />
-               </HBox.margin>
-            </Label>
-            <TextField fx:id="bookingStartHourTextField" prefHeight="25.0" prefWidth="45.0">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </TextField>
-            <Label prefHeight="25.0" prefWidth="60.0" text="End Hour">
-               <HBox.margin>
-                  <Insets left="167.0" />
-               </HBox.margin>
-            </Label>
-            <TextField fx:id="bookingEndHourTextField" prefHeight="25.0" prefWidth="45.0">
-               <HBox.margin>
-                  <Insets right="8.0" />
-               </HBox.margin>
-            </TextField>
-         </children>
-      </HBox>
       <Button fx:id="saveAddBooking" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveAddBooking" text="Save">
          <VBox.margin>
             <Insets />

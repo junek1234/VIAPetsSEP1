@@ -10,7 +10,7 @@ import java.time.LocalTime;
 public class VIAPets implements Serializable
 {
   public static int maxKennelSlots;
-  public static int availableSlots;  //change in astah
+  public static int availableSlotsToday;  //change in astah
   public static double bookingPrice;
   private BookingList allBookings;
   private CustomerList allCustomers;
@@ -34,26 +34,18 @@ public class VIAPets implements Serializable
     this.maxKennelSlots = maxKennelSlots;
   }
 
-  public void setAvailableSlots()
+  public void setAvailableSlots(Date date)
   {
     //counting how many slots are occupied in the kennel
     int count=0;
     for (int i = 0; i < allBookings.getBookings().size(); i++)
     {
-      if((allBookings.getBookings().get(i).getDateInterval().getEndDate().isGreaterThan(getCurrentDate()))&&getCurrentDate().isGreaterThan(allBookings.getBookings().get(i).getDateInterval().getStartDate()))
-      {
-        count++;
-      }
-      else if(allBookings.getBookings().get(i).getDateInterval().getEndDate().equals(getCurrentDate())&&(allBookings.getBookings().get(i).getDateInterval().getEndDate().getHour()> LocalTime.now().getHour()))
-      {
-        count++;
-      }
-      else if(allBookings.getBookings().get(i).getDateInterval().getStartDate().equals(getCurrentDate())&&allBookings.getBookings().get(i).getDateInterval().getEndDate().getHour()< LocalTime.now().getHour())
+      if((!date.isGreaterThan(allBookings.getBookings().get(i).getDateInterval().getEndDate()))&&(!allBookings.getBookings().get(i).getDateInterval().getStartDate().isGreaterThan(date)))
       {
         count++;
       }
     }
-    availableSlots=maxKennelSlots-count;
+    availableSlotsToday=maxKennelSlots-count;
   }
 
   public void setBookingPrice(double bookingPrice)
@@ -108,7 +100,7 @@ public class VIAPets implements Serializable
 
   public int getAvailableSlots()
   {
-    return availableSlots;
+    return availableSlotsToday;
   }
 
   public double getBookingPrice()
@@ -139,14 +131,14 @@ public class VIAPets implements Serializable
   public static Date getCurrentDate()
   {
     LocalDateTime now = LocalDateTime.now();
-    return new Date(now.getDayOfMonth(), now.getMonthValue(), now.getYear(), now.getHour());
+    return new Date(now.getDayOfMonth(), now.getMonthValue(), now.getYear());
   }
 
 
   public String toString()
   {
     return "VIAPets{" + "maxKennelSlots=" + maxKennelSlots + ", availableSlots="
-        + availableSlots + ", bookingPrice=" + bookingPrice + ", allBookings="
+        + availableSlotsToday + ", bookingPrice=" + bookingPrice + ", allBookings="
         + allBookings + ", allCustomers=" + allCustomers + ", allSales="
         + allSales + ", allPets=" + allPets + '}';
   }

@@ -9,8 +9,8 @@ public class DateInterval implements Serializable
 
   public DateInterval(Date startDate, Date endDate)
   {
-    this.startDate = startDate;
-    this.endDate =endDate;
+    this.startDate = startDate.copy();
+    this.endDate =endDate.copy();
   }
   public boolean equals(Object obj)
   {
@@ -41,24 +41,27 @@ public class DateInterval implements Serializable
   {
     this.endDate = endDate;
   }
-
- //check if this is correct - calculateInterval
-  public int calculateInterval()
+  public boolean isBetween(Date date)
   {
-    int startTotalHours = convertToHours(startDate);
-    int endTotalHours = convertToHours(endDate);
-    return endTotalHours - startTotalHours;
+    return (!startDate.isGreaterThan(date)) && !date.isGreaterThan(endDate);
   }
+ //we dont need it
+//  public int calculateInterval()
+//  {
+//    int startTotalHours = convertToHours(startDate);
+//    int endTotalHours = convertToHours(endDate);
+//    return endTotalHours - startTotalHours;
+//  }
 
-  private int convertToHours(Date date)
-  {
-    int daysInYear = 365;
-    int daysInMonth = 30;
-    return date.getYear() * daysInYear * 24 +
-        date.getMonth() * daysInMonth * 24 +
-        date.getDay() * 24 +
-        date.getHour();
-  }
+  //we dont need it too
+//  private int convertToHours(Date date)
+//  {
+//    int daysInYear = 365;
+//    int daysInMonth = 30;
+//    return date.getYear() * daysInYear * 24 +
+//        date.getMonth() * daysInMonth * 24 +
+//        date.getDay() * 24;
+//  }
 
   public DateInterval getDateInterval()
   {

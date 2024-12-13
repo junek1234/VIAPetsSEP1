@@ -9,15 +9,14 @@ public class Date implements Serializable
   private int day;
   private int month;
   private int year;
-  private int hour;
 
-  public Date(int day, int month, int year, int hour)
+  public Date(int day, int month, int year)
   {
     this.day = day;
     this.month = month;
     this.year = year;
-    this.hour = hour;
   }
+
 
   public int getDay()
   {
@@ -35,12 +34,6 @@ public class Date implements Serializable
   {
 
     return year;
-  }
-
-  public int getHour()
-  {
-
-    return hour;
   }
 
   public void setDay(int day)
@@ -61,11 +54,6 @@ public class Date implements Serializable
     this.year = year;
   }
 
-  public void setHour(int hour)
-  {
-
-    this.hour = hour;
-  }
 //add two methods below in astah if they work
   public LocalDate toLocalDate() {
     return LocalDate.of(year, month, day);
@@ -77,7 +65,7 @@ public class Date implements Serializable
 
   public String toString()
   {
-    return day + "/" + month + "/" + year + " " + hour;
+    return day + "/" + month + "/" + year;
   }
 
   public boolean equals(Object obj)
@@ -95,7 +83,7 @@ public class Date implements Serializable
       return false;
     }
     Date other = (Date) obj;
-    return day == other.day && month == other.month && year == other.year && hour == other.hour;
+    return day == other.day && month == other.month && year == other.year;
   }
   public boolean isGreaterThan(Object obj)
   {
@@ -128,10 +116,6 @@ public class Date implements Serializable
         {
           return true;
         }
-        else if (this.day == other.day)
-        {
-          return this.hour > other.hour;
-        }
       }
 
     }
@@ -142,7 +126,7 @@ public class Date implements Serializable
   public Date copy()
   {
 
-    return new Date(day, month, year, hour);
+    return new Date(day, month, year);
   }
 
   /*public int compareTo(Date other)

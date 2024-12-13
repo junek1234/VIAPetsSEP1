@@ -21,8 +21,6 @@ public class BookingViewController
   @FXML private TextField bookingCustomerIDTextField;
   @FXML private DatePicker bookingStartDateDatePicker;
   @FXML private DatePicker bookingEndDateDatePicker;
-  @FXML private TextField bookingStartHourTextField;
-  @FXML private TextField bookingEndHourTextField;
 
   public void saveAddBooking(ActionEvent actionEvent)
   {
@@ -36,8 +34,6 @@ public class BookingViewController
     int endHour = 0;
     if (bookingPetIDTextField.getText().isEmpty()
         || bookingCustomerIDTextField.getText().isEmpty()
-        || bookingStartHourTextField.getText().isEmpty()
-        || bookingEndHourTextField.getText().isEmpty()
         || bookingStartDateDatePicker.getValue() == null
         || bookingEndDateDatePicker.getValue() == null)
     {
@@ -54,16 +50,12 @@ public class BookingViewController
       {
         petID = Integer.parseInt(bookingPetIDTextField.getText());
         customerID = Integer.parseInt(bookingCustomerIDTextField.getText());
-        startHour = Integer.parseInt(bookingStartHourTextField.getText());
-        endHour = Integer.parseInt(bookingEndHourTextField.getText());
         startDateFromField = bookingStartDateDatePicker.getValue();
         startDate = new Date(startDateFromField.getDayOfMonth(),
-            startDateFromField.getMonthValue(), startDateFromField.getYear(),
-            startHour);
+            startDateFromField.getMonthValue(), startDateFromField.getYear());
         endDateFromField = bookingEndDateDatePicker.getValue();
         endDate = new Date(endDateFromField.getDayOfMonth(),
-            endDateFromField.getMonthValue(), endDateFromField.getYear(),
-            endHour);
+            endDateFromField.getMonthValue(), endDateFromField.getYear());
 
       }
       catch (NumberFormatException e)
@@ -81,8 +73,17 @@ public class BookingViewController
       Pet bookingPet = manager.getAllPets().getPetByID(petID);
       Customer bookingCustomer = manager.getAllCustomers()
           .getCustomer(customerID);
+      DateInterval dateInterval = new DateInterval(startDate,endDate);
       //errors
-      if (bookingPet == null)
+      if(!manager.isThisPeriodAvailable(dateInterval))
+      {
+        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+        alert1.setTitle("Error");
+        alert1.setHeaderText(null);
+        alert1.setContentText("This period is not available!");
+        alert1.show();
+      }
+      else if (bookingPet == null)
       {
         Alert alert1 = new Alert(Alert.AlertType.ERROR);
         alert1.setTitle("Error");
@@ -109,6 +110,21 @@ public class BookingViewController
       }
       else
       {
+        for (int i = 0; i < manager.getAllBookings().getBookings().size(); i++)
+        {
+          if((manager.getAllBookings().getBookings().get(i).getPet().getPetID()==petID))
+              if((dateInterval.isBetween(manager.getAllBookings().getBookings().get(i).getDateInterval()
+              .getStartDate()))||(dateInterval.isBetween(manager.getAllBookings().getBookings().get(i).getDateInterval()
+              .getEndDate())))
+          {
+            Alert alert1 = new Alert(Alert.AlertType.ERROR);
+            alert1.setTitle("Error");
+            alert1.setHeaderText(null);
+            alert1.setContentText("There is already a booking for this pet in this period!");
+            alert1.show();
+            return;
+          }
+        }
 
         //if everything is fine
 
@@ -116,9 +132,8 @@ public class BookingViewController
         {
           bookingPet.setLocation("Kennel");
           manager.editPet(petID, bookingPet);
-          DateInterval newDateInterval = new DateInterval(startDate, endDate);
           Booking newBooking = new Booking(MyModelManager.createNextBookingID(),
-              bookingPet, bookingCustomer, newDateInterval);
+              bookingPet, bookingCustomer, dateInterval);
 
           manager.addBooking(newBooking);
           Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene()
