@@ -186,26 +186,39 @@ public class ViewHandler
     MenuItem mirrorMenuItem = (MenuItem) source;
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
     VBox vbox = new VBox();
+
+    TextField searchField = new TextField();
+    searchField.setPromptText("Search...");
+    Button searchButton = new Button("Search");
+
+    HBox searchBox = new HBox(searchField, searchButton);
+    vbox.getChildren().add(searchBox);
+
+
     vbox.getChildren().add(root);
 
     if (source == petsMenuItem)
     {
       vbox.getChildren().add(petTable);
+      searchButton.setOnAction(event -> filterTablePet(petTable, searchField.getText())); // (m)
     }
 
     else if (source == customersMenuItem)
     {
       vbox.getChildren().add(customerTable);
+      searchButton.setOnAction(event -> filterTableCustomer(customerTable, searchField.getText())); // (m)
     }
 
     else if (source == bookingsMenuItem)
     {
       vbox.getChildren().add(bookingTable);
+      searchButton.setOnAction(event -> filterTableBooking(bookingTable, searchField.getText())); // (m)
     }
 
     else if (source == salesMenuItem)
     {
       vbox.getChildren().add(saleTable);
+      searchButton.setOnAction(event -> filterTableSale(saleTable, searchField.getText())); // (m)
     }
 
     Scene scene = new Scene(vbox);
@@ -214,6 +227,70 @@ public class ViewHandler
     stage.show();
   }
 
+  //Search method
+  private void filterTableCustomer(TableView<Customer> table, String query) {
+    MyModelManager manager = new MyModelManager();
+    ObservableList<Customer> customerList = FXCollections.observableArrayList(
+        manager.getAllCustomers().getCustomers());
+    ObservableList<Customer> filteredList = FXCollections.observableArrayList();
+    for (Customer customer : customerList) {
+      if (customer.getName().toLowerCase().contains(query.toLowerCase()) ||
+          customer.getName().toUpperCase().contains(query.toUpperCase()) ||
+          String.valueOf(customer.getCustomerID()).contains(query) ||
+          customer.getEmail().toLowerCase().contains(query.toLowerCase())) {
+        filteredList.add(customer);
+      }
+    }
+    table.setItems(filteredList);
+
+  }
+
+  private void filterTablePet(TableView<Pet> table, String query) {
+    MyModelManager manager = new MyModelManager();
+    ObservableList<Pet> petList = FXCollections.observableArrayList(
+        manager.getAllPets().getPets());
+    ObservableList<Pet> filteredList = FXCollections.observableArrayList();
+    for (Pet pet : petList) {
+      if (pet.getName().toLowerCase().contains(query.toLowerCase()) ||
+          pet.getName().toUpperCase().contains(query.toUpperCase())
+         || String.valueOf(pet.getPetID()).contains(query) ) {
+        filteredList.add(pet);
+      }
+    }
+    table.setItems(filteredList);
+  }
+
+  private void filterTableSale(TableView<Sale> table, String query) {
+    MyModelManager manager = new MyModelManager();
+    ObservableList<Sale> saleList = FXCollections.observableArrayList(
+        manager.getAllSales().getSaleList());
+    ObservableList<Sale> filteredList = FXCollections.observableArrayList();
+    for (Sale sale : saleList) {
+      if (String.valueOf(sale.getSaleID()).contains(query) ||
+          String.valueOf(sale.getSalePrice()).contains(query)) {
+        // search by pet name etc... has to be added in the Sale class (get SalePet method)
+        filteredList.add(sale);
+      }
+    }
+    table.setItems(filteredList);
+  }
+
+  private void filterTableBooking(TableView<Booking> table, String query) {
+    MyModelManager manager = new MyModelManager();
+    ObservableList<Booking> bookingList = FXCollections.observableArrayList(
+        manager.getAllBookings().getBookings());
+    ObservableList<Booking> filteredList = FXCollections.observableArrayList();
+    for (Booking booking : bookingList) {
+      if (booking.getCustomer().getName().toLowerCase().contains(query.toLowerCase()) ||
+          booking.getCustomer().getName().toUpperCase().contains(query.toUpperCase()) ||
+          String.valueOf(booking.getBookingID()).contains(query)) {
+        filteredList.add(booking);
+      }
+
+    }
+
+    table.setItems(filteredList);
+  }
   // Create a separate method for popup handling
   @FXML public void showPopup(ActionEvent e) throws IOException
   {

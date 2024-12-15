@@ -2,28 +2,27 @@
 <pets>
   <pet>
     <id>1</id>
-    <type>Dog</type>
-    <name>1</name>
-    <color>a</color>
-    <age>1</age>
+    <type>Cat</type>
+    <name>cat</name>
+    <color>134</color>
+    <age>123</age>
     <gender>m</gender>
-    <location>Shop</location>
-    <status>Not Sold</status>
-    <breed>a</breed>
-    <breederName>A</breederName>
-    <price>1.0</price>
+    <location>Kennel</location>
+    <status>Sold</status>
+    <breed>123</breed>
+    <breederName>123</breederName>
+    <price>123.0</price>
   </pet>
   <pet>
-    <id>3</id>
-    <type>Cat</type>
-    <name>1</name>
-    <color>1</color>
-    <age>1</age>
+    <id>2</id>
+    <type>Rodent</type>
+    <name>rodent</name>
+    <color>123</color>
+    <age>123</age>
     <gender>m</gender>
-    <location>Shop</location>
-    <status>Not Sold</status>
-    <breed>1</breed>
-    <breederName>1</breederName>
-    <price>1.0</price>
+    <location>Kennel</location>
+    <status>Sold</status>
+    <species>123</species>
+    <price>123.0</price>
   </pet>
 </pets>
