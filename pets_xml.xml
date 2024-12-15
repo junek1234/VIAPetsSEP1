@@ -14,16 +14,16 @@
     <price>1.0</price>
   </pet>
   <pet>
-    <id>2</id>
-    <type>Bird</type>
+    <id>3</id>
+    <type>Cat</type>
     <name>1</name>
     <color>1</color>
     <age>1</age>
     <gender>m</gender>
     <location>Shop</location>
     <status>Not Sold</status>
-    <species>1</species>
-    <preferredFood>1</preferredFood>
+    <breed>1</breed>
+    <breederName>1</breederName>
     <price>1.0</price>
   </pet>
 </pets>

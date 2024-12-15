@@ -74,7 +74,7 @@ public class FishViewController
       Alert alert1 = new Alert(Alert.AlertType.ERROR);
       alert1.setTitle("Error");
       alert1.setHeaderText(null);
-      alert1.setContentText("Invalid input!");
+      alert1.setContentText("All inputs must be filled!");
       alert1.show();
     }
     else if((petGenderMaleRadioButton.isSelected()&&petGenderFemaleRadioButton.isSelected())||(petLocationShopRadioButton.isSelected()&&petLocationKennelRadioButton.isSelected())||(petStatusSoldRadioButton.isSelected()&&petStatusNotSoldRadioButton.isSelected())||(petStatusSoldRadioButton.isSelected()&&petStatusNotFromViaRadioButton.isSelected())||(petStatusNotSoldRadioButton.isSelected()&&petStatusNotFromViaRadioButton.isSelected())||(
@@ -100,7 +100,7 @@ public class FishViewController
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
+          alert1.setContentText("Age must be a number!");
           alert1.show();
           return;//it stops the method when catching exception
         }
@@ -117,7 +117,7 @@ public class FishViewController
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
+          alert1.setContentText("Price must be a number!");
           alert1.show();
           return;//it stops the method when catching exception
         }

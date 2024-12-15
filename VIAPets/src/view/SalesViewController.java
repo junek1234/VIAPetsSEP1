@@ -34,7 +34,7 @@ public class SalesViewController
       Alert alert1 = new Alert(Alert.AlertType.ERROR);
       alert1.setTitle("Error");
       alert1.setHeaderText(null);
-      alert1.setContentText("Invalid input!");
+      alert1.setContentText("All inputs must be filled!");
       alert1.show();
     }
     else
@@ -52,7 +52,7 @@ public class SalesViewController
         Alert alert1 = new Alert(Alert.AlertType.ERROR);
         alert1.setTitle("Error");
         alert1.setHeaderText(null);
-        alert1.setContentText("Invalid input!");
+        alert1.setContentText("All inputs must be numbers!");
         alert1.show();
         return;//it stops the method when catching exception
       }
@@ -78,7 +78,7 @@ public class SalesViewController
             Alert alert1 = new Alert(Alert.AlertType.ERROR);
             alert1.setTitle("Error");
             alert1.setHeaderText(null);
-            alert1.setContentText("This pet is from the kennel!");
+            alert1.setContentText("This pet is from the kennel do not sell it!");
             alert1.show();
           }
           else if (!salePet.getStatus().equals("Not Sold"))

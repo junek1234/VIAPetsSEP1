@@ -52,12 +52,6 @@ public class DogPetViewController {
 
   private Pet selectedPet;
 
-  private Dog dog;
-  private Cat cat;
-  private Bird bird;
-  private Fish fish;
-  private Rodent rodent;
-  private Various various;
 
   public void saveAddPet(ActionEvent actionEvent) {
     String name = petNameTextField.getText();
@@ -115,7 +109,7 @@ public class DogPetViewController {
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
+          alert1.setContentText("Age must be a number!");
           alert1.show();
           return; //it stops the method when catching exception
         }
@@ -128,7 +122,7 @@ public class DogPetViewController {
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
+          alert1.setContentText("Price must be a number!");
           alert1.show();
           return; //it stops the method when catching exception
         }
