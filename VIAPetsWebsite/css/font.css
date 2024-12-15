@@ -1,0 +1,11 @@
+*{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bg-orange {
+    background-color: rgb(242, 170, 37);
+    color: black;
+}
+.circle {
+    color: white;
+}

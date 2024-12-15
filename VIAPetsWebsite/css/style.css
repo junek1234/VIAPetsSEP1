@@ -1,0 +1,210 @@
+
+
+/* --------------------------------------- Cristina ------------------*/
+/* main header */
+.custom-header {
+  background-color: #f58549;
+  /* Background color for the header */
+  color: white;
+  /* Text color */
+  padding: 20px 0;
+  /* Padding for top and bottom */
+  text-align: center;
+  /* Center the text */
+  font-size: 2.5rem;
+  /* Font size */
+  font-weight: bold;
+  /* Make the text bold */
+}
+
+.custom-header h2 {
+  font-size: 2.5rem;
+  /* Font size */
+  font-weight: bold;
+  /* Make the text bold */
+  text-align: left;
+  /* i want to have About us in the left part */
+}
+
+
+/*  Bob section */
+.about-bob-section {
+  background-color: #eec170;
+  /* background color */
+  color: white;
+  /* white text for contrast */
+  padding: 20px;
+  /* inner space */
+  display: flex;
+  /* Turns the section into a Flexbox container */
+  text-align: center;
+  border-top: 5px solid #2e3083;
+  /* Top decorative line - to separate them */
+}
+
+
+.about-bob-text h2 {
+  font-size: 1.8rem;
+  /*to have bigger size than description, title*/
+  font-weight: bold;
+  /* title */
+}
+
+.about-bob-text p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.about-bob-section img {
+  margin: 0 auto 15px;
+  object-fit: cover;
+  /*Makes the image completely fill the container*/
+  justify-content: space-between;
+  margin-left: 50px;
+  /*for space between text and image*/
+  float: right;
+  /* to have the image on the right */
+  width: 80px;
+  /* Set image dimensions*/
+  height: auto;
+  /* Maintains image dimensions */
+}
+
+.bobsays {
+  background-color: #e7ebec;
+  border-radius: 10%;
+  /* to look like a bubble that says something :) */
+}
+
+/* adjustment for small screens */
+@media (max-width: 768px) {
+  .about-bob-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-bob-image {
+    margin: 0 auto 15px;
+    /* Centers the image on small screens */
+  }
+
+}
+
+/* Style for the profile image  - BOB picture*/
+.profile-img {
+  width: 200px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Vision bubble style */
+.vision-bubble {
+  margin: 0 auto 15px;
+  background-color: #f58549;
+  padding: 40px;
+  border-radius: 80%;
+  font-size: 2rem;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+  object-fit: cover;
+  /*Makes the image completely fill the container*/
+}
+
+
+/* Mission & Vision arrows */
+.mission-vision-text {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Arrow style for each mission point */
+.mission-vision-text li {
+  position: relative;
+  padding-left: 30px;
+  /* Space for arrow */
+  margin-bottom: 25px;
+}
+
+/* Draw arrow using ::before , change the dots to arrows*/
+.mission-vision-text li::before {
+  content: '➔';
+  color: #2E3083;
+  /* Arrow color */
+  position: absolute;
+  left: 0;
+  font-size: 1.5rem;
+}
+
+.bg-orange {
+  background-color: rgb(242, 170, 37);
+  color: black;
+}
+
+/* Ensure images cover the entire carousel slide */
+.carousel-item img {
+  object-fit: contain;
+  width: 100%;
+  /* Full width to fit container */
+  height: 100%;
+  height: 30vh;
+  
+}
+
+
+@media (max-width: 992px) {
+
+  /* Medium devices - tablets */
+  .carousel-item img {
+    height: 50vh;
+    /* Adjust height for tablets */
+  }
+
+  .vision-bubble {
+    width: 200px;
+    height: 200px;
+    font-size: large;
+
+  }
+
+
+  @media (max-width: 768px) {
+
+    /* Small devices - landscape phones */
+    .carousel-item img {
+      height: 40vh;
+      /* Adjust height for landscape phones */
+    }
+  }
+
+  @media (max-width: 576px) {
+
+    /* Extra small devices - portrait phones */
+    .carousel-item img {
+      height: 30vh;
+      /* Adjust height for portrait phones */
+    }
+
+  }
+
+  @media (max-width: 370px) {
+
+    /* Extra small devices - portrait phones */
+    .carousel-item img {
+      height: 30vh;
+      /* Adjust height for portrait phones */
+    }
+    .story-img,.story-img1{
+      width: 200px;
+    }
+
+  }
+}

@@ -1,0 +1,181 @@
+<!-- Done by Felipe Figueiredo -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIAPets</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <link href="css/piotrek.css" type="text/css" rel="stylesheet">
+
+
+    <link href="css/kennel.css" type="text/css"  rel="stylesheet">
+    <link href="css/font.css" type="text/css" rel="stylesheet">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/kennelscript.js"></script>
+</head>
+
+<body>
+
+ <!-- NAVIGATION BAR note: let's fix it, adding shadow and making scrolable.-->
+ <nav class="navbar navbar-expand-lg bg-body-tertiary makeitwhite">
+
+    <div class="container-fluid makeitwhite">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/vialogo.png" alt="Logo" height="40" class="d-inline-block align-text-center">
+
+      </a>
+
+      <div class="makeitwhite">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="History">
+              <a class="nav-link active" href="history2.html">History</a> 
+            </li>
+            <li class="Adopt">
+              <a class="nav-link active" href="adopt.html">Adopt</a>
+            </li>
+            <li class="Kennel">
+              <a class="nav-link active" href="kennel.html">Kennel</a>
+            </li>
+            <li class="Contact">
+              <a class="nav-link active" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </nav>
+
+<!-- Header Section -->
+<header class="container-fluid text-center">
+    <h1 class="main-title"><strong><span class="highlight">Pet boarding,</span><br>Simplified.</strong></h1>
+    <div class="d-flex flex-row align-self ">
+     
+        <div id="bottomCircle" class="circle circle-bottom shift-right1">
+          <p class="circle">Caring</p>
+        </div>
+        <div id="middleCircle" class="circle circle-middle shift-up1 shift-right2">
+          <p class="circle">Better<br>Price</br></p>
+        </div>
+        <div id="topCircle" class="circle circle-top shift-up2">
+          <p class="circle">Expert Care</p>
+        </div>
+
+      </div>
+
+      <!-- Content Section --> 
+      <div class="containerhh">
+        <div class="row align-items-end">
+            <div class="dogimg col-md-4">
+                <img src="Images/Wiener.jpg" alt="Dog" class="dog-image">
+            </div>
+            <div class=" dogtext col-md-7">
+                <h2 class="section-title1"><strong><span class="highlight">Not your average</span><br>pet kennel.</strong></h2>
+                <p class="section-text1">We are the passionate animal lovers, the dedicated pet enthusiasts, the experienced carriers, and the expert simplifiers. In short, we are everything you’ve been searching for to make your pet care experience a seamless one. <br><br>Our commitment to your pets and their well-being is at the heart of everything we do.</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Content Section (after header*) -->
+<section class="container my-9 text-center"> <!-- Why adding "m-#" to add margin doesnt work? -->
+  <div class="col-md mx-auto align-items-center custom-border bg-white p-4"> <!-- mx-auto centers it horizontally :D -->
+    <h2 class="section-title2"><strong><span class="highlight">How we board</span><br>your pet.</strong></h2>
+    <p class="section-text2 pt-3">Whether you're going on a holiday, need a temporary place for your pet, or simply require a safe and loving environment, we’re here to ensure your pet receives the best care possible. Our boarding facilities are designed with your pet's comfort in mind, providing spacious accommodations and plenty of playtime. We understand that pets thrive on companionship, which is why we don’t charge extra for multiple pets. Whether you have one furry friend or ten, our service fee remains the same. Yes, you read that right! Additionally, we offer 24/7 access to our dedicated team at VIAPets. We take our responsibility seriously, ensuring your pets are well cared for at all times. You can trust us to treat your pets like family.</p>
+  </div> 
+  </section>
+
+<!-- Kennel Availability --> 
+<section class="container-fluid text-center">
+  <h2 class="kennel-availability">Kennel Availability:</h2>
+  <div class="row justify-content-center">
+      <div class="col-12 text-center p-3">
+          <img id="dog" src="images/Dog-circle.png" alt="Dog Circle" class="animal-circle">
+          <p class="cirtext">Dogs</p><p class="cirtext" id="availableSlots"><br><strong><u>10</u></strong> Open slots!</p>
+      </div>
+  </div>
+</section>
+
+<div class="scroll-container">
+  <span class="scrolling-text">🐾 Limited-Time Offer: Give Your Pet a Cozy Stay with 25% Off! 🐾</span>
+</div>
+
+<div id="carousel2" class="carousel slide carousel-container" data-bs-ride="carousel">
+
+  <!-- Carousel Inner Wrapper -->
+  <div class="carousel-inner">
+
+    <div class="carousel-item">
+      <video class="d-block w-100" autoplay loop muted playsinline>
+          <source src="images\Cat-playing-kennel.mp4" type="images\Cat-playing-kennel.mp4">
+      </video>
+  </div>
+
+  <div class="carousel-item">
+    <img src="images\Birds-kennel.jpg" alt="Birds playtime" class="d-block w-100">
+  </div>
+
+  <div class="carousel-item">
+    <img src="images/CatsPlay.jpg" alt="Cats playtime" class="d-block w-100">
+  </div>
+
+  <div class="carousel-item">
+    <img src="images\Dogs-playing-kennel.jpg" alt="Dogs playtime" class="d-block w-100">
+  </div>
+  
+  <div class="carousel-item active">
+    <img src="images/VIAPetsBuilding.jpg" alt="VIA Pets building" class="d-block w-100">
+  </div>
+
+</div>
+  <!-- Carousel Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+ <!-- Footer Section -->
+ <footer class="bg-orange">
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-md-6">
+                <h5>About Us</h5> <!-- change text -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec odio ipsum.</p>
+            </div>
+            <div class="col-md-6">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                     <li><a href="index.html" class="text-black">Home</a></li>
+                  <li><a href="history2.html" class="text-black">About</a></li>
+                  <li><a href="adopt.html" class="text-black">Pet Shop</a></li>
+                  <li><a href="kennel.html" class="text-black">Kennel</a></li>
+                  <li><a href="contact.html" class="text-black">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-3">
+            <p>&copy; 2024 Your Company. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/kennel.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

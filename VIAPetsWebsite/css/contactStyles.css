@@ -1,0 +1,110 @@
+body{
+    background-color: #594a4a;
+    font-family: 'Calibri', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+#homelogo {
+    width: 120px;
+    height: auto;
+    margin-right: 15px;
+}
+#navbar{
+    background-color: rgb(242, 170, 37);
+    font-size: 1.4rem;
+}
+
+#PetShopBackground{
+    display: block;        /* Asegura que la imagen se comporte como un bloque */
+    margin: 0 auto;        /* Centra la imagen horizontalmente */
+    width: 50%;       /* Evita el desbordamiento horizontal */
+    height: auto;          /* Mantiene la proporción */
+}
+
+#PetShopBackground-small{
+    width: 100%;
+    height: auto;
+}
+
+.employeeType{
+    font-size: 4rem;
+}
+
+.bob-img{
+    width: 80%;
+    height: auto;
+}
+
+#bob-mail{
+    padding-top: 0.5%;
+}
+#title{
+    margin-top: 3vw;
+    margin-left: 10vw;
+    font-size: 6vw;
+}
+
+@media (min-width: 768px) {
+    #title {
+      font-size: 4rem;
+    }
+  }
+
+  /* Font size for large screens (992px and above) */
+  @media (min-width: 992px) {
+    #title {
+      font-size: 6rem;
+    }
+}
+
+#parrotImage{
+    width: 40vw;
+    margin-right: 0%;
+    margin-bottom: 5%;
+}
+
+.mailContainer{
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-bottom: 3%;
+}
+
+.right-image-container {
+    margin-right: 10%;
+}
+
+.right-image {
+    width: 100px;
+    height: auto;
+}
+
+.profile-img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.name-text {
+    font-size: 1.5rem;
+    margin-right: 5%;
+}
+
+.email-text {
+    font-size: 1.25rem;
+}
+
+#dogImage{
+    margin-left: 10%;
+    width: 100%;
+    height: auto;
+}
+
+.email-margin {
+    margin-left: 5vw;
+}
+.bg-orange{
+    background-color: rgb(242, 170, 37);
+    color: black;
+}
+#employee-mail-container a{
+    color: rgb(242, 170, 37);
+}
