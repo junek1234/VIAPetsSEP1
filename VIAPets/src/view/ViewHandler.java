@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +18,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -92,6 +94,9 @@ public class ViewHandler
   @FXML private MenuItem salesMenuItem;
   @FXML private MenuItem addSaleMenuItem;
 
+  //search bar
+  @FXML private TextField existingSearchField;
+  @FXML private Button existingSearchButton;
   //tables
    private TableView<Pet> petTable;
    private TableColumn<Pet, Number> petIDPetView;
@@ -192,10 +197,13 @@ public class ViewHandler
     Button searchButton = new Button("Search");
 
     HBox searchBox = new HBox(searchField, searchButton);
+    HBox.setHgrow(searchField, Priority.ALWAYS);
+    searchBox.setPadding(new Insets(0,0,50,0));
+    vbox.getChildren().add(root);
     vbox.getChildren().add(searchBox);
 
 
-    vbox.getChildren().add(root);
+
 
     if (source == petsMenuItem)
     {
@@ -225,6 +233,7 @@ public class ViewHandler
     stage.setScene(scene);
     fxmlDefPath = fxmlPath;
     stage.show();
+
   }
 
   //Search method
