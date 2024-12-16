@@ -69,14 +69,14 @@ public class BirdViewController
     String food = petFoodTextField.getText();
 
     // Get RadioButton values
-    char gender = petBirdGenderFemaleRadioButton.isSelected() ?
+    char gender = petBirdGenderMaleRadioButton.isSelected() ?
         'm' :
         petBirdGenderFemaleRadioButton.isSelected() ? 'f' : '-';
-
+    System.out.println(gender);
     String location = petLocationShopRadioButton.isSelected() ?
         "Shop" :
         petLocationKennelRadioButton.isSelected() ? "Kennel" : "";
-
+    System.out.println(location);
     String status = petStatusSoldRadioButton.isSelected() ?
         "Sold" :
         petStatusNotSoldRadioButton.isSelected() ?
