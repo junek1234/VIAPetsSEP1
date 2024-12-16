@@ -37,15 +37,17 @@ public class VIAPets implements Serializable
   public void setAvailableSlots(Date date)
   {
     //counting how many slots are occupied in the kennel
-    int count=0;
-    for (int i = 0; i < allBookings.getBookings().size(); i++)
+    int count = 0; // Initialize count and start at 0. 2
+    for (int i = 0; i < allBookings.getBookings().size(); i++) // Loop through all bookings. n
     {
-      if((!date.isGreaterThan(allBookings.getBookings().get(i).getDateInterval().getEndDate()))&&(!allBookings.getBookings().get(i).getDateInterval().getStartDate().isGreaterThan(date)))
+      //Check if the booking is in between the start and end date of the other bookings
+      if((!date.isGreaterThan(allBookings.getBookings().get(i).getDateInterval().getEndDate()))
+          &&(!allBookings.getBookings().get(i).getDateInterval().getStartDate().isGreaterThan(date)))
       {
-        count++;
+        count++; // Add one to the count if true. 1
       }
     }
-    availableSlotsToday=maxKennelSlots-count;
+    availableSlotsToday = maxKennelSlots - count; //update the available slots of that given date subtracting the count to the maximum capacity of the kennel. 2
   }
 
   public void setBookingPrice(double bookingPrice)
