@@ -24,14 +24,38 @@ public class BirdViewController
   @FXML private TextField petSpeciesTextField;
   @FXML private TextField petFoodTextField;
 
-  @FXML private RadioButton petGenderMaleRadioButton;
-  @FXML private RadioButton petGenderFemaleRadioButton;
+  @FXML private ToggleGroup genderGroup;
+  @FXML private RadioButton petBirdGenderMaleRadioButton;
+  @FXML private RadioButton petBirdGenderFemaleRadioButton;
+
+  @FXML private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
+
+  @FXML private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
 
+  private Pet Pet;
+
+
+  @FXML
+  public void initialize()
+  {
+    genderGroup = new ToggleGroup();
+    petBirdGenderMaleRadioButton.setToggleGroup(genderGroup);
+    petBirdGenderFemaleRadioButton.setToggleGroup(genderGroup);
+
+    locationGroup = new ToggleGroup();
+    petLocationKennelRadioButton.setToggleGroup(locationGroup);
+    petLocationShopRadioButton.setToggleGroup(locationGroup);
+
+    statusGroup = new ToggleGroup();
+    petStatusSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
+  }
 
   public void saveAddPet(ActionEvent actionEvent)
   {
@@ -45,9 +69,9 @@ public class BirdViewController
     String food = petFoodTextField.getText();
 
     // Get RadioButton values
-    char gender = petGenderMaleRadioButton.isSelected() ?
+    char gender = petBirdGenderFemaleRadioButton.isSelected() ?
         'm' :
-        petGenderFemaleRadioButton.isSelected() ? 'f' : '-';
+        petBirdGenderFemaleRadioButton.isSelected() ? 'f' : '-';
 
     String location = petLocationShopRadioButton.isSelected() ?
         "Shop" :
@@ -72,8 +96,8 @@ public class BirdViewController
         alert1.show();
       }
 
-      else if ((petGenderMaleRadioButton.isSelected()
-          && petGenderFemaleRadioButton.isSelected()) || (
+      else if ((petBirdGenderFemaleRadioButton.isSelected()
+          && petBirdGenderFemaleRadioButton.isSelected()) || (
           petLocationShopRadioButton.isSelected()
               && petLocationKennelRadioButton.isSelected()) || (
           petStatusSoldRadioButton.isSelected()
