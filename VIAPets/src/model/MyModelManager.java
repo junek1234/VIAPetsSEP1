@@ -304,7 +304,7 @@ public class MyModelManager implements Serializable
 
     public boolean isThisPeriodAvailable(DateInterval dateInterval)
     {
-        LocalDate startDate = dateInterval.getStartDate().toLocalDate();
+        LocalDate startDate = dateInterval.getStartDate().toLocalDate(); // 1 + 1
         LocalDate endDate = dateInterval.getEndDate().toLocalDate();
         Date now;
         while(startDate.isBefore(endDate) || startDate.isEqual(endDate))
