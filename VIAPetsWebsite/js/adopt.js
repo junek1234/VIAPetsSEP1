@@ -1,4 +1,4 @@
-$.get("../p/pets_xml.xml", function (xml, status) {
+$.get("xml/pets_xml.xml", function (xml, status) {
 
     var $container = $("#pet-container");
 
@@ -6,7 +6,7 @@ $.get("../p/pets_xml.xml", function (xml, status) {
         var $pet = $(this);
         var location = $pet.find("location").text();
         var status = $pet.find("status").text();
-        var species ="-";
+        var displayedTypeName = $pet.find("species").text();
         if (location.toLowerCase() === "shop" && status.toLowerCase()==="not sold") {
             
             var id = $pet.find("id").text();
@@ -15,7 +15,7 @@ $.get("../p/pets_xml.xml", function (xml, status) {
             var color = $pet.find("color").text();
             var age = $pet.find("age").text();
             var gender = $pet.find("gender").text();
-            species=type;
+            displayedTypeName=type;
             
 
             var price = $pet.find("price").text();
@@ -59,7 +59,7 @@ $.get("../p/pets_xml.xml", function (xml, status) {
             var petCard = `
                                 <div class="col-12 col-sm-6 col-md-3 padding">
                                     <div class="cards_body">
-                                        <p class="card_headers">${species.toUpperCase()}</p>
+                                        <p class="card_headers">${displayedTypeName.toUpperCase()}</p>
                                         <div class="card_line"></div>
                                         <div class="card">
                                             <img class="card-img-top" src="images/default.jpg" alt="defaultPhoto" style="width:100%">
