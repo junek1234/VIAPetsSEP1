@@ -51,4 +51,17 @@
     <preferredFood>123</preferredFood>
     <price>123.0</price>
   </pet>
+  <pet>
+    <id>5</id>
+    <type>Bird</type>
+    <name>Papi</name>
+    <color>253</color>
+    <age>3</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Not Sold</status>
+    <species>Sy</species>
+    <preferredFood>X</preferredFood>
+    <price>250.0</price>
+  </pet>
 </pets>

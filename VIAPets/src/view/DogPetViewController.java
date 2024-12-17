@@ -40,15 +40,15 @@ public class DogPetViewController {
   @FXML private TextField petBreederNameEditTextField;
   @FXML private TextArea petCommentEditTextField;
 
-  @FXML private ToggleGroup genderGroup;
+        private ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleEditRadioButton;
   @FXML private RadioButton petGenderFemaleEditRadioButton;
 
-  @FXML private ToggleGroup locationGroup;
+        private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopEditRadioButton;
   @FXML private RadioButton petLocationKennelEditRadioButton;
 
-  @FXML private ToggleGroup statusGroup;
+        private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldEditRadioButton;
   @FXML private RadioButton petStatusNotSoldEditRadioButton;
   @FXML private RadioButton petStatusNotFromViaEditRadioButton;
