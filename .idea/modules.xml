@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/VIAPets/VIAPets.iml" filepath="$PROJECT_DIR$/VIAPets/VIAPets.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/VIAPetsSEP1.iml" filepath="$PROJECT_DIR$/.idea/VIAPetsSEP1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VIAPetsWebsite/VIAPetsWebsite.iml" filepath="$PROJECT_DIR$/VIAPetsWebsite/VIAPetsWebsite.iml" />
     </modules>
   </component>
 </project>

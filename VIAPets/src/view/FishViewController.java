@@ -20,22 +20,55 @@ public class FishViewController
 
   @FXML private TextArea petCommentTextField;
 
-
+  private ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleRadioButton;
   @FXML private RadioButton petGenderFemaleRadioButton;
+
+  private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
+
+  private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
+
+  private ToggleGroup saltWaterGroup;
   @FXML private RadioButton petSaltWaterYesRadioButton;
   @FXML private RadioButton petSaltWaterNoRadioButton;
+
+  private ToggleGroup predatorGroup;
   @FXML private RadioButton petPredatorYesRadioButton;
   @FXML private RadioButton petPredatorNoRadioButton;
   @FXML private TextField petSpeciesTextField;
 
   @FXML private Button petSaveButton;
 
+  @FXML
+  public void initialize()
+  {
+    genderGroup = new ToggleGroup();
+    petGenderMaleRadioButton.setToggleGroup(genderGroup);
+    petGenderFemaleRadioButton.setToggleGroup(genderGroup);
+
+    locationGroup = new ToggleGroup();
+    petLocationKennelRadioButton.setToggleGroup(locationGroup);
+    petLocationShopRadioButton.setToggleGroup(locationGroup);
+
+    statusGroup = new ToggleGroup();
+    petStatusSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
+
+    saltWaterGroup = new ToggleGroup();
+    petSaltWaterYesRadioButton.setToggleGroup(saltWaterGroup);
+    petSaltWaterNoRadioButton.setToggleGroup(saltWaterGroup);
+
+    predatorGroup = new ToggleGroup();
+    petPredatorYesRadioButton.setToggleGroup(predatorGroup);
+    petPredatorNoRadioButton.setToggleGroup(predatorGroup);
+
+  }
 
   public void saveAddPet(ActionEvent actionEvent)
   {

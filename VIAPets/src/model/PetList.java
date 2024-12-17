@@ -32,11 +32,11 @@ public class PetList implements Serializable
   }
   public Pet getPetByID(int petID) //change and think about this in Astah
   {
-    for (int i = 0; i < pets.size(); i++)
+    for (int i = 0; i < getPets().size(); i++)
     {
-      if (pets.get(i).petID==petID)
+      if (getPets().get(i).getPetID()==petID)
       {
-        return pets.get(i);
+        return getPets().get(i);
       }
 
     }

@@ -142,7 +142,7 @@ public class ViewHandler
   MyModelManager myModelManager = new MyModelManager();
   VIAPets viaPets = new VIAPets();
 
-  BirdViewController birdViewController = new BirdViewController();
+ // BirdViewController birdViewController = new BirdViewController();
 
   @FXML public void switchScene(ActionEvent e) throws IOException
   {

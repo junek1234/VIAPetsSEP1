@@ -24,14 +24,38 @@ public class BirdViewController
   @FXML private TextField petSpeciesTextField;
   @FXML private TextField petFoodTextField;
 
-  @FXML private RadioButton petGenderMaleRadioButton;
-  @FXML private RadioButton petGenderFemaleRadioButton;
+        private ToggleGroup genderGroup;
+  @FXML private RadioButton petBirdGenderMaleRadioButton;
+  @FXML private RadioButton petBirdGenderFemaleRadioButton;
+
+        private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
+
+        private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
 
+  private Pet Pet;
+
+
+  @FXML
+  public void initialize()
+  {
+    genderGroup = new ToggleGroup();
+    petBirdGenderMaleRadioButton.setToggleGroup(genderGroup);
+    petBirdGenderFemaleRadioButton.setToggleGroup(genderGroup);
+
+    locationGroup = new ToggleGroup();
+    petLocationKennelRadioButton.setToggleGroup(locationGroup);
+    petLocationShopRadioButton.setToggleGroup(locationGroup);
+
+    statusGroup = new ToggleGroup();
+    petStatusSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
+  }
 
   public void saveAddPet(ActionEvent actionEvent)
   {
@@ -45,14 +69,14 @@ public class BirdViewController
     String food = petFoodTextField.getText();
 
     // Get RadioButton values
-    char gender = petGenderMaleRadioButton.isSelected() ?
+    char gender = petBirdGenderMaleRadioButton.isSelected() ?
         'm' :
-        petGenderFemaleRadioButton.isSelected() ? 'f' : '-';
-
+        petBirdGenderFemaleRadioButton.isSelected() ? 'f' : '-';
+    System.out.println(gender);
     String location = petLocationShopRadioButton.isSelected() ?
         "Shop" :
         petLocationKennelRadioButton.isSelected() ? "Kennel" : "";
-
+    System.out.println(location);
     String status = petStatusSoldRadioButton.isSelected() ?
         "Sold" :
         petStatusNotSoldRadioButton.isSelected() ?
@@ -72,8 +96,8 @@ public class BirdViewController
         alert1.show();
       }
 
-      else if ((petGenderMaleRadioButton.isSelected()
-          && petGenderFemaleRadioButton.isSelected()) || (
+      else if ((petBirdGenderMaleRadioButton.isSelected()
+          && petBirdGenderFemaleRadioButton.isSelected()) || (
           petLocationShopRadioButton.isSelected()
               && petLocationKennelRadioButton.isSelected()) || (
           petStatusSoldRadioButton.isSelected()

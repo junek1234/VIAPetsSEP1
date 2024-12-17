@@ -40,10 +40,15 @@ public class DogPetViewController {
   @FXML private TextField petBreederNameEditTextField;
   @FXML private TextArea petCommentEditTextField;
 
+        private ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleEditRadioButton;
   @FXML private RadioButton petGenderFemaleEditRadioButton;
+
+        private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopEditRadioButton;
   @FXML private RadioButton petLocationKennelEditRadioButton;
+
+        private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldEditRadioButton;
   @FXML private RadioButton petStatusNotSoldEditRadioButton;
   @FXML private RadioButton petStatusNotFromViaEditRadioButton;
@@ -52,6 +57,22 @@ public class DogPetViewController {
 
   private Pet selectedPet;
 
+  @FXML
+  public void initialize()
+  {
+    genderGroup = new ToggleGroup();
+    petGenderMaleRadioButton.setToggleGroup(genderGroup);
+    petGenderFemaleRadioButton.setToggleGroup(genderGroup);
+
+    locationGroup = new ToggleGroup();
+    petLocationKennelRadioButton.setToggleGroup(locationGroup);
+    petLocationShopRadioButton.setToggleGroup(locationGroup);
+
+    statusGroup = new ToggleGroup();
+    petStatusSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
+  }
 
   public void saveAddPet(ActionEvent actionEvent) {
     String name = petNameTextField.getText();

@@ -20,11 +20,15 @@ public class RodentVariousViewController
   @FXML private TextArea petCommentTextField;
   @FXML private TextField petSpeciesTextField;
 
-
+        private ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleRadioButton;
   @FXML private RadioButton petGenderFemaleRadioButton;
+
+        private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
+
+        private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
@@ -32,6 +36,22 @@ public class RodentVariousViewController
 
   @FXML private Button petSaveButton;
 
+  @FXML
+  public void initialize()
+  {
+    genderGroup = new ToggleGroup();
+    petGenderMaleRadioButton.setToggleGroup(genderGroup);
+    petGenderFemaleRadioButton.setToggleGroup(genderGroup);
+
+    locationGroup = new ToggleGroup();
+    petLocationKennelRadioButton.setToggleGroup(locationGroup);
+    petLocationShopRadioButton.setToggleGroup(locationGroup);
+
+    statusGroup = new ToggleGroup();
+    petStatusSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
+  }
 
   public void saveAddPet(ActionEvent actionEvent)
   {
