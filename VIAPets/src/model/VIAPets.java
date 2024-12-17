@@ -2,9 +2,12 @@ package model;
 
 import utils.XMLHandler;
 
+import javax.swing.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Random;
 
 // dont make it static
 public class VIAPets implements Serializable
@@ -145,3 +148,6 @@ public class VIAPets implements Serializable
         + allSales + ", allPets=" + allPets + '}';
   }
 }
+
+
+

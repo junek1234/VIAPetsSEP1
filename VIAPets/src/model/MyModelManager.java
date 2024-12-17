@@ -136,7 +136,7 @@ public class MyModelManager implements Serializable
 
     public static int createNextCustomerID()
     {
-        int id=Integer.parseInt(VIAPets.lastCustomerID)+1;
+        int id = Integer.parseInt(VIAPets.lastCustomerID)+1;
         VIAPets.lastCustomerID=id+"";
         try
         {
@@ -152,7 +152,7 @@ public class MyModelManager implements Serializable
 
     public static int createNextPetID()
     {
-        int id=Integer.parseInt(VIAPets.lastPetID)+1;
+        int id = Integer.parseInt(VIAPets.lastPetID)+1;
         VIAPets.lastPetID=id+"";
         try
         {
@@ -167,7 +167,7 @@ public class MyModelManager implements Serializable
     }
     public static int createNextBookingID()
     {
-        int id=Integer.parseInt(VIAPets.lastBookingID)+1;
+        int id = Integer.parseInt(VIAPets.lastBookingID)+1;
         VIAPets.lastBookingID=id+"";
         try
         {
