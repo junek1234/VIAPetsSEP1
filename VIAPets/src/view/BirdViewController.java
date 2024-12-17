@@ -24,15 +24,15 @@ public class BirdViewController
   @FXML private TextField petSpeciesTextField;
   @FXML private TextField petFoodTextField;
 
-  @FXML private ToggleGroup genderGroup;
+        private ToggleGroup genderGroup;
   @FXML private RadioButton petBirdGenderMaleRadioButton;
   @FXML private RadioButton petBirdGenderFemaleRadioButton;
 
-  @FXML private ToggleGroup locationGroup;
+        private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
 
-  @FXML private ToggleGroup statusGroup;
+        private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
@@ -96,7 +96,7 @@ public class BirdViewController
         alert1.show();
       }
 
-      else if ((petBirdGenderFemaleRadioButton.isSelected()
+      else if ((petBirdGenderMaleRadioButton.isSelected()
           && petBirdGenderFemaleRadioButton.isSelected()) || (
           petLocationShopRadioButton.isSelected()
               && petLocationKennelRadioButton.isSelected()) || (

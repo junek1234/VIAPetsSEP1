@@ -20,24 +20,24 @@ public class FishViewController
 
   @FXML private TextArea petCommentTextField;
 
-  @FXML private ToggleGroup genderGroup;
+  private ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleRadioButton;
   @FXML private RadioButton petGenderFemaleRadioButton;
 
-  @FXML private ToggleGroup locationGroup;
+  private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
 
-  @FXML private ToggleGroup statusGroup;
+  private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
 
-  @FXML private ToggleGroup saltWaterGroup;
+  private ToggleGroup saltWaterGroup;
   @FXML private RadioButton petSaltWaterYesRadioButton;
   @FXML private RadioButton petSaltWaterNoRadioButton;
 
-  @FXML private ToggleGroup predatorGroup;
+  private ToggleGroup predatorGroup;
   @FXML private RadioButton petPredatorYesRadioButton;
   @FXML private RadioButton petPredatorNoRadioButton;
   @FXML private TextField petSpeciesTextField;
