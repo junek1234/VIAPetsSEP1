@@ -87,7 +87,7 @@ public class MyModelManager implements Serializable
 
 
         loadBookingsSettings();
-        viaPets.setAvailableSlots(VIAPets.getCurrentDate());
+        viaPets.checkAvailableSlots(VIAPets.getCurrentDate());
         XMLHandler.updateXML();
     }
 
@@ -418,7 +418,7 @@ public class MyModelManager implements Serializable
         {
             MyFileHandler.writeToTextFile(BOOKINGS_SETTINGS,VIAPets.maxKennelSlots+"");
             MyFileHandler.appendToTextFile(BOOKINGS_SETTINGS,VIAPets.bookingPrice+"");
-            viaPets.setAvailableSlots(VIAPets.getCurrentDate());
+            viaPets.checkAvailableSlots(VIAPets.getCurrentDate());
             XMLHandler.updateXML();
         }
         catch (FileNotFoundException e)
@@ -451,21 +451,35 @@ public class MyModelManager implements Serializable
      */
     public boolean isThisPeriodAvailable(DateInterval dateInterval)
     {
-        LocalDate startDate = dateInterval.getStartDate().toLocalDate(); // 1 + 1
-        LocalDate endDate = dateInterval.getEndDate().toLocalDate();
-        Date now;
-        while(startDate.isBefore(endDate) || startDate.isEqual(endDate))
+        LocalDate startDate = dateInterval.getStartDate().toLocalDate(); // Assignment, get and local date. This takes 3.
+        LocalDate endDate = dateInterval.getEndDate().toLocalDate(); // Assignment, get and local date. This takes 3.
+        Date now; //Declaration. This takes 1.
+        while(startDate.isBefore(endDate) || startDate.isEqual(endDate)) // Go through al the date interval. This takes n.
         {
-            now= new Date(startDate.getDayOfMonth(), startDate.getMonthValue(), startDate.getYear());
-            viaPets.setAvailableSlots(now);
-            if(VIAPets.availableSlotsToday==0)
+            now= new Date(startDate.getDayOfMonth(), startDate.getMonthValue(), startDate.getYear()); // Assign a value to now, one "=" and 3 getters. This takes 4.
+            viaPets.checkAvailableSlots(now); //call method to check if the date has available slots that day. This takes n
+            if(VIAPets.availableSlotsToday==0) //Check if any of the days does not have free slots.
             {
-                return false;
+                return false; // 1 return.
             }
-            startDate=startDate.plusDays(1);
+            //Add one day to the start day to check its availability.
+            startDate=startDate.plusDays(1);  // Assignment and plusDays. This takes 2.
         }
-        return true;
+        return true; // 1 return
+
+        // We have no recursion so we do not need a base case.
+//        We loop through all days of the date interval and for each day we loop through all bookings to check thair availability.
+//        T(n) = 13 + n^2. So ignoring constants we get T(n) = O(n^2).
+//        We chose this method because is the one that has the biggest big O in all our code.
+//
+//        Dominating Term Analysis
+//        T(n) = 13 + n^2
+//        - Dominating Term: n^2.
+//        - Explanation: This method will run n^2 since for each date in the date interval it is going to check in all bookings
+//        if there is any available slot.
+//
+//        Optimisation Suggestion
+//        - By creating another list for previous bookings and just looping through the current and future bookings we could reduce
+//          the times of iterations done by the loop since there will be fewer bookings to loop through.
     }
-
-
 }
