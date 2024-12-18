@@ -14,20 +14,26 @@ import utils.XMLHandler;
 
 import java.io.IOException;
 
-public class DogPetViewController {
+public class RodentViewController
+{
 
   @FXML private TextField petNameTextField;
   @FXML private TextField petColorTextField;
   @FXML private TextField petAgeTextField;
   @FXML private TextField petPriceTextField;
-  @FXML private TextField petBreedTextField;
-  @FXML private TextField petBreederNameTextField;
-  @FXML private TextArea petCommentTextField;
 
+  @FXML private TextArea petCommentTextField;
+  @FXML private TextField petSpeciesTextField;
+
+        private ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleRadioButton;
   @FXML private RadioButton petGenderFemaleRadioButton;
+
+        private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
+
+        private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
@@ -37,33 +43,33 @@ public class DogPetViewController {
   @FXML private TextField petColorEditTextField;
   @FXML private TextField petAgeEditTextField;
   @FXML private TextField petPriceEditTextField;
-  @FXML private TextField petBreedEditTextField;
-  @FXML private TextField petBreederNameEditTextField;
   @FXML private TextArea petCommentEditTextField;
 
-        private ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleEditRadioButton;
   @FXML private RadioButton petGenderFemaleEditRadioButton;
 
-        private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopEditRadioButton;
   @FXML private RadioButton petLocationKennelEditRadioButton;
 
-        private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldEditRadioButton;
   @FXML private RadioButton petStatusNotSoldEditRadioButton;
   @FXML private RadioButton petStatusNotFromViaEditRadioButton;
+
+  @FXML private TextField petSpeciesEditTextField;
 
   @FXML private Button petSaveButton;
 
   private Pet selectedPet;
 
-  public void saveAddPet(ActionEvent actionEvent) {
+  public void saveAddPet(ActionEvent actionEvent)
+  {
+    int age=0;
+    double price=0;
     String name = petNameTextField.getText();
     String color = petColorTextField.getText();
-    String breed = petBreedTextField.getText();
-    String breederName = petBreederNameTextField.getText();
+
     String comment = petCommentTextField.getText();
+    String species = petSpeciesTextField.getText();
 
     // Get RadioButton values
     char gender = petGenderMaleRadioButton.isSelected() ?
@@ -76,90 +82,96 @@ public class DogPetViewController {
 
     String status = petStatusSoldRadioButton.isSelected() ?
         "Sold" :
-        petStatusNotSoldRadioButton.isSelected() ? "Not Sold" :
+        petStatusNotSoldRadioButton.isSelected() ?
+            "Not Sold" :
             petStatusNotFromViaRadioButton.isSelected() ? "Not From Via" : "";
-    int age = 0;
-    double price = 0;
-
-    if (petNameTextField.getText().isEmpty() || petAgeTextField.getText()
-        .isEmpty() || petPriceTextField.getText().isEmpty()
-        || petBreedTextField.getText().isEmpty()
-        || petBreederNameTextField.getText().isEmpty() || gender == '-'
-        || location.isEmpty() || status.isEmpty()) {
+    if (petNameTextField.getText().isEmpty()||petAgeTextField.getText().isEmpty()||petPriceTextField.getText().isEmpty()||petSpeciesTextField.getText().isEmpty()||gender=='-'||location.isEmpty()||status.isEmpty())
+    {
       Alert alert1 = new Alert(Alert.AlertType.ERROR);
       alert1.setTitle("Error");
       alert1.setHeaderText(null);
       alert1.setContentText("Invalid input!");
       alert1.show();
-    } else if ((petGenderMaleRadioButton.isSelected()
-        && petGenderFemaleRadioButton.isSelected()) || (
-        petLocationShopRadioButton.isSelected()
-            && petLocationKennelRadioButton.isSelected()) || (
-        petStatusSoldRadioButton.isSelected()
-            && petStatusNotSoldRadioButton.isSelected()) || (
-        petStatusSoldRadioButton.isSelected()
-            && petStatusNotFromViaRadioButton.isSelected())
-        || petStatusNotSoldRadioButton.isSelected()
-        && petStatusNotFromViaRadioButton.isSelected()) {
+    }
+    else if((petGenderMaleRadioButton.isSelected()&&petGenderFemaleRadioButton.isSelected())||(petLocationShopRadioButton.isSelected()&&petLocationKennelRadioButton.isSelected())||(petStatusSoldRadioButton.isSelected()&&petStatusNotSoldRadioButton.isSelected())||(petStatusSoldRadioButton.isSelected()&&petStatusNotFromViaRadioButton.isSelected())||petStatusNotSoldRadioButton.isSelected()&&petStatusNotFromViaRadioButton.isSelected())
+    {
       Alert alert2 = new Alert(Alert.AlertType.ERROR);
       alert2.setTitle("Error");
       alert2.setHeaderText(null);
       alert2.setContentText("More Than One Choice Selected!");
       alert2.show();
-    } else {
-      if (!petAgeTextField.getText().isEmpty()) {
-        try {
+    }
+    else
+    {
+      if(!petAgeTextField.getText().isEmpty())
+      {
+        try
+        {
           age = Integer.parseInt(petAgeTextField.getText());
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
           alert1.setContentText("Age must be a number!");
           alert1.show();
-          return; //it stops the method when catching exception
+          return;//it stops the method when catching exception
         }
 
       }
-      if (!petPriceTextField.getText().isEmpty()) {
-        try {
+      if (!petPriceTextField.getText().isEmpty())
+      {
+        try
+        {
           price = Double.parseDouble(petPriceTextField.getText());
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
           alert1.setContentText("Price must be a number!");
           alert1.show();
-          return; //it stops the method when catching exception
+          return;//it stops the method when catching exception
         }
       }
 
       Pet newPet;
-      if (ViewHandler.lastPopupSource.equals("dogMenuItem")) {
-        newPet = new Dog(MyModelManager.createNextPetID(), name, color, age,
-            gender, location, status, breed, breederName, price, comment);
-      } else {
-        newPet = new Cat(MyModelManager.createNextPetID(), name, color, age,
-            gender, location, status, breed, breederName, price, comment);
+      if (ViewHandler.lastPopupSource.equals("rodentMenuItem"))
+      {
+        newPet = new Rodent(MyModelManager.createNextPetID(), name, color, age,
+            gender, location, status, species, price, comment);
+      }
+      else
+      {
+        newPet = new Various(MyModelManager.createNextPetID(), name, color, age,
+            gender, location, status, species, price, comment);
       }
       MyModelManager manager = new MyModelManager();
-      try {
+      try
+      {
         manager.addPet(newPet);
         Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         stage.close();
-      } catch (IOException e) {
+
+      }
+      catch (IOException e)
+      {
         throw new RuntimeException(e);
       }
 
+
       XMLHandler.updateXML();
+
+
     }
   }
 
-
-  public void saveEditDog(ActionEvent actionEvent) {
+  public void saveEditRodent(ActionEvent actionEvent) {
     String name = petNameEditTextField.getText();
     String color = petColorEditTextField.getText();
-    String breed = petBreedEditTextField.getText();
-    String breederName = petBreederNameEditTextField.getText();
+    String species = petSpeciesEditTextField.getText();
     String comment = petCommentEditTextField.getText();
 
     char gender = petGenderMaleEditRadioButton.isSelected() ?
@@ -197,18 +209,17 @@ public class DogPetViewController {
     if (result == ButtonType.OK) {
       try {
 
-        if (selectedPet instanceof Dog) {
-          Dog dog = (Dog) selectedPet;
-          dog.setName(name);
-          dog.setColor(color);
-          dog.setBreed(breed);
-          dog.setBreederName(breederName);
-          dog.setComment(comment);
-          dog.setGender(gender);
-          dog.setLocation(location);
-          dog.setStatus(status);
-          dog.setAge(age);
-          dog.setBasePrice(price);
+        if (selectedPet instanceof Rodent) {
+          Rodent rodent = (Rodent) selectedPet;
+          rodent.setName(name);
+          rodent.setColor(color);
+          rodent.setSpecies(species);
+          rodent.setComment(comment);
+          rodent.setGender(gender);
+          rodent.setLocation(location);
+          rodent.setStatus(status);
+          rodent.setAge(age);
+          rodent.setBasePrice(price);
         }
         // in the file
         MyModelManager mManager = new MyModelManager();
@@ -228,38 +239,35 @@ public class DogPetViewController {
     }
   }
 
+  public void fillRodent(Rodent rodent) {
 
+    selectedPet = rodent;
 
-  public void fillDog(Dog dog) {
+    petNameEditTextField.setText(rodent.getName());
+    petColorEditTextField.setText(rodent.getColor());
+    petAgeEditTextField.setText(String.valueOf(rodent.getAge()));
+    petCommentEditTextField.setText(rodent.getComment());
+    petSpeciesEditTextField.setText(rodent.getSpecies());
 
-    selectedPet = dog;
+    petPriceEditTextField.setText(String.valueOf(rodent.getBasePrice()));
 
-    petNameEditTextField.setText(dog.getName());
-    petColorEditTextField.setText(dog.getColor());
-    petAgeEditTextField.setText(String.valueOf(dog.getAge()));
-    petCommentEditTextField.setText(dog.getComment());
-
-    petBreedEditTextField.setText(dog.getBreed());
-    petBreederNameEditTextField.setText(dog.getBreederName());
-    petPriceEditTextField.setText(String.valueOf(dog.getBasePrice()));
-
-    if (dog.getGender() == 'm') {
+    if (rodent.getGender() == 'm') {
       petGenderMaleEditRadioButton.setSelected(true);
-    } else if (dog.getGender() == 'f') {
+    } else if (rodent.getGender() == 'f') {
       petGenderFemaleEditRadioButton.setSelected(true);
     }
 
-    if ("Shop".equals(dog.getLocation())) {
+    if ("Shop".equals(rodent.getLocation())) {
       petLocationShopEditRadioButton.setSelected(true);
-    } else if ("Kennel".equals(dog.getLocation())) {
+    } else if ("Kennel".equals(rodent.getLocation())) {
       petLocationKennelEditRadioButton.setSelected(true);
     }
 
-    if ("Sold".equals(dog.getStatus())) {
+    if ("Sold".equals(rodent.getStatus())) {
       petStatusSoldEditRadioButton.setSelected(true);
-    } else if ("Not Sold".equals(dog.getStatus())) {
+    } else if ("Not Sold".equals(rodent.getStatus())) {
       petStatusNotSoldEditRadioButton.setSelected(true);
-    } else if ("Not From Via".equals(dog.getStatus())) {
+    } else if ("Not From Via".equals(rodent.getStatus())) {
       petStatusNotFromViaEditRadioButton.setSelected(true);
     }
   }
@@ -267,30 +275,40 @@ public class DogPetViewController {
   public void handleEditAction(Pet pet) {
     try {
 
-      if (pet instanceof Dog) {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(
+          "fxml/pets/EditRodentView.fxml"));
+      Parent root = loader.load();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(
-            "fxml/pets/EditDogCatPetView.fxml"));
-        Parent root = loader.load();
+      RodentViewController controller = loader.getController();
 
-        DogPetViewController controller = loader.getController();
+      controller.fillRodent((Rodent) pet);
 
-        controller.fillDog((Dog) pet);
+      Stage editStage = new Stage();
+      editStage.setTitle("Edit Rodent");
+      editStage.setScene(new Scene(root));
+      editStage.initModality(Modality.APPLICATION_MODAL);
+      editStage.showAndWait();
+    }
 
-        Stage editStage = new Stage();
-        editStage.setTitle("Edit Pet");
-        editStage.setScene(new Scene(root));
-        editStage.initModality(Modality.APPLICATION_MODAL);
-        editStage.showAndWait();
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-//      // Optionally show an alert or log the error message for better debugging
-//      Alert alert = new Alert(Alert.AlertType.ERROR);
-//      alert.setTitle("Error");
-//      alert.setHeaderText("Failed to load the edit window.");
-//      alert.setContentText("There was an error loading the FXML for the edit window.");
-//      alert.showAndWait();
+    catch (IOException e) {
+//       Show a log the error message
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setHeaderText("Failed to load the edit window.");
+      alert.setContentText("There was an error loading the FXML for the edit window.");
+      alert.showAndWait();
     }
   }
+
+
+
+
 }
+
+
+
+
+
+
+
+
