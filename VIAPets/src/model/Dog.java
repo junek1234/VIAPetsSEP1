@@ -2,128 +2,237 @@ package model;
 
 import java.io.Serializable;
 
-public class Dog extends Pet implements Serializable
-{
+/**
+ * Class representing a Dog, extending the Pet class.
+ * This class implements {@link Serializable} to allow instances to be serialized.
+ *
+ * @author Piotr Junosz
+ * @version 1.0
+ */
+public class Dog extends Pet implements Serializable {
+
+  /** The breed of the dog. */
   private String breed;
+
+  /** The name of the breeder of the dog. */
   private String breederName;
 
+  /**
+   * Constructs a new Dog with the specified attributes.
+   *
+   * @param petID the unique identifier for the dog.
+   * @param name the name of the dog.
+   * @param color the color of the dog.
+   * @param age the age of the dog.
+   * @param gender the gender of the dog.
+   * @param location the location of the dog.
+   * @param status the status of the dog.
+   * @param breed the breed of the dog.
+   * @param breederName the name of the breeder of the dog.
+   * @param basePrice the base price of the dog.
+   * @param comment additional comments about the dog.
+   */
   public Dog(int petID, String name, String color, int age, char gender,
-      String location, String status, String breed, String breederName, double basePrice, String comment)
-  {
+      String location, String status, String breed, String breederName, double basePrice, String comment) {
     super(petID, name, color, age, gender, location, status, basePrice, comment);
     this.breed = breed;
     this.breederName = breederName;
   }
 
-  public String getBreed()
-  {
+  /**
+   * Gets the breed of the dog.
+   *
+   * @return the breed of the dog.
+   */
+  public String getBreed() {
     return breed;
   }
 
-  public void setBreed(String breed)
-  {
+  /**
+   * Sets the breed of the dog.
+   *
+   * @param breed the new breed of the dog.
+   */
+  public void setBreed(String breed) {
     this.breed = breed;
   }
 
-  public String getBreederName()
-  {
+  /**
+   * Gets the name of the breeder of the dog.
+   *
+   * @return the name of the breeder.
+   */
+  public String getBreederName() {
     return breederName;
   }
 
-  public void setBreederName(String breederName)
-  {
+  /**
+   * Sets the name of the breeder of the dog.
+   *
+   * @param breederName the new name of the breeder.
+   */
+  public void setBreederName(String breederName) {
     this.breederName = breederName;
   }
 
-  public int getPetID()
-  {
+  /**
+   * Gets the pet ID of the dog.
+   *
+   * @return the pet ID.
+   */
+  public int getPetID() {
     return super.petID;
   }
 
-  public String getName()
-  {
+  /**
+   * Gets the name of the dog.
+   *
+   * @return the name of the dog.
+   */
+  public String getName() {
     return super.name;
   }
 
-  public String getColor()
-  {
+  /**
+   * Gets the color of the dog.
+   *
+   * @return the color of the dog.
+   */
+  public String getColor() {
     return super.color;
   }
 
-  public int getAge()
-  {
+  /**
+   * Gets the age of the dog.
+   *
+   * @return the age of the dog.
+   */
+  public int getAge() {
     return super.age;
   }
 
-  public char getGender()
-  {
+  /**
+   * Gets the gender of the dog.
+   *
+   * @return the gender of the dog.
+   */
+  public char getGender() {
     return super.gender;
   }
 
-  public String getComment()
-  {
+  /**
+   * Gets additional comments about the dog.
+   *
+   * @return comments about the dog.
+   */
+  public String getComment() {
     return super.comment;
   }
 
-  public String getLocation()
-  {
+  /**
+   * Gets the location of the dog.
+   *
+   * @return the location of the dog.
+   */
+  public String getLocation() {
     return super.location;
   }
 
-  public String getStatus()
-  {
+  /**
+   * Gets the status of the dog.
+   *
+   * @return the status of the dog.
+   */
+  public String getStatus() {
     return super.status;
   }
 
-  public void setPetID(int petID)
-  {
-    super.petID=petID;
+  /**
+   * Sets the pet ID of the dog.
+   *
+   * @param petID the new pet ID.
+   */
+  public void setPetID(int petID) {
+    super.petID = petID;
   }
 
-  public void setName(String name)
-  {
-  super.name=name;
+  /**
+   * Sets the name of the dog.
+   *
+   * @param name the new name of the dog.
+   */
+  public void setName(String name) {
+    super.name = name;
   }
 
-  public void setAge(int age)
-  {
-    super.age=age;
+  /**
+   * Sets the age of the dog.
+   *
+   * @param age the new age of the dog.
+   */
+  public void setAge(int age) {
+    super.age = age;
   }
 
-  public void setGender(char gender)
-  {
-    super.gender=gender;
+  /**
+   * Sets the gender of the dog.
+   *
+   * @param gender the new gender of the dog.
+   */
+  public void setGender(char gender) {
+    super.gender = gender;
   }
 
-  public void setComment(String comment)
-  {
-    super.comment=comment;
+  /**
+   * Sets additional comments about the dog.
+   *
+   * @param comment the new comments about the dog.
+   */
+  public void setComment(String comment) {
+    super.comment = comment;
   }
 
-  public void setLocation(String location)
-  {
-    super.location=location;
+  /**
+   * Sets the location of the dog.
+   *
+   * @param location the new location of the dog.
+   */
+  public void setLocation(String location) {
+    super.location = location;
   }
 
-  public void setStatus(String status)
-  {
-    super.status=status;
+  /**
+   * Sets the status of the dog.
+   *
+   * @param status the new status of the dog.
+   */
+  public void setStatus(String status) {
+    super.status = status;
   }
 
-  public boolean equals(Object obj)
-  {
-    if(obj==null || obj.getClass()!=getClass())
-    {
+  /**
+   * Compares this dog to another object for equality.
+   *
+   * @param obj the object to compare.
+   * @return true if the objects are equal; false otherwise.
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
     Dog dog = (Dog) obj;
     return super.equals(dog) && dog.breed.equals(breed) && dog.breederName.equals(breederName);
-
   }
 
-  public String toString()
-  {
+  /**
+   * Returns a string representation of the dog.
+   *
+   * @return a string describing the dog.
+   */
+  @Override
+  public String toString() {
     return "Dog{" + "breed='" + breed + '\'' + ", breederName='" + breederName
-        + '\'' + '}'+ super.toString();
+        + '\'' + '}' + super.toString();
   }
 }
