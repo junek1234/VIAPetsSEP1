@@ -44,7 +44,7 @@ public class VIAPets implements Serializable {
    *
    * @param date the current date to check for available slots
    */
-  public void setAvailableSlots(Date date) {
+  public void checkAvailableSlots(Date date) {
     int count = 0;
     for (Booking booking : allBookings.getBookings()) {
       if (!date.isGreaterThan(booking.getDateInterval().getEndDate())

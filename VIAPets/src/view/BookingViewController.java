@@ -44,8 +44,7 @@ public class BookingViewController
       alert1.setTitle("Error"); // 1
       alert1.setHeaderText(null); // 1
       alert1.setContentText("Invalid input!"); // 1
-      alert1.show(); // 1
-      return;//it stops the method when catching exception
+      alert1.show();
     }
     else
     {
@@ -85,6 +84,7 @@ public class BookingViewController
           .getCustomer(customerID); // Getter plus assignment. This takes 2
       DateInterval dateInterval = new DateInterval(startDate,endDate); // Getter plus assignment. This takes 2
 
+      //Check if during that period there is an available slot in the kennel for the pet
       if(!manager.isThisPeriodAvailable(dateInterval))
       {
         //Create and display the alert
@@ -125,10 +125,11 @@ public class BookingViewController
       }
       else
       {
-        for (int i = 0; i < manager.getAllBookings().getBookings().size(); i++) // Checking if there is a slot available for all the days of the new booking. n
+        for (int i = 0; i < manager.getAllBookings().getBookings().size(); i++) // Loop through all bookings. This takes 1 + n.
         {
-          //Check if a pet already has a booking for that period.       if((manager.getAllBookings().getBookings().get(i).getPet().getPetID()==petID))
-          if((dateInterval.isBetween(manager.getAllBookings().getBookings().get(i).getDateInterval()
+          //Check if a pet already has a booking for that period.
+          if((manager.getAllBookings().getBookings().get(i).getPet().getPetID() == petID))
+            if((dateInterval.isBetween(manager.getAllBookings().getBookings().get(i).getDateInterval()
               .getStartDate()))||(dateInterval.isBetween(manager.getAllBookings().getBookings().get(i).getDateInterval()
               .getEndDate())))
           {
@@ -178,12 +179,12 @@ public class BookingViewController
 
 //     We have no recursion so we do not need a base case.
 //     We loop n times in the for loop because that is the length of the bookings list.
-//     T(n) = 96 + n, so ignoring constants, we get T(n) = O(n).
+//     T(n) = 97 + n, so ignoring constants, we get T(n) = O(n).
 //     We chose this method because it is the one with the biggest time complexity in our code.
 //
 //
 //     Dominating Term Analysis
-//     T(n) = 96 + n
+//     T(n) = 97 + n
 //     - Dominating Term: n
 //     - Coefficient Analysis: The coefficient 1 comes from the operations performed in each iteration of both the while and for loops.
 //     -Explanation: The coefficient 1 influences practical runtime by multiplying the n factor.
