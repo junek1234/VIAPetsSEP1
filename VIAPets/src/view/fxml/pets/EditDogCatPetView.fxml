@@ -153,7 +153,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </HBox>
-      <Button fx:id="petSaveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveEditPet" text="Save">
+      <Button fx:id="petSaveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveEditDog" text="Save">
          <VBox.margin>
             <Insets bottom="10.0" left="275.0" />
          </VBox.margin>

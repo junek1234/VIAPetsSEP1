@@ -621,10 +621,10 @@ public class ViewHandler
             Pet selectedPet = getTableView().getItems().get(getIndex());
             DogPetViewController controller = new DogPetViewController();
             controller.handleEditAction(selectedPet);
-
-//            if (selectedPet instanceof Dog) {
-//              controller.saveEditDog((Dog) selectedPet);
-//            }
+            
+//            if (selectedPet instanceof Dog) {controller.saveEditPet();}
+              
+            petTable.refresh();
 
           });
 

@@ -3,6 +3,7 @@ package view;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -56,23 +57,6 @@ public class DogPetViewController {
   @FXML private Button petSaveButton;
 
   private Pet selectedPet;
-
-  @FXML
-  public void initialize()
-  {
-    genderGroup = new ToggleGroup();
-    petGenderMaleRadioButton.setToggleGroup(genderGroup);
-    petGenderFemaleRadioButton.setToggleGroup(genderGroup);
-
-    locationGroup = new ToggleGroup();
-    petLocationKennelRadioButton.setToggleGroup(locationGroup);
-    petLocationShopRadioButton.setToggleGroup(locationGroup);
-
-    statusGroup = new ToggleGroup();
-    petStatusSoldRadioButton.setToggleGroup(statusGroup);
-    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
-    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
-  }
 
   public void saveAddPet(ActionEvent actionEvent) {
     String name = petNameTextField.getText();
@@ -169,20 +153,15 @@ public class DogPetViewController {
       XMLHandler.updateXML();
     }
   }
-  
 
-  public void saveEditPet(ActionEvent actionEvent) {
 
-//    Pet selectedPet = getTableView().getItems().get(getIndex());
-
-    // Retrieve updated values from text fields
+  public void saveEditDog(ActionEvent actionEvent) {
     String name = petNameEditTextField.getText();
     String color = petColorEditTextField.getText();
     String breed = petBreedEditTextField.getText();
     String breederName = petBreederNameEditTextField.getText();
     String comment = petCommentEditTextField.getText();
 
-    // Retrieve RadioButton values
     char gender = petGenderMaleEditRadioButton.isSelected() ?
         'm' : petGenderFemaleEditRadioButton.isSelected() ? 'f' : '-';
 
@@ -199,9 +178,8 @@ public class DogPetViewController {
     try {
       age = Integer.parseInt(petAgeEditTextField.getText());
       price = Double.parseDouble(petPriceEditTextField.getText());
-
     } catch (NumberFormatException e) {
-      // Handle invalid input (optional)
+      // Handle invalid input
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Input Error");
       alert.setHeaderText("Invalid Input");
@@ -210,24 +188,46 @@ public class DogPetViewController {
       return;
     }
 
-    // Update the selected pet's attributes
-    if (selectedPet instanceof Dog) {
-      Dog dog = (Dog) selectedPet;
-      dog.setName(name);
-      dog.setColor(color);
-      dog.setBreed(breed);
-      dog.setBreederName(breederName);
-      dog.setComment(comment);
-      dog.setGender(gender);
-      dog.setLocation(location);
-      dog.setStatus(status);
-      dog.setAge(age);
-      dog.setBasePrice(price);
-    } else {
-      // Handle other pet types if applicable
-    }
+    Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+    confirmationAlert.setTitle("Save Changes");
+    confirmationAlert.setHeaderText("Are you sure you want to save the changes?");
+    confirmationAlert.setContentText("Click OK to save or Cancel to cancel.");
 
+    ButtonType result = confirmationAlert.showAndWait().orElse(ButtonType.CANCEL);
+    if (result == ButtonType.OK) {
+      try {
+
+        if (selectedPet instanceof Dog) {
+          Dog dog = (Dog) selectedPet;
+          dog.setName(name);
+          dog.setColor(color);
+          dog.setBreed(breed);
+          dog.setBreederName(breederName);
+          dog.setComment(comment);
+          dog.setGender(gender);
+          dog.setLocation(location);
+          dog.setStatus(status);
+          dog.setAge(age);
+          dog.setBasePrice(price);
+        }
+        // in the file
+        MyModelManager mManager = new MyModelManager();
+        mManager.editPet(selectedPet.getPetID(), selectedPet);
+
+        // Close the edit window
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
+      } catch (IOException e) {
+        // Handle file write error
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setTitle("File Error");
+        errorAlert.setHeaderText("Error Saving Changes");
+        errorAlert.setContentText("Could not save changes to the file. Please try again.");
+        errorAlert.showAndWait();
+      }
+    }
   }
+
 
 
   public void fillDog(Dog dog) {
