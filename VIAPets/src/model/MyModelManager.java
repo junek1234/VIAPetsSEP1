@@ -482,6 +482,4 @@ public class MyModelManager implements Serializable
 //        - By creating another list for previous bookings and just looping through the current and future bookings we could reduce
 //          the times of iterations done by the loop since there will be fewer bookings to loop through.
     }
-
-
 }
