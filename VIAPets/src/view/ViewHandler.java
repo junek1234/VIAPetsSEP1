@@ -1,7 +1,5 @@
 package view;
 
-import javafx.application.Application;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -22,13 +20,11 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import model.*;
 
 
 import javafx.scene.control.TableColumn;
 
-import java.awt.print.Book;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
@@ -316,17 +312,17 @@ public class ViewHandler
     }
     else if (source == birdMenuItem)
     {
-      fxmlPath = "fxml/pets/BirdPetView.fxml";
+      fxmlPath = "fxml/pets/BirdView.fxml";
       popupStage.setTitle("Add Bird");
     }
     else if (source == fishMenuItem)
     {
-      fxmlPath = "fxml/pets/FishPetView.fxml";
+      fxmlPath = "fxml/pets/FishView.fxml";
       popupStage.setTitle("Add Fish");
     }
     else if (source == rodentMenuItem || source == variousMenuItem)
     {
-      fxmlPath = "fxml/pets/RodentVariousPetView.fxml";
+      fxmlPath = "fxml/pets/RodentView.fxml";
       popupStage.setTitle(
           "Add " + (source == rodentMenuItem ? "Rodent" : "Various"));
 
@@ -619,11 +615,21 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Pet selectedPet = getTableView().getItems().get(getIndex());
-            DogPetViewController controller = new DogPetViewController();
-            controller.handleEditAction(selectedPet);
             
-//            if (selectedPet instanceof Dog) {controller.saveEditPet();}
-              
+            DogViewController dogController = new DogViewController();
+            CatViewController catController = new CatViewController();
+            FishViewController fishController = new FishViewController();
+            BirdViewController birdController = new BirdViewController();
+            RodentViewController rodentController = new RodentViewController();
+            VariousViewController variousController = new VariousViewController();
+            
+            if (selectedPet instanceof Dog) {dogController.handleEditAction(selectedPet);}
+            if (selectedPet instanceof Cat) {catController.handleEditAction(selectedPet);}
+            if (selectedPet instanceof Fish) {fishController.handleEditAction(selectedPet);}
+            if (selectedPet instanceof Bird) {birdController.handleEditAction(selectedPet);}
+            if (selectedPet instanceof Rodent) {rodentController.handleEditAction(selectedPet);}
+            if (selectedPet instanceof Various) {variousController.handleEditAction(selectedPet);}
+
             petTable.refresh();
 
           });

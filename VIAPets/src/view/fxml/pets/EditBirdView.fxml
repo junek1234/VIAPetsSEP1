@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DogViewController">
+<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BirdViewController">
   <children>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
          <VBox.margin>
@@ -21,13 +21,13 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="petNameTextField" prefHeight="0.0" prefWidth="118.0" />
+            <TextField fx:id="petNameEditTextField" prefHeight="0.0" prefWidth="118.0" />
             <Label prefHeight="34.0" prefWidth="60.0" text="Color">
                <HBox.margin>
                   <Insets left="75.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="petColorTextField" prefHeight="0.0" prefWidth="118.0" />
+            <TextField fx:id="petColorEditTextField" prefHeight="0.0" prefWidth="118.0" />
          </children>
       </HBox>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
@@ -37,14 +37,14 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="petAgeTextField" prefHeight="0.0" prefWidth="118.0" />
+            <TextField fx:id="petAgeEditTextField" prefHeight="0.0" prefWidth="118.0" />
             <Label prefHeight="34.0" prefWidth="60.0" text="Gender">
                <HBox.margin>
-                  <Insets left="70.0" />
+                  <Insets left="75.0" />
                </HBox.margin>
             </Label>
-            <RadioButton fx:id="petGenderMaleRadioButton" mnemonicParsing="false" text="Male" />
-            <RadioButton fx:id="petGenderFemaleRadioButton" mnemonicParsing="false" text="Female">
+            <RadioButton fx:id="petGenderMaleEditRadioButton" text="Male" />
+            <RadioButton fx:id="petGenderFemaleEditRadioButton" text="Female">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
@@ -61,31 +61,19 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton fx:id="petLocationShopRadioButton" mnemonicParsing="false" text="Shop" />
-            <RadioButton fx:id="petLocationKennelRadioButton" mnemonicParsing="false" text="Kennel">
+            <RadioButton fx:id="petLocationShopEditRadioButton" mnemonicParsing="false" text="Shop" />
+            <RadioButton fx:id="petLocationKennelEditRadioButton" mnemonicParsing="false" text="Kennel">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
             </RadioButton>
             <Label prefHeight="34.0" prefWidth="60.0" text="Price">
                <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="55.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="petPriceTextField" prefHeight="0.0" prefWidth="118.0">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </TextField>
+            <TextField fx:id="petPriceEditTextField" prefHeight="0.0" prefWidth="118.0" />
          </children>
-         <VBox.margin>
-            <Insets top="30.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
          <VBox.margin>
             <Insets top="30.0" />
          </VBox.margin>
@@ -97,13 +85,13 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton fx:id="petStatusSoldRadioButton" mnemonicParsing="false" text="Sold" />
-            <RadioButton fx:id="petStatusNotSoldRadioButton" mnemonicParsing="false" text="Not sold">
+            <RadioButton fx:id="petStatusSoldEditRadioButton" mnemonicParsing="false" text="Sold" />
+            <RadioButton fx:id="petStatusNotSoldEditRadioButton" mnemonicParsing="false" text="Not sold">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="petStatusNotFromViaRadioButton" mnemonicParsing="false" text="Not from VIAPets">
+            <RadioButton fx:id="petStatusNotFromViaEditRadioButton" mnemonicParsing="false" text="Not from VIAPets">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -112,34 +100,37 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
       </HBox>
       <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
          <children>
-            <Label prefHeight="34.0" prefWidth="60.0" text="Breed">
+            <Label prefHeight="34.0" prefWidth="60.0" text="Species">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="petBreedTextField" prefHeight="0.0" prefWidth="118.0" />
-            <Label prefHeight="26.0" prefWidth="80.0" text="Breeder Name">
+            <TextField fx:id="petSpeciesEditTextField" prefHeight="0.0" prefWidth="118.0" />
+            <Label prefHeight="26.0" prefWidth="80.0" text="Preferred food">
                <HBox.margin>
                   <Insets left="75.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="petBreederNameTextField" prefHeight="0.0" prefWidth="118.0" />
+            <TextField fx:id="petPreferredFoodEditTextField" prefHeight="0.0" prefWidth="118.0" />
          </children>
          <VBox.margin>
-            <Insets top="25.0" />
+            <Insets top="30.0" />
          </VBox.margin>
       </HBox>
-      <HBox maxHeight="-Infinity" prefHeight="122.0" prefWidth="640.0">
+      <HBox maxHeight="-Infinity" prefHeight="118.0" prefWidth="640.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="86.0" prefWidth="330.0">
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="329.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="63.0" prefWidth="273.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Comment" textAlignment="CENTER" />
-                        <TextArea fx:id="petCommentTextField" prefHeight="39.0" prefWidth="157.0">
+                        <TextArea fx:id="petCommentEditTextField" prefHeight="39.0" prefWidth="157.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -147,15 +138,18 @@
                      </children>
                   </HBox>
                </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </VBox>
          </children>
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
       </HBox>
-      <Button fx:id="petSaveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveAddPet" text="Save">
+      <Button fx:id="petSaveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveEditBird" text="Save">
          <VBox.margin>
-            <Insets bottom="10.0" left="275.0" />
+            <Insets bottom="10.0" left="275.0" top="10.0" />
          </VBox.margin>
       </Button>
   </children>

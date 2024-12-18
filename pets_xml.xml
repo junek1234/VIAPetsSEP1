@@ -1,68 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pets>
   <pet>
-    <id>1</id>
+    <id>6</id>
+    <type>Fish</type>
+    <name> m,  </name>
+    <color>mnka</color>
+    <age>0</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Sold</status>
+    <saltwater>true</saltwater>
+    <species>kml</species>
+    <predator>true</predator>
+    <price>9.0</price>
+  </pet>
+  <pet>
+    <id>7</id>
     <type>Dog</type>
-    <name>Finally</name>
-    <color>it worksss!!!!!!!</color>
-    <age>3</age>
+    <name>kk</name>
+    <color>lk</color>
+    <age>9</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Sold</status>
+    <breed>kds</breed>
+    <breederName>kls</breederName>
+    <price>0.0</price>
+  </pet>
+  <pet>
+    <id>8</id>
+    <type>Cat</type>
+    <name>kk</name>
+    <color>lkmsd</color>
+    <age>9</age>
     <gender>m</gender>
     <location>Kennel</location>
     <status>Sold</status>
-    <breed>Golden Retriever</breed>
-    <breederName>HappyPaws</breederName>
-    <price>300.0</price>
+    <breed>,m</breed>
+    <breederName>lkds</breederName>
+    <price>678.0</price>
   </pet>
   <pet>
-    <id>2</id>
-    <type>Cat</type>
-    <name>Whiskers</name>
-    <color>Gray</color>
-    <age>2</age>
-    <gender>f</gender>
-    <location>Shop</location>
-    <status>Not Sold</status>
-    <breed>British Shorthair</breed>
-    <breederName>CozyCats</breederName>
-    <price>150.0</price>
-  </pet>
-  <pet>
-    <id>3</id>
+    <id>9</id>
     <type>Bird</type>
-    <name>Tweety</name>
-    <color>Yellow</color>
-    <age>1</age>
-    <gender>f</gender>
-    <location>Shop</location>
-    <status>Not Sold</status>
-    <species>Canary</species>
-    <preferredFood>Seeds</preferredFood>
-    <price>50.0</price>
-  </pet>
-  <pet>
-    <id>4</id>
-    <type>Fish</type>
-    <name>Bubbles</name>
-    <color>Orange</color>
-    <age>2</age>
+    <name>kk</name>
+    <color>lks</color>
+    <age>9</age>
     <gender>m</gender>
     <location>Shop</location>
     <status>Sold</status>
-    <saltwater>false</saltwater>
-    <species>Goldfish</species>
-    <predator>false</predator>
-    <price>25.0</price>
+    <species>lkds</species>
+    <preferredFood>lks</preferredFood>
+    <price>89.0</price>
   </pet>
   <pet>
-    <id>5</id>
+    <id>10</id>
     <type>Rodent</type>
-    <name>Nibbles</name>
-    <color>White</color>
-    <age>1</age>
+    <name>lkls</name>
+    <color>njds</color>
+    <age>88</age>
     <gender>m</gender>
     <location>Shop</location>
-    <status>Not Sold</status>
-    <species>Hamster</species>
-    <price>20.0</price>
+    <status>Sold</status>
+    <species>njds</species>
+    <price>898.0</price>
+  </pet>
+  <pet>
+    <id>11</id>
+    <type>Various</type>
+    <name>gg</name>
+    <color>kndsa</color>
+    <age>88</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Sold</status>
+    <species>lkds</species>
+    <price>88.0</price>
   </pet>
 </pets>

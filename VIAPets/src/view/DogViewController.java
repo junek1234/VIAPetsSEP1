@@ -14,7 +14,8 @@ import utils.XMLHandler;
 
 import java.io.IOException;
 
-public class DogPetViewController {
+public class DogViewController
+{
 
   @FXML private TextField petNameTextField;
   @FXML private TextField petColorTextField;
@@ -267,30 +268,28 @@ public class DogPetViewController {
   public void handleEditAction(Pet pet) {
     try {
 
-      if (pet instanceof Dog) {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-            "fxml/pets/EditDogCatPetView.fxml"));
+            "fxml/pets/EditDogView.fxml"));
         Parent root = loader.load();
 
-        DogPetViewController controller = loader.getController();
+        DogViewController controller = loader.getController();
 
         controller.fillDog((Dog) pet);
 
         Stage editStage = new Stage();
-        editStage.setTitle("Edit Pet");
+        editStage.setTitle("Edit Dog");
         editStage.setScene(new Scene(root));
         editStage.initModality(Modality.APPLICATION_MODAL);
         editStage.showAndWait();
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-//      // Optionally show an alert or log the error message for better debugging
-//      Alert alert = new Alert(Alert.AlertType.ERROR);
-//      alert.setTitle("Error");
-//      alert.setHeaderText("Failed to load the edit window.");
-//      alert.setContentText("There was an error loading the FXML for the edit window.");
-//      alert.showAndWait();
+    }
+
+    catch (IOException e) {
+      // Show a log the error message
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setHeaderText("Failed to load the edit window.");
+      alert.setContentText("There was an error loading the FXML for the edit window.");
+      alert.showAndWait();
     }
   }
 }

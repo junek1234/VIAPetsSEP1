@@ -71,11 +71,6 @@ public class Bird extends Pet implements Serializable
 
   public String getStatus()
   {
-    return status;
-  }
-
-  public String getStaus()
-  {
     return super.status;
   }
 
