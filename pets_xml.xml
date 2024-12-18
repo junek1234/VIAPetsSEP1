@@ -4,7 +4,7 @@
     <id>1</id>
     <type>Dog</type>
     <name>Finally</name>
-    <color>it worksss!!!!!!!</color>
+    <color>yes it works nice</color>
     <age>3</age>
     <gender>m</gender>
     <location>Kennel</location>
@@ -64,5 +64,18 @@
     <status>Not Sold</status>
     <species>Hamster</species>
     <price>20.0</price>
+  </pet>
+  <pet>
+    <id>6</id>
+    <type>Cat</type>
+    <name>12</name>
+    <color>3123</color>
+    <age>123</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Not Sold</status>
+    <breed>123</breed>
+    <breederName>123</breederName>
+    <price>123.0</price>
   </pet>
 </pets>
