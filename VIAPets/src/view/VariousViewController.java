@@ -61,23 +61,6 @@ public class VariousViewController
 
   private Pet selectedPet;
 
-//  @FXML
-//  public void initialize()
-//  {
-//    genderGroup = new ToggleGroup();
-//    petGenderMaleRadioButton.setToggleGroup(genderGroup);
-//    petGenderFemaleRadioButton.setToggleGroup(genderGroup);
-//
-//    locationGroup = new ToggleGroup();
-//    petLocationKennelRadioButton.setToggleGroup(locationGroup);
-//    petLocationShopRadioButton.setToggleGroup(locationGroup);
-//
-//    statusGroup = new ToggleGroup();
-//    petStatusSoldRadioButton.setToggleGroup(statusGroup);
-//    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
-//    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
-//  }
-
   public void saveAddPet(ActionEvent actionEvent)
   {
     int age=0;

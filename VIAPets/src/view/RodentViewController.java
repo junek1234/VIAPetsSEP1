@@ -61,23 +61,6 @@ public class RodentViewController
 
   private Pet selectedPet;
 
-  @FXML
-  public void initialize()
-  {
-    genderGroup = new ToggleGroup();
-    petGenderMaleRadioButton.setToggleGroup(genderGroup);
-    petGenderFemaleRadioButton.setToggleGroup(genderGroup);
-
-    locationGroup = new ToggleGroup();
-    petLocationKennelRadioButton.setToggleGroup(locationGroup);
-    petLocationShopRadioButton.setToggleGroup(locationGroup);
-
-    statusGroup = new ToggleGroup();
-    petStatusSoldRadioButton.setToggleGroup(statusGroup);
-    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
-    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
-  }
-
   public void saveAddPet(ActionEvent actionEvent)
   {
     int age=0;
@@ -188,7 +171,7 @@ public class RodentViewController
   public void saveEditRodent(ActionEvent actionEvent) {
     String name = petNameEditTextField.getText();
     String color = petColorEditTextField.getText();
-    String species = petSpeciesTextField.getText();
+    String species = petSpeciesEditTextField.getText();
     String comment = petCommentEditTextField.getText();
 
     char gender = petGenderMaleEditRadioButton.isSelected() ?
@@ -308,7 +291,7 @@ public class RodentViewController
     }
 
     catch (IOException e) {
-      // Show a log the error message
+//       Show a log the error message
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setHeaderText("Failed to load the edit window.");
