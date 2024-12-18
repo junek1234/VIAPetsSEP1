@@ -2,152 +2,222 @@ package model;
 
 import utils.XMLHandler;
 
-import javax.swing.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Random;
 
-// dont make it static
-public class VIAPets implements Serializable
-{
-  public static int maxKennelSlots;
-  public static int availableSlotsToday;  //change in astah
-  public static double bookingPrice;
-  private BookingList allBookings;
-  private CustomerList allCustomers;
-  private SaleList allSales;
-  public static PetList allPets;// must be static because of static method updateXML
+/**
+ * The VIAPets class represents the main system for managing bookings, customers, sales, and pets in the VIAPets system.
+ * It includes functionality for setting and retrieving kennel slot information, managing bookings, customers, sales, and pets.
+ * This class provides methods to update system-wide settings.
+ *
+ * @author Piotr Junosz
+ * @version 1.0
+ */
+public class VIAPets implements Serializable {
+  public static int maxKennelSlots;  // Maximum number of kennel slots available
+  public static int availableSlotsToday;  // Available slots for today's date
+  public static double bookingPrice;  // Price for booking a pet
+  private BookingList allBookings;  // List of all bookings in the system
+  private CustomerList allCustomers;  // List of all customers in the system
+  private SaleList allSales;  // List of all sales in the system
+  public static PetList allPets;  // List of all pets in the system
 
-  //add this too
+  // Static variables to maintain the last ID used for customers, pets, bookings, and sales
   public static String lastCustomerID;
   public static String lastPetID;
   public static String lastBookingID;
   public static String lastSaleID;
 
-  //and this
-  public static String[] xmlLines;
 
-  //reserved slots should not be here i guess - change the Astah design
-  //changing reserved slots to available slots
-
-  public void setMaxKennelSlots(int maxKennelSlots)
-  {
+  /**
+   * Sets the maximum number of kennel slots available.
+   *
+   * @param maxKennelSlots the maximum number of kennel slots to set
+   */
+  public void setMaxKennelSlots(int maxKennelSlots) {
     this.maxKennelSlots = maxKennelSlots;
   }
 
-  public void setAvailableSlots(Date date)
-  {
-    //counting how many slots are occupied in the kennel
-    int count = 0; // Initialize count and start at 0. 2
-    for (int i = 0; i < allBookings.getBookings().size(); i++) // Loop through all bookings. n
-    {
-      //Check if the booking is in between the start and end date of the other bookings
-      if((!date.isGreaterThan(allBookings.getBookings().get(i).getDateInterval().getEndDate()))
-          &&(!allBookings.getBookings().get(i).getDateInterval().getStartDate().isGreaterThan(date)))
-      {
-        count++; // Add one to the count if true. 1
+  /**
+   * Updates the available slots for today's date based on the current bookings.
+   *
+   * @param date the current date to check for available slots
+   */
+  public void setAvailableSlots(Date date) {
+    int count = 0;
+    for (Booking booking : allBookings.getBookings()) {
+      if (!date.isGreaterThan(booking.getDateInterval().getEndDate())
+          && !booking.getDateInterval().getStartDate().isGreaterThan(date)) {
+        count++;
       }
     }
-    availableSlotsToday = maxKennelSlots - count; //update the available slots of that given date subtracting the count to the maximum capacity of the kennel. 2
+    availableSlotsToday = maxKennelSlots - count;
   }
 
-  public void setBookingPrice(double bookingPrice)
-  {
+  /**
+   * Sets the booking price.
+   *
+   * @param bookingPrice the price to set for booking a pet
+   */
+  public void setBookingPrice(double bookingPrice) {
     this.bookingPrice = bookingPrice;
   }
 
-  public void setLastCustomerID(String lastCustomerID)
-  {
+  /**
+   * Sets the last customer ID used in the system.
+   *
+   * @param lastCustomerID the last customer ID to set
+   */
+  public void setLastCustomerID(String lastCustomerID) {
     this.lastCustomerID = lastCustomerID;
   }
 
-  public void setLastPetID(String lastPetID)
-  {
+  /**
+   * Sets the last pet ID used in the system.
+   *
+   * @param lastPetID the last pet ID to set
+   */
+  public void setLastPetID(String lastPetID) {
     this.lastPetID = lastPetID;
   }
 
-  public void setLastBookingID(String lastBookingID)
-  {
+  /**
+   * Sets the last booking ID used in the system.
+   *
+   * @param lastBookingID the last booking ID to set
+   */
+  public void setLastBookingID(String lastBookingID) {
     this.lastBookingID = lastBookingID;
   }
 
-  public void setLastSaleID(String lastSaleID)
-  {
+  /**
+   * Sets the last sale ID used in the system.
+   *
+   * @param lastSaleID the last sale ID to set
+   */
+  public void setLastSaleID(String lastSaleID) {
     this.lastSaleID = lastSaleID;
   }
 
-  public void setAllBookings(BookingList allBookings)
-  {
+  /**
+   * Sets the list of all bookings in the system.
+   *
+   * @param allBookings the BookingList object representing all bookings
+   */
+  public void setAllBookings(BookingList allBookings) {
     this.allBookings = allBookings;
   }
 
-  public void setAllCustomers(CustomerList allCustomers)
-  {
+  /**
+   * Sets the list of all customers in the system.
+   *
+   * @param allCustomers the CustomerList object representing all customers
+   */
+  public void setAllCustomers(CustomerList allCustomers) {
     this.allCustomers = allCustomers;
   }
 
-  public void setAllSales(SaleList allSales)
-  {
+  /**
+   * Sets the list of all sales in the system.
+   *
+   * @param allSales the SaleList object representing all sales
+   */
+  public void setAllSales(SaleList allSales) {
     this.allSales = allSales;
   }
 
-  public void setAllPets(PetList allPets)
-  {
+  /**
+   * Sets the list of all pets in the system.
+   *
+   * @param allPets the PetList object representing all pets
+   */
+  public void setAllPets(PetList allPets) {
     this.allPets = allPets;
   }
 
-  public int getMaxKennelSlots()
-  {
+  /**
+   * Gets the maximum number of kennel slots available.
+   *
+   * @return the maximum number of kennel slots
+   */
+  public int getMaxKennelSlots() {
     return maxKennelSlots;
   }
 
-  public int getAvailableSlots()
-  {
+  /**
+   * Gets the available slots for today's date.
+   *
+   * @return the number of available slots for today's date
+   */
+  public int getAvailableSlots() {
     return availableSlotsToday;
   }
 
-  public double getBookingPrice()
-  {
+  /**
+   * Gets the booking price.
+   *
+   * @return the price for booking a pet
+   */
+  public double getBookingPrice() {
     return bookingPrice;
   }
 
-  public BookingList getAllBookings()
-  {
+  /**
+   * Gets the list of all bookings in the system.
+   *
+   * @return the BookingList object representing all bookings
+   */
+  public BookingList getAllBookings() {
     return allBookings;
   }
 
-  public CustomerList getAllCustomers()
-  {
+  /**
+   * Gets the list of all customers in the system.
+   *
+   * @return the CustomerList object representing all customers
+   */
+  public CustomerList getAllCustomers() {
     return allCustomers;
   }
 
-  public SaleList getAllSales()
-  {
+  /**
+   * Gets the list of all sales in the system.
+   *
+   * @return the SaleList object representing all sales
+   */
+  public SaleList getAllSales() {
     return allSales;
   }
 
-  public PetList getAllPets()
-  {
+  /**
+   * Gets the list of all pets in the system.
+   *
+   * @return the PetList object representing all pets
+   */
+  public PetList getAllPets() {
     return allPets;
   }
-  // change Astah
-  public static Date getCurrentDate()
-  {
+
+  /**
+   * Gets the current date and time.
+   *
+   * @return a Date object representing the current date
+   */
+  public static Date getCurrentDate() {
     LocalDateTime now = LocalDateTime.now();
     return new Date(now.getDayOfMonth(), now.getMonthValue(), now.getYear());
   }
 
-
-  public String toString()
-  {
+  /**
+   * Provides a string representation of the VIAPets system
+   *
+   * @return a string representation of the VIAPets system
+   */
+  public String toString() {
     return "VIAPets{" + "maxKennelSlots=" + maxKennelSlots + ", availableSlots="
         + availableSlotsToday + ", bookingPrice=" + bookingPrice + ", allBookings="
         + allBookings + ", allCustomers=" + allCustomers + ", allSales="
         + allSales + ", allPets=" + allPets + '}';
   }
 }
-
-
-
