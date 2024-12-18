@@ -5,19 +5,30 @@ import model.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+/**
+ * The XMLHandler class is responsible for handling XML operations,
+ * such as updating XML files related to pets and kennel information.
+ * It creates XML data based on the available pets and kennel details and writes them to text files.
+ *
+ * @author Piotr Junosz
+ * @version 1.0
+ */
 public class XMLHandler
 {
 
   private static final String PETS = "pets_xml.xml";
   private static final String KENNEL = "kennel_xml.xml";
   VIAPets viaPets = new VIAPets();
+  /**
+   * Updates the XML files for pets and the kennel. This method collects
+   * the necessary data, generates XML content, and writes it to the specified
+   * text files. If there is an error while writing the files, the update process is retried.
+   *
+   * @throws FileNotFoundException if the file to write to cannot be found or opened.
+   */
   public static void updateXML()
   {
     //kennel info part
-
-    //calculate available slots
-
-
 
     ArrayList<String> kennelInfo=new ArrayList<>();
     kennelInfo.add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
