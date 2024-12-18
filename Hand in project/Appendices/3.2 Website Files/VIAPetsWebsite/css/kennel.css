@@ -1,0 +1,440 @@
+/* done by Felipe Figueiredo */
+
+/* General Styles */
+body {
+  background-color: #f1f1f1;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Header Section */
+.main-title {
+  font-size: 6rem;
+}
+
+.highlight {
+  color: #f58549;
+}
+
+/* Custom shifts */ 
+
+.shift-up1 {
+  margin-top: -40px; /* for "Better price" */
+}
+.shift-up2 {
+  margin-top: -130px; /* for "Expert care" */
+}
+
+.shift-right1 {
+  margin-left: 1050px; /* for "Caring" */
+}
+
+.shift-right2 {
+  margin-left: 20px; /* for "Better price" */
+}
+
+.circle-top {
+  background-color: #f58549;
+  width: 110px;
+  height: 110px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+.circle-middle {
+  background-color: #f2a65a;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  
+}
+
+.circle-bottom {
+  background-color: #2e3083;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: -1px;/* Text was sligthly off the center, idk why. */
+  position: relative;
+
+  transition: all 0.5s ease;  
+}
+
+/* Position transformations for each circle 
+#bottomCircle.transformed {
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: #f58549;
+  left: 200px;  
+  top: 400px;   
+}
+
+#middleCircle.transformed {
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: #f2a65a;
+  left: 400px;  
+  top: 450px;   
+}
+
+#topCircle.transformed {
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: #2e3083;
+  left: 600px;  
+  top: 500px;  
+}  */
+
+.dog-image {
+  display: flex;
+  margin-left: 80px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.dogimg{
+  padding-right: 0px;
+}
+
+.dogtext{ /* for the "Not your ave pet kennel" text beside dog*/
+  padding-left: 220px;
+}
+
+.section-title1{
+  font-size: 4rem;
+  text-align: left;
+}
+
+.section-title2{
+  font-size: 4rem;
+}
+
+.section-text1 {
+  font-size: 2rem;
+  text-align: left;
+}
+
+.section-text2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.custom-border{
+  border: 3px solid #2e3083;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Kennel Availability */
+.container-fluid.text-center { /*section that has kennel availability title and the three pet circles*/
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* h2: "Kennel availability" */
+.kennel-availability {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #f58549;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+}
+
+.animal-circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.container-fluid.text-center {
+  width: 100%;
+  padding: 2rem;
+}
+
+.cirtext {
+  font-size: 1.5rem;
+}
+
+/* Scrolling text container */
+.scroll-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden; 
+  box-sizing: border-box;
+  background-color:  #f1f1f1; 
+  padding: 10px 0; 
+}
+
+/* Scrolling text */
+.scrolling-text {
+  display: inline-block;
+  white-space: nowrap; 
+  animation: scroll-right 10s linear infinite;
+  font-size: 4em; 
+  margin-right: 50px; 
+  animation: scroll-right 15s linear infinite;
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(95%); 
+  }
+  100% {
+    transform: translateX(-95%); 
+  }
+}
+
+/* Carousel Container */
+.carousel-container {
+  position: relative;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.carousel-indicators button {
+  border-color: transparent;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.carousel-indicators .active {
+  background-color: #007bff;
+}
+
+/* Carousel Items */
+.carousel-item {
+  height: 600px; 
+}
+
+.carousel-item img {
+  object-fit: cover;
+  height: 100%;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon   
+ {
+  color: white;
+}
+
+/* Responsive Styles */
+
+/* Large screens (laptops) */
+@media (max-width: 992px) {
+  
+  .main-title {
+      font-size: 4rem;
+  }
+
+  .section-title1{
+      font-size: 2.5rem;
+  }
+
+  .dogtext{ /* for the "Not your ave pet kennel" text beside dog*/
+    padding-left: 220px;
+    padding-right: 150px;
+  }
+
+  .section-title2 {
+    font-size: 2.5rem;
+}
+
+  .section-text1, .section-text2 {
+      font-size: 1.2rem;
+  }
+
+  .kennel-availability {
+      font-size: 3rem;
+  }
+
+  .animal-circle {
+      width: 250px;
+      height: 250px;
+  }
+
+  .dog-image {
+    max-width: 400px; 
+    margin-left: 275px;
+}
+
+.scrolling-text {
+    font-size: 3em; 
+}
+
+.carousel-item {
+    height: 555px; 
+}
+
+}
+
+/* Tablets */
+@media (max-width: 991px) {
+ 
+  .main-title {
+      font-size: 3rem;
+  }
+
+  .dogtext{ /* for the "Not your ave pet kennel" text beside dog*/
+    padding-top: 15px;
+    padding-left: 40px;
+  }
+
+  .dog-image {
+    max-width: 250px; 
+    margin-left: 0px;
+  }
+
+  .section-title1, .section-title2 {
+      font-size: 2rem;
+  }
+
+  .section-text1, .section-text2 {
+      font-size: 1.2rem;
+  }
+
+  .kennel-availability {
+      font-size: 2rem;
+  }
+
+  .animal-circle {
+      width: 150px;
+      height: 150px;
+  }
+
+  .scrolling-text {
+  font-size: 2em; 
+  }
+
+  .carousel-item {
+    height: 400px; 
+  }
+
+  .circle {
+    margin: 10px auto;
+  }
+
+  .circle-top {
+    width: 90px;
+    height: 90px;
+  }
+  .circle-middle {
+    width: 90px;
+    height: 90px;
+  }
+  .circle-bottom {
+    width: 90px;
+    height: 90px;
+  }
+
+  .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Smaller screens (phones) */
+@media (max-width: 576px) {
+  
+  .main-title {
+      font-size: 3rem;
+  }
+
+  .dog-image {
+    max-width: 200px; 
+    margin-left: 0px;
+    padding: 0px;
+  }
+
+  .dogtext{ /* for the "Not your ave pet kennel" text beside dog*/
+    padding-top: 15px;
+    padding-left: 10px;
+  }
+
+  .section-title1, .section-title2 {
+      font-size: 2rem;
+  }
+
+  .section-text1, .section-text2 {
+      font-size: 1.2rem;
+  }
+
+  .circle-top { /* not working */
+    width: 80px;
+    height: 90px;
+  }
+  .circle-middle {
+    width: 80px;
+    height: 80px;
+  }
+  .circle-bottom {
+    width: 80px;
+    height: 80px;
+  }
+
+  .kennel-availability {
+      font-size: 2rem;
+      margin-bottom: 25px;
+  }
+
+  .animal-circle {
+      width: 100px;
+      height: 100px;
+  }
+
+  /* Kennel Availability in Column */
+  .kennel-category {
+    margin: 1rem 0;
+  }
+
+  .circle-top {
+    width: 80px;
+    height: 80px;
+  }
+
+  .circle-middle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .circle-bottom {
+    width: 60px;
+    height: 60px;
+  }
+
+  .scrolling-text {
+  font-size: 2em; 
+  }
+
+  .carousel-item {
+  height: 400px;
+  }
+
+}

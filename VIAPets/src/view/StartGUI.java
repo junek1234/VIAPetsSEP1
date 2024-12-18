@@ -15,7 +15,7 @@ public class StartGUI extends Application
   @Override public void start(Stage primaryStage) throws Exception
   {
     // Set the primary stage as the main window
-    primaryStage.setTitle("FXMLTEST");
+    primaryStage.setTitle("VIAPetsApplication");
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("fxml/currentlyworking/DefaultView.fxml"));
     Scene scene = new Scene(loader.load());

@@ -28,7 +28,7 @@ public class CustomerViewController
       Alert alert1 = new Alert(Alert.AlertType.ERROR);
       alert1.setTitle("Error");
       alert1.setHeaderText(null);
-      alert1.setContentText("Invalid input!");
+      alert1.setContentText("All inputs must be filled!");
       alert1.show();
     }
     else
@@ -44,7 +44,7 @@ public class CustomerViewController
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
+          alert1.setContentText("Phone number must be a number!");
           alert1.show();
           return;//it stops the method when catching exception
         }

@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +18,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -92,6 +94,9 @@ public class ViewHandler
   @FXML private MenuItem salesMenuItem;
   @FXML private MenuItem addSaleMenuItem;
 
+  //search bar
+  @FXML private TextField existingSearchField;
+  @FXML private Button existingSearchButton;
   //tables
    private TableView<Pet> petTable;
    private TableColumn<Pet, Number> petIDPetView;
@@ -137,7 +142,7 @@ public class ViewHandler
   MyModelManager myModelManager = new MyModelManager();
   VIAPets viaPets = new VIAPets();
 
-  BirdViewController birdViewController = new BirdViewController();
+ // BirdViewController birdViewController = new BirdViewController();
 
   @FXML public void switchScene(ActionEvent e) throws IOException
   {
@@ -186,34 +191,115 @@ public class ViewHandler
     MenuItem mirrorMenuItem = (MenuItem) source;
     stage = (Stage) mirrorMenuItem.getParentPopup().getOwnerWindow();
     VBox vbox = new VBox();
+
+    TextField searchField = new TextField();
+    searchField.setPromptText("Search...");
+    Button searchButton = new Button("Search");
+
+    HBox searchBox = new HBox(searchField, searchButton);
+    HBox.setHgrow(searchField, Priority.ALWAYS);
+    searchBox.setPadding(new Insets(0,0,50,0));
     vbox.getChildren().add(root);
+    vbox.getChildren().add(searchBox);
+
+
+
 
     if (source == petsMenuItem)
     {
       vbox.getChildren().add(petTable);
+      searchButton.setOnAction(event -> filterTablePet(petTable, searchField.getText())); // (m)
     }
 
     else if (source == customersMenuItem)
     {
       vbox.getChildren().add(customerTable);
+      searchButton.setOnAction(event -> filterTableCustomer(customerTable, searchField.getText())); // (m)
     }
 
     else if (source == bookingsMenuItem)
     {
       vbox.getChildren().add(bookingTable);
+      searchButton.setOnAction(event -> filterTableBooking(bookingTable, searchField.getText())); // (m)
     }
 
     else if (source == salesMenuItem)
     {
       vbox.getChildren().add(saleTable);
+      searchButton.setOnAction(event -> filterTableSale(saleTable, searchField.getText())); // (m)
     }
 
     Scene scene = new Scene(vbox);
     stage.setScene(scene);
     fxmlDefPath = fxmlPath;
     stage.show();
+
   }
 
+  //Search method
+  private void filterTableCustomer(TableView<Customer> table, String query) {
+    MyModelManager manager = new MyModelManager();
+    ObservableList<Customer> customerList = FXCollections.observableArrayList(
+        manager.getAllCustomers().getCustomers());
+    ObservableList<Customer> filteredList = FXCollections.observableArrayList();
+    for (Customer customer : customerList) {
+      if (customer.getName().toLowerCase().contains(query.toLowerCase()) ||
+          customer.getName().toUpperCase().contains(query.toUpperCase()) ||
+          String.valueOf(customer.getCustomerID()).contains(query) ||
+          customer.getEmail().toLowerCase().contains(query.toLowerCase())) {
+        filteredList.add(customer);
+      }
+    }
+    table.setItems(filteredList);
+
+  }
+
+  private void filterTablePet(TableView<Pet> table, String query) {
+    MyModelManager manager = new MyModelManager();
+    ObservableList<Pet> petList = FXCollections.observableArrayList(
+        manager.getAllPets().getPets());
+    ObservableList<Pet> filteredList = FXCollections.observableArrayList();
+    for (Pet pet : petList) {
+      if (pet.getName().toLowerCase().contains(query.toLowerCase()) ||
+          pet.getName().toUpperCase().contains(query.toUpperCase())
+         || String.valueOf(pet.getPetID()).contains(query) ) {
+        filteredList.add(pet);
+      }
+    }
+    table.setItems(filteredList);
+  }
+
+  private void filterTableSale(TableView<Sale> table, String query) {
+    MyModelManager manager = new MyModelManager();
+    ObservableList<Sale> saleList = FXCollections.observableArrayList(
+        manager.getAllSales().getSaleList());
+    ObservableList<Sale> filteredList = FXCollections.observableArrayList();
+    for (Sale sale : saleList) {
+      if (String.valueOf(sale.getSaleID()).contains(query) ||
+          String.valueOf(sale.getSalePrice()).contains(query)) {
+        // search by pet name etc... has to be added in the Sale class (get SalePet method)
+        filteredList.add(sale);
+      }
+    }
+    table.setItems(filteredList);
+  }
+
+  private void filterTableBooking(TableView<Booking> table, String query) {
+    MyModelManager manager = new MyModelManager();
+    ObservableList<Booking> bookingList = FXCollections.observableArrayList(
+        manager.getAllBookings().getBookings());
+    ObservableList<Booking> filteredList = FXCollections.observableArrayList();
+    for (Booking booking : bookingList) {
+      if (booking.getCustomer().getName().toLowerCase().contains(query.toLowerCase()) ||
+          booking.getCustomer().getName().toUpperCase().contains(query.toUpperCase()) ||
+          String.valueOf(booking.getBookingID()).contains(query)) {
+        filteredList.add(booking);
+      }
+
+    }
+
+    table.setItems(filteredList);
+  }
   // Create a separate method for popup handling
   @FXML public void showPopup(ActionEvent e) throws IOException
   {
@@ -514,12 +600,18 @@ public class ViewHandler
       {
         super.updateItem(item, empty);
 
-        if (empty)
-        {
+        // Clear any previous graphic if the row is empty
+        if (empty || getIndex() >= getTableView().getItems().size()) {
           setGraphic(null);
+          return;
         }
-        else
-        {
+
+        // Check if buttons are already present in the row
+        if (getGraphic() instanceof HBox) {
+          return; // Buttons already added, no need to add again
+        }
+
+        // Create buttons and add actions
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -584,7 +676,6 @@ public class ViewHandler
 
           setGraphic(actionButtons);
         }
-      }
     });
 
     petTable.getColumns().add(actionsPetView);
@@ -600,12 +691,18 @@ public class ViewHandler
       {
         super.updateItem(item, empty);
 
-        if (empty)
-        {
+        // Clear any previous graphic if the row is empty
+        if (empty || getIndex() >= getTableView().getItems().size()) {
           setGraphic(null);
+          return;
         }
-        else
-        {
+
+        // Check if buttons are already present in the row
+        if (getGraphic() instanceof HBox) {
+          return; // Buttons already added, no need to add again
+        }
+
+        // Create buttons and add actions
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -665,93 +762,90 @@ public class ViewHandler
 
           setGraphic(actionButtons);
         }
-      }
     });
 
     customerTable.getColumns().add(actionsCustomerView);
   }
 
-  private void addActionsBookingTable()
-  {
+  private void addActionsBookingTable() {
     actionsBookingView = new TableColumn<>("Actions");
 
-    actionsBookingView.setCellFactory(column -> new TableCell<Booking, Void>()
-    {
-      @Override protected void updateItem(Void item, boolean empty)
+    actionsBookingView.setCellFactory(column -> new TableCell<Booking, Void>() {
+      @Override
+      protected void updateItem(Void item, boolean empty)
       {
         super.updateItem(item, empty);
 
-        if (empty)
+        // Clear any existing content if the row is empty
+        if (empty || getIndex() >= getTableView().getItems().size())
         {
           setGraphic(null);
+          return;
         }
-        else
+
+        // Retrieve the current booking
+        Booking booking = getTableView().getItems().get(getIndex());
+        if (booking != null)
         {
+
+          // Create buttons and add actions
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
           actionButtons.setAlignment(Pos.CENTER);
 
+          setGraphic(actionButtons);
+
+          // Edit button action
           editButton.setOnAction(event -> {
-            Booking booking = getTableView().getItems().get(getIndex());
-            // handleEditAction(booking);
-
+            // Handle edit action
+            System.out.println("Editing booking: " + booking);
           });
 
+          // Delete button action
           deleteButton.setOnAction(event -> {
-            // Create a Confirmation Alert
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Confirm your action");
-            alert.setHeaderText(null);
-            alert.setContentText("Do you really want to delete this " + getTableView().getItems().get(getIndex()).getClass().getSimpleName().toLowerCase() + "?");
+            // Create a confirmation dialog
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm Delete");
+            alert.setHeaderText("Are you sure?");
+            alert.setContentText("Do you want to delete this booking?");
+            ButtonType yesButton = ButtonType.YES;
+            ButtonType noButton = ButtonType.NO;
+            alert.getButtonTypes().setAll(yesButton, noButton);
 
-            // Use default ButtonTypes
-            ButtonType yesButtonType = ButtonType.YES;    // Default "Yes" button
-            ButtonType noButtonType = ButtonType.CANCEL; // Default "No" button
-
-            // Add ButtonTypes to the Alert
-            alert.getButtonTypes().setAll(yesButtonType, noButtonType);
-
-            // Access DialogPane and get Buttons
-            DialogPane dialogPane = alert.getDialogPane();
-            Button yesButton = (Button) dialogPane.lookupButton(yesButtonType);
-            Button noButton = (Button) dialogPane.lookupButton(noButtonType);
-
-            // Set actions for "Yes" and "No" buttons
-            yesButton.setOnAction(response -> {
-              MyModelManager manager = new MyModelManager();
-              try
+            alert.showAndWait().ifPresent(response -> {
+              if (response == yesButton)
               {
-                // Perform the deletion
-                manager.deleteBooking(getTableView().getItems().get(getIndex()).getBookingID());
-
-                // Remove the item from the table view
-                getTableView().getItems().remove(getIndex());
+                try
+                {
+                  MyModelManager manager = new MyModelManager();
+                  manager.deleteBooking(booking.getBookingID());
+                  getTableView().getItems().remove(getIndex());
+                  System.out.println("Booking deleted: " + booking);
+                }
+                catch (IOException e)
+                {
+                  e.printStackTrace();
+                }
               }
-              catch (IOException e)
-              {
-                throw new RuntimeException(e);
-              }
-              alert.close(); // Close the alert if needed
             });
-
-            noButton.setOnAction(response -> {
-              alert.close(); // Close the alert if needed
-            });
-
-            // Show the Alert
-            alert.showAndWait();
-
           });
 
+          // Set the new HBox as the graphic for the cell
           setGraphic(actionButtons);
         }
-
+        else
+        {
+          // Clear the graphic if no booking is present
+          setGraphic(null);
+        }
       }
     });
 
+    // Add the actions column to the table
     bookingTable.getColumns().add(actionsBookingView);
   }
+
 
   private void addActionsSaleTable()
   {
@@ -763,12 +857,18 @@ public class ViewHandler
       {
         super.updateItem(item, empty);
 
-        if (empty)
-        {
+        // Clear any previous graphic if the row is empty
+        if (empty || getIndex() >= getTableView().getItems().size()) {
           setGraphic(null);
+          return;
         }
-        else
-        {
+
+        // Check if buttons are already present in the row
+        if (getGraphic() instanceof HBox) {
+          return; // Buttons already added, no need to add again
+        }
+
+        // Create buttons and add actions
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
@@ -829,7 +929,6 @@ public class ViewHandler
           setGraphic(actionButtons);
         }
 
-      }
     });
 
     saleTable.getColumns().add(actionsSaleView);

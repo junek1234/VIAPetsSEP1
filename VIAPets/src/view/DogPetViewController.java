@@ -40,10 +40,15 @@ public class DogPetViewController {
   @FXML private TextField petBreederNameEditTextField;
   @FXML private TextArea petCommentEditTextField;
 
+        private ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleEditRadioButton;
   @FXML private RadioButton petGenderFemaleEditRadioButton;
+
+        private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopEditRadioButton;
   @FXML private RadioButton petLocationKennelEditRadioButton;
+
+        private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldEditRadioButton;
   @FXML private RadioButton petStatusNotSoldEditRadioButton;
   @FXML private RadioButton petStatusNotFromViaEditRadioButton;
@@ -52,12 +57,22 @@ public class DogPetViewController {
 
   private Pet selectedPet;
 
-  private Dog dog;
-  private Cat cat;
-  private Bird bird;
-  private Fish fish;
-  private Rodent rodent;
-  private Various various;
+  @FXML
+  public void initialize()
+  {
+    genderGroup = new ToggleGroup();
+    petGenderMaleRadioButton.setToggleGroup(genderGroup);
+    petGenderFemaleRadioButton.setToggleGroup(genderGroup);
+
+    locationGroup = new ToggleGroup();
+    petLocationKennelRadioButton.setToggleGroup(locationGroup);
+    petLocationShopRadioButton.setToggleGroup(locationGroup);
+
+    statusGroup = new ToggleGroup();
+    petStatusSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
+  }
 
   public void saveAddPet(ActionEvent actionEvent) {
     String name = petNameTextField.getText();
@@ -115,7 +130,7 @@ public class DogPetViewController {
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
+          alert1.setContentText("Age must be a number!");
           alert1.show();
           return; //it stops the method when catching exception
         }
@@ -128,7 +143,7 @@ public class DogPetViewController {
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
+          alert1.setContentText("Price must be a number!");
           alert1.show();
           return; //it stops the method when catching exception
         }

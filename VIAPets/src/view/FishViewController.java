@@ -20,22 +20,55 @@ public class FishViewController
 
   @FXML private TextArea petCommentTextField;
 
-
+  private ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleRadioButton;
   @FXML private RadioButton petGenderFemaleRadioButton;
+
+  private ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
+
+  private ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
+
+  private ToggleGroup saltWaterGroup;
   @FXML private RadioButton petSaltWaterYesRadioButton;
   @FXML private RadioButton petSaltWaterNoRadioButton;
+
+  private ToggleGroup predatorGroup;
   @FXML private RadioButton petPredatorYesRadioButton;
   @FXML private RadioButton petPredatorNoRadioButton;
   @FXML private TextField petSpeciesTextField;
 
   @FXML private Button petSaveButton;
 
+  @FXML
+  public void initialize()
+  {
+    genderGroup = new ToggleGroup();
+    petGenderMaleRadioButton.setToggleGroup(genderGroup);
+    petGenderFemaleRadioButton.setToggleGroup(genderGroup);
+
+    locationGroup = new ToggleGroup();
+    petLocationKennelRadioButton.setToggleGroup(locationGroup);
+    petLocationShopRadioButton.setToggleGroup(locationGroup);
+
+    statusGroup = new ToggleGroup();
+    petStatusSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotSoldRadioButton.setToggleGroup(statusGroup);
+    petStatusNotFromViaRadioButton.setToggleGroup(statusGroup);
+
+    saltWaterGroup = new ToggleGroup();
+    petSaltWaterYesRadioButton.setToggleGroup(saltWaterGroup);
+    petSaltWaterNoRadioButton.setToggleGroup(saltWaterGroup);
+
+    predatorGroup = new ToggleGroup();
+    petPredatorYesRadioButton.setToggleGroup(predatorGroup);
+    petPredatorNoRadioButton.setToggleGroup(predatorGroup);
+
+  }
 
   public void saveAddPet(ActionEvent actionEvent)
   {
@@ -74,7 +107,7 @@ public class FishViewController
       Alert alert1 = new Alert(Alert.AlertType.ERROR);
       alert1.setTitle("Error");
       alert1.setHeaderText(null);
-      alert1.setContentText("Invalid input!");
+      alert1.setContentText("All inputs must be filled!");
       alert1.show();
     }
     else if((petGenderMaleRadioButton.isSelected()&&petGenderFemaleRadioButton.isSelected())||(petLocationShopRadioButton.isSelected()&&petLocationKennelRadioButton.isSelected())||(petStatusSoldRadioButton.isSelected()&&petStatusNotSoldRadioButton.isSelected())||(petStatusSoldRadioButton.isSelected()&&petStatusNotFromViaRadioButton.isSelected())||(petStatusNotSoldRadioButton.isSelected()&&petStatusNotFromViaRadioButton.isSelected())||(
@@ -100,7 +133,7 @@ public class FishViewController
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
+          alert1.setContentText("Age must be a number!");
           alert1.show();
           return;//it stops the method when catching exception
         }
@@ -117,7 +150,7 @@ public class FishViewController
           Alert alert1 = new Alert(Alert.AlertType.ERROR);
           alert1.setTitle("Error");
           alert1.setHeaderText(null);
-          alert1.setContentText("Invalid input!");
+          alert1.setContentText("Price must be a number!");
           alert1.show();
           return;//it stops the method when catching exception
         }
