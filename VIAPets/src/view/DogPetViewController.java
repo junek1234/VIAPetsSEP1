@@ -182,8 +182,9 @@ public class DogPetViewController {
     int age = 0;
     double price = 0.0;
     try {
-      age = Integer.parseInt(petAgeTextField.getText());
-      price = Double.parseDouble(petPriceTextField.getText());
+      age = Integer.parseInt(petAgeEditTextField.getText());
+      price = Double.parseDouble(petPriceEditTextField.getText());
+
     } catch (NumberFormatException e) {
       // Handle invalid input (optional)
       Alert alert = new Alert(Alert.AlertType.ERROR);

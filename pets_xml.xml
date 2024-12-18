@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pets>
+  <pet>
+    <id>1</id>
+    <type>Dog</type>
+    <name>jkj</name>
+    <color>nkj</color>
+    <age>8</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Not Sold</status>
+    <breed>m</breed>
+    <breederName>,mnl</breederName>
+    <price>8.0</price>
+  </pet>
+</pets>
