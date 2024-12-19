@@ -29,15 +29,15 @@ public class BirdViewController
   @FXML private TextField petSpeciesTextField;
   @FXML private TextField petFoodTextField;
 
-        private ToggleGroup genderGroup;
+
   @FXML private RadioButton petBirdGenderMaleRadioButton;
   @FXML private RadioButton petBirdGenderFemaleRadioButton;
 
-        private ToggleGroup locationGroup;
+
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
 
-        private ToggleGroup statusGroup;
+
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
@@ -51,12 +51,15 @@ public class BirdViewController
   @FXML private TextField petPriceEditTextField;
   @FXML private TextArea petCommentEditTextField;
 
+  @FXML ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleEditRadioButton;
   @FXML private RadioButton petGenderFemaleEditRadioButton;
 
+  @FXML ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopEditRadioButton;
   @FXML private RadioButton petLocationKennelEditRadioButton;
 
+  @FXML ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldEditRadioButton;
   @FXML private RadioButton petStatusNotSoldEditRadioButton;
   @FXML private RadioButton petStatusNotFromViaEditRadioButton;

@@ -25,15 +25,15 @@ public class RodentViewController
   @FXML private TextArea petCommentTextField;
   @FXML private TextField petSpeciesTextField;
 
-        private ToggleGroup genderGroup;
+  @FXML ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleRadioButton;
   @FXML private RadioButton petGenderFemaleRadioButton;
 
-        private ToggleGroup locationGroup;
+  @FXML ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
 
-        private ToggleGroup statusGroup;
+  @FXML ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
