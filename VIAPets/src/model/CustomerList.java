@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * This class implements {@link Serializable} to allow instances to be serialized.
  *
  * @author Guillermo Sánchez Martínez
+ * @author Felipe Figueiredo
  * @version 1.0
  */
 public class CustomerList implements Serializable {

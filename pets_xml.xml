@@ -3,7 +3,7 @@
   <pet>
     <id>1</id>
     <type>Various</type>
-    <name>felipett</name>
+    <name>felipe</name>
     <color>jklkqsa</color>
     <age>7</age>
     <gender>m</gender>
@@ -27,7 +27,7 @@
   <pet>
     <id>3</id>
     <type>Dog</type>
-    <name>what</name>
+    <name>porra</name>
     <color>mnlac</color>
     <age>9</age>
     <gender>m</gender>
@@ -53,7 +53,7 @@
   <pet>
     <id>6</id>
     <type>Fish</type>
-    <name>fewlipe</name>
+    <name>tiago</name>
     <color>jsca</color>
     <age>8</age>
     <gender>m</gender>

@@ -7,6 +7,7 @@ import java.io.Serializable;
  * This class implements {@link Serializable} to allow instances to be serialized.
  *
  * @author Piotr Junosz
+ * @author Felipe Figueiredo
  * @version 1.0
  */
 public abstract class Pet implements Serializable {

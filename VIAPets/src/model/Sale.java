@@ -9,6 +9,7 @@ import java.util.Objects;
  * This class implements the Serializable interface for object serialization.
  *
  * @author Guillermo Sánchez Martínez
+ * Felipe Figueiredo
  * @version 1.0
  */
 public class Sale implements Serializable {
