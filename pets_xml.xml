@@ -69,12 +69,12 @@
     <name>fewlipe</name>
     <color>jsca</color>
     <age>8</age>
-    <gender>m</gender>
-    <location>Shop</location>
-    <status>Sold</status>
-    <saltwater>true</saltwater>
+    <gender>f</gender>
+    <location>Kennel</location>
+    <status>Not From Via</status>
+    <saltwater>false</saltwater>
     <species>jsc</species>
-    <predator>true</predator>
+    <predator>false</predator>
     <price>8.0</price>
   </pet>
   <pet>
@@ -88,5 +88,69 @@
     <status>Not From Via</status>
     <species>r</species>
     <price>22.0</price>
+  </pet>
+  <pet>
+    <id>8</id>
+    <type>Bird</type>
+    <name>fds</name>
+    <color>dfs</color>
+    <age>2</age>
+    <gender>f</gender>
+    <location>Kennel</location>
+    <status>Sold</status>
+    <species>f</species>
+    <preferredFood>f</preferredFood>
+    <price>23.0</price>
+  </pet>
+  <pet>
+    <id>9</id>
+    <type>Dog</type>
+    <name>ds</name>
+    <color>sd</color>
+    <age>2</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Not Sold</status>
+    <breed>2</breed>
+    <breederName>2</breederName>
+    <price>22.0</price>
+  </pet>
+  <pet>
+    <id>11</id>
+    <type>Fish</type>
+    <name>dsa</name>
+    <color>2ee</color>
+    <age>2</age>
+    <gender>f</gender>
+    <location>Shop</location>
+    <status>Not From Via</status>
+    <saltwater>true</saltwater>
+    <species>d</species>
+    <predator>true</predator>
+    <price>22.0</price>
+  </pet>
+  <pet>
+    <id>12</id>
+    <type>Rodent</type>
+    <name>fd</name>
+    <color>f</color>
+    <age>3</age>
+    <gender>f</gender>
+    <location>Shop</location>
+    <status>Not Sold</status>
+    <species>e</species>
+    <price>33.0</price>
+  </pet>
+  <pet>
+    <id>13</id>
+    <type>Various</type>
+    <name>hjg</name>
+    <color>2d</color>
+    <age>33</age>
+    <gender>f</gender>
+    <location>Shop</location>
+    <status>Sold</status>
+    <species>r</species>
+    <price>34.0</price>
   </pet>
 </pets>
