@@ -100,4 +100,21 @@ public class CustomerList implements Serializable {
     }
     return sb.toString();
   }
+
+  /**
+   * Retrieves a pet by its ID.
+   *
+   * @param customerID the ID of the pet to be retrieved
+   * @return the customer with the specified ID, or null if not found
+   */
+  public Customer getCustomerByID(int customerID) {
+    for (int i = 0; i < getCustomers().size(); i++) {
+      if (getCustomers().get(i).getCustomerID() == customerID) {
+        return getCustomers().get(i);
+      }
+    }
+    return null;
+  }
 }
+
+

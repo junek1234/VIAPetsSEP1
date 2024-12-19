@@ -173,7 +173,7 @@ public class DogViewController
         "Sold" : petStatusNotSoldEditRadioButton.isSelected() ?
         "Not Sold" : petStatusNotFromViaEditRadioButton.isSelected() ? "Not From Via" : "";
 
-    // Parse numeric fields safely
+    // Parse numeric fields
     int age = 0;
     double price = 0.0;
     try {

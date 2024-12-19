@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * The Booking class represents a booking made by a customer for a pet, which includes the booking ID,
@@ -56,6 +57,15 @@ public class Booking implements Serializable {
    */
   public Pet getPet() {
     return pet;
+  }
+
+  /**
+   * Sets the pet for the booking.
+   *
+   * @param pet the pet to set for the sale
+   */
+  public void setPet(Pet pet) {
+    this.pet = pet;
   }
 
   /**
@@ -132,5 +142,23 @@ public class Booking implements Serializable {
    */
   public void setEndDate(Date newEndDate) {
     this.dateInterval.setEndDate(newEndDate);
+  }
+
+  /**
+   * Gets the start date for the booking by retrieving the start date of the date interval.
+   *
+   * @return the start date for the booking
+   */
+  public Date getStartDate() {
+    return this.dateInterval.getStartDate();
+  }
+
+  /**
+   * Gets the end date for the booking by retrieving the end date of the date interval.
+   *
+   * @return the end date for the booking
+   */
+  public Date getEndDate() {
+    return this.dateInterval.getEndDate();
   }
 }
