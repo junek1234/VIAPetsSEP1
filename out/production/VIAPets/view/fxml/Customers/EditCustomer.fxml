@@ -61,24 +61,14 @@
             <Insets top="30.0" />
          </VBox.margin>
          <children>
-            <Label prefHeight="26.0" prefWidth="69.0" text="Customer ID">
-               <HBox.margin>
-                  <Insets left="33.0" />
-               </HBox.margin>
-            </Label>
-            <TextField prefHeight="26.0" prefWidth="98.0">
-               <HBox.margin>
-                  <Insets bottom="2.0" left="5.0" right="8.0" />
-               </HBox.margin>
-            </TextField>
             <Label prefHeight="26.0" prefWidth="33.0" text="Name">
                <HBox.margin>
                   <Insets left="90.0" />
                </HBox.margin>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="98.0">
+            <TextField fx:id="customerNameEditTextField" prefHeight="26.0" prefWidth="98.0">
                <HBox.margin>
-                  <Insets left="5.0" right="35.0" />
+                  <Insets left="5.0" right="260.0" />
                </HBox.margin></TextField>
          </children>
       </HBox>
@@ -89,7 +79,7 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="98.0">
+            <TextField fx:id="customerPhoneNumberEditTextField" prefHeight="26.0" prefWidth="98.0">
                <HBox.margin>
                   <Insets bottom="2.0" left="5.0" right="8.0" />
                </HBox.margin>
@@ -99,13 +89,13 @@
                   <Insets left="75.0" />
                </HBox.margin>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="98.0">
+            <TextField fx:id="customerEmailEditTextField" prefHeight="26.0" prefWidth="98.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin></TextField>
          </children>
       </HBox>
-      <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Save">
+      <Button fx:id="customerSaveButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveEditCustomer" text="Save">
          <VBox.margin>
             <Insets top="30.0" />
          </VBox.margin>

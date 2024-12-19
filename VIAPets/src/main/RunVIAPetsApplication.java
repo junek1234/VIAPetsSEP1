@@ -8,6 +8,7 @@ import view.StartGUI;
  * It initializes the JavaFX application by launching the StartGUI class, which is responsible for
  * the graphical user interface (GUI) of the application.
  *
+ * @author Piotr Junosz
  * @version 1.0
  */
 public class RunVIAPetsApplication

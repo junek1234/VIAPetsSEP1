@@ -7,8 +7,8 @@
     <color>jklkqsa</color>
     <age>7</age>
     <gender>m</gender>
-    <location>Shop</location>
-    <status>Sold</status>
+    <location>Kennel</location>
+    <status>Not From Via</status>
     <species>njkda</species>
     <price>88.0</price>
   </pet>
@@ -19,7 +19,7 @@
     <color>mnjascm</color>
     <age>8</age>
     <gender>m</gender>
-    <location>Shop</location>
+    <location>Kennel</location>
     <status>Sold</status>
     <species>mnsa</species>
     <price>9.0</price>
@@ -27,28 +27,15 @@
   <pet>
     <id>3</id>
     <type>Dog</type>
-    <name>felipe</name>
+    <name>what</name>
     <color>mnlac</color>
     <age>9</age>
     <gender>m</gender>
-    <location>Shop</location>
-    <status>Sold</status>
+    <location>Kennel</location>
+    <status>Not From Via</status>
     <breed>mkjsa</breed>
     <breederName>,msac</breederName>
     <price>9.0</price>
-  </pet>
-  <pet>
-    <id>4</id>
-    <type>Cat</type>
-    <name>,n sa</name>
-    <color>gul</color>
-    <age>8</age>
-    <gender>m</gender>
-    <location>Shop</location>
-    <status>Sold</status>
-    <breed>kjs</breed>
-    <breederName>mnas</breederName>
-    <price>8.0</price>
   </pet>
   <pet>
     <id>5</id>
@@ -71,23 +58,23 @@
     <age>8</age>
     <gender>m</gender>
     <location>Shop</location>
-    <status>Sold</status>
+    <status>Not Sold</status>
     <saltwater>true</saltwater>
     <species>jsc</species>
     <predator>true</predator>
     <price>8.0</price>
   </pet>
   <pet>
-    <id>8</id>
+    <id>7</id>
     <type>Dog</type>
-    <name>Star</name>
-    <color>Brown</color>
-    <age>3</age>
+    <name>meu deus</name>
+    <color>lkds</color>
+    <age>9</age>
     <gender>m</gender>
-    <location>Kennel</location>
-    <status>Not From Via</status>
-    <breed>Bulldog</breed>
-    <breederName>Apolo</breederName>
-    <price>0.0</price>
+    <location>Shop</location>
+    <status>Not Sold</status>
+    <breed>ldfd</breed>
+    <breederName>lkds</breederName>
+    <price>9.0</price>
   </pet>
 </pets>

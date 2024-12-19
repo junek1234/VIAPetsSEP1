@@ -12,9 +12,19 @@ import javafx.stage.Stage;
 import model.*;
 import utils.XMLHandler;
 
-import javax.swing.text.View;
 import java.io.IOException;
-
+/**
+ * Controller class for managing fish pet data within the application.
+ * This class handles user interactions for adding, editing, and viewing fish pets.
+ * It provides the functionality for saving new fish data, editing existing fish data,
+ * and displaying fish-related information in the user interface.
+ *
+ * @author Piotr Junosz
+ * @author Felipe Figueiredo
+ * @author Guillermo Sánchez Martínez
+ * @author Cristina Aurelia Matei
+ * @version 1.0
+ */
 public class FishViewController
 {
 
@@ -25,24 +35,24 @@ public class FishViewController
 
   @FXML private TextArea petCommentTextField;
 
-  private ToggleGroup genderGroup;
+  @FXML ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleRadioButton;
   @FXML private RadioButton petGenderFemaleRadioButton;
 
-  private ToggleGroup locationGroup;
+  @FXML ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopRadioButton;
   @FXML private RadioButton petLocationKennelRadioButton;
 
-  private ToggleGroup statusGroup;
+  @FXML ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldRadioButton;
   @FXML private RadioButton petStatusNotSoldRadioButton;
   @FXML private RadioButton petStatusNotFromViaRadioButton;
 
-  private ToggleGroup saltWaterGroup;
+  @FXML ToggleGroup saltWaterGroup;
   @FXML private RadioButton petSaltWaterYesRadioButton;
   @FXML private RadioButton petSaltWaterNoRadioButton;
 
-  private ToggleGroup predatorGroup;
+  @FXML ToggleGroup predatorGroup;
   @FXML private RadioButton petPredatorYesRadioButton;
   @FXML private RadioButton petPredatorNoRadioButton;
 
@@ -102,7 +112,14 @@ public class FishViewController
 //    petPredatorNoRadioButton.setToggleGroup(predatorGroup);
 //
 //  }
-
+  /**
+   * Saves a new fish pet to the application.
+   * The method validates the user inputs and creates a new Fish object with the provided details.
+   * It then adds the new fish pet to the model and updates the XML file.
+   *
+   * @param actionEvent The event triggered when the save button is clicked.
+   * @throws RuntimeException if an error occurs during file operations.
+   */
   public void saveAddPet(ActionEvent actionEvent)
   {
     String species = petSpeciesTextField.getText();
@@ -209,6 +226,13 @@ public class FishViewController
     }
   }
 
+  /**
+   * Saves changes made to an existing fish pet.
+   * This method validates the input data, prompts the user for confirmation,
+   * and then updates the selected fish pet's details in the model.
+   *
+   * @param actionEvent The event triggered when the save button is clicked.
+   */
   public void saveEditFish(ActionEvent actionEvent) {
     String name = petNameEditTextField.getText();
     String color = petColorEditTextField.getText();
@@ -285,6 +309,12 @@ public class FishViewController
     }
   }
 
+  /**
+   * Fills the edit form with the details of the provided fish pet.
+   * This method is used to populate the form when editing an existing fish pet.
+   *
+   * @param fish The fish pet to be edited.
+   */
   public void fillFish(Fish fish) {
 
     selectedPet = fish;
@@ -331,6 +361,12 @@ public class FishViewController
   }
 
 
+  /**
+   * Handles the action of editing a fish pet.
+   * This method opens the edit window and allows the user to modify the details of the selected fish pet.
+   *
+   * @param pet The pet to be edited.
+   */
   public void handleEditAction(Pet pet) {
     try {
 

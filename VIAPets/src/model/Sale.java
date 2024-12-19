@@ -123,4 +123,22 @@ public class Sale implements Serializable {
   public String toString() {
     return "Sale{" + "customer=" + customer + ", pet=" + pet + ", salePrice=" + salePrice + ", saleID=" + saleID + '}';
   }
+
+  /**
+   * Sets the pet ID for the pet associated with the sale.
+   *
+   * @param newPetID the new pet ID to set
+   */
+  public void setPetID(int newPetID) {
+    this.pet.setPetID(newPetID);
+  }
+
+  /**
+   * Sets the customer ID for the customer associated with the sale.
+   *
+   * @param newCustomerID the new customer ID to set
+   */
+  public void setCustomerID(int newCustomerID) {
+    this.customer.setCustomerID(newCustomerID);
+  }
 }

@@ -27,7 +27,18 @@ import javafx.scene.control.TableColumn;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-
+/**
+ * ViewHandler class handles the interactions between the user interface and application logic
+ * in a JavaFX-based GUI. It is responsible for displaying views, managing pet, customer, booking,
+ * and sales data, and responding to user actions like switching scenes and showing popups.
+ *
+ * @author Guillermo Sánchez Martínez
+ * @author Felipe Figueiredo
+ * @author Piotr Junosz
+ * @author Mara-Ioana Statie
+ *
+ * @version 1.0
+ */
 public class ViewHandler
 {
   public static String lastPopupSource;
@@ -106,7 +117,6 @@ public class ViewHandler
    private TableColumn<Pet, Void> actionsPetView;
    private TableColumn<Pet, String> petPricePetView;
 
-
    private TableView<Customer> customerTable;
    private TableColumn<Customer, Number> customerIDView;
    private TableColumn<Customer, String> customerNameView;
@@ -140,6 +150,12 @@ public class ViewHandler
 
  // BirdViewController birdViewController = new BirdViewController();
 
+  /**
+   * Switches the scene based on the selected menu item.
+   *
+   * @param e the ActionEvent triggered by the menu item selection
+   * @throws IOException if there is an error loading the FXML file
+   */
   @FXML public void switchScene(ActionEvent e) throws IOException
   {
     Object source = e.getSource();
@@ -233,6 +249,12 @@ public class ViewHandler
   }
 
   //Search method
+  /**
+   * The search method for the customer table.
+   *
+   * @param table the TableView to be filtered
+   * @param query the search query string
+   */
   private void filterTableCustomer(TableView<Customer> table, String query) {
     MyModelManager manager = new MyModelManager();
     ObservableList<Customer> customerList = FXCollections.observableArrayList(
@@ -249,7 +271,12 @@ public class ViewHandler
     table.setItems(filteredList);
 
   }
-
+  /**
+   * The search method for the pet table.
+   *
+   * @param table the TableView to be filtered
+   * @param query the search query string
+   */
   private void filterTablePet(TableView<Pet> table, String query) {
     MyModelManager manager = new MyModelManager();
     ObservableList<Pet> petList = FXCollections.observableArrayList(
@@ -264,7 +291,12 @@ public class ViewHandler
     }
     table.setItems(filteredList);
   }
-
+  /**
+   * The search method for the sale table.
+   *
+   * @param table the TableView to be filtered
+   * @param query the search query string
+   */
   private void filterTableSale(TableView<Sale> table, String query) {
     MyModelManager manager = new MyModelManager();
     ObservableList<Sale> saleList = FXCollections.observableArrayList(
@@ -279,7 +311,12 @@ public class ViewHandler
     }
     table.setItems(filteredList);
   }
-
+  /**
+   * The search method for the booking table.
+   *
+   * @param table the TableView to be filtered
+   * @param query the search query string
+   */
   private void filterTableBooking(TableView<Booking> table, String query) {
     MyModelManager manager = new MyModelManager();
     ObservableList<Booking> bookingList = FXCollections.observableArrayList(
@@ -297,6 +334,12 @@ public class ViewHandler
     table.setItems(filteredList);
   }
   // Create a separate method for popup handling
+  /**
+   * Displays a popup window for adding or editing a pet, customer, booking, sale, or settings.
+   *
+   * @param e the ActionEvent triggered by the button or menu item selection
+   * @throws IOException if there is an error loading the FXML file for the popup
+   */
   @FXML public void showPopup(ActionEvent e) throws IOException
   {
 
@@ -382,7 +425,9 @@ public class ViewHandler
 //    switchScene(e);
 
   }
-  
+  /**
+   * Initializes the pet list by loading data by using MyModelManager and displaying it in the pet table.
+   */
   public void initPetlist()
   {
     MyModelManager manager = new MyModelManager();
@@ -450,7 +495,9 @@ public class ViewHandler
     addActionsPetTable();
 
   }
-
+  /**
+   * Initializes the customer list by loading data from the model and displaying it in the customer table.
+   */
   public void initCustomerList()
   {
     MyModelManager manager = new MyModelManager();
@@ -487,7 +534,9 @@ public class ViewHandler
 
     addActionsCustomerTable();
   }
-
+  /**
+   * Initializes the booking list by loading data from the model and displaying it in the booking table.
+   */
   public void initBookingList()
   {
     MyModelManager manager = new MyModelManager();
@@ -519,12 +568,12 @@ public class ViewHandler
     startDateBookingView.setCellValueFactory(
         cellData -> new SimpleStringProperty(
             cellData.getValue().getDateInterval().getStartDate()
-                .format(formatter)));
+                .toString()));
     startDateBookingView.setStyle("-fx-alignment: CENTER;");
 
     endDateBookingView = new TableColumn<>("End Date");
     endDateBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
-        cellData.getValue().getDateInterval().getEndDate().format(formatter)));
+        cellData.getValue().getDateInterval().getEndDate().toString()));
     endDateBookingView.setStyle("-fx-alignment: CENTER;");
 
 //WE DON'T NEED THIS ANYMORE
@@ -538,15 +587,16 @@ public class ViewHandler
 //        cellData.getValue().getDateInterval().getEndDate().getHour()+":00"));
 //    endHourBookingView.setStyle("-fx-alignment: CENTER;");
 
-    bookingTable.getColumns()
-        .addAll(bookingIDView, petNameBookingView, customerNameBookingView,
+    bookingTable.getColumns().addAll(bookingIDView, petNameBookingView, customerNameBookingView,
             startDateBookingView, endDateBookingView);
 
     bookingTable.refresh();
 
     addActionsBookingTable();
   }
-
+  /**
+   * Initializes the sale list by loading data from the model and displaying it in the sale table.
+   */
   public void initSaleList()
   {
     MyModelManager manager = new MyModelManager();
@@ -585,7 +635,13 @@ public class ViewHandler
 
     addActionsSaleTable();
   }
-
+  /**
+   * Adds action buttons (edit, delete) to each row of the pet table.
+   * The buttons allow the user to edit or delete a pet from the list.
+   * Deletion requires confirmation via a warning alert.
+   *
+   * @throws RuntimeException if there is an error during the deletion process
+   */
   private void addActionsPetTable()
   {
     actionsPetView = new TableColumn<>("Actions");
@@ -686,7 +742,13 @@ public class ViewHandler
 
     petTable.getColumns().add(actionsPetView);
   }
-
+  /**
+   * Adds action buttons (edit, delete) to each row of the customer table.
+   * The buttons allow the user to edit or delete a customer from the list.
+   * Deletion requires confirmation via a warning alert.
+   *
+   * @throws RuntimeException if there is an error during the deletion process
+   */
   private void addActionsCustomerTable()
   {
     actionsCustomerView = new TableColumn<>("Actions");
@@ -708,17 +770,21 @@ public class ViewHandler
           return; // Buttons already added, no need to add again
         }
 
-        // Create buttons and add actions
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
           actionButtons.setAlignment(Pos.CENTER);
 
-          editButton.setOnAction(event -> {
-            Customer customer = getTableView().getItems().get(getIndex());
-            // handleEditAction(customer);
+        editButton.setOnAction(event -> {
+          Customer customer = getTableView().getItems().get(getIndex());
 
-          });
+          CustomerViewController customerController = new CustomerViewController();
+
+          customerController.handleEditAction(customer);
+
+          customerTable.refresh();
+
+        });
 
           deleteButton.setOnAction(event -> {
             // Create a Confirmation Alert
@@ -772,79 +838,82 @@ public class ViewHandler
 
     customerTable.getColumns().add(actionsCustomerView);
   }
-
+  /**
+   * Adds action buttons (edit, delete) to each row of the booking table.
+   * The buttons allow the user to edit or delete a booking from the list.
+   * Deletion requires confirmation via a warning alert.
+   *
+   * @throws RuntimeException if there is an error during the deletion process
+   */
   private void addActionsBookingTable() {
     actionsBookingView = new TableColumn<>("Actions");
 
     actionsBookingView.setCellFactory(column -> new TableCell<Booking, Void>() {
       @Override
-      protected void updateItem(Void item, boolean empty)
-      {
+      protected void updateItem(Void item, boolean empty) {
         super.updateItem(item, empty);
 
-        // Clear any existing content if the row is empty
-        if (empty || getIndex() >= getTableView().getItems().size())
-        {
+        // Clear any previous graphic if the row is empty
+        if (empty || getIndex() >= getTableView().getItems().size()) {
           setGraphic(null);
           return;
         }
 
-        // Retrieve the current booking
-        Booking booking = getTableView().getItems().get(getIndex());
-        if (booking != null)
-        {
+        // Check if buttons are already present in the row
+        if (getGraphic() instanceof HBox) {
+          return; // Buttons already added, no need to add again
+        }
 
-          // Create buttons and add actions
-          Button editButton = new Button("Edit");
-          Button deleteButton = new Button("Delete");
-          HBox actionButtons = new HBox(10, editButton, deleteButton);
-          actionButtons.setAlignment(Pos.CENTER);
+        // Create buttons and add actions
+        Button editButton = new Button("Edit");
+        Button deleteButton = new Button("Delete");
+        HBox actionButtons = new HBox(10, editButton, deleteButton);
+        actionButtons.setAlignment(Pos.CENTER);
 
-          setGraphic(actionButtons);
+        setGraphic(actionButtons);
 
-          // Edit button action
-          editButton.setOnAction(event -> {
-            // Handle edit action
-            System.out.println("Editing booking: " + booking);
-          });
+        // Edit button action
+        editButton.setOnAction(event -> {
+          Booking booking = getTableView().getItems().get(getIndex());
 
-          // Delete button action
-          deleteButton.setOnAction(event -> {
-            // Create a confirmation dialog
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirm Delete");
-            alert.setHeaderText("Are you sure?");
-            alert.setContentText("Do you want to delete this booking?");
-            ButtonType yesButton = ButtonType.YES;
-            ButtonType noButton = ButtonType.NO;
-            alert.getButtonTypes().setAll(yesButton, noButton);
+          BookingViewController bookingController = new BookingViewController();
 
-            alert.showAndWait().ifPresent(response -> {
-              if (response == yesButton)
-              {
-                try
-                {
-                  MyModelManager manager = new MyModelManager();
-                  manager.deleteBooking(booking.getBookingID());
-                  getTableView().getItems().remove(getIndex());
-                  System.out.println("Booking deleted: " + booking);
-                }
-                catch (IOException e)
-                {
-                  e.printStackTrace();
-                }
+          bookingController.handleEditAction(booking);
+
+          bookingTable.refresh();
+        });
+
+        // Delete button action
+        deleteButton.setOnAction(event -> {
+          // Get the booking associated with this row
+          Booking booking = getTableView().getItems().get(getIndex());
+          if (booking == null) {
+            System.err.println("No booking found for the selected row.");
+            return;
+          }
+
+          // Create a confirmation dialog
+          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+          alert.setTitle("Confirm Delete");
+          alert.setHeaderText("Are you sure?");
+          alert.setContentText("Do you want to delete this booking?");
+          ButtonType yesButton = ButtonType.YES;
+          ButtonType noButton = ButtonType.NO;
+          alert.getButtonTypes().setAll(yesButton, noButton);
+
+          alert.showAndWait().ifPresent(response -> {
+            if (response == yesButton) {
+              try {
+                MyModelManager manager = new MyModelManager();
+                manager.deleteBooking(booking.getBookingID());
+                getTableView().getItems().remove(getIndex());
+                System.out.println("Booking deleted: " + booking);
+              } catch (IOException e) {
+                e.printStackTrace();
               }
-            });
+            }
           });
-
-          // Set the new HBox as the graphic for the cell
-          setGraphic(actionButtons);
-        }
-        else
-        {
-          // Clear the graphic if no booking is present
-          setGraphic(null);
-        }
+        });
       }
     });
 
@@ -852,7 +921,13 @@ public class ViewHandler
     bookingTable.getColumns().add(actionsBookingView);
   }
 
-
+  /**
+   * Adds action buttons (edit, delete) to each row of the sale table.
+   * The buttons allow the user to edit or delete a sale from the list.
+   * Deletion requires confirmation via a warning alert.
+   *
+   * @throws RuntimeException if there is an error during the deletion process
+   */
   private void addActionsSaleTable()
   {
     actionsSaleView = new TableColumn<>("Actions");
@@ -882,7 +957,12 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Sale sale = getTableView().getItems().get(getIndex());
-            // handleEditAction(sale);
+
+            SalesViewController saleController = new SalesViewController();
+
+            saleController.handleEditAction(sale);
+
+            saleTable.refresh();
 
           });
 

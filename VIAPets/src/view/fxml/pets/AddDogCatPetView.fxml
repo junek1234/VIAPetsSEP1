@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ToggleGroup?>
 
 <VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DogViewController">
   <children>
@@ -43,8 +44,11 @@
                   <Insets left="70.0" />
                </HBox.margin>
             </Label>
-            <RadioButton fx:id="petGenderMaleRadioButton" mnemonicParsing="false" text="Male" />
-            <RadioButton fx:id="petGenderFemaleRadioButton" mnemonicParsing="false" text="Female">
+            <fx:define>
+               <ToggleGroup fx:id="genderGroup" />
+            </fx:define>
+            <RadioButton fx:id="petGenderMaleRadioButton" mnemonicParsing="false" text="Male" toggleGroup="$genderGroup" />
+            <RadioButton fx:id="petGenderFemaleRadioButton" mnemonicParsing="false" text="Female" toggleGroup="$genderGroup">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
@@ -61,8 +65,11 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton fx:id="petLocationShopRadioButton" mnemonicParsing="false" text="Shop" />
-            <RadioButton fx:id="petLocationKennelRadioButton" mnemonicParsing="false" text="Kennel">
+            <fx:define>
+               <ToggleGroup fx:id="locationGroup" />
+            </fx:define>
+            <RadioButton fx:id="petLocationShopRadioButton" mnemonicParsing="false" text="Shop" toggleGroup="$locationGroup" />
+            <RadioButton fx:id="petLocationKennelRadioButton" mnemonicParsing="false" text="Kennel" toggleGroup="$locationGroup">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
@@ -97,13 +104,16 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton fx:id="petStatusSoldRadioButton" mnemonicParsing="false" text="Sold" />
-            <RadioButton fx:id="petStatusNotSoldRadioButton" mnemonicParsing="false" text="Not sold">
+            <fx:define>
+               <ToggleGroup fx:id="statusGroup" />
+            </fx:define>
+            <RadioButton fx:id="petStatusSoldRadioButton" mnemonicParsing="false" text="Sold" toggleGroup="$statusGroup" />
+            <RadioButton fx:id="petStatusNotSoldRadioButton" mnemonicParsing="false" text="Not sold" toggleGroup="$statusGroup">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="petStatusNotFromViaRadioButton" mnemonicParsing="false" text="Not from VIAPets">
+            <RadioButton fx:id="petStatusNotFromViaRadioButton" mnemonicParsing="false" text="Not from VIAPets" toggleGroup="$statusGroup">
                <padding>
                   <Insets left="30.0" />
                </padding>

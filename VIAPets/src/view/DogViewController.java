@@ -14,6 +14,17 @@ import utils.XMLHandler;
 
 import java.io.IOException;
 
+/**
+ * Controller class for handling the Dog-related events in the application.
+ * Manages actions for adding and editing dog details, including form validation and error handling.
+ * Provides methods for saving, editing, and filling dog information.
+ *
+ * @author Piotr Junosz
+ * @author Felipe Figueiredo
+ * @author Guillermo Sánchez Martínez
+ * @author Cristina Aurelia Matei
+ * @version 1.0
+ */
 public class DogViewController
 {
 
@@ -42,15 +53,15 @@ public class DogViewController
   @FXML private TextField petBreederNameEditTextField;
   @FXML private TextArea petCommentEditTextField;
 
-        private ToggleGroup genderGroup;
+  @FXML ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleEditRadioButton;
   @FXML private RadioButton petGenderFemaleEditRadioButton;
 
-        private ToggleGroup locationGroup;
+  @FXML ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopEditRadioButton;
   @FXML private RadioButton petLocationKennelEditRadioButton;
 
-        private ToggleGroup statusGroup;
+  @FXML ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldEditRadioButton;
   @FXML private RadioButton petStatusNotSoldEditRadioButton;
   @FXML private RadioButton petStatusNotFromViaEditRadioButton;
@@ -58,7 +69,13 @@ public class DogViewController
   @FXML private Button petSaveButton;
 
   private Pet selectedPet;
-
+  /**
+   * Handles the action of saving a new pet (dog) to the system.
+   * Validates the input fields and creates a new pet object
+   *
+   * @param actionEvent the event triggered when the save button is pressed.
+   * @throws RuntimeException if an error occurs while adding the pet or updating the XML file.
+   */
   public void saveAddPet(ActionEvent actionEvent) {
     String name = petNameTextField.getText();
     String color = petColorTextField.getText();
@@ -155,7 +172,12 @@ public class DogViewController
     }
   }
 
-
+  /**
+   * Handles the action of saving the changes made to an existing dog (pet).
+   * Validates the input fields and updates the selected dog in the model manager.
+   *
+   * @param actionEvent the event triggered when the save button is pressed.
+   */
   public void saveEditDog(ActionEvent actionEvent) {
     String name = petNameEditTextField.getText();
     String color = petColorEditTextField.getText();
@@ -173,7 +195,7 @@ public class DogViewController
         "Sold" : petStatusNotSoldEditRadioButton.isSelected() ?
         "Not Sold" : petStatusNotFromViaEditRadioButton.isSelected() ? "Not From Via" : "";
 
-    // Parse numeric fields safely
+    // Parse numeric fields
     int age = 0;
     double price = 0.0;
     try {
@@ -230,7 +252,11 @@ public class DogViewController
   }
 
 
-
+  /**
+   * Fills the form with the details of the selected dog for editing.
+   *
+   * @param dog the dog object to be displayed in the form.
+   */
   public void fillDog(Dog dog) {
 
     selectedPet = dog;
@@ -264,7 +290,11 @@ public class DogViewController
       petStatusNotFromViaEditRadioButton.setSelected(true);
     }
   }
-
+  /**
+   * Handles the action to edit a dog's details in a separate window.
+   *
+   * @param pet the pet to be edited.
+   */
   public void handleEditAction(Pet pet) {
     try {
 
