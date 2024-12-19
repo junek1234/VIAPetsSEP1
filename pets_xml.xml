@@ -7,15 +7,15 @@
     <color>jklkqsa</color>
     <age>7</age>
     <gender>m</gender>
-    <location>Kennel</location>
-    <status>Not From Via</status>
+    <location>Shop</location>
+    <status>Sold</status>
     <species>njkda</species>
     <price>88.0</price>
   </pet>
   <pet>
     <id>2</id>
     <type>Rodent</type>
-    <name>ljsd</name>
+    <name>felipe</name>
     <color>mnjascm</color>
     <age>8</age>
     <gender>m</gender>
@@ -76,5 +76,18 @@
     <species>jsc</species>
     <predator>true</predator>
     <price>8.0</price>
+  </pet>
+  <pet>
+    <id>8</id>
+    <type>Dog</type>
+    <name>Star</name>
+    <color>Brown</color>
+    <age>3</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Not From Via</status>
+    <breed>Bulldog</breed>
+    <breederName>Apolo</breederName>
+    <price>0.0</price>
   </pet>
 </pets>

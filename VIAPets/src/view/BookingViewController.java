@@ -182,7 +182,6 @@ public class BookingViewController
 //     T(n) = 97 + n, so ignoring constants, we get T(n) = O(n).
 //     We chose this method because it is the one with the biggest time complexity in our code.
 //
-//
 //     Dominating Term Analysis
 //     T(n) = 97 + n
 //     - Dominating Term: n

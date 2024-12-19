@@ -192,7 +192,7 @@ public class DogViewController
     Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
     confirmationAlert.setTitle("Save Changes");
     confirmationAlert.setHeaderText("Are you sure you want to save the changes?");
-    confirmationAlert.setContentText("Click OK to save or Cancel to cancel.");
+    confirmationAlert.setContentText("Click OK to save changes or Cancel to discard changes.");
 
     ButtonType result = confirmationAlert.showAndWait().orElse(ButtonType.CANCEL);
     if (result == ButtonType.OK) {
