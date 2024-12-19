@@ -87,7 +87,7 @@ public class MyModelManager implements Serializable
 
 
         loadBookingsSettings();
-        viaPets.setAvailableSlots(VIAPets.getCurrentDate());
+        viaPets.checkAvailableSlots(VIAPets.getCurrentDate());
         XMLHandler.updateXML();
     }
 
@@ -418,7 +418,7 @@ public class MyModelManager implements Serializable
         {
             MyFileHandler.writeToTextFile(BOOKINGS_SETTINGS,VIAPets.maxKennelSlots+"");
             MyFileHandler.appendToTextFile(BOOKINGS_SETTINGS,VIAPets.bookingPrice+"");
-            viaPets.setAvailableSlots(VIAPets.getCurrentDate());
+            viaPets.checkAvailableSlots(VIAPets.getCurrentDate());
             XMLHandler.updateXML();
         }
         catch (FileNotFoundException e)
@@ -457,7 +457,7 @@ public class MyModelManager implements Serializable
         while(startDate.isBefore(endDate) || startDate.isEqual(endDate))
         {
             now= new Date(startDate.getDayOfMonth(), startDate.getMonthValue(), startDate.getYear());
-            viaPets.setAvailableSlots(now);
+            viaPets.checkAvailableSlots(now);
             if(VIAPets.availableSlotsToday==0)
             {
                 return false;
