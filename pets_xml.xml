@@ -6,21 +6,21 @@
     <name>felipett</name>
     <color>jklkqsa</color>
     <age>7</age>
-    <gender>m</gender>
-    <location>Kennel</location>
-    <status>Not From Via</status>
+    <gender>f</gender>
+    <location>Shop</location>
+    <status>Not Sold</status>
     <species>njkda</species>
     <price>88.0</price>
   </pet>
   <pet>
     <id>2</id>
     <type>Rodent</type>
-    <name>ljsd</name>
+    <name>felipe</name>
     <color>mnjascm</color>
     <age>8</age>
     <gender>m</gender>
-    <location>Shop</location>
-    <status>Sold</status>
+    <location>Kennel</location>
+    <status>Not Sold</status>
     <species>mnsa</species>
     <price>9.0</price>
   </pet>
@@ -28,14 +28,14 @@
     <id>3</id>
     <type>Dog</type>
     <name>felipe</name>
-    <color>mnlac</color>
-    <age>9</age>
+    <color>gv</color>
+    <age>2</age>
     <gender>m</gender>
-    <location>Shop</location>
-    <status>Sold</status>
+    <location>Kennel</location>
+    <status>Not Sold</status>
     <breed>mkjsa</breed>
-    <breederName>,msac</breederName>
-    <price>9.0</price>
+    <breederName>8</breederName>
+    <price>12.0</price>
   </pet>
   <pet>
     <id>4</id>
@@ -43,9 +43,9 @@
     <name>,n sa</name>
     <color>gul</color>
     <age>8</age>
-    <gender>m</gender>
+    <gender>f</gender>
     <location>Shop</location>
-    <status>Sold</status>
+    <status>Not Sold</status>
     <breed>kjs</breed>
     <breederName>mnas</breederName>
     <price>8.0</price>
@@ -53,14 +53,14 @@
   <pet>
     <id>5</id>
     <type>Bird</type>
-    <name>,cas</name>
-    <color>kja</color>
-    <age>1000</age>
+    <name>era</name>
+    <color>sdd</color>
+    <age>2</age>
     <gender>m</gender>
-    <location>Kennel</location>
+    <location>Shop</location>
     <status>Not Sold</status>
     <species>jncs</species>
-    <preferredFood>,mca</preferredFood>
+    <preferredFood>5</preferredFood>
     <price>700.0</price>
   </pet>
   <pet>
@@ -76,5 +76,17 @@
     <species>jsc</species>
     <predator>true</predator>
     <price>8.0</price>
+  </pet>
+  <pet>
+    <id>7</id>
+    <type>Various</type>
+    <name>gfdg</name>
+    <color>gdf</color>
+    <age>3</age>
+    <gender>f</gender>
+    <location>Shop</location>
+    <status>Not From Via</status>
+    <species>r</species>
+    <price>22.0</price>
   </pet>
 </pets>
