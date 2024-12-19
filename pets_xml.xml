@@ -27,12 +27,12 @@
   <pet>
     <id>3</id>
     <type>Dog</type>
-    <name>felipe</name>
+    <name>what</name>
     <color>mnlac</color>
     <age>9</age>
     <gender>m</gender>
-    <location>Shop</location>
-    <status>Sold</status>
+    <location>Kennel</location>
+    <status>Not From Via</status>
     <breed>mkjsa</breed>
     <breederName>,msac</breederName>
     <price>9.0</price>

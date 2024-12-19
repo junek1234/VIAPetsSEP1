@@ -13,7 +13,16 @@ import model.*;
 import utils.XMLHandler;
 
 import java.io.IOException;
-
+/**
+ * Controller class for managing the various pet-related actions in the application.
+ * Handles saving and editing pet information.
+ *
+ * @author Piotr Junosz
+ * @author Felipe Figueiredo
+ * @author Guillermo Sánchez Martínez
+ * @author Cristina Aurelia Matei
+ * @version 1.0
+ */
 public class VariousViewController
 {
 
@@ -63,7 +72,13 @@ public class VariousViewController
   @FXML private Button petSaveButton;
 
   private Pet selectedPet;
-
+  /**
+   * Saves the new pet information entered by the user in the "Add Pet" view.
+   * Validates the input fields and adds the pet to the model.
+   *
+   * @param actionEvent the action event triggered by the save button.
+   * @throws RuntimeException if there is an error saving the pet information to the file.
+   */
   public void saveAddPet(ActionEvent actionEvent)
   {
     int age=0;
@@ -170,7 +185,12 @@ public class VariousViewController
 
     }
   }
-
+  /**
+   * Saves the edited pet information in the "Edit Pet" view.
+   * Validates the edited fields and saves the changes.
+   *
+   * @param actionEvent the action event triggered by the save button.
+   */
   public void saveEditVarious(ActionEvent actionEvent) {
     String name = petNameEditTextField.getText();
     String color = petColorEditTextField.getText();
@@ -241,7 +261,11 @@ public class VariousViewController
       }
     }
   }
-
+  /**
+   * Fills the edit fields with the selected pet's current information for editing.
+   *
+   * @param various the pet to be edited.
+   */
   public void fillVarious(Various various) {
 
     selectedPet = various;
@@ -274,7 +298,11 @@ public class VariousViewController
       petStatusNotFromViaEditRadioButton.setSelected(true);
     }
   }
-
+  /**
+   * Handles the action to edit a selected pet, opening the corresponding edit window.
+   *
+   * @param pet the pet to be edited.
+   */
   public void handleEditAction(Pet pet) {
     try {
 

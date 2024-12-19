@@ -14,6 +14,16 @@ import utils.XMLHandler;
 
 import java.io.IOException;
 
+/**
+ * Controller class for managing the Cat view.
+ * Handles the addition, editing, and validation of Cat objects.
+ * Includes methods for saving and editing cat data, and populating forms.
+ * @author Piotr Junosz
+ * @author Felipe Figueiredo
+ * @author Guillermo Sánchez Martínez
+ * @author Cristina Aurelia Matei
+ * @version 1.0
+ */
 public class CatViewController
 {
 
@@ -59,6 +69,13 @@ public class CatViewController
 
   private Pet selectedPet;
 
+  /**
+   * Saves a new cat based on user input.
+   * Validates the input fields and handles errors accordingly.
+   *
+   * @param actionEvent the action event triggered by clicking the save button
+   * @throws RuntimeException if there is an error saving the cat data
+   */
   public void saveAddPet(ActionEvent actionEvent) {
     String name = petNameTextField.getText();
     String color = petColorTextField.getText();
@@ -154,7 +171,12 @@ public class CatViewController
       XMLHandler.updateXML();
     }
   }
-  
+  /**
+   * Saves changes to an existing cat.
+   * Updates the cat object with new values and persists the changes.
+   *
+   * @param actionEvent the action event triggered by clicking the save button
+   */
   public void saveEditCat(ActionEvent actionEvent) {
     String name = petNameEditTextField.getText();
     String color = petColorEditTextField.getText();
@@ -227,7 +249,12 @@ public class CatViewController
       }
     }
   }
-
+  /**
+   * Populates the edit form with data from the selected cat.
+   * Fills all input fields based on the cat's properties.
+   *
+   * @param cat the cat whose data will populate the edit form
+   */
   public void fillCat(Cat cat) {
 
     selectedPet = cat;
@@ -262,6 +289,12 @@ public class CatViewController
     }
   }
 
+  /**
+   * Opens the edit window for modifying cat details.
+   * Loads the FXML for editing a cat
+   *
+   * @param pet the pet object to be edited, cast to Cat
+   */
   public void handleEditAction(Pet pet) {
     try {
 

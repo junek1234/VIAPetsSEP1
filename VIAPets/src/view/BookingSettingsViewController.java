@@ -9,18 +9,35 @@ import javafx.stage.Stage;
 import model.MyModelManager;
 import model.VIAPets;
 
+/**
+ * Controller class for managing booking settings in the application.
+ * Provides functionality to view and update the maximum kennel slots and booking price per hour.
+ *
+ * @version 1.0
+ * @author Piotr Junosz
+ * @author Guillermo Sánchez Martínez
+ */
 public class BookingSettingsViewController
 {
   @FXML public TextField maxKennelSlotsTextField;
   @FXML public TextField pricePerHourTextField;
-  //bookings Settings actions
 
-  //displaying current settings while opening this window
+  /**
+   * Initializes the booking settings view with current settings.
+   * Displays the current booking price per hour and maximum kennel slots.
+   */
   public void initialize()
   {
     pricePerHourTextField.setText(VIAPets.bookingPrice+"");
     maxKennelSlotsTextField.setText(VIAPets.maxKennelSlots+"");
   }
+  /**
+   * Saves the updated booking settings.
+   * Validates the input fields and updates the settings for maximum kennel slots
+   * and booking price per hour.
+   *
+   * @param actionEvent the event triggered by the save button
+   */
   public void saveBookingsSettings(ActionEvent actionEvent)
   {
 

@@ -14,6 +14,16 @@ import utils.XMLHandler;
 
 import java.io.IOException;
 
+/**
+ * Controller class responsible for managing the Rodent view interactions.
+ * Handles the actions for adding, editing, and managing rodent pets.
+ *
+ * @author Piotr Junosz
+ * @author Felipe Figueiredo
+ * @author Guillermo Sánchez Martínez
+ * @author Cristina Aurelia Matei
+ * @version 1.0
+ */
 public class RodentViewController
 {
 
@@ -61,6 +71,13 @@ public class RodentViewController
 
   private Pet selectedPet;
 
+  /**
+   * Saves a newly added rodent pet.
+   * Validates input, checks for errors, and adds the pet to the system.
+   *
+   * @param actionEvent the event triggered by the save action
+   * @throws RuntimeException if an error occurs while saving the pet
+   */
   public void saveAddPet(ActionEvent actionEvent)
   {
     int age=0;
@@ -167,7 +184,12 @@ public class RodentViewController
 
     }
   }
-
+  /**
+   * Saves changes made to an existing rodent pet.
+   * Displays a confirmation dialog before saving changes.
+   *
+   * @param actionEvent the event triggered by the save action
+   */
   public void saveEditRodent(ActionEvent actionEvent) {
     String name = petNameEditTextField.getText();
     String color = petColorEditTextField.getText();
@@ -238,7 +260,11 @@ public class RodentViewController
       }
     }
   }
-
+  /**
+   * Fills the edit form with the data of the selected rodent pet.
+   *
+   * @param rodent the rodent pet to be edited
+   */
   public void fillRodent(Rodent rodent) {
 
     selectedPet = rodent;
@@ -271,7 +297,12 @@ public class RodentViewController
       petStatusNotFromViaEditRadioButton.setSelected(true);
     }
   }
-
+  /**
+   * Handles the edit action for a rodent pet.
+   * Loads the edit window and passes the selected pet data.
+   *
+   * @param pet the pet to be edited
+   */
   public void handleEditAction(Pet pet) {
     try {
 

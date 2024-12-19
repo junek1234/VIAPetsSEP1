@@ -20,6 +20,14 @@ import java.util.ArrayList;
 
 import static model.VIAPets.getCurrentDate;
 
+/**
+ * Controller class for managing the booking view.
+ *
+ * @author Piotr Junosz
+ * @author Felipe Figueiredo
+ * @author Guillermo Sánchez Martínez
+ * @version 1.0
+ */
 public class BookingViewController
 {
 
@@ -37,6 +45,13 @@ public class BookingViewController
 
   @FXML private Button bookingSaveButton;
 
+  /**
+   * Saves a new booking based on user input.
+   * Validates inputs and checks for existing conflicts before saving.
+   *
+   * @param actionEvent the event triggered by the save button
+   * @throws RuntimeException if there is an issue saving the booking
+   */
   public void saveAddBooking(ActionEvent actionEvent)
   {
     //Variable declaration and assignment
@@ -188,6 +203,12 @@ public class BookingViewController
     }
   }
 
+  /**
+   * Saves changes to an existing booking.
+   * Validates user input and updates the booking details.
+   *
+   * @param actionEvent the event triggered by the save button
+   */
   public void saveEditBooking(ActionEvent actionEvent) {
     String petID = bookingPetIDEditTextField.getText();
     String customerID = bookingCustomerIDEditTextField.getText();
@@ -275,7 +296,11 @@ public class BookingViewController
     }
   }
 
-
+  /**
+   * Populates the edit form with the details of the selected booking.
+   *
+   * @param booking the booking to be edited
+   */
   public void fillBooking(Booking booking) {
     selectedBooking = booking;
 
@@ -295,6 +320,12 @@ public class BookingViewController
         LocalDate.parse(booking.getEndDate().toString(), formatter));
   }
 
+  /**
+   * Opens a window for editing a booking.
+   * Loads the appropriate FXML file and passes the booking to be edited.
+   *
+   * @param booking the booking to edit
+   */
   public void handleEditAction(Booking booking){
       try
       {

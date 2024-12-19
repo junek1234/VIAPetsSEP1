@@ -18,7 +18,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 
-
+/**
+ * Controller class for handling sales actions and updating the view in the sales window.
+ * This class is responsible for managing the user input for creating and editing sales,
+ * handling sale validation, and performing actions related to the sale of pets.
+ *
+ * @author Piotr Junosz
+ * @author Felipe Figueiredo
+ * @author Guillermo Sánchez Martínez
+ * @version 1.0
+ */
 public class SalesViewController
 {
 
@@ -37,7 +46,14 @@ public class SalesViewController
   @FXML private Button
 
       saleSaveButton;
-
+  /**
+   * Handles the action of saving a new sale when the "Save" button is clicked.
+   * Validates the input, checks if the pet and customer exist, and ensures the pet is eligible for sale.
+   * If all conditions are met, a new sale is created and the pet's status is updated to "Sold".
+   *
+   * @param actionEvent The action event triggered by clicking the "Save Sale" button.
+   * @throws RuntimeException If an error occurs when updating the sale or saving data.
+   */
   public void saveAddSale(ActionEvent actionEvent)
   {
     int petID = 0;
@@ -140,7 +156,13 @@ public class SalesViewController
     }
 
   }
-
+  /**
+   * Handles the action of saving an edited sale when the "Save" button is clicked.
+   * Validates the input fields for pet ID, customer ID, and sale price.
+   * Confirms the changes and updates the sale record in the system.
+   *
+   * @param actionEvent The action event triggered by clicking the "Save" button.
+   */
   public void saveEditSale(ActionEvent actionEvent) {
     String petID = salePetIDEditTextField.getText();
     String customerID = saleCustomerIDEditTextField.getText();
@@ -228,7 +250,11 @@ public class SalesViewController
 
     }
   }
-
+  /**
+   * Fills the sale details in the edit form with the information of the selected sale.
+   *
+   * @param sale The sale to be edited.
+   */
   public void fillSale(Sale sale)
   {
     selectedSale = sale;
@@ -243,7 +269,11 @@ public class SalesViewController
     // Set the sale price
     saleSalePriceEditTextField.setText(String.valueOf(sale.getSalePrice()));
   }
-
+  /**
+   * Loads the source of editSale fxml file to display it in the window.
+   *
+   * @param sale The sale to be edited.
+   */
   public void handleEditAction(Sale sale) {
     try {
       FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/sales/EditSale.fxml"));

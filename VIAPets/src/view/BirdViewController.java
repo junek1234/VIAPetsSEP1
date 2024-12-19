@@ -17,6 +17,16 @@ import utils.XMLHandler;
 
 import java.io.IOException;
 
+/**
+ * Controller class for handling the Bird view functionality in the application.
+ * Provides functionality to add, edit, and manage bird-related data.
+ *
+ * @version 1.0
+ * @author Piotr Junosz
+ * @author Felipe Figueiredo
+ * @author Guillermo Sánchez Martínez
+ * @author Cristina Aurelia Matei
+ */
 public class BirdViewController
 {
 
@@ -71,6 +81,13 @@ public class BirdViewController
 
   private Pet selectedPet;
 
+  /**
+   * Saves a new bird to the application.
+   * Validates input, creates a new Bird object, and adds it to the model.
+   *
+   * @param actionEvent the event triggered by the save button
+   * @throws RuntimeException if there is an error saving the bird data
+   */
   public void saveAddPet(ActionEvent actionEvent)
   {
 
@@ -162,6 +179,12 @@ public class BirdViewController
       }
   }
 
+  /**
+   * Saves the edited bird information.
+   * Updates the existing Bird object and saves it back to the model.
+   *
+   * @param actionEvent the event triggered by the save button
+   */
   public void saveEditBird(ActionEvent actionEvent) {
     String name = petNameEditTextField.getText();
     String color = petColorEditTextField.getText();
@@ -235,6 +258,11 @@ public class BirdViewController
     }
   }
 
+  /**
+   * Populates the edit form with details of the given bird.
+   *
+   * @param bird the Bird object to populate data from
+   */
   public void fillBird(Bird bird) {
 
     selectedPet = bird;
@@ -269,6 +297,11 @@ public class BirdViewController
     }
   }
 
+  /**
+   * Handles the action of opening the edit window for a given pet.
+   *
+   * @param pet the Pet object to edit
+   */
   public void handleEditAction(Pet pet) {
     try {
 

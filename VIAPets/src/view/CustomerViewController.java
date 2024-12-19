@@ -14,6 +14,17 @@ import utils.XMLHandler;
 
 import java.io.IOException;
 
+/**
+ * Controller class for managing the Customer view.
+ * Handles adding, editing, and validating Customer objects.
+ * Provides methods to populate, save, and persist customer data.
+ *
+ *
+ * @version 1.0
+ * @author Piotr Junosz
+ * @author Felipe Figueiredo
+ * @author Guillermo Sánchez Martínez
+ */
 public class CustomerViewController
 {
 
@@ -29,6 +40,14 @@ public class CustomerViewController
 
   private Customer selectedCustomer;
 
+  /**
+   * Saves a new customer based on user input.
+   * Validates the input fields and handles errors such as missing fields
+   * or incorrect phone number format.
+   *
+   * @param actionEvent the action event triggered by clicking the save button
+   * @throws RuntimeException if there is an error saving the customer data
+   */
   public void saveAddCustomer(ActionEvent actionEvent)
   {
     int number = 0;
@@ -88,6 +107,12 @@ public class CustomerViewController
 
   }
 
+  /**
+   * Saves changes to an existing customer.
+   * Validates user input and updates the customer details if confirmed.
+   *
+   * @param actionEvent the action event triggered by clicking the save button
+   */
   public void saveEditCustomer(ActionEvent actionEvent)
   {
 
@@ -155,6 +180,12 @@ public class CustomerViewController
     }
   }
 
+  /**
+   * Populates the edit form with data from the selected customer.
+   * Sets the input fields to the customer's current details.
+   *
+   * @param customer the customer object to populate the form
+   */
   public void fillCustomer(Customer customer)
   {
 
@@ -166,7 +197,13 @@ public class CustomerViewController
     customerEmailEditTextField.setText(customer.getEmail());
 
   }
-
+  /**
+   * Opens the edit window for modifying customer details.
+   * Loads the FXML for editing a customer
+   * as the target for editing.
+   *
+   * @param customer the customer object to be edited
+   */
     public void handleEditAction(Customer customer){
     try
     {

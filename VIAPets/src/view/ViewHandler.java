@@ -27,7 +27,18 @@ import javafx.scene.control.TableColumn;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-
+/**
+ * ViewHandler class handles the interactions between the user interface and application logic
+ * in a JavaFX-based GUI. It is responsible for displaying views, managing pet, customer, booking,
+ * and sales data, and responding to user actions like switching scenes and showing popups.
+ *
+ * @author Guillermo Sánchez Martínez
+ * @author Felipe Figueiredo
+ * @author Piotr Junosz
+ * @author Mara-Ioana Statie
+ *
+ * @version 1.0
+ */
 public class ViewHandler
 {
   public static String lastPopupSource;
@@ -139,6 +150,12 @@ public class ViewHandler
 
  // BirdViewController birdViewController = new BirdViewController();
 
+  /**
+   * Switches the scene based on the selected menu item.
+   *
+   * @param e the ActionEvent triggered by the menu item selection
+   * @throws IOException if there is an error loading the FXML file
+   */
   @FXML public void switchScene(ActionEvent e) throws IOException
   {
     Object source = e.getSource();
@@ -232,6 +249,12 @@ public class ViewHandler
   }
 
   //Search method
+  /**
+   * The search method for the customer table.
+   *
+   * @param table the TableView to be filtered
+   * @param query the search query string
+   */
   private void filterTableCustomer(TableView<Customer> table, String query) {
     MyModelManager manager = new MyModelManager();
     ObservableList<Customer> customerList = FXCollections.observableArrayList(
@@ -248,7 +271,12 @@ public class ViewHandler
     table.setItems(filteredList);
 
   }
-
+  /**
+   * The search method for the pet table.
+   *
+   * @param table the TableView to be filtered
+   * @param query the search query string
+   */
   private void filterTablePet(TableView<Pet> table, String query) {
     MyModelManager manager = new MyModelManager();
     ObservableList<Pet> petList = FXCollections.observableArrayList(
@@ -263,7 +291,12 @@ public class ViewHandler
     }
     table.setItems(filteredList);
   }
-
+  /**
+   * The search method for the sale table.
+   *
+   * @param table the TableView to be filtered
+   * @param query the search query string
+   */
   private void filterTableSale(TableView<Sale> table, String query) {
     MyModelManager manager = new MyModelManager();
     ObservableList<Sale> saleList = FXCollections.observableArrayList(
@@ -278,7 +311,12 @@ public class ViewHandler
     }
     table.setItems(filteredList);
   }
-
+  /**
+   * The search method for the booking table.
+   *
+   * @param table the TableView to be filtered
+   * @param query the search query string
+   */
   private void filterTableBooking(TableView<Booking> table, String query) {
     MyModelManager manager = new MyModelManager();
     ObservableList<Booking> bookingList = FXCollections.observableArrayList(
@@ -296,6 +334,12 @@ public class ViewHandler
     table.setItems(filteredList);
   }
   // Create a separate method for popup handling
+  /**
+   * Displays a popup window for adding or editing a pet, customer, booking, sale, or settings.
+   *
+   * @param e the ActionEvent triggered by the button or menu item selection
+   * @throws IOException if there is an error loading the FXML file for the popup
+   */
   @FXML public void showPopup(ActionEvent e) throws IOException
   {
 
@@ -381,7 +425,9 @@ public class ViewHandler
 //    switchScene(e);
 
   }
-  
+  /**
+   * Initializes the pet list by loading data by using MyModelManager and displaying it in the pet table.
+   */
   public void initPetlist()
   {
     MyModelManager manager = new MyModelManager();
@@ -449,7 +495,9 @@ public class ViewHandler
     addActionsPetTable();
 
   }
-
+  /**
+   * Initializes the customer list by loading data from the model and displaying it in the customer table.
+   */
   public void initCustomerList()
   {
     MyModelManager manager = new MyModelManager();
@@ -486,7 +534,9 @@ public class ViewHandler
 
     addActionsCustomerTable();
   }
-
+  /**
+   * Initializes the booking list by loading data from the model and displaying it in the booking table.
+   */
   public void initBookingList()
   {
     MyModelManager manager = new MyModelManager();
@@ -544,7 +594,9 @@ public class ViewHandler
 
     addActionsBookingTable();
   }
-
+  /**
+   * Initializes the sale list by loading data from the model and displaying it in the sale table.
+   */
   public void initSaleList()
   {
     MyModelManager manager = new MyModelManager();
@@ -583,7 +635,13 @@ public class ViewHandler
 
     addActionsSaleTable();
   }
-
+  /**
+   * Adds action buttons (edit, delete) to each row of the pet table.
+   * The buttons allow the user to edit or delete a pet from the list.
+   * Deletion requires confirmation via a warning alert.
+   *
+   * @throws RuntimeException if there is an error during the deletion process
+   */
   private void addActionsPetTable()
   {
     actionsPetView = new TableColumn<>("Actions");
@@ -684,7 +742,13 @@ public class ViewHandler
 
     petTable.getColumns().add(actionsPetView);
   }
-
+  /**
+   * Adds action buttons (edit, delete) to each row of the customer table.
+   * The buttons allow the user to edit or delete a customer from the list.
+   * Deletion requires confirmation via a warning alert.
+   *
+   * @throws RuntimeException if there is an error during the deletion process
+   */
   private void addActionsCustomerTable()
   {
     actionsCustomerView = new TableColumn<>("Actions");
@@ -774,7 +838,13 @@ public class ViewHandler
 
     customerTable.getColumns().add(actionsCustomerView);
   }
-
+  /**
+   * Adds action buttons (edit, delete) to each row of the booking table.
+   * The buttons allow the user to edit or delete a booking from the list.
+   * Deletion requires confirmation via a warning alert.
+   *
+   * @throws RuntimeException if there is an error during the deletion process
+   */
   private void addActionsBookingTable() {
     actionsBookingView = new TableColumn<>("Actions");
 
@@ -851,7 +921,13 @@ public class ViewHandler
     bookingTable.getColumns().add(actionsBookingView);
   }
 
-
+  /**
+   * Adds action buttons (edit, delete) to each row of the sale table.
+   * The buttons allow the user to edit or delete a sale from the list.
+   * Deletion requires confirmation via a warning alert.
+   *
+   * @throws RuntimeException if there is an error during the deletion process
+   */
   private void addActionsSaleTable()
   {
     actionsSaleView = new TableColumn<>("Actions");
