@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ToggleGroup?>
 
 <VBox id="searchBar" prefHeight="425.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
   <children>
@@ -46,8 +47,11 @@
                   <Insets left="75.0" />
                </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Male" />
-            <RadioButton mnemonicParsing="false" text="Female">
+            <fx:define>
+               <ToggleGroup fx:id="genderGroup" />
+            </fx:define>
+            <RadioButton mnemonicParsing="false" text="Male" toggleGroup="$genderGroup" />
+            <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$genderGroup">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
@@ -64,8 +68,11 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Shop" />
-            <RadioButton mnemonicParsing="false" text="Kennel">
+            <fx:define>
+               <ToggleGroup fx:id="locationGroup" />
+            </fx:define>
+            <RadioButton mnemonicParsing="false" text="Shop" toggleGroup="$locationGroup" />
+            <RadioButton mnemonicParsing="false" text="Kennel" toggleGroup="$locationGroup">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
@@ -82,8 +89,11 @@
                   <Insets left="50.0" />
                </HBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Sold" />
-            <RadioButton mnemonicParsing="false" text="Not sold">
+            <fx:define>
+               <ToggleGroup fx:id="statusGroup" />
+            </fx:define>
+            <RadioButton mnemonicParsing="false" text="Sold" toggleGroup="$statusGroup" />
+            <RadioButton mnemonicParsing="false" text="Not sold" toggleGroup="$statusGroup">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>

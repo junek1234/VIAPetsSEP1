@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kennel>
-<availableSlots>10</availableSlots>
+<availableSlots>9</availableSlots>
 <pricePerHour>20.0</pricePerHour>
 <maxKennelSlots>10</maxKennelSlots>
 </kennel>

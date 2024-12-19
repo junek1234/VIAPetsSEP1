@@ -42,15 +42,15 @@ public class CatViewController
   @FXML private TextField petBreederNameEditTextField;
   @FXML private TextArea petCommentEditTextField;
 
-  private ToggleGroup genderGroup;
+  @FXML ToggleGroup genderGroup;
   @FXML private RadioButton petGenderMaleEditRadioButton;
   @FXML private RadioButton petGenderFemaleEditRadioButton;
 
-  private ToggleGroup locationGroup;
+  @FXML ToggleGroup locationGroup;
   @FXML private RadioButton petLocationShopEditRadioButton;
   @FXML private RadioButton petLocationKennelEditRadioButton;
 
-  private ToggleGroup statusGroup;
+  @FXML ToggleGroup statusGroup;
   @FXML private RadioButton petStatusSoldEditRadioButton;
   @FXML private RadioButton petStatusNotSoldEditRadioButton;
   @FXML private RadioButton petStatusNotFromViaEditRadioButton;

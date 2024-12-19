@@ -106,7 +106,6 @@ public class ViewHandler
    private TableColumn<Pet, Void> actionsPetView;
    private TableColumn<Pet, String> petPricePetView;
 
-
    private TableView<Customer> customerTable;
    private TableColumn<Customer, Number> customerIDView;
    private TableColumn<Customer, String> customerNameView;
@@ -519,12 +518,12 @@ public class ViewHandler
     startDateBookingView.setCellValueFactory(
         cellData -> new SimpleStringProperty(
             cellData.getValue().getDateInterval().getStartDate()
-                .format(formatter)));
+                .toString()));
     startDateBookingView.setStyle("-fx-alignment: CENTER;");
 
     endDateBookingView = new TableColumn<>("End Date");
     endDateBookingView.setCellValueFactory(cellData -> new SimpleStringProperty(
-        cellData.getValue().getDateInterval().getEndDate().format(formatter)));
+        cellData.getValue().getDateInterval().getEndDate().toString()));
     endDateBookingView.setStyle("-fx-alignment: CENTER;");
 
 //WE DON'T NEED THIS ANYMORE
@@ -538,8 +537,7 @@ public class ViewHandler
 //        cellData.getValue().getDateInterval().getEndDate().getHour()+":00"));
 //    endHourBookingView.setStyle("-fx-alignment: CENTER;");
 
-    bookingTable.getColumns()
-        .addAll(bookingIDView, petNameBookingView, customerNameBookingView,
+    bookingTable.getColumns().addAll(bookingIDView, petNameBookingView, customerNameBookingView,
             startDateBookingView, endDateBookingView);
 
     bookingTable.refresh();
@@ -708,17 +706,21 @@ public class ViewHandler
           return; // Buttons already added, no need to add again
         }
 
-        // Create buttons and add actions
           Button editButton = new Button("Edit");
           Button deleteButton = new Button("Delete");
           HBox actionButtons = new HBox(10, editButton, deleteButton);
           actionButtons.setAlignment(Pos.CENTER);
 
-          editButton.setOnAction(event -> {
-            Customer customer = getTableView().getItems().get(getIndex());
-            // handleEditAction(customer);
+        editButton.setOnAction(event -> {
+          Customer customer = getTableView().getItems().get(getIndex());
 
-          });
+          CustomerViewController customerController = new CustomerViewController();
+
+          customerController.handleEditAction(customer);
+
+          customerTable.refresh();
+
+        });
 
           deleteButton.setOnAction(event -> {
             // Create a Confirmation Alert
@@ -778,73 +780,70 @@ public class ViewHandler
 
     actionsBookingView.setCellFactory(column -> new TableCell<Booking, Void>() {
       @Override
-      protected void updateItem(Void item, boolean empty)
-      {
+      protected void updateItem(Void item, boolean empty) {
         super.updateItem(item, empty);
 
-        // Clear any existing content if the row is empty
-        if (empty || getIndex() >= getTableView().getItems().size())
-        {
+        // Clear any previous graphic if the row is empty
+        if (empty || getIndex() >= getTableView().getItems().size()) {
           setGraphic(null);
           return;
         }
 
-        // Retrieve the current booking
-        Booking booking = getTableView().getItems().get(getIndex());
-        if (booking != null)
-        {
+        // Check if buttons are already present in the row
+        if (getGraphic() instanceof HBox) {
+          return; // Buttons already added, no need to add again
+        }
 
-          // Create buttons and add actions
-          Button editButton = new Button("Edit");
-          Button deleteButton = new Button("Delete");
-          HBox actionButtons = new HBox(10, editButton, deleteButton);
-          actionButtons.setAlignment(Pos.CENTER);
+        // Create buttons and add actions
+        Button editButton = new Button("Edit");
+        Button deleteButton = new Button("Delete");
+        HBox actionButtons = new HBox(10, editButton, deleteButton);
+        actionButtons.setAlignment(Pos.CENTER);
 
-          setGraphic(actionButtons);
+        setGraphic(actionButtons);
 
-          // Edit button action
-          editButton.setOnAction(event -> {
-            // Handle edit action
-            System.out.println("Editing booking: " + booking);
-          });
+        // Edit button action
+        editButton.setOnAction(event -> {
+          Booking booking = getTableView().getItems().get(getIndex());
 
-          // Delete button action
-          deleteButton.setOnAction(event -> {
-            // Create a confirmation dialog
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirm Delete");
-            alert.setHeaderText("Are you sure?");
-            alert.setContentText("Do you want to delete this booking?");
-            ButtonType yesButton = ButtonType.YES;
-            ButtonType noButton = ButtonType.NO;
-            alert.getButtonTypes().setAll(yesButton, noButton);
+          BookingViewController bookingController = new BookingViewController();
 
-            alert.showAndWait().ifPresent(response -> {
-              if (response == yesButton)
-              {
-                try
-                {
-                  MyModelManager manager = new MyModelManager();
-                  manager.deleteBooking(booking.getBookingID());
-                  getTableView().getItems().remove(getIndex());
-                  System.out.println("Booking deleted: " + booking);
-                }
-                catch (IOException e)
-                {
-                  e.printStackTrace();
-                }
+          bookingController.handleEditAction(booking);
+
+          bookingTable.refresh();
+        });
+
+        // Delete button action
+        deleteButton.setOnAction(event -> {
+          // Get the booking associated with this row
+          Booking booking = getTableView().getItems().get(getIndex());
+          if (booking == null) {
+            System.err.println("No booking found for the selected row.");
+            return;
+          }
+
+          // Create a confirmation dialog
+          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+          alert.setTitle("Confirm Delete");
+          alert.setHeaderText("Are you sure?");
+          alert.setContentText("Do you want to delete this booking?");
+          ButtonType yesButton = ButtonType.YES;
+          ButtonType noButton = ButtonType.NO;
+          alert.getButtonTypes().setAll(yesButton, noButton);
+
+          alert.showAndWait().ifPresent(response -> {
+            if (response == yesButton) {
+              try {
+                MyModelManager manager = new MyModelManager();
+                manager.deleteBooking(booking.getBookingID());
+                getTableView().getItems().remove(getIndex());
+                System.out.println("Booking deleted: " + booking);
+              } catch (IOException e) {
+                e.printStackTrace();
               }
-            });
+            }
           });
-
-          // Set the new HBox as the graphic for the cell
-          setGraphic(actionButtons);
-        }
-        else
-        {
-          // Clear the graphic if no booking is present
-          setGraphic(null);
-        }
+        });
       }
     });
 
@@ -882,7 +881,12 @@ public class ViewHandler
 
           editButton.setOnAction(event -> {
             Sale sale = getTableView().getItems().get(getIndex());
-            // handleEditAction(sale);
+
+            SalesViewController saleController = new SalesViewController();
+
+            saleController.handleEditAction(sale);
+
+            saleTable.refresh();
 
           });
 

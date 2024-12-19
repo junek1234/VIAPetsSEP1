@@ -105,12 +105,12 @@ public class Date implements Serializable {
   }
 
   /**
-   * Returns a string representation of the date in the format "day/month/year".
+   * Formats the current Date object into a string representation.
    *
-   * @return a string representation of the date
+   * @return a string representation of the date in the format "day/month/year"
    */
   public String toString() {
-    return day + "/" + month + "/" + year;
+    return String.format("%02d/%02d/%04d", day, month, year);
   }
 
   /**
