@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ToggleGroup?>
+
+<VBox id="searchBar" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FishViewController">
+  <children>
+      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+         <children>
+            <Label prefHeight="34.0" prefWidth="60.0" text="Name">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="petNameTextField" prefHeight="0.0" prefWidth="118.0" />
+            <Label prefHeight="34.0" prefWidth="60.0" text="Color">
+               <HBox.margin>
+                  <Insets left="75.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="petColorTextField" prefHeight="0.0" prefWidth="118.0" />
+         </children>
+      </HBox>
+      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="60.0" text="Age">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="petAgeTextField" prefHeight="0.0" prefWidth="118.0" />
+            <Label prefHeight="34.0" prefWidth="60.0" text="Gender">
+               <HBox.margin>
+                  <Insets left="70.0" />
+               </HBox.margin>
+            </Label>
+            <fx:define>
+               <ToggleGroup fx:id="genderGroup" />
+            </fx:define>
+            <RadioButton fx:id="petGenderMaleRadioButton" mnemonicParsing="false" text="Male" toggleGroup="$genderGroup" />
+            <RadioButton fx:id="petGenderFemaleRadioButton" mnemonicParsing="false" text="Female" toggleGroup="$genderGroup">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </RadioButton>
+         </children>
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="60.0" text="Location">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <fx:define>
+               <ToggleGroup fx:id="locationGroup" />
+            </fx:define>
+            <RadioButton fx:id="petLocationShopRadioButton" mnemonicParsing="false" text="Shop" toggleGroup="$locationGroup" />
+            <RadioButton fx:id="petLocationKennelRadioButton" mnemonicParsing="false" text="Kennel" toggleGroup="$locationGroup">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </RadioButton>
+            <Label prefHeight="34.0" prefWidth="60.0" text="Price">
+               <HBox.margin>
+                  <Insets left="70.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="petPriceTextField" prefHeight="0.0" prefWidth="118.0" />
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="65.0" text="Status">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <fx:define>
+               <ToggleGroup fx:id="statusGroup" />
+            </fx:define>
+            <RadioButton fx:id="petStatusSoldRadioButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="74.0" text="Sold" toggleGroup="$statusGroup" />
+            <RadioButton fx:id="petStatusNotSoldRadioButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="98.0" text="Not sold" toggleGroup="$statusGroup">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="petStatusNotFromViaRadioButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="187.0" text="Not from VIAPets" toggleGroup="$statusGroup" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="60.0" text="Salt water">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Label>
+            <fx:define>
+               <ToggleGroup fx:id="saltWaterGroup" />
+            </fx:define>
+            <RadioButton fx:id="petSaltWaterYesRadioButton" mnemonicParsing="false" text="Yes" toggleGroup="$saltWaterGroup"  />
+            <RadioButton fx:id="petSaltWaterNoRadioButton" mnemonicParsing="false" text="No" toggleGroup="$saltWaterGroup" >
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </RadioButton>
+            <Label prefHeight="26.0" prefWidth="80.0" text="Predator">
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+            </Label>
+            <fx:define>
+               <ToggleGroup fx:id="predatorGroup" />
+            </fx:define>
+            <RadioButton fx:id="petPredatorYesRadioButton" mnemonicParsing="false" text="Yes" toggleGroup="$predatorGroup" />
+            <RadioButton fx:id="petPredatorNoRadioButton" mnemonicParsing="false" text="No" toggleGroup="$predatorGroup">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </RadioButton>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox maxHeight="-Infinity" prefHeight="88.0" prefWidth="640.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="60.0" text="Species">
+               <HBox.margin>
+                  <Insets left="50.0" top="20.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="petSpeciesTextField" prefHeight="0.0" prefWidth="118.0">
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin></TextField>
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="329.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="63.0" prefWidth="273.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Comment" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="105.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextArea fx:id="petCommentTextField" prefHeight="78.0" prefWidth="158.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <Button fx:id="petSaveButton" onAction="#saveAddPet" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Save">
+         <VBox.margin>
+            <Insets bottom="10.0" left="275.0" top="20.0" />
+         </VBox.margin>
+      </Button>
+  </children>
+</VBox>

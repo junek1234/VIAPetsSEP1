@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox id="searchBar" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="640.0" spacing="30.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BookingViewController">
+  <children>
+
+      <HBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+         <children>
+            <Label prefHeight="25.0" prefWidth="40.0" text="Pet ID">
+               <HBox.margin>
+                  <Insets left="-50.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="bookingPetIDTextField" prefHeight="25.0" prefWidth="45.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+            <Label prefHeight="25.0" prefWidth="75.0" text="Customer ID">
+               <HBox.margin>
+                  <Insets left="167.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="bookingCustomerIDTextField" prefHeight="25.0" prefWidth="45.0">
+               <HBox.margin>
+                  <Insets right="8.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="18.0" prefWidth="640.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="60.0" text="Start Date">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <DatePicker fx:id="bookingStartDateDatePicker" />
+            <Label prefHeight="34.0" prefWidth="60.0" text="End Date">
+               <HBox.margin>
+                  <Insets left="75.0" />
+               </HBox.margin>
+            </Label>
+            <DatePicker fx:id="bookingEndDateDatePicker" />
+         </children>
+      </HBox>
+      <Button fx:id="saveAddBooking" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveAddBooking" text="Save">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Button>
+  </children>
+</VBox>

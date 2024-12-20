@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pets>
+  <pet>
+    <id>1</id>
+    <type>Dog</type>
+    <name>Buddy</name>
+    <color>Golden</color>
+    <age>3</age>
+    <gender>m</gender>
+    <location>Kennel</location>
+    <status>Sold</status>
+    <breed>Golden Retriever</breed>
+    <breederName>HappyPaws</breederName>
+    <price>300.0</price>
+  </pet>
+  <pet>
+    <id>2</id>
+    <type>Cat</type>
+    <name>Whiskers</name>
+    <color>Gray</color>
+    <age>2</age>
+    <gender>f</gender>
+    <location>Shop</location>
+    <status>Not Sold</status>
+    <breed>British Shorthair</breed>
+    <breederName>CozyCats</breederName>
+    <price>150.0</price>
+  </pet>
+  <pet>
+    <id>3</id>
+    <type>Bird</type>
+    <name>Tweety</name>
+    <color>Yellow</color>
+    <age>1</age>
+    <gender>f</gender>
+    <location>Shop</location>
+    <status>Not Sold</status>
+    <species>Canary</species>
+    <preferredFood>Seeds</preferredFood>
+    <price>50.0</price>
+  </pet>
+  <pet>
+    <id>4</id>
+    <type>Fish</type>
+    <name>Bubbles</name>
+    <color>Orange</color>
+    <age>2</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Sold</status>
+    <saltwater>false</saltwater>
+    <species>Goldfish</species>
+    <predator>false</predator>
+    <price>25.0</price>
+  </pet>
+  <pet>
+    <id>5</id>
+    <type>Rodent</type>
+    <name>Nibbles</name>
+    <color>White</color>
+    <age>1</age>
+    <gender>m</gender>
+    <location>Shop</location>
+    <status>Not Sold</status>
+    <species>Hamster</species>
+    <price>20.0</price>
+  </pet>
+</pets>
