@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox id="searchBar" prefHeight="24.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewHandler">
+  <children>
+      <MenuBar prefWidth="640.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Pets">
+               <items>
+                  <MenuItem fx:id="petsMenuItem" mnemonicParsing="false" text="View Pets" />
+                  <Menu mnemonicParsing="false" text="Add Pet">
+                     <items>
+                        <MenuItem fx:id="dogMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Dog" />
+                        <MenuItem fx:id="catMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Cat" />
+                        <MenuItem fx:id="birdMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Bird" />
+                        <MenuItem fx:id="fishMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Fish" />
+                        <MenuItem fx:id="rodentMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Rodent" />
+                        <MenuItem fx:id="variousMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Various" />
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Customers">
+               <items>
+                  <MenuItem fx:id="customersMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Customers" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Customers" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Bookings">
+               <items>
+                  <MenuItem fx:id="bookingsMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Bookings" />
+                  <MenuItem fx:id="addBookingMenuItem" mnemonicParsing="false" onAction="#switchScene" text="Add Booking" />
+                  <MenuItem fx:id="bookingsSettingsMenuItem" mnemonicParsing="false" onAction="#showPopup" text="Settings" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Sales">
+               <items>
+                  <MenuItem fx:id="salesMenuItem" mnemonicParsing="false" onAction="#switchScene" text="View Sales" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchScene" text="Add Sales" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+  </children>
+</VBox>
