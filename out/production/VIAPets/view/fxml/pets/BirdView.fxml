@@ -101,7 +101,7 @@
                   <Insets left="30.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="petStatusNotFromViaRadioButton" mnemonicParsing="false" text="Not from VIAPets" toggleGroup="$statusGroup" onAction="">
+            <RadioButton fx:id="petStatusNotFromViaRadioButton" mnemonicParsing="false" text="Not from VIAPets" toggleGroup="$statusGroup" >
                <padding>
                   <Insets left="30.0" />
                </padding>
