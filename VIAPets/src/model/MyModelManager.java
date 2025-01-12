@@ -467,7 +467,7 @@ public class MyModelManager implements Serializable
         }
         return true; // 1 return
 
-        // We have no recursion so we do not need a base case.
+//        We have no recursion so we do not need a base case.
 //        We loop through all days of the date interval and for each day we loop through all bookings to check their availability.
 //        T(n) = 13 + n^2. So ignoring constants we get T(n) = O(n^2).
 //        We chose this method because is the one that has the biggest big O in all our code.

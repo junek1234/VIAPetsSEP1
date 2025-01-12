@@ -74,7 +74,7 @@ public class BookingViewController
       Alert alert1 = new Alert(Alert.AlertType.ERROR); // 1
       alert1.setTitle("Error"); // 1
       alert1.setHeaderText(null); // 1
-      alert1.setContentText("Invalid input!"); // 1
+      alert1.setContentText("Complete all fields!"); // 1
       alert1.show(); // 1
       return;//it stops the method when catching exception
     }

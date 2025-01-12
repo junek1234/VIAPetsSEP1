@@ -107,7 +107,7 @@ public class CatViewController
       Alert alert1 = new Alert(Alert.AlertType.ERROR);
       alert1.setTitle("Error");
       alert1.setHeaderText(null);
-      alert1.setContentText("Invalid input!");
+      alert1.setContentText("Complete all fields!");
       alert1.show();
     } else if ((petGenderMaleRadioButton.isSelected()
         && petGenderFemaleRadioButton.isSelected()) || (
